@@ -14,6 +14,3 @@
 GNU/General Public License (see [license.txt](license.txt))
 
 
-## Logo and Trademark Policy
-
-Please read our [Logo and Trademark Policy](TRADEMARK_POLICY.md).
