@@ -2,9 +2,9 @@
     <a href="https://shopersolutions.com">
         <img src="https://raw.githubusercontent.com/netmanthan/ShoperPrime/develop/erpnext/public/images/erpnext-logo.png" height="128">
     </a>
-    <h2>ERPNext</h2>
+    <h2>ShoperPrime</h2>
     <p align="center">
-        <p>ERP made simple</p>
+        <p>ERP made simple For POS</p>
     </p>
 
 [![CI](https://github.com/frappe/erpnext/actions/workflows/server-tests.yml/badge.svg?branch=develop)](https://github.com/frappe/erpnext/actions/workflows/server-tests.yml)
