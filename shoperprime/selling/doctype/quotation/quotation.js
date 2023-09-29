@@ -2,7 +2,7 @@
 // License: GNU General Public License v3. See license.txt
 
 
-{% include 'erpnext/selling/sales_common.js' %}
+{% include 'shoperprime/selling/sales_common.js' %}
 
 frappe.ui.form.on('Quotation', {
 	setup: function(frm) {
@@ -52,13 +52,13 @@ frappe.ui.form.on('Quotation', {
 	}
 });
 
-erpnext.selling.QuotationController = class QuotationController extends erpnext.selling.SellingController {
+shoperprime.selling.QuotationController = class QuotationController extends shoperprime.selling.SellingController {
 	onload(doc, dt, dn) {
 		super.onload(doc, dt, dn);
 	}
 	party_name() {
 		var me = this;
-		erpnext.utils.get_party_details(this.frm, null, null, function() {
+		shoperprime.utils.get_party_details(this.frm, null, null, function() {
 			me.apply_price_list();
 		});
 
@@ -103,7 +103,7 @@ erpnext.selling.QuotationController = class QuotationController extends erpnext.
 
 			if(!doc.auto_repeat) {
 				cur_frm.add_custom_button(__('Subscription'), function() {
-					erpnext.utils.make_subscription(doc.doctype, doc.name)
+					shoperprime.utils.make_subscription(doc.doctype, doc.name)
 				}, __('Create'))
 			}
 
@@ -113,8 +113,8 @@ erpnext.selling.QuotationController = class QuotationController extends erpnext.
 		if (this.frm.doc.docstatus===0) {
 			this.frm.add_custom_button(__('Opportunity'),
 				function() {
-					erpnext.utils.map_current_doc({
-						method: "erpnext.crm.doctype.opportunity.opportunity.make_quotation",
+					shoperprime.utils.map_current_doc({
+						method: "shoperprime.crm.doctype.opportunity.opportunity.make_quotation",
 						source_doctype: "Opportunity",
 						target: me.frm,
 						setters: [
@@ -153,7 +153,7 @@ erpnext.selling.QuotationController = class QuotationController extends erpnext.
 			this.show_alternative_items_dialog();
 		} else {
 			frappe.model.open_mapped_doc({
-				method: "erpnext.selling.doctype.quotation.quotation.make_sales_order",
+				method: "shoperprime.selling.doctype.quotation.quotation.make_sales_order",
 				frm: me.frm
 			});
 		}
@@ -166,7 +166,7 @@ erpnext.selling.QuotationController = class QuotationController extends erpnext.
 		} else if (this.frm.doc.quotation_to == "Lead") {
 			this.frm.set_df_property("party_name", "label", "Lead");
 			this.frm.fields_dict.party_name.get_query = function() {
-				return{	query: "erpnext.controllers.queries.lead_query" }
+				return{	query: "shoperprime.controllers.queries.lead_query" }
 			}
 		} else if (this.frm.doc.quotation_to == "Prospect") {
 			this.frm.set_df_property("party_name", "label", "Prospect");
@@ -214,7 +214,7 @@ erpnext.selling.QuotationController = class QuotationController extends erpnext.
 		}
 
 		frappe.call({
-			method: "erpnext.crm.doctype.lead.lead.get_lead_details",
+			method: "shoperprime.crm.doctype.lead.lead.get_lead_details",
 			args: {
 				'lead': this.frm.doc.party_name,
 				'posting_date': this.frm.doc.transaction_date,
@@ -314,7 +314,7 @@ erpnext.selling.QuotationController = class QuotationController extends erpnext.
 			],
 			primary_action: function() {
 				frappe.model.open_mapped_doc({
-					method: "erpnext.selling.doctype.quotation.quotation.make_sales_order",
+					method: "shoperprime.selling.doctype.quotation.quotation.make_sales_order",
 					frm: me.frm,
 					args: {
 						selected_items: dialog.fields_dict.alternative_items.grid.get_selected_children()
@@ -335,7 +335,7 @@ erpnext.selling.QuotationController = class QuotationController extends erpnext.
 	}
 };
 
-cur_frm.script_manager.make(erpnext.selling.QuotationController);
+cur_frm.script_manager.make(shoperprime.selling.QuotationController);
 
 frappe.ui.form.on("Quotation Item", "items_on_form_rendered", "packed_items_on_form_rendered", function(frm, cdt, cdn) {
 	// enable tax_amount field if Actual

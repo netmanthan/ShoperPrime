@@ -20,7 +20,7 @@ frappe.ui.form.on('Pick List', {
 		});
 		frm.set_query('work_order', () => {
 			return {
-				query: 'erpnext.stock.doctype.pick_list.pick_list.get_pending_work_orders',
+				query: 'shoperprime.stock.doctype.pick_list.pick_list.get_pending_work_orders',
 				filters: {
 					'company': frm.doc.company
 				}
@@ -34,12 +34,12 @@ frappe.ui.form.on('Pick List', {
 			};
 		});
 		frm.set_query('item_code', 'locations', () => {
-			return erpnext.queries.item({ "is_stock_item": 1 });
+			return shoperprime.queries.item({ "is_stock_item": 1 });
 		});
 		frm.set_query('batch_no', 'locations', (frm, cdt, cdn) => {
 			const row = locals[cdt][cdn];
 			return {
-				query: 'erpnext.controllers.queries.get_batch_no',
+				query: 'shoperprime.controllers.queries.get_batch_no',
 				filters: {
 					item_code: row.item_code,
 					warehouse: row.warehouse
@@ -69,7 +69,7 @@ frappe.ui.form.on('Pick List', {
 	refresh: (frm) => {
 		frm.trigger('add_get_items_button');
 		if (frm.doc.docstatus === 1) {
-			frappe.xcall('erpnext.stock.doctype.pick_list.pick_list.target_document_exists', {
+			frappe.xcall('shoperprime.stock.doctype.pick_list.pick_list.target_document_exists', {
 				'pick_list_name': frm.doc.name,
 				'purpose': frm.doc.purpose
 			}).then(target_document_exists => {
@@ -107,8 +107,8 @@ frappe.ui.form.on('Pick List', {
 					return;
 				}
 				frm.clear_table('locations');
-				erpnext.utils.map_current_doc({
-					method: 'erpnext.manufacturing.doctype.work_order.work_order.create_pick_list',
+				shoperprime.utils.map_current_doc({
+					method: 'shoperprime.manufacturing.doctype.work_order.work_order.create_pick_list',
 					target: frm,
 					source_name: frm.doc.work_order
 				});
@@ -116,8 +116,8 @@ frappe.ui.form.on('Pick List', {
 		});
 	},
 	material_request: (frm) => {
-		erpnext.utils.map_current_doc({
-			method: 'erpnext.stock.doctype.material_request.material_request.create_pick_list',
+		shoperprime.utils.map_current_doc({
+			method: 'shoperprime.stock.doctype.material_request.material_request.create_pick_list',
 			target: frm,
 			source_name: frm.doc.material_request
 		});
@@ -128,13 +128,13 @@ frappe.ui.form.on('Pick List', {
 	},
 	create_delivery_note: (frm) => {
 		frappe.model.open_mapped_doc({
-			method: 'erpnext.stock.doctype.pick_list.pick_list.create_delivery_note',
+			method: 'shoperprime.stock.doctype.pick_list.pick_list.create_delivery_note',
 			frm: frm
 		});
 
 	},
 	create_stock_entry: (frm) => {
-		frappe.xcall('erpnext.stock.doctype.pick_list.pick_list.create_stock_entry', {
+		frappe.xcall('shoperprime.stock.doctype.pick_list.pick_list.create_stock_entry', {
 			'pick_list': frm.doc,
 		}).then(stock_entry => {
 			frappe.model.sync(stock_entry);
@@ -154,8 +154,8 @@ frappe.ui.form.on('Pick List', {
 			customer: frm.doc.customer
 		};
 		frm.get_items_btn = frm.add_custom_button(__('Get Items'), () => {
-			erpnext.utils.map_current_doc({
-				method: 'erpnext.selling.doctype.sales_order.sales_order.create_pick_list',
+			shoperprime.utils.map_current_doc({
+				method: 'shoperprime.selling.doctype.sales_order.sales_order.create_pick_list',
 				source_doctype: 'Sales Order',
 				target: frm,
 				setters: {
@@ -177,7 +177,7 @@ frappe.ui.form.on('Pick List', {
 			prompt_qty: frm.doc.prompt_qty,
 			serial_no_field: "not_supported",  // doesn't make sense for picklist without a separate field.
 		};
-		const barcode_scanner = new erpnext.utils.BarcodeScanner(opts);
+		const barcode_scanner = new shoperprime.utils.BarcodeScanner(opts);
 		barcode_scanner.process_scan();
 	}
 });
@@ -213,7 +213,7 @@ frappe.ui.form.on('Pick List Item', {
 
 function get_item_details(item_code, uom=null) {
 	if (item_code) {
-		return frappe.xcall('erpnext.stock.doctype.pick_list.pick_list.get_item_details', {
+		return frappe.xcall('shoperprime.stock.doctype.pick_list.pick_list.get_item_details', {
 			item_code,
 			uom
 		});

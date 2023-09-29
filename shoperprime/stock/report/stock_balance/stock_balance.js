@@ -42,7 +42,7 @@ frappe.query_reports["Stock Balance"] = {
 			"options": "Item",
 			"get_query": function() {
 				return {
-					query: "erpnext.controllers.queries.item_query",
+					query: "shoperprime.controllers.queries.item_query",
 				};
 			}
 		},
@@ -117,4 +117,4 @@ frappe.query_reports["Stock Balance"] = {
 	}
 };
 
-erpnext.utils.add_inventory_dimensions('Stock Balance', 8);
+shoperprime.utils.add_inventory_dimensions('Stock Balance', 8);

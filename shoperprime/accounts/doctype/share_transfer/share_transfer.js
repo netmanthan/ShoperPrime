@@ -1,7 +1,7 @@
 // Copyright (c) 2017, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.provide("erpnext.share_transfer");
+frappe.provide("shoperprime.share_transfer");
 
 frappe.ui.form.on('Share Transfer', {
 	refresh: function(frm) {
@@ -18,7 +18,7 @@ frappe.ui.form.on('Share Transfer', {
 		});
 		if (frm.doc.docstatus == 1 && frm.doc.equity_or_liability_account && frm.doc.asset_account) {
 			frm.add_custom_button(__('Create Journal Entry'), function () {
-				erpnext.share_transfer.make_jv(frm);
+				shoperprime.share_transfer.make_jv(frm);
 			});
 		}
 
@@ -26,12 +26,12 @@ frappe.ui.form.on('Share Transfer', {
 	},
 	no_of_shares: (frm) => {
 		if (frm.doc.rate != undefined || frm.doc.rate != null){
-			erpnext.share_transfer.update_amount(frm);
+			shoperprime.share_transfer.update_amount(frm);
 		}
 	},
 	rate: (frm) => {
 		if (frm.doc.no_of_shares != undefined || frm.doc.no_of_shares != null){
-			erpnext.share_transfer.update_amount(frm);
+			shoperprime.share_transfer.update_amount(frm);
 		}
 	},
 	company: async function(frm) {
@@ -65,12 +65,12 @@ frappe.ui.form.on('Share Transfer', {
 	}
 });
 
-erpnext.share_transfer.update_amount = function(frm) {
+shoperprime.share_transfer.update_amount = function(frm) {
 	frm.doc.amount = frm.doc.no_of_shares * frm.doc.rate;
 	frm.refresh_field("amount");
 };
 
-erpnext.share_transfer.make_jv = function (frm) {
+shoperprime.share_transfer.make_jv = function (frm) {
 	var account, payment_account, credit_applicant_type, credit_applicant,
 		debit_applicant_type, debit_applicant;
 
@@ -109,7 +109,7 @@ erpnext.share_transfer.make_jv = function (frm) {
 			"debit_applicant_type": debit_applicant_type,
 			"debit_applicant": debit_applicant
 		},
-		method: "erpnext.accounts.doctype.share_transfer.share_transfer.make_jv_entry",
+		method: "shoperprime.accounts.doctype.share_transfer.share_transfer.make_jv_entry",
 		callback: function (r) {
 			var doc = frappe.model.sync(r.message)[0];
 			frappe.set_route("Form", doc.doctype, doc.name);

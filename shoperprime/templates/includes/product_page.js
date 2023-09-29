@@ -7,7 +7,7 @@ frappe.ready(function() {
 
 	frappe.call({
 		type: "POST",
-		method: "erpnext.e_commerce.shopping_cart.product_info.get_product_info_for_website",
+		method: "shoperprime.e_commerce.shopping_cart.product_info.get_product_info_for_website",
 		args: {
 			item_code: get_item_code()
 		},
@@ -53,9 +53,9 @@ frappe.ready(function() {
 	})
 
 	$("#item-add-to-cart button").on("click", function() {
-		frappe.provide('erpnext.shopping_cart');
+		frappe.provide('shoperprime.shopping_cart');
 
-		erpnext.shopping_cart.update_cart({
+		shoperprime.shopping_cart.update_cart({
 			item_code: get_item_code(),
 			qty: $("#item-spinner .cart-qty").val(),
 			callback: function(r) {

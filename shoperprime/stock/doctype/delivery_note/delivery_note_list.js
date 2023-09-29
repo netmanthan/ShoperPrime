@@ -38,7 +38,7 @@ frappe.listview_settings['Delivery Note'] = {
 							type: "POST",
 							method: "frappe.model.mapper.map_docs",
 							args: {
-								"method": "erpnext.stock.doctype.delivery_note.delivery_note.make_delivery_trip",
+								"method": "shoperprime.stock.doctype.delivery_note.delivery_note.make_delivery_trip",
 								"source_names": docnames,
 								"target_doc": cur_frm.doc
 							},
@@ -59,11 +59,11 @@ frappe.listview_settings['Delivery Note'] = {
 		doclist.page.add_action_item(__('Create Delivery Trip'), action);
 
 		doclist.page.add_action_item(__("Sales Invoice"), ()=>{
-			erpnext.bulk_transaction_processing.create(doclist, "Delivery Note", "Sales Invoice");
+			shoperprime.bulk_transaction_processing.create(doclist, "Delivery Note", "Sales Invoice");
 		});
 
 		doclist.page.add_action_item(__("Packaging Slip From Delivery Note"), ()=>{
-			erpnext.bulk_transaction_processing.create(doclist, "Delivery Note", "Packing Slip");
+			shoperprime.bulk_transaction_processing.create(doclist, "Delivery Note", "Packing Slip");
 		});
 	}
 };

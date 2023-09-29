@@ -10,7 +10,7 @@ frappe.ui.form.on('Process Statement Of Accounts', {
 		if(!frm.doc.__islocal) {
 			frm.add_custom_button(__('Send Emails'), function(){
 				frappe.call({
-					method: "erpnext.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.send_emails",
+					method: "shoperprime.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.send_emails",
 					args: {
 						"document_name": frm.doc.name,
 					},
@@ -26,7 +26,7 @@ frappe.ui.form.on('Process Statement Of Accounts', {
 			});
 			frm.add_custom_button(__('Download'), function(){
 				var url = frappe.urllib.get_full_url(
-					'/api/method/erpnext.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.download_statements?'
+					'/api/method/shoperprime.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.download_statements?'
 					+ 'document_name='+encodeURIComponent(frm.doc.name))
 				$.ajax({
 					url: url,
@@ -94,7 +94,7 @@ frappe.ui.form.on('Process Statement Of Accounts', {
 	fetch_customers: function(frm){
 		if(frm.doc.collection_name){
 			frappe.call({
-				method: "erpnext.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.fetch_customers",
+				method: "shoperprime.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.fetch_customers",
 				args: {
 					'customer_collection': frm.doc.customer_collection,
 					'collection_name': frm.doc.collection_name,
@@ -132,7 +132,7 @@ frappe.ui.form.on('Process Statement Of Accounts Customer', {
 			return;
 		}
 		frappe.call({
-			method: 'erpnext.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.get_customer_emails',
+			method: 'shoperprime.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.get_customer_emails',
 			args: {
 				'customer_name': row.customer,
 				'primary_mandatory': frm.doc.primary_mandatory

@@ -13,10 +13,10 @@ async function initialise_select_date() {
 async function get_global_variables() {
     // Using await through this file instead of then.
     window.appointment_settings = (await frappe.call({
-        method: 'erpnext.www.book_appointment.index.get_appointment_settings'
+        method: 'shoperprime.www.book_appointment.index.get_appointment_settings'
     })).message;
     window.timezones = (await frappe.call({
-        method:'erpnext.www.book_appointment.index.get_timezones'
+        method:'shoperprime.www.book_appointment.index.get_timezones'
     })).message;
 }
 
@@ -71,7 +71,7 @@ function on_date_or_timezone_select() {
 
 async function get_time_slots(date, timezone) {
     let slots = (await frappe.call({
-        method: 'erpnext.www.book_appointment.index.get_appointment_slots',
+        method: 'shoperprime.www.book_appointment.index.get_appointment_slots',
         args: {
             date: date,
             timezone: timezone
@@ -215,7 +215,7 @@ async function submit() {
     }
     let contact = get_form_data();
     let appointment =  frappe.call({
-        method: 'erpnext.www.book_appointment.index.create_appointment',
+        method: 'shoperprime.www.book_appointment.index.create_appointment',
         args: {
             'date': window.selected_date,
             'time': window.selected_time,

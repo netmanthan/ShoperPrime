@@ -1,7 +1,7 @@
 // Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.provide("erpnext.accounts.dimensions");
+frappe.provide("shoperprime.accounts.dimensions");
 
 frappe.ui.form.on('Loyalty Program', {
 	setup: function(frm) {
@@ -49,7 +49,7 @@ frappe.ui.form.on('Loyalty Program', {
 		});
 
 		frm.set_value("company", frappe.defaults.get_user_default("Company"));
-		erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
+		shoperprime.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
 	},
 
 	refresh: function(frm) {
@@ -59,6 +59,6 @@ frappe.ui.form.on('Loyalty Program', {
 	},
 
 	company: function(frm) {
-		erpnext.accounts.dimensions.update_dimension(frm, frm.doctype);
+		shoperprime.accounts.dimensions.update_dimension(frm, frm.doctype);
 	}
 });

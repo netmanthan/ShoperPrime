@@ -1,4 +1,4 @@
-erpnext.utils.BarcodeScanner = class BarcodeScanner {
+shoperprime.utils.BarcodeScanner = class BarcodeScanner {
 	constructor(opts) {
 		this.frm = opts.frm;
 
@@ -34,7 +34,7 @@ erpnext.utils.BarcodeScanner = class BarcodeScanner {
 		//     serial_no: "987XYZ", // present if serial no was scanned
 		//     uom: "Kg", // present if barcode UOM is different from default
 		// }
-		this.scan_api = opts.scan_api || "erpnext.stock.utils.scan_barcode";
+		this.scan_api = opts.scan_api || "shoperprime.stock.utils.scan_barcode";
 	}
 
 	process_scan() {

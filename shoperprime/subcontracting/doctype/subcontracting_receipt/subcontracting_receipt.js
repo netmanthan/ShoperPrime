@@ -1,9 +1,9 @@
 // Copyright (c) 2022, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.provide('erpnext.buying');
+frappe.provide('shoperprime.buying');
 
-{% include 'erpnext/stock/landed_taxes_and_charges_common.js' %};
+{% include 'shoperprime/stock/landed_taxes_and_charges_common.js' %};
 
 frappe.ui.form.on('Subcontracting Receipt', {
 	setup: (frm) => {
@@ -53,7 +53,7 @@ frappe.ui.form.on('Subcontracting Receipt', {
 
 		frm.set_query('expense_account', 'items', function () {
 			return {
-				query: 'erpnext.controllers.queries.get_expense_account',
+				query: 'shoperprime.controllers.queries.get_expense_account',
 				filters: { 'company': frm.doc.company }
 			};
 		});
@@ -106,7 +106,7 @@ frappe.ui.form.on('Subcontracting Receipt', {
 		if (!frm.doc.is_return && frm.doc.docstatus == 1 && frm.doc.per_returned < 100) {
 			frm.add_custom_button(__('Subcontract Return'), function () {
 				frappe.model.open_mapped_doc({
-					method: 'erpnext.subcontracting.doctype.subcontracting_receipt.subcontracting_receipt.make_subcontract_return',
+					method: 'shoperprime.subcontracting.doctype.subcontracting_receipt.subcontracting_receipt.make_subcontract_return',
 					frm: frm
 				});
 			}, __('Create'));
@@ -122,8 +122,8 @@ frappe.ui.form.on('Subcontracting Receipt', {
 					});
 				}
 
-				erpnext.utils.map_current_doc({
-					method: 'erpnext.subcontracting.doctype.subcontracting_order.subcontracting_order.make_subcontracting_receipt',
+				shoperprime.utils.map_current_doc({
+					method: 'shoperprime.subcontracting.doctype.subcontracting_order.subcontracting_order.make_subcontracting_receipt',
 					source_doctype: 'Subcontracting Order',
 					target: frm,
 					setters: {
@@ -190,7 +190,7 @@ frappe.ui.form.on('Subcontracting Receipt Supplied Item', {
 });
 
 let set_warehouse_in_children = (child_table, warehouse_field, warehouse) => {
-	let transaction_controller = new erpnext.TransactionController();
+	let transaction_controller = new shoperprime.TransactionController();
 	transaction_controller.autofill_warehouse(child_table, warehouse_field, warehouse);
 };
 

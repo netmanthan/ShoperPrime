@@ -34,7 +34,7 @@ document_list.forEach((doctype) => {
 			} else if (!row.exchange_rate || row.exchange_rate == 1) {
 				frm.set_df_property('taxes', 'hidden', 0, row.name, 'exchange_rate');
 				frappe.call({
-					method: "erpnext.accounts.doctype.journal_entry.journal_entry.get_exchange_rate",
+					method: "shoperprime.accounts.doctype.journal_entry.journal_entry.get_exchange_rate",
 					args: {
 						posting_date: frm.doc.posting_date,
 						account: row.expense_account,

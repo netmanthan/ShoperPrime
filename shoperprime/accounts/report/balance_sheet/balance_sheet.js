@@ -1,10 +1,10 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.require("assets/erpnext/js/financial_statements.js", function() {
-	frappe.query_reports["Balance Sheet"] = $.extend({}, erpnext.financial_statements);
+frappe.require("assets/shoperprime/js/financial_statements.js", function() {
+	frappe.query_reports["Balance Sheet"] = $.extend({}, shoperprime.financial_statements);
 
-	erpnext.utils.add_dimensions('Balance Sheet', 10);
+	shoperprime.utils.add_dimensions('Balance Sheet', 10);
 
 	frappe.query_reports["Balance Sheet"]["filters"].push({
 		"fieldname": "accumulated_values",

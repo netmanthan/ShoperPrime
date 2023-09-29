@@ -306,7 +306,7 @@ class WebsiteItem(WebsiteGenerator):
 		context.metatags.title = self.web_item_name or self.item_name or self.item_code
 
 		context.metatags["og:type"] = "product"
-		context.metatags["og:site_name"] = "ERPNext"
+		context.metatags["og:site_name"] = "shoperprime"
 
 	def set_shopping_cart_data(self, context):
 		from shoperprime.e_commerce.shopping_cart.product_info import get_product_info_for_website

@@ -18,11 +18,11 @@ frappe.ui.form.on('Blanket Order', {
 	},
 
 	refresh: function(frm) {
-		erpnext.hide_company();
+		shoperprime.hide_company();
 		if (frm.doc.customer && frm.doc.docstatus === 1 && frm.doc.to_date > frappe.datetime.get_today()) {
 			frm.add_custom_button(__("Sales Order"), function() {
 				frappe.model.open_mapped_doc({
-					method: "erpnext.manufacturing.doctype.blanket_order.blanket_order.make_order",
+					method: "shoperprime.manufacturing.doctype.blanket_order.blanket_order.make_order",
 					frm: frm,
 					args: {
 						doctype: 'Sales Order'
@@ -32,7 +32,7 @@ frappe.ui.form.on('Blanket Order', {
 
 			frm.add_custom_button(__("Quotation"), function() {
 				frappe.model.open_mapped_doc({
-					method: "erpnext.manufacturing.doctype.blanket_order.blanket_order.make_order",
+					method: "shoperprime.manufacturing.doctype.blanket_order.blanket_order.make_order",
 					frm: frm,
 					args: {
 						doctype: 'Quotation'
@@ -44,7 +44,7 @@ frappe.ui.form.on('Blanket Order', {
 		if (frm.doc.supplier && frm.doc.docstatus === 1) {
 			frm.add_custom_button(__("Purchase Order"), function(){
 				frappe.model.open_mapped_doc({
-					method: "erpnext.manufacturing.doctype.blanket_order.blanket_order.make_order",
+					method: "shoperprime.manufacturing.doctype.blanket_order.blanket_order.make_order",
 					frm: frm,
 					args: {
 						doctype: 'Purchase Order'
@@ -59,7 +59,7 @@ frappe.ui.form.on('Blanket Order', {
 	},
 
 	tc_name: function (frm) {
-		erpnext.utils.get_terms(frm.doc.tc_name, frm.doc, function (r) {
+		shoperprime.utils.get_terms(frm.doc.tc_name, frm.doc, function (r) {
 			if (!r.exc) {
 				frm.set_value("terms", r.message);
 			}

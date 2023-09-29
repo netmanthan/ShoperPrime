@@ -2,15 +2,15 @@
 // License: GNU General Public License v3. See license.txt
 
 // get tax rate
-frappe.provide("erpnext.taxes");
-frappe.provide("erpnext.taxes.flags");
+frappe.provide("shoperprime.taxes");
+frappe.provide("shoperprime.taxes.flags");
 
 frappe.ui.form.on(cur_frm.doctype, {
 	setup: function(frm) {
 		// set conditional display for rate column in taxes
 		$(frm.wrapper).on('grid-row-render', function(e, grid_row) {
 			if(in_list(['Sales Taxes and Charges', 'Purchase Taxes and Charges'], grid_row.doc.doctype)) {
-				erpnext.taxes.set_conditional_mandatory_rate_or_amount(grid_row);
+				shoperprime.taxes.set_conditional_mandatory_rate_or_amount(grid_row);
 			}
 		});
 	},
@@ -24,7 +24,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 				}
 
 				return {
-					query: "erpnext.controllers.queries.tax_account_query",
+					query: "shoperprime.controllers.queries.tax_account_query",
 					filters: {
 						"account_type": account_type,
 						"company": doc.company,
@@ -51,7 +51,7 @@ frappe.ui.form.on(cur_frm.doctype, {
 
 	},
 	taxes_on_form_rendered: function(frm) {
-		erpnext.taxes.set_conditional_mandatory_rate_or_amount(frm.open_grid_row());
+		shoperprime.taxes.set_conditional_mandatory_rate_or_amount(frm.open_grid_row());
 	},
 
 	allocate_advances_automatically: function(frm) {
@@ -156,7 +156,7 @@ var get_payment_mode_account = function(frm, mode_of_payment, callback) {
 	}
 
 	return  frappe.call({
-		method: "erpnext.accounts.doctype.sales_invoice.sales_invoice.get_bank_cash_account",
+		method: "shoperprime.accounts.doctype.sales_invoice.sales_invoice.get_bank_cash_account",
 		args: {
 			"mode_of_payment": mode_of_payment,
 			"company": frm.doc.company
@@ -183,7 +183,7 @@ cur_frm.cscript.account_head = function(doc, cdt, cdn) {
 	} else if (d.account_head) {
 		frappe.call({
 			type:"GET",
-			method: "erpnext.controllers.accounts_controller.get_tax_rate",
+			method: "shoperprime.controllers.accounts_controller.get_tax_rate",
 			args: {"account_head":d.account_head},
 			callback: function(r) {
 				if (d.charge_type!=="Actual") {
@@ -265,8 +265,8 @@ cur_frm.cscript.validate_inclusive_tax = function(tax) {
 	}
 }
 
-if(!erpnext.taxes.flags[cur_frm.cscript.tax_table]) {
-	erpnext.taxes.flags[cur_frm.cscript.tax_table] = true;
+if(!shoperprime.taxes.flags[cur_frm.cscript.tax_table]) {
+	shoperprime.taxes.flags[cur_frm.cscript.tax_table] = true;
 
 	frappe.ui.form.on(cur_frm.cscript.tax_table, "row_id", function(frm, cdt, cdn) {
 		cur_frm.cscript.validate_taxes_and_charges(cdt, cdn);
@@ -284,10 +284,10 @@ if(!erpnext.taxes.flags[cur_frm.cscript.tax_table]) {
 		frm.cscript.validate_taxes_and_charges(cdt, cdn);
 		var open_form = frm.open_grid_row();
 		if(open_form) {
-			erpnext.taxes.set_conditional_mandatory_rate_or_amount(open_form);
+			shoperprime.taxes.set_conditional_mandatory_rate_or_amount(open_form);
 		} else {
 			// apply in current row
-			erpnext.taxes.set_conditional_mandatory_rate_or_amount(frm.get_field('taxes').grid.get_row(cdn));
+			shoperprime.taxes.set_conditional_mandatory_rate_or_amount(frm.get_field('taxes').grid.get_row(cdn));
 		}
 	});
 
@@ -304,7 +304,7 @@ if(!erpnext.taxes.flags[cur_frm.cscript.tax_table]) {
 	});
 }
 
-erpnext.taxes.set_conditional_mandatory_rate_or_amount = function(grid_row) {
+shoperprime.taxes.set_conditional_mandatory_rate_or_amount = function(grid_row) {
 	if(grid_row) {
 		if(grid_row.doc.charge_type==="Actual") {
 			grid_row.toggle_editable("tax_amount", true);

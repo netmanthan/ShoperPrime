@@ -8,7 +8,7 @@ $(() => {
 			let view_type = localStorage.getItem("product_view") || "List View";
 
 			// Render Product Views, Filters & Search
-			new erpnext.ProductView({
+			new shoperprime.ProductView({
 				view_type: view_type,
 				products_section: $('#product-listing'),
 				item_group: me.item_group
@@ -18,8 +18,8 @@ $(() => {
 		}
 
 		bind_card_actions() {
-			erpnext.e_commerce.shopping_cart.bind_add_to_cart_action();
-			erpnext.e_commerce.wishlist.bind_wishlist_action();
+			shoperprime.e_commerce.shopping_cart.bind_add_to_cart_action();
+			shoperprime.e_commerce.wishlist.bind_wishlist_action();
 		}
 	}
 

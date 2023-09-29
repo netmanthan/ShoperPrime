@@ -709,7 +709,7 @@ class Item(Document):
 					frappe.msgprint(_("Item Variants updated"))
 				else:
 					frappe.enqueue(
-						"erpnext.stock.doctype.item.item.update_variants",
+						"shoperprime.stock.doctype.item.item.update_variants",
 						variants=variants,
 						template=self,
 						now=frappe.flags.in_test,

@@ -532,7 +532,7 @@ def check_pending_reposting(posting_date: str, throw_error: bool = True) -> bool
 			indicator="red",
 			primary_action={
 				"label": _("Show pending entries"),
-				"client_action": "erpnext.route_to_pending_reposts",
+				"client_action": "shoperprime.route_to_pending_reposts",
 				"args": filters,
 			},
 		)
@@ -543,10 +543,10 @@ def check_pending_reposting(posting_date: str, throw_error: bool = True) -> bool
 @frappe.whitelist()
 def scan_barcode(search_value: str) -> BarcodeScanResult:
 	def set_cache(data: BarcodeScanResult):
-		frappe.cache().set_value(f"erpnext:barcode_scan:{search_value}", data, expires_in_sec=120)
+		frappe.cache().set_value(f"shoperprime:barcode_scan:{search_value}", data, expires_in_sec=120)
 
 	def get_cache() -> Optional[BarcodeScanResult]:
-		if data := frappe.cache().get_value(f"erpnext:barcode_scan:{search_value}"):
+		if data := frappe.cache().get_value(f"shoperprime:barcode_scan:{search_value}"):
 			return data
 
 	if scan_data := get_cache():

@@ -1,3 +1,3 @@
-{% include "erpnext/regional/italy/sales_invoice.js" %}
+{% include "shoperprime/regional/italy/sales_invoice.js" %}
 
-erpnext.setup_e_invoice_button('Sales Invoice')
+shoperprime.setup_e_invoice_button('Sales Invoice')

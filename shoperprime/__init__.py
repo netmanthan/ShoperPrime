@@ -135,7 +135,7 @@ def allow_regional(fn):
 	"""Decorator to make a function regionally overridable
 
 	Example:
-	@erpnext.allow_regional
+	@shoperprime.allow_regional
 	def myfunction():
 	  pass"""
 

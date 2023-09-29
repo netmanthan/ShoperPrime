@@ -1,4 +1,4 @@
-erpnext.ProductList = class {
+shoperprime.ProductList = class {
 	/* Options:
 		- items: Items
 		- settings: E Commerce Settings

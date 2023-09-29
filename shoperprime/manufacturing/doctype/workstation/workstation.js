@@ -7,7 +7,7 @@ frappe.ui.form.on("Workstation", {
 		{
 			frappe.call({
 				type:"GET",
-				method:"erpnext.manufacturing.doctype.workstation.workstation.get_default_holiday_list",
+				method:"shoperprime.manufacturing.doctype.workstation.workstation.get_default_holiday_list",
 				callback: function(r) {
 					if(!r.exe && r.message){
 						cur_frm.set_value("holiday_list", r.message);

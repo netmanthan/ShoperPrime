@@ -37,7 +37,7 @@ frappe.query_reports["Supplier Quotation Comparison"] = {
 				let quote = frappe.query_report.get_filter_value('supplier_quotation');
 				if (quote != "") {
 					return {
-						query: "erpnext.stock.doctype.quality_inspection.quality_inspection.item_query",
+						query: "shoperprime.stock.doctype.quality_inspection.quality_inspection.item_query",
 						filters: {
 							"from": "Supplier Quotation Item",
 							"parent": quote

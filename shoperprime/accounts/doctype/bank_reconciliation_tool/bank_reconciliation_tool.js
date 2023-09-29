@@ -1,6 +1,6 @@
 // Copyright (c) 2020, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
-frappe.provide("erpnext.accounts.bank_reconciliation");
+frappe.provide("shoperprime.accounts.bank_reconciliation");
 
 frappe.ui.form.on("Bank Reconciliation Tool", {
 	setup: function (frm) {
@@ -44,7 +44,7 @@ frappe.ui.form.on("Bank Reconciliation Tool", {
 		frm.add_custom_button(__("Upload Bank Statement"), () =>
 				frappe.call({
 					method:
-						"erpnext.accounts.doctype.bank_statement_import.bank_statement_import.upload_bank_statement",
+						"shoperprime.accounts.doctype.bank_statement_import.bank_statement_import.upload_bank_statement",
 					args: {
 						dt: frm.doc.doctype,
 						dn: frm.doc.name,
@@ -66,7 +66,7 @@ frappe.ui.form.on("Bank Reconciliation Tool", {
 
 		frm.add_custom_button(__('Auto Reconcile'), function() {
 			frappe.call({
-				method: "erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.auto_reconcile_vouchers",
+				method: "shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.auto_reconcile_vouchers",
 				args: {
 					bank_account: frm.doc.bank_account,
 					from_date: frm.doc.bank_statement_from_date,
@@ -134,7 +134,7 @@ frappe.ui.form.on("Bank Reconciliation Tool", {
 		if (frm.doc.bank_account && frm.doc.bank_statement_from_date) {
 			frappe.call({
 				method:
-					"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_account_balance",
+					"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_account_balance",
 				args: {
 					bank_account: frm.doc.bank_account,
 					till_date: frm.doc.bank_statement_from_date,
@@ -150,7 +150,7 @@ frappe.ui.form.on("Bank Reconciliation Tool", {
 		if (frm.doc.bank_account && frm.doc.bank_statement_to_date) {
 			return frappe.call({
 				method:
-					"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_account_balance",
+					"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_account_balance",
 				args: {
 					bank_account: frm.doc.bank_account,
 					till_date: frm.doc.bank_statement_to_date,
@@ -163,7 +163,7 @@ frappe.ui.form.on("Bank Reconciliation Tool", {
 	},
 
 	render_chart(frm) {
-		frm.cards_manager = new erpnext.accounts.bank_reconciliation.NumberCardManager(
+		frm.cards_manager = new shoperprime.accounts.bank_reconciliation.NumberCardManager(
 			{
 				$reconciliation_tool_cards: frm.get_field(
 					"reconciliation_tool_cards"
@@ -178,7 +178,7 @@ frappe.ui.form.on("Bank Reconciliation Tool", {
 
 	render(frm) {
 		if (frm.doc.bank_account) {
-			frm.bank_reconciliation_data_table_manager = new erpnext.accounts.bank_reconciliation.DataTableManager(
+			frm.bank_reconciliation_data_table_manager = new shoperprime.accounts.bank_reconciliation.DataTableManager(
 				{
 					company: frm.doc.company,
 					bank_account: frm.doc.bank_account,

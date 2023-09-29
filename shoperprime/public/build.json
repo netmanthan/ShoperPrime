@@ -1,20 +1,20 @@
 {
-	"css/erpnext.css": [
-		"public/less/erpnext.less",
+	"css/shoperprime.css": [
+		"public/less/shoperprime.less",
 		"public/scss/call_popup.scss",
 		"public/scss/point-of-sale.scss",
 		"public/scss/hierarchy_chart.scss"
 	],
-	"js/erpnext-web.min.js": [
+	"js/shoperprime-web.min.js": [
 		"public/js/website_utils.js",
 		"public/js/shopping_cart.js",
 		"public/js/wishlist.js"
 	],
-	"css/erpnext-web.css": [
+	"css/shoperprime-web.css": [
 		"public/scss/website.scss",
 		"public/scss/shopping_cart.scss"
 	],
-	"js/erpnext.min.js": [
+	"js/shoperprime.min.js": [
 		"public/js/conf.js",
 		"public/js/utils.js",
 		"public/js/queries.js",

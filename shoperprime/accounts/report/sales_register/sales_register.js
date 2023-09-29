@@ -68,4 +68,4 @@ frappe.query_reports["Sales Register"] = {
 	]
 }
 
-erpnext.utils.add_dimensions('Sales Register', 7);
+shoperprime.utils.add_dimensions('Sales Register', 7);

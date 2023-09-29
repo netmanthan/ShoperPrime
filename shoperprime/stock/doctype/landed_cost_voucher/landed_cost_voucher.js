@@ -1,11 +1,11 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-{% include 'erpnext/stock/landed_taxes_and_charges_common.js' %};
+{% include 'shoperprime/stock/landed_taxes_and_charges_common.js' %};
 
-frappe.provide("erpnext.stock");
+frappe.provide("shoperprime.stock");
 
-erpnext.stock.LandedCostVoucher = class LandedCostVoucher extends erpnext.stock.StockController {
+shoperprime.stock.LandedCostVoucher = class LandedCostVoucher extends shoperprime.stock.StockController {
 	setup() {
 		var me = this;
 		this.frm.fields_dict.purchase_receipts.grid.get_field('receipt_document').get_query =
@@ -133,7 +133,7 @@ erpnext.stock.LandedCostVoucher = class LandedCostVoucher extends erpnext.stock.
 	}
 };
 
-cur_frm.script_manager.make(erpnext.stock.LandedCostVoucher);
+cur_frm.script_manager.make(shoperprime.stock.LandedCostVoucher);
 
 frappe.ui.form.on('Landed Cost Taxes and Charges', {
 	expense_account: function(frm, cdt, cdn) {

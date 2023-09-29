@@ -1,24 +1,24 @@
 from frappe import _
 
-app_name = "erpnext"
-app_title = "ERPNext"
+app_name = "shoperprime"
+app_title = "Shoper Prime"
 app_publisher = "Frappe Technologies Pvt. Ltd."
 app_description = """ERP made simple"""
 app_icon = "fa fa-th"
 app_color = "#e74c3c"
 app_email = "info@shopersolutions.com"
 app_license = "GNU General Public License (v3)"
-source_link = "https://github.com/frappe/erpnext"
-app_logo_url = "/assets/erpnext/images/erpnext-logo.svg"
+source_link = "https://github.com/frappe/shoperprime"
+app_logo_url = "/assets/shoperprime/images/shoperprime-logo.svg"
 
 
 develop_version = "14.x.x-develop"
 
-app_include_js = "erpnext.bundle.js"
-app_include_css = "erpnext.bundle.css"
-web_include_js = "erpnext-web.bundle.js"
-web_include_css = "erpnext-web.bundle.css"
-email_css = "email_erpnext.bundle.css"
+app_include_js = "shoperprime.bundle.js"
+app_include_css = "shoperprime.bundle.css"
+web_include_js = "shoperprime-web.bundle.js"
+web_include_css = "shoperprime-web.bundle.css"
+email_css = "email_shoperprime.bundle.css"
 
 doctype_js = {
 	"Address": "public/js/address.js",
@@ -28,30 +28,30 @@ doctype_js = {
 	"Contact": "public/js/contact.js",
 }
 
-override_doctype_class = {"Address": "erpnext.accounts.custom.address.ERPNextAddress"}
+override_doctype_class = {"Address": "shoperprime.accounts.custom.address.shoperprimeAddress"}
 
-welcome_email = "erpnext.setup.utils.welcome_email"
+welcome_email = "shoperprime.setup.utils.welcome_email"
 
 # setup wizard
-setup_wizard_requires = "assets/erpnext/js/setup_wizard.js"
-setup_wizard_stages = "erpnext.setup.setup_wizard.setup_wizard.get_setup_stages"
-setup_wizard_test = "erpnext.setup.setup_wizard.test_setup_wizard.run_setup_wizard_test"
+setup_wizard_requires = "assets/shoperprime/js/setup_wizard.js"
+setup_wizard_stages = "shoperprime.setup.setup_wizard.setup_wizard.get_setup_stages"
+setup_wizard_test = "shoperprime.setup.setup_wizard.test_setup_wizard.run_setup_wizard_test"
 
-before_install = "erpnext.setup.install.check_setup_wizard_not_completed"
-after_install = "erpnext.setup.install.after_install"
+before_install = "shoperprime.setup.install.check_setup_wizard_not_completed"
+after_install = "shoperprime.setup.install.after_install"
 
-boot_session = "erpnext.startup.boot.boot_session"
-notification_config = "erpnext.startup.notifications.get_notification_config"
-get_help_messages = "erpnext.utilities.activation.get_help_messages"
-leaderboards = "erpnext.startup.leaderboard.get_leaderboards"
-filters_config = "erpnext.startup.filters.get_filters_config"
-additional_print_settings = "erpnext.controllers.print_settings.get_print_settings"
+boot_session = "shoperprime.startup.boot.boot_session"
+notification_config = "shoperprime.startup.notifications.get_notification_config"
+get_help_messages = "shoperprime.utilities.activation.get_help_messages"
+leaderboards = "shoperprime.startup.leaderboard.get_leaderboards"
+filters_config = "shoperprime.startup.filters.get_filters_config"
+additional_print_settings = "shoperprime.controllers.print_settings.get_print_settings"
 
 on_session_creation = [
-	"erpnext.portal.utils.create_customer_or_supplier",
-	"erpnext.e_commerce.shopping_cart.utils.set_cart_count",
+	"shoperprime.portal.utils.create_customer_or_supplier",
+	"shoperprime.e_commerce.shopping_cart.utils.set_cart_count",
 ]
-on_logout = "erpnext.e_commerce.shopping_cart.utils.clear_cart_count"
+on_logout = "shoperprime.e_commerce.shopping_cart.utils.clear_cart_count"
 
 treeviews = [
 	"Account",
@@ -67,10 +67,10 @@ treeviews = [
 
 # website
 update_website_context = [
-	"erpnext.e_commerce.shopping_cart.utils.update_website_context",
+	"shoperprime.e_commerce.shopping_cart.utils.update_website_context",
 ]
-my_account_context = "erpnext.e_commerce.shopping_cart.utils.update_my_account_context"
-webform_list_context = "erpnext.controllers.website_list_for_contact.get_webform_list_context"
+my_account_context = "shoperprime.e_commerce.shopping_cart.utils.update_my_account_context"
+webform_list_context = "shoperprime.controllers.website_list_for_contact.get_webform_list_context"
 
 calendars = [
 	"Task",
@@ -82,8 +82,8 @@ calendars = [
 website_generators = ["Item Group", "Website Item", "BOM", "Sales Partner"]
 
 website_context = {
-	"favicon": "/assets/erpnext/images/erpnext-favicon.svg",
-	"splash_image": "/assets/erpnext/images/erpnext-logo.svg",
+	"favicon": "/assets/shoperprime/images/shoperprime-favicon.svg",
+	"splash_image": "/assets/shoperprime/images/shoperprime-logo.svg",
 }
 
 # nosemgrep
@@ -251,31 +251,31 @@ default_roles = [
 ]
 
 sounds = [
-	{"name": "incoming-call", "src": "/assets/erpnext/sounds/incoming-call.mp3", "volume": 0.2},
-	{"name": "call-disconnect", "src": "/assets/erpnext/sounds/call-disconnect.mp3", "volume": 0.2},
+	{"name": "incoming-call", "src": "/assets/shoperprime/sounds/incoming-call.mp3", "volume": 0.2},
+	{"name": "call-disconnect", "src": "/assets/shoperprime/sounds/call-disconnect.mp3", "volume": 0.2},
 ]
 
 has_upload_permission = {
-	"Employee": "erpnext.setup.doctype.employee.employee.has_upload_permission"
+	"Employee": "shoperprime.setup.doctype.employee.employee.has_upload_permission"
 }
 
 has_website_permission = {
-	"Sales Order": "erpnext.controllers.website_list_for_contact.has_website_permission",
-	"Quotation": "erpnext.controllers.website_list_for_contact.has_website_permission",
-	"Sales Invoice": "erpnext.controllers.website_list_for_contact.has_website_permission",
-	"Supplier Quotation": "erpnext.controllers.website_list_for_contact.has_website_permission",
-	"Purchase Order": "erpnext.controllers.website_list_for_contact.has_website_permission",
-	"Purchase Invoice": "erpnext.controllers.website_list_for_contact.has_website_permission",
-	"Material Request": "erpnext.controllers.website_list_for_contact.has_website_permission",
-	"Delivery Note": "erpnext.controllers.website_list_for_contact.has_website_permission",
-	"Issue": "erpnext.support.doctype.issue.issue.has_website_permission",
-	"Timesheet": "erpnext.controllers.website_list_for_contact.has_website_permission",
+	"Sales Order": "shoperprime.controllers.website_list_for_contact.has_website_permission",
+	"Quotation": "shoperprime.controllers.website_list_for_contact.has_website_permission",
+	"Sales Invoice": "shoperprime.controllers.website_list_for_contact.has_website_permission",
+	"Supplier Quotation": "shoperprime.controllers.website_list_for_contact.has_website_permission",
+	"Purchase Order": "shoperprime.controllers.website_list_for_contact.has_website_permission",
+	"Purchase Invoice": "shoperprime.controllers.website_list_for_contact.has_website_permission",
+	"Material Request": "shoperprime.controllers.website_list_for_contact.has_website_permission",
+	"Delivery Note": "shoperprime.controllers.website_list_for_contact.has_website_permission",
+	"Issue": "shoperprime.support.doctype.issue.issue.has_website_permission",
+	"Timesheet": "shoperprime.controllers.website_list_for_contact.has_website_permission",
 }
 
-before_tests = "erpnext.setup.utils.before_tests"
+before_tests = "shoperprime.setup.utils.before_tests"
 
 standard_queries = {
-	"Customer": "erpnext.controllers.queries.customer_query",
+	"Customer": "shoperprime.controllers.queries.customer_query",
 }
 
 period_closing_doctypes = [
@@ -301,90 +301,90 @@ period_closing_doctypes = [
 
 doc_events = {
 	"*": {
-		"validate": "erpnext.support.doctype.service_level_agreement.service_level_agreement.apply",
+		"validate": "shoperprime.support.doctype.service_level_agreement.service_level_agreement.apply",
 	},
 	tuple(period_closing_doctypes): {
-		"validate": "erpnext.accounts.doctype.accounting_period.accounting_period.validate_accounting_period_on_doc_save",
+		"validate": "shoperprime.accounts.doctype.accounting_period.accounting_period.validate_accounting_period_on_doc_save",
 	},
 	"Stock Entry": {
-		"on_submit": "erpnext.stock.doctype.material_request.material_request.update_completed_and_requested_qty",
-		"on_cancel": "erpnext.stock.doctype.material_request.material_request.update_completed_and_requested_qty",
+		"on_submit": "shoperprime.stock.doctype.material_request.material_request.update_completed_and_requested_qty",
+		"on_cancel": "shoperprime.stock.doctype.material_request.material_request.update_completed_and_requested_qty",
 	},
 	"User": {
 		"after_insert": "frappe.contacts.doctype.contact.contact.update_contact",
-		"validate": "erpnext.setup.doctype.employee.employee.validate_employee_role",
+		"validate": "shoperprime.setup.doctype.employee.employee.validate_employee_role",
 		"on_update": [
-			"erpnext.setup.doctype.employee.employee.update_user_permissions",
-			"erpnext.portal.utils.set_default_role",
+			"shoperprime.setup.doctype.employee.employee.update_user_permissions",
+			"shoperprime.portal.utils.set_default_role",
 		],
 	},
 	"Communication": {
 		"on_update": [
-			"erpnext.support.doctype.service_level_agreement.service_level_agreement.on_communication_update",
-			"erpnext.support.doctype.issue.issue.set_first_response_time",
+			"shoperprime.support.doctype.service_level_agreement.service_level_agreement.on_communication_update",
+			"shoperprime.support.doctype.issue.issue.set_first_response_time",
 		],
-		"after_insert": "erpnext.crm.utils.link_communications_with_prospect",
+		"after_insert": "shoperprime.crm.utils.link_communications_with_prospect",
 	},
 	"Event": {
-		"after_insert": "erpnext.crm.utils.link_events_with_prospect",
+		"after_insert": "shoperprime.crm.utils.link_events_with_prospect",
 	},
 	"Sales Taxes and Charges Template": {
-		"on_update": "erpnext.e_commerce.doctype.e_commerce_settings.e_commerce_settings.validate_cart_settings"
+		"on_update": "shoperprime.e_commerce.doctype.e_commerce_settings.e_commerce_settings.validate_cart_settings"
 	},
 	"Sales Invoice": {
 		"on_submit": [
-			"erpnext.regional.create_transaction_log",
-			"erpnext.regional.italy.utils.sales_invoice_on_submit",
-			"erpnext.regional.saudi_arabia.utils.create_qr_code",
-			"erpnext.erpnext_integrations.taxjar_integration.create_transaction",
+			"shoperprime.regional.create_transaction_log",
+			"shoperprime.regional.italy.utils.sales_invoice_on_submit",
+			"shoperprime.regional.saudi_arabia.utils.create_qr_code",
+			"shoperprime.shoperprime_integrations.taxjar_integration.create_transaction",
 		],
 		"on_cancel": [
-			"erpnext.regional.italy.utils.sales_invoice_on_cancel",
-			"erpnext.erpnext_integrations.taxjar_integration.delete_transaction",
-			"erpnext.regional.saudi_arabia.utils.delete_qr_code_file",
+			"shoperprime.regional.italy.utils.sales_invoice_on_cancel",
+			"shoperprime.shoperprime_integrations.taxjar_integration.delete_transaction",
+			"shoperprime.regional.saudi_arabia.utils.delete_qr_code_file",
 		],
-		"on_trash": "erpnext.regional.check_deletion_permission",
+		"on_trash": "shoperprime.regional.check_deletion_permission",
 	},
-	"POS Invoice": {"on_submit": ["erpnext.regional.saudi_arabia.utils.create_qr_code"]},
+	"POS Invoice": {"on_submit": ["shoperprime.regional.saudi_arabia.utils.create_qr_code"]},
 	"Purchase Invoice": {
 		"validate": [
-			"erpnext.regional.united_arab_emirates.utils.update_grand_total_for_rcm",
-			"erpnext.regional.united_arab_emirates.utils.validate_returns",
+			"shoperprime.regional.united_arab_emirates.utils.update_grand_total_for_rcm",
+			"shoperprime.regional.united_arab_emirates.utils.validate_returns",
 		]
 	},
 	"Payment Entry": {
 		"on_submit": [
-			"erpnext.regional.create_transaction_log",
-			"erpnext.accounts.doctype.payment_request.payment_request.update_payment_req_status",
-			"erpnext.accounts.doctype.dunning.dunning.resolve_dunning",
+			"shoperprime.regional.create_transaction_log",
+			"shoperprime.accounts.doctype.payment_request.payment_request.update_payment_req_status",
+			"shoperprime.accounts.doctype.dunning.dunning.resolve_dunning",
 		],
-		"on_trash": "erpnext.regional.check_deletion_permission",
+		"on_trash": "shoperprime.regional.check_deletion_permission",
 	},
 	"Address": {
 		"validate": [
-			"erpnext.regional.italy.utils.set_state_code",
+			"shoperprime.regional.italy.utils.set_state_code",
 		],
 	},
 	"Contact": {
-		"on_trash": "erpnext.support.doctype.issue.issue.update_issue",
-		"after_insert": "erpnext.telephony.doctype.call_log.call_log.link_existing_conversations",
-		"validate": ["erpnext.crm.utils.update_lead_phone_numbers"],
+		"on_trash": "shoperprime.support.doctype.issue.issue.update_issue",
+		"after_insert": "shoperprime.telephony.doctype.call_log.call_log.link_existing_conversations",
+		"validate": ["shoperprime.crm.utils.update_lead_phone_numbers"],
 	},
 	"Email Unsubscribe": {
-		"after_insert": "erpnext.crm.doctype.email_campaign.email_campaign.unsubscribe_recipient"
+		"after_insert": "shoperprime.crm.doctype.email_campaign.email_campaign.unsubscribe_recipient"
 	},
 	("Quotation", "Sales Order", "Sales Invoice"): {
-		"validate": ["erpnext.erpnext_integrations.taxjar_integration.set_sales_tax"]
+		"validate": ["shoperprime.shoperprime_integrations.taxjar_integration.set_sales_tax"]
 	},
-	"Company": {"on_trash": ["erpnext.regional.saudi_arabia.utils.delete_vat_settings_for_company"]},
+	"Company": {"on_trash": ["shoperprime.regional.saudi_arabia.utils.delete_vat_settings_for_company"]},
 	"Integration Request": {
-		"validate": "erpnext.accounts.doctype.payment_request.payment_request.validate_payment"
+		"validate": "shoperprime.accounts.doctype.payment_request.payment_request.validate_payment"
 	},
 }
 
 # function should expect the variable and doc as arguments
 naming_series_variables = {
-	"FY": "erpnext.accounts.utils.parse_naming_series_variable",
+	"FY": "shoperprime.accounts.utils.parse_naming_series_variable",
 }
 
 # On cancel event Payment Entry will be exempted and all linked submittable doctype will get cancelled.
@@ -397,82 +397,82 @@ auto_cancel_exempted_doctypes = [
 scheduler_events = {
 	"cron": {
 		"0/15 * * * *": [
-			"erpnext.manufacturing.doctype.bom_update_log.bom_update_log.resume_bom_cost_update_jobs",
-			"erpnext.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.trigger_reconciliation_for_queued_docs",
+			"shoperprime.manufacturing.doctype.bom_update_log.bom_update_log.resume_bom_cost_update_jobs",
+			"shoperprime.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.trigger_reconciliation_for_queued_docs",
 		],
 		"0/30 * * * *": [
-			"erpnext.utilities.doctype.video.video.update_youtube_data",
+			"shoperprime.utilities.doctype.video.video.update_youtube_data",
 		],
 		# Hourly but offset by 30 minutes
 		"30 * * * *": [
-			"erpnext.accounts.doctype.gl_entry.gl_entry.rename_gle_sle_docs",
+			"shoperprime.accounts.doctype.gl_entry.gl_entry.rename_gle_sle_docs",
 		],
 		# Daily but offset by 45 minutes
 		"45 0 * * *": [
-			"erpnext.stock.reorder_item.reorder_item",
+			"shoperprime.stock.reorder_item.reorder_item",
 		],
 	},
 	"all": [
-		"erpnext.crm.doctype.social_media_post.social_media_post.process_scheduled_social_media_posts",
+		"shoperprime.crm.doctype.social_media_post.social_media_post.process_scheduled_social_media_posts",
 	],
 	"hourly": [
-		"erpnext.erpnext_integrations.doctype.plaid_settings.plaid_settings.automatic_synchronization",
-		"erpnext.projects.doctype.project.project.project_status_update_reminder",
-		"erpnext.projects.doctype.project.project.hourly_reminder",
-		"erpnext.projects.doctype.project.project.collect_project_status",
+		"shoperprime.shoperprime_integrations.doctype.plaid_settings.plaid_settings.automatic_synchronization",
+		"shoperprime.projects.doctype.project.project.project_status_update_reminder",
+		"shoperprime.projects.doctype.project.project.hourly_reminder",
+		"shoperprime.projects.doctype.project.project.collect_project_status",
 	],
 	"hourly_long": [
-		"erpnext.accounts.doctype.subscription.subscription.process_all",
-		"erpnext.stock.doctype.repost_item_valuation.repost_item_valuation.repost_entries",
-		"erpnext.bulk_transaction.doctype.bulk_transaction_log.bulk_transaction_log.retry_failing_transaction",
+		"shoperprime.accounts.doctype.subscription.subscription.process_all",
+		"shoperprime.stock.doctype.repost_item_valuation.repost_item_valuation.repost_entries",
+		"shoperprime.bulk_transaction.doctype.bulk_transaction_log.bulk_transaction_log.retry_failing_transaction",
 	],
 	"daily": [
-		"erpnext.support.doctype.issue.issue.auto_close_tickets",
-		"erpnext.crm.doctype.opportunity.opportunity.auto_close_opportunity",
-		"erpnext.controllers.accounts_controller.update_invoice_status",
-		"erpnext.accounts.doctype.fiscal_year.fiscal_year.auto_create_fiscal_year",
-		"erpnext.projects.doctype.task.task.set_tasks_as_overdue",
-		"erpnext.stock.doctype.serial_no.serial_no.update_maintenance_status",
-		"erpnext.buying.doctype.supplier_scorecard.supplier_scorecard.refresh_scorecards",
-		"erpnext.setup.doctype.company.company.cache_companies_monthly_sales_history",
-		"erpnext.assets.doctype.asset.asset.update_maintenance_status",
-		"erpnext.assets.doctype.asset.asset.make_post_gl_entry",
-		"erpnext.crm.doctype.contract.contract.update_status_for_contracts",
-		"erpnext.projects.doctype.project.project.update_project_sales_billing",
-		"erpnext.projects.doctype.project.project.send_project_status_email_to_users",
-		"erpnext.quality_management.doctype.quality_review.quality_review.review",
-		"erpnext.support.doctype.service_level_agreement.service_level_agreement.check_agreement_status",
-		"erpnext.crm.doctype.email_campaign.email_campaign.send_email_to_leads_or_contacts",
-		"erpnext.crm.doctype.email_campaign.email_campaign.set_email_campaign_status",
-		"erpnext.selling.doctype.quotation.quotation.set_expired_status",
-		"erpnext.buying.doctype.supplier_quotation.supplier_quotation.set_expired_status",
-		"erpnext.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.send_auto_email",
-		"erpnext.accounts.utils.auto_create_exchange_rate_revaluation_daily",
+		"shoperprime.support.doctype.issue.issue.auto_close_tickets",
+		"shoperprime.crm.doctype.opportunity.opportunity.auto_close_opportunity",
+		"shoperprime.controllers.accounts_controller.update_invoice_status",
+		"shoperprime.accounts.doctype.fiscal_year.fiscal_year.auto_create_fiscal_year",
+		"shoperprime.projects.doctype.task.task.set_tasks_as_overdue",
+		"shoperprime.stock.doctype.serial_no.serial_no.update_maintenance_status",
+		"shoperprime.buying.doctype.supplier_scorecard.supplier_scorecard.refresh_scorecards",
+		"shoperprime.setup.doctype.company.company.cache_companies_monthly_sales_history",
+		"shoperprime.assets.doctype.asset.asset.update_maintenance_status",
+		"shoperprime.assets.doctype.asset.asset.make_post_gl_entry",
+		"shoperprime.crm.doctype.contract.contract.update_status_for_contracts",
+		"shoperprime.projects.doctype.project.project.update_project_sales_billing",
+		"shoperprime.projects.doctype.project.project.send_project_status_email_to_users",
+		"shoperprime.quality_management.doctype.quality_review.quality_review.review",
+		"shoperprime.support.doctype.service_level_agreement.service_level_agreement.check_agreement_status",
+		"shoperprime.crm.doctype.email_campaign.email_campaign.send_email_to_leads_or_contacts",
+		"shoperprime.crm.doctype.email_campaign.email_campaign.set_email_campaign_status",
+		"shoperprime.selling.doctype.quotation.quotation.set_expired_status",
+		"shoperprime.buying.doctype.supplier_quotation.supplier_quotation.set_expired_status",
+		"shoperprime.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.send_auto_email",
+		"shoperprime.accounts.utils.auto_create_exchange_rate_revaluation_daily",
 	],
 	"weekly": [
-		"erpnext.accounts.utils.auto_create_exchange_rate_revaluation_weekly",
+		"shoperprime.accounts.utils.auto_create_exchange_rate_revaluation_weekly",
 	],
 	"daily_long": [
-		"erpnext.setup.doctype.email_digest.email_digest.send",
-		"erpnext.manufacturing.doctype.bom_update_tool.bom_update_tool.auto_update_latest_price_in_all_boms",
-		"erpnext.loan_management.doctype.process_loan_security_shortfall.process_loan_security_shortfall.create_process_loan_security_shortfall",
-		"erpnext.loan_management.doctype.process_loan_interest_accrual.process_loan_interest_accrual.process_loan_interest_accrual_for_term_loans",
-		"erpnext.crm.utils.open_leads_opportunities_based_on_todays_event",
-		"erpnext.assets.doctype.asset.depreciation.post_depreciation_entries",
+		"shoperprime.setup.doctype.email_digest.email_digest.send",
+		"shoperprime.manufacturing.doctype.bom_update_tool.bom_update_tool.auto_update_latest_price_in_all_boms",
+		"shoperprime.loan_management.doctype.process_loan_security_shortfall.process_loan_security_shortfall.create_process_loan_security_shortfall",
+		"shoperprime.loan_management.doctype.process_loan_interest_accrual.process_loan_interest_accrual.process_loan_interest_accrual_for_term_loans",
+		"shoperprime.crm.utils.open_leads_opportunities_based_on_todays_event",
+		"shoperprime.assets.doctype.asset.depreciation.post_depreciation_entries",
 	],
 	"monthly_long": [
-		"erpnext.accounts.deferred_revenue.process_deferred_accounting",
-		"erpnext.loan_management.doctype.process_loan_interest_accrual.process_loan_interest_accrual.process_loan_interest_accrual_for_demand_loans",
+		"shoperprime.accounts.deferred_revenue.process_deferred_accounting",
+		"shoperprime.loan_management.doctype.process_loan_interest_accrual.process_loan_interest_accrual.process_loan_interest_accrual_for_demand_loans",
 	],
 }
 
-email_brand_image = "assets/erpnext/images/erpnext-logo.jpg"
+email_brand_image = "assets/shoperprime/images/shoperprime-logo.jpg"
 
 default_mail_footer = """
 	<span>
 		Sent via
 		<a class="text-muted" href="https://shopersolutions.com?source=via_email_footer" target="_blank">
-			ERPNext
+			shoperprime
 		</a>
 	</span>
 """
@@ -482,12 +482,12 @@ get_translated_dict = {
 }
 
 bot_parsers = [
-	"erpnext.utilities.bot.FindItemBot",
+	"shoperprime.utilities.bot.FindItemBot",
 ]
 
-get_site_info = "erpnext.utilities.get_site_info"
+get_site_info = "shoperprime.utilities.get_site_info"
 
-payment_gateway_enabled = "erpnext.accounts.utils.create_payment_gateway_account"
+payment_gateway_enabled = "shoperprime.accounts.utils.create_payment_gateway_account"
 
 communication_doctypes = ["Customer", "Supplier"]
 
@@ -551,23 +551,23 @@ accounting_dimension_doctypes = [
 
 # get matching queries for Bank Reconciliation
 get_matching_queries = (
-	"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_matching_queries"
+	"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_matching_queries"
 )
 
 regional_overrides = {
 	"France": {
-		"erpnext.tests.test_regional.test_method": "erpnext.regional.france.utils.test_method"
+		"shoperprime.tests.test_regional.test_method": "shoperprime.regional.france.utils.test_method"
 	},
 	"United Arab Emirates": {
-		"erpnext.controllers.taxes_and_totals.update_itemised_tax_data": "erpnext.regional.united_arab_emirates.utils.update_itemised_tax_data",
-		"erpnext.accounts.doctype.purchase_invoice.purchase_invoice.make_regional_gl_entries": "erpnext.regional.united_arab_emirates.utils.make_regional_gl_entries",
+		"shoperprime.controllers.taxes_and_totals.update_itemised_tax_data": "shoperprime.regional.united_arab_emirates.utils.update_itemised_tax_data",
+		"shoperprime.accounts.doctype.purchase_invoice.purchase_invoice.make_regional_gl_entries": "shoperprime.regional.united_arab_emirates.utils.make_regional_gl_entries",
 	},
 	"Saudi Arabia": {
-		"erpnext.controllers.taxes_and_totals.update_itemised_tax_data": "erpnext.regional.united_arab_emirates.utils.update_itemised_tax_data"
+		"shoperprime.controllers.taxes_and_totals.update_itemised_tax_data": "shoperprime.regional.united_arab_emirates.utils.update_itemised_tax_data"
 	},
 	"Italy": {
-		"erpnext.controllers.taxes_and_totals.update_itemised_tax_data": "erpnext.regional.italy.utils.update_itemised_tax_data",
-		"erpnext.controllers.accounts_controller.validate_regional": "erpnext.regional.italy.utils.sales_invoice_validate",
+		"shoperprime.controllers.taxes_and_totals.update_itemised_tax_data": "shoperprime.regional.italy.utils.update_itemised_tax_data",
+		"shoperprime.controllers.accounts_controller.validate_regional": "shoperprime.regional.italy.utils.sales_invoice_validate",
 	},
 }
 user_privacy_documents = [
@@ -583,7 +583,7 @@ user_privacy_documents = [
 	},
 ]
 
-# ERPNext doctypes for Global Search
+# shoperprime doctypes for Global Search
 global_search_doctypes = {
 	"Default": [
 		{"doctype": "Customer", "index": 0},
@@ -629,10 +629,10 @@ global_search_doctypes = {
 }
 
 additional_timeline_content = {
-	"*": ["erpnext.telephony.doctype.call_log.call_log.get_linked_call_logs"]
+	"*": ["shoperprime.telephony.doctype.call_log.call_log.get_linked_call_logs"]
 }
 
 
 extend_bootinfo = [
-	"erpnext.support.doctype.service_level_agreement.service_level_agreement.add_sla_doctypes",
+	"shoperprime.support.doctype.service_level_agreement.service_level_agreement.add_sla_doctypes",
 ]

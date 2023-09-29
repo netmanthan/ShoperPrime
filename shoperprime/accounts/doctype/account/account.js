@@ -113,7 +113,7 @@ frappe.ui.form.on('Account', {
 			primary_action: function() {
 				var data = d.get_values();
 				frappe.call({
-					method: "erpnext.accounts.doctype.account.account.merge_account",
+					method: "shoperprime.accounts.doctype.account.account.merge_account",
 					args: {
 						old: frm.doc.name,
 						new: data.name,
@@ -159,7 +159,7 @@ frappe.ui.form.on('Account', {
 				}
 
 				frappe.call({
-					method: "erpnext.accounts.doctype.account.account.update_account_number",
+					method: "shoperprime.accounts.doctype.account.account.update_account_number",
 					args: {
 						account_number: data.account_number,
 						account_name: data.account_name,

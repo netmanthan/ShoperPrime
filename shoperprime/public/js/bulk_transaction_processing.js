@@ -1,6 +1,6 @@
-frappe.provide("erpnext.bulk_transaction_processing");
+frappe.provide("shoperprime.bulk_transaction_processing");
 
-$.extend(erpnext.bulk_transaction_processing, {
+$.extend(shoperprime.bulk_transaction_processing, {
 	create: function(listview, from_doctype, to_doctype) {
 		let checked_items = listview.get_checked_items();
 		const doc_name = [];
@@ -14,7 +14,7 @@ $.extend(erpnext.bulk_transaction_processing, {
 		frappe.confirm(__("Create {0} {1} ?", [count_of_rows, to_doctype]), ()=>{
 			if (doc_name.length == 0) {
 				frappe.call({
-					method: "erpnext.utilities.bulk_transaction.transaction_processing",
+					method: "shoperprime.utilities.bulk_transaction.transaction_processing",
 					args: {data: checked_items, from_doctype: from_doctype, to_doctype: to_doctype}
 				}).then(()=> {
 

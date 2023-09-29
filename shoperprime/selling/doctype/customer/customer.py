@@ -456,7 +456,7 @@ def get_customer_list(doctype, txt, searchfield, start, page_len, filters=None):
 	from shoperprime.controllers.queries import get_fields
 
 	deprecation_warning(
-		"`get_customer_list` is deprecated and will be removed in version 15. Use `erpnext.controllers.queries.customer_query` instead."
+		"`get_customer_list` is deprecated and will be removed in version 15. Use `shoperprime.controllers.queries.customer_query` instead."
 	)
 
 	fields = ["name", "customer_name", "customer_group", "territory"]
@@ -540,7 +540,7 @@ def check_credit_limit(customer, company, ignore_outstanding_sales_order=False, 
 				raise_exception=1,
 				primary_action={
 					"label": "Send Email",
-					"server_action": "erpnext.selling.doctype.customer.customer.send_emails",
+					"server_action": "shoperprime.selling.doctype.customer.customer.send_emails",
 					"args": {
 						"customer": customer,
 						"customer_outstanding": customer_outstanding,

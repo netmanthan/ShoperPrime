@@ -17,7 +17,7 @@ class TwitterSettings(Document):
 	@frappe.whitelist()
 	def get_authorize_url(self):
 		callback_url = (
-			"{0}/api/method/erpnext.crm.doctype.twitter_settings.twitter_settings.callback?".format(
+			"{0}/api/method/shoperprime.crm.doctype.twitter_settings.twitter_settings.callback?".format(
 				frappe.utils.get_url()
 			)
 		)

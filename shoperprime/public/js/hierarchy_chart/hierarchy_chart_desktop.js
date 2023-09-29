@@ -1,5 +1,5 @@
 import html2canvas from 'html2canvas';
-erpnext.HierarchyChart = class {
+shoperprime.HierarchyChart = class {
 	/* Options:
 		- doctype
 		- wrapper: wrapper for the hierarchy view
@@ -354,7 +354,7 @@ erpnext.HierarchyChart = class {
 		let me = this;
 		return new Promise(resolve => {
 			frappe.call({
-				method: 'erpnext.utilities.hierarchy_chart.get_all_nodes',
+				method: 'shoperprime.utilities.hierarchy_chart.get_all_nodes',
 				args: {
 					method: me.method,
 					company: me.company

@@ -52,7 +52,7 @@ frappe.ui.form.on("E Commerce Settings", {
 
 	enable_checkout: function(frm) {
 		if (frm.doc.enable_checkout) {
-			erpnext.utils.check_payments_app();
+			shoperprime.utils.check_payments_app();
 		}
 	}
 });

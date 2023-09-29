@@ -83,7 +83,7 @@ class BOMUpdateLog(Document):
 		if self.update_type == "Replace BOM":
 			boms = {"current_bom": self.current_bom, "new_bom": self.new_bom}
 			frappe.enqueue(
-				method="erpnext.manufacturing.doctype.bom_update_log.bom_update_log.run_replace_bom_job",
+				method="shoperprime.manufacturing.doctype.bom_update_log.bom_update_log.run_replace_bom_job",
 				doc=self,
 				boms=boms,
 				timeout=40000,
@@ -92,7 +92,7 @@ class BOMUpdateLog(Document):
 			)
 		else:
 			frappe.enqueue(
-				method="erpnext.manufacturing.doctype.bom_update_log.bom_update_log.process_boms_cost_level_wise",
+				method="shoperprime.manufacturing.doctype.bom_update_log.bom_update_log.process_boms_cost_level_wise",
 				queue="long",
 				update_doc=self,
 				now=frappe.flags.in_test,
@@ -179,7 +179,7 @@ def queue_bom_cost_jobs(
 		batch_row.db_insert()
 
 		frappe.enqueue(
-			method="erpnext.manufacturing.doctype.bom_update_log.bom_updation_utils.update_cost_in_level",
+			method="shoperprime.manufacturing.doctype.bom_update_log.bom_updation_utils.update_cost_in_level",
 			doc=update_doc,
 			bom_list=boms_to_process,
 			batch_name=batch_row.name,

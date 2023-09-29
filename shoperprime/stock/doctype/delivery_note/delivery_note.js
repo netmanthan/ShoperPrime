@@ -1,13 +1,13 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-{% include 'erpnext/selling/sales_common.js' %};
+{% include 'shoperprime/selling/sales_common.js' %};
 
 cur_frm.add_fetch('customer', 'tax_id', 'tax_id');
 
-frappe.provide("erpnext.stock");
-frappe.provide("erpnext.stock.delivery_note");
-frappe.provide("erpnext.accounts.dimensions");
+frappe.provide("shoperprime.stock");
+frappe.provide("shoperprime.stock.delivery_note");
+frappe.provide("shoperprime.accounts.dimensions");
 
 frappe.ui.form.on("Delivery Note", {
 	setup: function(frm) {
@@ -23,14 +23,14 @@ frappe.ui.form.on("Delivery Note", {
 				return (doc.docstatus==1 || doc.qty<=doc.actual_qty) ? "green" : "orange"
 			})
 
-		erpnext.queries.setup_queries(frm, "Warehouse", function() {
-			return erpnext.queries.warehouse(frm.doc);
+		shoperprime.queries.setup_queries(frm, "Warehouse", function() {
+			return shoperprime.queries.warehouse(frm.doc);
 		});
-		erpnext.queries.setup_warehouse_query(frm);
+		shoperprime.queries.setup_warehouse_query(frm);
 
 		frm.set_query('project', function(doc) {
 			return {
-				query: "erpnext.controllers.queries.get_project_name",
+				query: "shoperprime.controllers.queries.get_project_name",
 				filters: {
 					'customer': doc.customer
 				}
@@ -55,7 +55,7 @@ frappe.ui.form.on("Delivery Note", {
 
 
 		frm.set_query('expense_account', 'items', function(doc, cdt, cdn) {
-			if (erpnext.is_perpetual_inventory_enabled(doc.company)) {
+			if (shoperprime.is_perpetual_inventory_enabled(doc.company)) {
 				return {
 					filters: {
 						"report_type": "Profit and Loss",
@@ -67,7 +67,7 @@ frappe.ui.form.on("Delivery Note", {
 		});
 
 		frm.set_query('cost_center', 'items', function(doc, cdt, cdn) {
-			if (erpnext.is_perpetual_inventory_enabled(doc.company)) {
+			if (shoperprime.is_perpetual_inventory_enabled(doc.company)) {
 				return {
 					filters: {
 						'company': doc.company,
@@ -82,14 +82,14 @@ frappe.ui.form.on("Delivery Note", {
 	},
 
 	print_without_amount: function(frm) {
-		erpnext.stock.delivery_note.set_print_hide(frm.doc);
+		shoperprime.stock.delivery_note.set_print_hide(frm.doc);
 	},
 
 	refresh: function(frm) {
 		if (frm.doc.docstatus === 1 && frm.doc.is_return === 1 && frm.doc.per_billed !== 100) {
 			frm.add_custom_button(__('Credit Note'), function() {
 				frappe.model.open_mapped_doc({
-					method: "erpnext.stock.doctype.delivery_note.delivery_note.make_sales_invoice",
+					method: "shoperprime.stock.doctype.delivery_note.delivery_note.make_sales_invoice",
 					frm: cur_frm,
 				})
 			}, __('Create'));
@@ -104,7 +104,7 @@ frappe.ui.form.on("Delivery Note", {
 
 				frm.add_custom_button(__(button_label), function() {
 					frappe.model.open_mapped_doc({
-						method: 'erpnext.stock.doctype.delivery_note.delivery_note.make_inter_company_purchase_receipt',
+						method: 'shoperprime.stock.doctype.delivery_note.delivery_note.make_inter_company_purchase_receipt',
 						frm: frm,
 					});
 				}, __('Create'));
@@ -124,7 +124,7 @@ frappe.ui.form.on("Delivery Note Item", {
 	}
 });
 
-erpnext.stock.DeliveryNoteController = class DeliveryNoteController extends erpnext.selling.SellingController {
+shoperprime.stock.DeliveryNoteController = class DeliveryNoteController extends shoperprime.selling.SellingController {
 	setup(doc) {
 		this.setup_posting_date_time_check();
 		super.setup(doc);
@@ -145,8 +145,8 @@ erpnext.stock.DeliveryNoteController = class DeliveryNoteController extends erpn
 								message: __("Please Select a Customer")
 							});
 						}
-						erpnext.utils.map_current_doc({
-							method: "erpnext.selling.doctype.sales_order.sales_order.make_delivery_note",
+						shoperprime.utils.map_current_doc({
+							method: "shoperprime.selling.doctype.sales_order.sales_order.make_delivery_note",
 							source_doctype: "Sales Order",
 							target: me.frm,
 							setters: {
@@ -188,7 +188,7 @@ erpnext.stock.DeliveryNoteController = class DeliveryNoteController extends erpn
 				if (doc.__onload && doc.__onload.has_unpacked_items) {
 					this.frm.add_custom_button(__('Packing Slip'), function() {
 						frappe.model.open_mapped_doc({
-							method: "erpnext.stock.doctype.delivery_note.delivery_note.make_packing_slip",
+							method: "shoperprime.stock.doctype.delivery_note.delivery_note.make_packing_slip",
 							frm: me.frm
 						}) }, __('Create')
 					);
@@ -202,7 +202,7 @@ erpnext.stock.DeliveryNoteController = class DeliveryNoteController extends erpn
 
 		if (doc.docstatus > 0) {
 			this.show_stock_ledger();
-			if (erpnext.is_perpetual_inventory_enabled(doc.company)) {
+			if (shoperprime.is_perpetual_inventory_enabled(doc.company)) {
 				this.show_general_ledger();
 			}
 			if (this.frm.has_perm("submit") && doc.status !== "Closed") {
@@ -228,46 +228,46 @@ erpnext.stock.DeliveryNoteController = class DeliveryNoteController extends erpn
 			this.frm.add_custom_button(__('Reopen'), function() { me.reopen_delivery_note() },
 				__("Status"))
 		}
-		erpnext.stock.delivery_note.set_print_hide(doc, dt, dn);
+		shoperprime.stock.delivery_note.set_print_hide(doc, dt, dn);
 
 		if(doc.docstatus==1 && !doc.is_return && !doc.auto_repeat) {
 			cur_frm.add_custom_button(__('Subscription'), function() {
-				erpnext.utils.make_subscription(doc.doctype, doc.name)
+				shoperprime.utils.make_subscription(doc.doctype, doc.name)
 			}, __('Create'))
 		}
 	}
 
 	make_shipment() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.stock.doctype.delivery_note.delivery_note.make_shipment",
+			method: "shoperprime.stock.doctype.delivery_note.delivery_note.make_shipment",
 			frm: this.frm
 		})
 	}
 
 	make_sales_invoice() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.stock.doctype.delivery_note.delivery_note.make_sales_invoice",
+			method: "shoperprime.stock.doctype.delivery_note.delivery_note.make_sales_invoice",
 			frm: this.frm
 		})
 	}
 
 	make_installation_note() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.stock.doctype.delivery_note.delivery_note.make_installation_note",
+			method: "shoperprime.stock.doctype.delivery_note.delivery_note.make_installation_note",
 			frm: this.frm
 		});
 	}
 
 	make_sales_return() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.stock.doctype.delivery_note.delivery_note.make_sales_return",
+			method: "shoperprime.stock.doctype.delivery_note.delivery_note.make_sales_return",
 			frm: this.frm
 		})
 	}
 
 	make_delivery_trip() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.stock.doctype.delivery_note.delivery_note.make_delivery_trip",
+			method: "shoperprime.stock.doctype.delivery_note.delivery_note.make_delivery_trip",
 			frm: cur_frm
 		})
 	}
@@ -277,11 +277,11 @@ erpnext.stock.DeliveryNoteController = class DeliveryNoteController extends erpn
 	}
 
 	items_on_form_rendered(doc, grid_row) {
-		erpnext.setup_serial_or_batch_no();
+		shoperprime.setup_serial_or_batch_no();
 	}
 
 	packed_items_on_form_rendered(doc, grid_row) {
-		erpnext.setup_serial_or_batch_no();
+		shoperprime.setup_serial_or_batch_no();
 	}
 
 	close_delivery_note(doc){
@@ -296,7 +296,7 @@ erpnext.stock.DeliveryNoteController = class DeliveryNoteController extends erpn
 		var me = this;
 		frappe.ui.form.is_saving = true;
 		frappe.call({
-			method:"erpnext.stock.doctype.delivery_note.delivery_note.update_delivery_note_status",
+			method:"shoperprime.stock.doctype.delivery_note.delivery_note.update_delivery_note_status",
 			args: {docname: me.frm.doc.name, status: status},
 			callback: function(r){
 				if(!r.exc)
@@ -309,7 +309,7 @@ erpnext.stock.DeliveryNoteController = class DeliveryNoteController extends erpn
 	}
 };
 
-extend_cscript(cur_frm.cscript, new erpnext.stock.DeliveryNoteController({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new shoperprime.stock.DeliveryNoteController({frm: cur_frm}));
 
 frappe.ui.form.on('Delivery Note', {
 	setup: function(frm) {
@@ -320,18 +320,18 @@ frappe.ui.form.on('Delivery Note', {
 
 	company: function(frm) {
 		frm.trigger("unhide_account_head");
-		erpnext.accounts.dimensions.update_dimension(frm, frm.doctype);
+		shoperprime.accounts.dimensions.update_dimension(frm, frm.doctype);
 	},
 
 	unhide_account_head: function(frm) {
 		// unhide expense_account and cost_center if perpetual inventory is enabled in the company
-		var aii_enabled = erpnext.is_perpetual_inventory_enabled(frm.doc.company)
+		var aii_enabled = shoperprime.is_perpetual_inventory_enabled(frm.doc.company)
 		frm.fields_dict["items"].grid.set_column_disp(["expense_account", "cost_center"], aii_enabled);
 	}
 })
 
 
-erpnext.stock.delivery_note.set_print_hide = function(doc, cdt, cdn){
+shoperprime.stock.delivery_note.set_print_hide = function(doc, cdt, cdn){
 	var dn_fields = frappe.meta.docfield_map['Delivery Note'];
 	var dn_item_fields = frappe.meta.docfield_map['Delivery Note Item'];
 	var dn_fields_copy = dn_fields;

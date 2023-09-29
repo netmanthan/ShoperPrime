@@ -1,4 +1,4 @@
-erpnext.ProductGrid = class {
+shoperprime.ProductGrid = class {
 	/* Options:
 		- items: Items
 		- settings: E Commerce Settings

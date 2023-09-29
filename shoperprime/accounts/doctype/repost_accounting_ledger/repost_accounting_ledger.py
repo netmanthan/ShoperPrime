@@ -132,7 +132,7 @@ class RepostAccountingLedger(Document):
 
 			gl_data = self.gl_entries
 		rendered_page = frappe.render_template(
-			"erpnext/accounts/doctype/repost_accounting_ledger/repost_accounting_ledger.html",
+			"shoperprime/accounts/doctype/repost_accounting_ledger/repost_accounting_ledger.html",
 			{"gl_columns": gl_columns, "gl_data": gl_data},
 		)
 
@@ -141,7 +141,7 @@ class RepostAccountingLedger(Document):
 	def on_submit(self):
 		job_name = "repost_accounting_ledger_" + self.name
 		frappe.enqueue(
-			method="erpnext.accounts.doctype.repost_accounting_ledger.repost_accounting_ledger.start_repost",
+			method="shoperprime.accounts.doctype.repost_accounting_ledger.repost_accounting_ledger.start_repost",
 			account_repost_doc=self.name,
 			is_async=True,
 			job_name=job_name,

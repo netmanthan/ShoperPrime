@@ -107,10 +107,10 @@ def from_detailed_data(company_name, data):
 
 
 def update_regional_tax_settings(country, company):
-	path = frappe.get_app_path("erpnext", "regional", frappe.scrub(country))
+	path = frappe.get_app_path("shoperprime", "regional", frappe.scrub(country))
 	if os.path.exists(path.encode("utf-8")):
 		try:
-			module_name = "erpnext.regional.{0}.setup.update_regional_tax_settings".format(
+			module_name = "shoperprime.regional.{0}.setup.update_regional_tax_settings".format(
 				frappe.scrub(country)
 			)
 			frappe.get_attr(module_name)(country, company)

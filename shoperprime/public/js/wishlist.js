@@ -1,8 +1,8 @@
-frappe.provide("erpnext.e_commerce.wishlist");
-var wishlist = erpnext.e_commerce.wishlist;
+frappe.provide("shoperprime.e_commerce.wishlist");
+var wishlist = shoperprime.e_commerce.wishlist;
 
-frappe.provide("erpnext.e_commerce.shopping_cart");
-var shopping_cart = erpnext.e_commerce.shopping_cart;
+frappe.provide("shoperprime.e_commerce.shopping_cart");
+var shopping_cart = shoperprime.e_commerce.shopping_cart;
 
 $.extend(wishlist, {
 	set_wishlist_count: function(animate=false) {
@@ -100,7 +100,7 @@ $.extend(wishlist, {
 		}
 
 		let success_action = function() {
-			erpnext.e_commerce.wishlist.set_wishlist_count(true);
+			shoperprime.e_commerce.wishlist.set_wishlist_count(true);
 		};
 
 		if ($wish_icon.hasClass('wished')) {
@@ -146,9 +146,9 @@ $.extend(wishlist, {
 			}
 			this.redirect_guest();
 		} else {
-			let method = "erpnext.e_commerce.doctype.wishlist.wishlist.add_to_wishlist";
+			let method = "shoperprime.e_commerce.doctype.wishlist.wishlist.add_to_wishlist";
 			if (action === "remove") {
-				method = "erpnext.e_commerce.doctype.wishlist.wishlist.remove_from_wishlist";
+				method = "shoperprime.e_commerce.doctype.wishlist.wishlist.remove_from_wishlist";
 			}
 
 			frappe.call({
@@ -174,7 +174,7 @@ $.extend(wishlist, {
 	},
 
 	redirect_guest() {
-		frappe.call('erpnext.e_commerce.api.get_guest_redirect_on_action').then((res) => {
+		frappe.call('shoperprime.e_commerce.api.get_guest_redirect_on_action').then((res) => {
 			window.location.href = res.message || "/login";
 		});
 	},
@@ -183,7 +183,7 @@ $.extend(wishlist, {
 		$(".page_content").append(`
 			<div class="cart-empty frappe-card">
 				<div class="cart-empty-state">
-					<img src="/assets/erpnext/images/ui-states/cart-empty-state.png" alt="Empty Cart">
+					<img src="/assets/shoperprime/images/ui-states/cart-empty-state.png" alt="Empty Cart">
 				</div>
 				<div class="cart-empty-message mt-4">${ __('Wishlist is empty !') }</p>
 			</div>

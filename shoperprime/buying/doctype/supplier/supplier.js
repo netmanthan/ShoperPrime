@@ -27,7 +27,7 @@ frappe.ui.form.on("Supplier", {
 
 		frm.set_query("supplier_primary_contact", function(doc) {
 			return {
-				query: "erpnext.buying.doctype.supplier.supplier.get_supplier_primary_contact",
+				query: "shoperprime.buying.doctype.supplier.supplier.get_supplier_primary_contact",
 				filters: {
 					"supplier": doc.name
 				}
@@ -50,7 +50,7 @@ frappe.ui.form.on("Supplier", {
 		if (frappe.defaults.get_default("supp_master_name") != "Naming Series") {
 			frm.toggle_display("naming_series", false);
 		} else {
-			erpnext.toggle_naming_series();
+			shoperprime.toggle_naming_series();
 		}
 
 		if (frm.doc.__islocal) {
@@ -72,11 +72,11 @@ frappe.ui.form.on("Supplier", {
 			}, __("View"));
 
 			frm.add_custom_button(__('Bank Account'), function () {
-				erpnext.utils.make_bank_account(frm.doc.doctype, frm.doc.name);
+				shoperprime.utils.make_bank_account(frm.doc.doctype, frm.doc.name);
 			}, __('Create'));
 
 			frm.add_custom_button(__('Pricing Rule'), function () {
-				erpnext.utils.make_pricing_rule(frm.doc.doctype, frm.doc.name);
+				shoperprime.utils.make_pricing_rule(frm.doc.doctype, frm.doc.name);
 			}, __('Create'));
 
 			frm.add_custom_button(__('Get Supplier Group Details'), function () {
@@ -90,7 +90,7 @@ frappe.ui.form.on("Supplier", {
 			}
 
 			// indicators
-			erpnext.utils.set_party_dashboard_indicators(frm);
+			shoperprime.utils.set_party_dashboard_indicators(frm);
 		}
 	},
 	get_supplier_group_details: function(frm) {
@@ -144,7 +144,7 @@ frappe.ui.form.on("Supplier", {
 			}],
 			primary_action: function({ customer }) {
 				frappe.call({
-					method: 'erpnext.accounts.doctype.party_link.party_link.create_party_link',
+					method: 'shoperprime.accounts.doctype.party_link.party_link.create_party_link',
 					args: {
 						primary_role: 'Supplier',
 						primary_party: frm.doc.name,

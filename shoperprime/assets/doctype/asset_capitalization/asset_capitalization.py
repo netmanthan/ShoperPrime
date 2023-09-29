@@ -5,7 +5,7 @@ import json
 
 import frappe
 
-# import erpnext
+# import shoperprime
 from frappe import _
 from frappe.utils import cint, flt, get_link_to_form
 from six import string_types

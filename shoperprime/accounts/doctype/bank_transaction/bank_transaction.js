@@ -55,7 +55,7 @@ const update_clearance_date = (frm, cdt, cdn) => {
 	if (frm.doc.docstatus === 1) {
 		frappe
 			.xcall(
-				"erpnext.accounts.doctype.bank_transaction.bank_transaction.unclear_reference_payment",
+				"shoperprime.accounts.doctype.bank_transaction.bank_transaction.unclear_reference_payment",
 				{ doctype: cdt, docname: cdn, bt_name: frm.doc.name }
 			)
 			.then((e) => {

@@ -191,4 +191,4 @@ frappe.query_reports["Accounts Receivable"] = {
 	}
 }
 
-erpnext.utils.add_dimensions('Accounts Receivable', 9);
+shoperprime.utils.add_dimensions('Accounts Receivable', 9);

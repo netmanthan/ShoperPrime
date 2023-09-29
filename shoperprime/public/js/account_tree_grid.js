@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.	If not, see <http://www.gnu.org/licenses/>.
 
-erpnext.AccountTreeGrid = class AccountTreeGrid extends frappe.views.TreeGridReport {
+shoperprime.AccountTreeGrid = class AccountTreeGrid extends frappe.views.TreeGridReport {
 	constructor(wrapper, title) {
 		super({
 			title: title,

@@ -54,7 +54,7 @@ frappe.ui.form.on("Quality Inspection", {
 					filters["parent"] = doc.reference_name;
 
 				return {
-					query: "erpnext.stock.doctype.quality_inspection.quality_inspection.item_query",
+					query: "shoperprime.stock.doctype.quality_inspection.quality_inspection.item_query",
 					filters: filters
 				};
 			}

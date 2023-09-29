@@ -241,7 +241,7 @@ def send_email_notification(mr_list):
 
 
 def notify_errors(exceptions_list):
-	subject = _("[Important] [ERPNext] Auto Reorder Errors")
+	subject = _("[Important] [shoperprime] Auto Reorder Errors")
 	content = (
 		_("Dear System Manager,")
 		+ "<br>"

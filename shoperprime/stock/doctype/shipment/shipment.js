@@ -124,16 +124,16 @@ frappe.ui.form.on('Shipment', {
 	},
 	delivery_address_name: function(frm) {
 		if (frm.doc.delivery_to_type == 'Company') {
-			erpnext.utils.get_address_display(frm, 'delivery_address_name', 'delivery_address', true);
+			shoperprime.utils.get_address_display(frm, 'delivery_address_name', 'delivery_address', true);
 		} else {
-			erpnext.utils.get_address_display(frm, 'delivery_address_name', 'delivery_address', false);
+			shoperprime.utils.get_address_display(frm, 'delivery_address_name', 'delivery_address', false);
 		}
 	},
 	pickup_address_name: function(frm) {
 		if (frm.doc.pickup_from_type == 'Company') {
-			erpnext.utils.get_address_display(frm, 'pickup_address_name', 'pickup_address', true);
+			shoperprime.utils.get_address_display(frm, 'pickup_address_name', 'pickup_address', true);
 		} else {
-			erpnext.utils.get_address_display(frm, 'pickup_address_name', 'pickup_address', false);
+			shoperprime.utils.get_address_display(frm, 'pickup_address_name', 'pickup_address', false);
 		}
 	},
 	get_contact_display: function(frm, contact_name, contact_type) {
@@ -192,7 +192,7 @@ frappe.ui.form.on('Shipment', {
 	pickup_contact_person: function(frm) {
 		if (frm.doc.pickup_contact_person) {
 			frappe.call({
-				method: "erpnext.stock.doctype.shipment.shipment.get_company_contact",
+				method: "shoperprime.stock.doctype.shipment.shipment.get_company_contact",
 				args: { user: frm.doc.pickup_contact_person },
 				callback: function({ message }) {
 					const r = message;
@@ -213,7 +213,7 @@ frappe.ui.form.on('Shipment', {
 		} else {
 			if (frm.doc.pickup_from_type === 'Company') {
 				frappe.call({
-					method: "erpnext.stock.doctype.shipment.shipment.get_company_contact",
+					method: "shoperprime.stock.doctype.shipment.shipment.get_company_contact",
 					args: { user: frappe.session.user },
 					callback: function({ message }) {
 						const r = message;
@@ -312,7 +312,7 @@ frappe.ui.form.on('Shipment', {
 	},
 	set_address_name: function(frm, ref_doctype, ref_docname, delivery_type) {
 		frappe.call({
-			method: "erpnext.stock.doctype.shipment.shipment.get_address_name",
+			method: "shoperprime.stock.doctype.shipment.shipment.get_address_name",
 			args: {
 				ref_doctype: ref_doctype,
 				docname: ref_docname
@@ -330,7 +330,7 @@ frappe.ui.form.on('Shipment', {
 	},
 	set_contact_name: function(frm, ref_doctype, ref_docname, delivery_type) {
 		frappe.call({
-			method: "erpnext.stock.doctype.shipment.shipment.get_contact_name",
+			method: "shoperprime.stock.doctype.shipment.shipment.get_contact_name",
 			args: {
 				ref_doctype: ref_doctype,
 				docname: ref_docname

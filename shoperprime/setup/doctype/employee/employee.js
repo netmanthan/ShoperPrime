@@ -1,8 +1,8 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("erpnext.setup");
-erpnext.setup.EmployeeController = class EmployeeController extends frappe.ui.form.Controller {
+frappe.provide("shoperprime.setup");
+shoperprime.setup.EmployeeController = class EmployeeController extends frappe.ui.form.Controller {
 	setup() {
 		this.frm.fields_dict.user_id.get_query = function(doc, cdt, cdn) {
 			return {
@@ -11,11 +11,11 @@ erpnext.setup.EmployeeController = class EmployeeController extends frappe.ui.fo
 			}
 		}
 		this.frm.fields_dict.reports_to.get_query = function(doc, cdt, cdn) {
-			return { query: "erpnext.controllers.queries.employee_query"} }
+			return { query: "shoperprime.controllers.queries.employee_query"} }
 	}
 
 	refresh() {
-		erpnext.toggle_naming_series();
+		shoperprime.toggle_naming_series();
 	}
 
 	salutation() {
@@ -76,7 +76,7 @@ frappe.ui.form.on("Employee", {
 			frappe.throw(__("Please enter Preferred Contact Email"));
 		}
 		frappe.call({
-			method: "erpnext.setup.doctype.employee.employee.create_user",
+			method: "shoperprime.setup.doctype.employee.employee.create_user",
 			args: {
 				employee: frm.doc.name,
 				email: frm.doc.prefered_email
@@ -88,7 +88,7 @@ frappe.ui.form.on("Employee", {
 	}
 });
 
-cur_frm.cscript = new erpnext.setup.EmployeeController({
+cur_frm.cscript = new shoperprime.setup.EmployeeController({
 	frm: cur_frm
 });
 

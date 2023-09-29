@@ -121,4 +121,4 @@ frappe.query_reports["Accounts Payable Summary"] = {
 	}
 }
 
-erpnext.utils.add_dimensions('Accounts Payable Summary', 9);
+shoperprime.utils.add_dimensions('Accounts Payable Summary', 9);

@@ -156,7 +156,7 @@ frappe.ui.form.on("Company", {
 					return;
 				}
 				frappe.call({
-					method: "erpnext.setup.doctype.company.company.create_transaction_deletion_request",
+					method: "shoperprime.setup.doctype.company.company.create_transaction_deletion_request",
 					args: {
 						company: data.company_name
 					},
@@ -182,7 +182,7 @@ shopersolutions.company.set_chart_of_accounts_options = function(doc) {
 	var selected_value = doc.chart_of_accounts;
 	if(doc.country) {
 		return frappe.call({
-			method: "erpnext.accounts.doctype.account.chart_of_accounts.chart_of_accounts.get_charts_for_country",
+			method: "shoperprime.accounts.doctype.account.chart_of_accounts.chart_of_accounts.get_charts_for_country",
 			args: {
 				"country": doc.country,
 				"with_standard": true

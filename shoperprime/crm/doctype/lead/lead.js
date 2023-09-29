@@ -1,10 +1,10 @@
 // Copyright (c) 2019, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("erpnext");
+frappe.provide("shoperprime");
 cur_frm.email_field = "email_id";
 
-erpnext.LeadController = class LeadController extends frappe.ui.form.Controller {
+shoperprime.LeadController = class LeadController extends frappe.ui.form.Controller {
 	setup () {
 		this.frm.make_methods = {
 			'Customer': this.make_customer,
@@ -18,7 +18,7 @@ erpnext.LeadController = class LeadController extends frappe.ui.form.Controller 
 
 	onload () {
 		this.frm.set_query("customer", function (doc, cdt, cdn) {
-			return { query: "erpnext.controllers.queries.customer_query" }
+			return { query: "shoperprime.controllers.queries.customer_query" }
 		});
 
 		this.frm.set_query("lead_owner", function (doc, cdt, cdn) {
@@ -29,7 +29,7 @@ erpnext.LeadController = class LeadController extends frappe.ui.form.Controller 
 	refresh () {
 		var me = this;
 		let doc = this.frm.doc;
-		erpnext.toggle_naming_series();
+		shoperprime.toggle_naming_series();
 		frappe.dynamic_link = {
 			doc: doc,
 			fieldname: 'name',
@@ -70,7 +70,7 @@ erpnext.LeadController = class LeadController extends frappe.ui.form.Controller 
 		],
 		function(data) {
 			frappe.call({
-				method: 'erpnext.crm.doctype.lead.lead.add_lead_to_prospect',
+				method: 'shoperprime.crm.doctype.lead.lead.add_lead_to_prospect',
 				args: {
 					'lead': cur_frm.doc.name,
 					'prospect': data.prospect
@@ -88,14 +88,14 @@ erpnext.LeadController = class LeadController extends frappe.ui.form.Controller 
 
 	make_customer () {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.crm.doctype.lead.lead.make_customer",
+			method: "shoperprime.crm.doctype.lead.lead.make_customer",
 			frm: cur_frm
 		})
 	}
 
 	make_quotation () {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.crm.doctype.lead.lead.make_quotation",
+			method: "shoperprime.crm.doctype.lead.lead.make_quotation",
 			frm: cur_frm
 		})
 	}
@@ -129,7 +129,7 @@ erpnext.LeadController = class LeadController extends frappe.ui.form.Controller 
 	show_notes() {
 		if (this.frm.doc.docstatus == 1) return;
 
-		const crm_notes = new erpnext.utils.CRMNotes({
+		const crm_notes = new shoperprime.utils.CRMNotes({
 			frm: this.frm,
 			notes_wrapper: $(this.frm.fields_dict.notes_html.wrapper),
 		});
@@ -139,7 +139,7 @@ erpnext.LeadController = class LeadController extends frappe.ui.form.Controller 
 	show_activities() {
 		if (this.frm.doc.docstatus == 1) return;
 
-		const crm_activities = new erpnext.utils.CRMActivities({
+		const crm_activities = new shoperprime.utils.CRMActivities({
 			frm: this.frm,
 			open_activities_wrapper: $(this.frm.fields_dict.open_activities_html.wrapper),
 			all_activities_wrapper: $(this.frm.fields_dict.all_activities_html.wrapper),
@@ -150,7 +150,7 @@ erpnext.LeadController = class LeadController extends frappe.ui.form.Controller 
 };
 
 
-extend_cscript(cur_frm.cscript, new erpnext.LeadController({ frm: cur_frm }));
+extend_cscript(cur_frm.cscript, new shoperprime.LeadController({ frm: cur_frm }));
 
 frappe.ui.form.on("Lead", {
 	make_opportunity: async function(frm) {
@@ -213,7 +213,7 @@ frappe.ui.form.on("Lead", {
 						callback: function(r) {
 							if (!r.exc) {
 								frappe.model.open_mapped_doc({
-									method: "erpnext.crm.doctype.lead.lead.make_opportunity",
+									method: "shoperprime.crm.doctype.lead.lead.make_opportunity",
 									frm: frm
 								});
 							}
@@ -226,7 +226,7 @@ frappe.ui.form.on("Lead", {
 			d.show();
 		} else {
 			frappe.model.open_mapped_doc({
-				method: "erpnext.crm.doctype.lead.lead.make_opportunity",
+				method: "shoperprime.crm.doctype.lead.lead.make_opportunity",
 				frm: frm
 			});
 		}

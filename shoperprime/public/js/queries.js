@@ -2,36 +2,36 @@
 // License: GNU General Public License v3. See license.txt
 
 // searches for enabled users
-frappe.provide("erpnext.queries");
-$.extend(erpnext.queries, {
+frappe.provide("shoperprime.queries");
+$.extend(shoperprime.queries, {
 	user: function() {
 		return { query: "frappe.core.doctype.user.user.user_query" };
 	},
 
 	lead: function() {
-		return { query: "erpnext.controllers.queries.lead_query" };
+		return { query: "shoperprime.controllers.queries.lead_query" };
 	},
 
 	customer: function() {
-		return { query: "erpnext.controllers.queries.customer_query" };
+		return { query: "shoperprime.controllers.queries.customer_query" };
 	},
 
 	supplier: function() {
-		return { query: "erpnext.controllers.queries.supplier_query" };
+		return { query: "shoperprime.controllers.queries.supplier_query" };
 	},
 
 	item: function(filters) {
-		var args = { query: "erpnext.controllers.queries.item_query" };
+		var args = { query: "shoperprime.controllers.queries.item_query" };
 		if(filters) args["filters"] = filters;
 		return args;
 	},
 
 	bom: function() {
-		return { query: "erpnext.controllers.queries.bom" };
+		return { query: "shoperprime.controllers.queries.bom" };
 	},
 
 	task: function() {
-		return { query: "erpnext.projects.utils.query_task" };
+		return { query: "shoperprime.projects.utils.query_task" };
 	},
 
 	customer_filter: function(doc) {
@@ -112,7 +112,7 @@ $.extend(erpnext.queries, {
 	},
 
 	employee: function() {
-		return { query: "erpnext.controllers.queries.employee_query" }
+		return { query: "shoperprime.controllers.queries.employee_query" }
 	},
 
 	warehouse: function(doc) {
@@ -135,7 +135,7 @@ $.extend(erpnext.queries, {
 		});
 
 		return {
-			query: "erpnext.controllers.queries.get_filtered_dimensions",
+			query: "shoperprime.controllers.queries.get_filtered_dimensions",
 			filters: {
 				'dimension': dimension,
 				'account': account,
@@ -145,7 +145,7 @@ $.extend(erpnext.queries, {
 	}
 });
 
-erpnext.queries.setup_queries = function(frm, options, query_fn) {
+shoperprime.queries.setup_queries = function(frm, options, query_fn) {
 	var me = this;
 	var set_query = function(doctype, parentfield) {
 		var link_fields = frappe.meta.get_docfields(doctype, frm.doc.name,
@@ -172,12 +172,12 @@ erpnext.queries.setup_queries = function(frm, options, query_fn) {
 	then list down warehouses with its quantity
 	else apply default filters.
 */
-erpnext.queries.setup_warehouse_query = function(frm){
+shoperprime.queries.setup_warehouse_query = function(frm){
 	frm.set_query('warehouse', 'items', function(doc, cdt, cdn) {
 		var row  = locals[cdt][cdn];
-		var filters = erpnext.queries.warehouse(frm.doc);
+		var filters = shoperprime.queries.warehouse(frm.doc);
 		if(row.item_code){
-			$.extend(filters, {"query":"erpnext.controllers.queries.warehouse_query"});
+			$.extend(filters, {"query":"shoperprime.controllers.queries.warehouse_query"});
 			filters["filters"].push(["Bin", "item_code", "=", row.item_code]);
 		}
 		return filters

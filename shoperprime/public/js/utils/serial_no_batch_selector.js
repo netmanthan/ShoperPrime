@@ -1,5 +1,5 @@
 
-erpnext.SerialNoBatchSelector = class SerialNoBatchSelector {
+shoperprime.SerialNoBatchSelector = class SerialNoBatchSelector {
 	constructor(opts, show_dialog) {
 		$.extend(this, opts);
 		this.show_dialog = show_dialog;
@@ -60,7 +60,7 @@ erpnext.SerialNoBatchSelector = class SerialNoBatchSelector {
 				},
 				get_query: function() {
 					return {
-						query: "erpnext.controllers.queries.warehouse_query",
+						query: "shoperprime.controllers.queries.warehouse_query",
 						filters: [
 							["Bin", "item_code", "=", me.item_code],
 							["Warehouse", "is_group", "=", 0],
@@ -96,7 +96,7 @@ erpnext.SerialNoBatchSelector = class SerialNoBatchSelector {
 					let qty = this.dialog.fields_dict.qty.get_value();
 					let already_selected_serial_nos = get_selected_serial_nos(me);
 					let numbers = frappe.call({
-						method: "erpnext.stock.doctype.serial_no.serial_no.auto_fetch_serial_number",
+						method: "shoperprime.stock.doctype.serial_no.serial_no.auto_fetch_serial_number",
 						args: {
 							qty: qty,
 							item_code: me.item_code,
@@ -362,7 +362,7 @@ erpnext.SerialNoBatchSelector = class SerialNoBatchSelector {
 									item_code: me.item_code,
 									warehouse: me.warehouse || typeof me.warehouse_details.name == "string" ? me.warehouse_details.name : ''
 								},
-								query: 'erpnext.controllers.queries.get_batch_no'
+								query: 'shoperprime.controllers.queries.get_batch_no'
 							};
 						},
 						change: function () {
@@ -388,7 +388,7 @@ erpnext.SerialNoBatchSelector = class SerialNoBatchSelector {
 
 							if (me.warehouse_details.name) {
 								frappe.call({
-									method: 'erpnext.stock.doctype.batch.batch.get_batch_qty',
+									method: 'shoperprime.stock.doctype.batch.batch.get_batch_qty',
 									args: {
 										batch_no,
 										warehouse: me.warehouse_details.name,
@@ -475,7 +475,7 @@ erpnext.SerialNoBatchSelector = class SerialNoBatchSelector {
 
 		if (me.frm.doc.doctype === 'POS Invoice' && !this.showing_reserved_serial_nos_error) {
 			frappe.call({
-				method: "erpnext.stock.doctype.serial_no.serial_no.get_pos_reserved_serial_nos",
+				method: "shoperprime.stock.doctype.serial_no.serial_no.get_pos_reserved_serial_nos",
 				args: {
 					filters: {
 						item_code: me.item_code,
@@ -555,7 +555,7 @@ erpnext.SerialNoBatchSelector = class SerialNoBatchSelector {
 function get_pending_qty_fields(me) {
 	if (!check_can_calculate_pending_qty(me)) return [];
 	const { frm: { doc: { fg_completed_qty }}, item: { item_code, stock_qty }} = me;
-	const { qty_consumed_per_unit } = erpnext.stock.bom.items[item_code];
+	const { qty_consumed_per_unit } = shoperprime.stock.bom.items[item_code];
 
 	const total_selected_qty = calc_total_selected_qty(me);
 	const required_qty = flt(fg_completed_qty) * flt(qty_consumed_per_unit);
@@ -617,12 +617,12 @@ function check_can_calculate_pending_qty(me) {
 	const { frm: { doc }, item } = me;
 	const docChecks = doc.bom_no
 		&& doc.fg_completed_qty
-		&& erpnext.stock.bom
-		&& erpnext.stock.bom.name === doc.bom_no;
+		&& shoperprime.stock.bom
+		&& shoperprime.stock.bom.name === doc.bom_no;
 	const itemChecks = !!item
 		&& !item.original_item
-		&& erpnext.stock.bom && erpnext.stock.bom.items
-		&& (item.item_code in erpnext.stock.bom.items);
+		&& shoperprime.stock.bom && shoperprime.stock.bom.items
+		&& (item.item_code in shoperprime.stock.bom.items);
 	return docChecks && itemChecks;
 }
 

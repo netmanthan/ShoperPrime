@@ -1,6 +1,6 @@
-frappe.provide("erpnext.accounts.bank_reconciliation");
+frappe.provide("shoperprime.accounts.bank_reconciliation");
 
-erpnext.accounts.bank_reconciliation.DialogManager = class DialogManager {
+shoperprime.accounts.bank_reconciliation.DialogManager = class DialogManager {
 	constructor(company, bank_account, bank_statement_from_date, bank_statement_to_date, filter_by_reference_date, from_reference_date, to_reference_date) {
 		this.bank_account = bank_account;
 		this.company = company;
@@ -62,7 +62,7 @@ erpnext.accounts.bank_reconciliation.DialogManager = class DialogManager {
 	get_linked_vouchers(document_types) {
 		frappe.call({
 			method:
-				"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_linked_payments",
+				"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_linked_payments",
 			args: {
 				bank_transaction_name: this.bank_transaction_name,
 				document_types: document_types,
@@ -196,7 +196,7 @@ erpnext.accounts.bank_reconciliation.DialogManager = class DialogManager {
 		];
 
 		frappe.call({
-			method: "erpnext.accounts.doctype.bank_transaction.bank_transaction.get_doctypes_for_bank_reconciliation",
+			method: "shoperprime.accounts.doctype.bank_transaction.bank_transaction.get_doctypes_for_bank_reconciliation",
 			callback: (r) => {
 				$.each(r.message, (_i, entry) => {
 					if (_i % 3 == 0) {
@@ -488,7 +488,7 @@ erpnext.accounts.bank_reconciliation.DialogManager = class DialogManager {
 		});
 		frappe.call({
 			method:
-				"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.reconcile_vouchers",
+				"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.reconcile_vouchers",
 			args: {
 				bank_transaction_name: this.bank_transaction.name,
 				vouchers: vouchers,
@@ -505,7 +505,7 @@ erpnext.accounts.bank_reconciliation.DialogManager = class DialogManager {
 	add_payment_entry(values) {
 		frappe.call({
 			method:
-				"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.create_payment_entry_bts",
+				"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.create_payment_entry_bts",
 			args: {
 				bank_transaction_name: this.bank_transaction.name,
 				reference_number: values.reference_number,
@@ -529,7 +529,7 @@ erpnext.accounts.bank_reconciliation.DialogManager = class DialogManager {
 	add_journal_entry(values) {
 		frappe.call({
 			method:
-				"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.create_journal_entry_bts",
+				"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.create_journal_entry_bts",
 			args: {
 				bank_transaction_name: this.bank_transaction.name,
 				reference_number: values.reference_number,
@@ -553,7 +553,7 @@ erpnext.accounts.bank_reconciliation.DialogManager = class DialogManager {
 	update_transaction(values) {
 		frappe.call({
 			method:
-				"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.update_bank_transaction",
+				"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.update_bank_transaction",
 			args: {
 				bank_transaction_name: this.bank_transaction.name,
 				reference_number: values.reference_number,
@@ -574,7 +574,7 @@ erpnext.accounts.bank_reconciliation.DialogManager = class DialogManager {
 		if (values.document_type == "Payment Entry") {
 			frappe.call({
 				method:
-					"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.create_payment_entry_bts",
+					"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.create_payment_entry_bts",
 				args: {
 					bank_transaction_name: this.bank_transaction.name,
 					reference_number: values.reference_number,
@@ -595,7 +595,7 @@ erpnext.accounts.bank_reconciliation.DialogManager = class DialogManager {
 		} else {
 			frappe.call({
 				method:
-					"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.create_journal_entry_bts",
+					"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.create_journal_entry_bts",
 				args: {
 					bank_transaction_name: this.bank_transaction.name,
 					reference_number: values.reference_number,

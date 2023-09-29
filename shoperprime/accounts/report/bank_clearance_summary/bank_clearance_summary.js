@@ -26,7 +26,7 @@ frappe.query_reports["Bank Clearance Summary"] = {
 				locals[":Company"][frappe.defaults.get_user_default("Company")]["default_bank_account"]: "",
 			"get_query": function() {
 				return {
-					"query": "erpnext.controllers.queries.get_account_list",
+					"query": "shoperprime.controllers.queries.get_account_list",
 					"filters": [
 						['Account', 'account_type', 'in', 'Bank, Cash'],
 						['Account', 'is_group', '=', 0],

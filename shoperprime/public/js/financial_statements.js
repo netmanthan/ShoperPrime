@@ -1,6 +1,6 @@
-frappe.provide("erpnext.financial_statements");
+frappe.provide("shoperprime.financial_statements");
 
-erpnext.financial_statements = {
+shoperprime.financial_statements = {
 	"filters": get_filters(),
 	"formatter": function(value, row, column, data, default_formatter) {
 		if (data && column.fieldname=="account") {
@@ -8,7 +8,7 @@ erpnext.financial_statements = {
 
 			if (data.account) {
 				column.link_onclick =
-					"erpnext.financial_statements.open_general_ledger(" + JSON.stringify(data) + ")";
+					"shoperprime.financial_statements.open_general_ledger(" + JSON.stringify(data) + ")";
 			}
 			column.is_tree = true;
 		}
@@ -56,9 +56,9 @@ erpnext.financial_statements = {
 	"initial_depth": 3,
 	onload: function(report) {
 		// dropdown for links to other financial statements
-		erpnext.financial_statements.filters = get_filters()
+		shoperprime.financial_statements.filters = get_filters()
 
-		let fiscal_year = erpnext.utils.get_fiscal_year(frappe.datetime.get_today());
+		let fiscal_year = shoperprime.utils.get_fiscal_year(frappe.datetime.get_today());
 
 		frappe.model.with_doc("Fiscal Year", fiscal_year, function(r) {
 			var fy = frappe.model.get_doc("Fiscal Year", fiscal_year);
@@ -139,7 +139,7 @@ function get_filters() {
 			"label": __("Start Year"),
 			"fieldtype": "Link",
 			"options": "Fiscal Year",
-			"default": erpnext.utils.get_fiscal_year(frappe.datetime.get_today()),
+			"default": shoperprime.utils.get_fiscal_year(frappe.datetime.get_today()),
 			"reqd": 1,
 			"depends_on": "eval:doc.filter_based_on == 'Fiscal Year'"
 		},
@@ -148,7 +148,7 @@ function get_filters() {
 			"label": __("End Year"),
 			"fieldtype": "Link",
 			"options": "Fiscal Year",
-			"default": erpnext.utils.get_fiscal_year(frappe.datetime.get_today()),
+			"default": shoperprime.utils.get_fiscal_year(frappe.datetime.get_today()),
 			"reqd": 1,
 			"depends_on": "eval:doc.filter_based_on == 'Fiscal Year'"
 		},
@@ -173,7 +173,7 @@ function get_filters() {
 			"fieldname": "presentation_currency",
 			"label": __("Currency"),
 			"fieldtype": "Select",
-			"options": erpnext.get_presentation_currency_list()
+			"options": shoperprime.get_presentation_currency_list()
 		},
 		{
 			"fieldname": "cost_center",

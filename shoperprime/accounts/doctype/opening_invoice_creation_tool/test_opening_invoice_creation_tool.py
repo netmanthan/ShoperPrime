@@ -116,7 +116,7 @@ class TestOpeningInvoiceCreationTool(FrappeTestCase):
 		# Check if missing debit account error raised
 		error_log = frappe.db.exists(
 			"Error Log",
-			{"error": ["like", "%erpnext.controllers.accounts_controller.AccountMissingError%"]},
+			{"error": ["like", "%shoperprime.controllers.accounts_controller.AccountMissingError%"]},
 		)
 		self.assertTrue(error_log)
 

@@ -28,7 +28,7 @@ frappe.ui.form.on("Issue", {
 
 			frm.add_custom_button(__("Task"), function() {
 				frappe.model.open_mapped_doc({
-					method: "erpnext.support.doctype.issue.issue.make_task",
+					method: "shoperprime.support.doctype.issue.issue.make_task",
 					frm: frm
 				});
 			}, __("Create"));
@@ -63,7 +63,7 @@ frappe.ui.form.on("Issue", {
 					message: __("Resetting Service Level Agreement.")
 				});
 
-				frappe.call("erpnext.support.doctype.service_level_agreement.service_level_agreement.reset_service_level_agreement", {
+				frappe.call("shoperprime.support.doctype.service_level_agreement.service_level_agreement.reset_service_level_agreement", {
 					reason: values.reason,
 					user: frappe.session.user_email
 				}, () => {

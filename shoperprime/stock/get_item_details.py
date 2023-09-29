@@ -766,7 +766,7 @@ def get_default_cost_center(args, item=None, item_group=None, brand=None, compan
 
 	elif not cost_center and args.get("item_code") and company:
 		for method in ["get_item_defaults", "get_item_group_defaults", "get_brand_defaults"]:
-			path = "erpnext.stock.get_item_details.{0}".format(method)
+			path = "shoperprime.stock.get_item_details.{0}".format(method)
 			data = frappe.get_attr(path)(args.get("item_code"), company)
 
 			if data and (data.selling_cost_center or data.buying_cost_center):

@@ -1,7 +1,7 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-{% include 'erpnext/selling/sales_common.js' %}
+{% include 'shoperprime/selling/sales_common.js' %}
 
 frappe.ui.form.on("Sales Order", {
 	setup: function(frm) {
@@ -51,7 +51,7 @@ frappe.ui.form.on("Sales Order", {
 		if(frm.doc.docstatus === 1 && frm.doc.status !== 'Closed'
 			&& flt(frm.doc.per_delivered, 6) < 100 && flt(frm.doc.per_billed, 6) < 100) {
 			frm.add_custom_button(__('Update Items'), () => {
-				erpnext.utils.update_child_items({
+				shoperprime.utils.update_child_items({
 					frm: frm,
 					child_docname: "items",
 					child_doctype: "Sales Order Detail",
@@ -67,8 +67,8 @@ frappe.ui.form.on("Sales Order", {
 
 	get_items_from_internal_purchase_order(frm) {
 		frm.add_custom_button(__('Purchase Order'), () => {
-			erpnext.utils.map_current_doc({
-				method: 'erpnext.buying.doctype.purchase_order.purchase_order.make_inter_company_sales_order',
+			shoperprime.utils.map_current_doc({
+				method: 'shoperprime.buying.doctype.purchase_order.purchase_order.make_inter_company_sales_order',
 				source_doctype: 'Purchase Order',
 				target: frm,
 				setters: [
@@ -93,7 +93,7 @@ frappe.ui.form.on("Sales Order", {
 		if (!frm.doc.transaction_date){
 			frm.set_value('transaction_date', frappe.datetime.get_today())
 		}
-		erpnext.queries.setup_queries(frm, "Warehouse", function() {
+		shoperprime.queries.setup_queries(frm, "Warehouse", function() {
 			return {
 				filters: [
 					["Warehouse", "company", "in", ["", cstr(frm.doc.company)]],
@@ -103,7 +103,7 @@ frappe.ui.form.on("Sales Order", {
 
 		frm.set_query('project', function(doc, cdt, cdn) {
 			return {
-				query: "erpnext.controllers.queries.get_project_name",
+				query: "shoperprime.controllers.queries.get_project_name",
 				filters: {
 					'customer': doc.customer
 				}
@@ -118,7 +118,7 @@ frappe.ui.form.on("Sales Order", {
 				]
 			};
 			if (row.item_code) {
-				query.query = "erpnext.controllers.queries.warehouse_query";
+				query.query = "shoperprime.controllers.queries.warehouse_query";
 				query.filters.push(["Bin", "item_code", "=", row.item_code]);
 			}
 			return query;
@@ -152,12 +152,12 @@ frappe.ui.form.on("Sales Order Item", {
 	},
 	delivery_date: function(frm, cdt, cdn) {
 		if(!frm.doc.delivery_date) {
-			erpnext.utils.copy_value_in_all_rows(frm.doc, cdt, cdn, "items", "delivery_date");
+			shoperprime.utils.copy_value_in_all_rows(frm.doc, cdt, cdn, "items", "delivery_date");
 		}
 	}
 });
 
-erpnext.selling.SalesOrderController = class SalesOrderController extends erpnext.selling.SellingController {
+shoperprime.selling.SalesOrderController = class SalesOrderController extends shoperprime.selling.SellingController {
 	onload(doc, dt, dn) {
 		super.onload(doc, dt, dn);
 	}
@@ -246,7 +246,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 
 					if(!doc.auto_repeat) {
 						this.frm.add_custom_button(__('Subscription'), function() {
-							erpnext.utils.make_subscription(doc.doctype, doc.name)
+							shoperprime.utils.make_subscription(doc.doctype, doc.name)
 						}, __('Create'))
 					}
 
@@ -275,8 +275,8 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 		if (this.frm.doc.docstatus===0) {
 			this.frm.add_custom_button(__('Quotation'),
 				function() {
-					let d = erpnext.utils.map_current_doc({
-						method: "erpnext.selling.doctype.quotation.quotation.make_sales_order",
+					let d = shoperprime.utils.map_current_doc({
+						method: "shoperprime.selling.doctype.quotation.quotation.make_sales_order",
 						source_doctype: "Quotation",
 						target: me.frm,
 						setters: [
@@ -311,7 +311,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 
 	create_pick_list() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.selling.doctype.sales_order.sales_order.create_pick_list",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.create_pick_list",
 			frm: this.frm
 		})
 	}
@@ -319,7 +319,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 	make_work_order() {
 		var me = this;
 		me.frm.call({
-			method: "erpnext.selling.doctype.sales_order.sales_order.get_work_order_items",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.get_work_order_items",
 			args: {
 				sales_order: this.frm.docname,
 			},
@@ -417,7 +417,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 
 	make_material_request() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.selling.doctype.sales_order.sales_order.make_material_request",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.make_material_request",
 			frm: this.frm
 		})
 	}
@@ -434,7 +434,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 	make_raw_material_request() {
 		var me = this;
 		this.frm.call({
-			method: "erpnext.selling.doctype.sales_order.sales_order.get_work_order_items",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.get_work_order_items",
 			args: {
 				sales_order: this.frm.docname,
 				for_raw_material_request: 1
@@ -489,7 +489,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 			primary_action: function() {
 				var data = d.get_values();
 				me.frm.call({
-					method: 'erpnext.selling.doctype.sales_order.sales_order.make_raw_material_request',
+					method: 'shoperprime.selling.doctype.sales_order.sales_order.make_raw_material_request',
 					args: {
 						items: data,
 						company: me.frm.doc.company,
@@ -565,7 +565,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 
 	make_delivery_note(delivery_dates) {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.selling.doctype.sales_order.sales_order.make_delivery_note",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.make_delivery_note",
 			frm: this.frm,
 			args: {
 				delivery_dates
@@ -575,35 +575,35 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 
 	make_sales_invoice() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.selling.doctype.sales_order.sales_order.make_sales_invoice",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.make_sales_invoice",
 			frm: this.frm
 		})
 	}
 
 	make_maintenance_schedule() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.selling.doctype.sales_order.sales_order.make_maintenance_schedule",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.make_maintenance_schedule",
 			frm: this.frm
 		})
 	}
 
 	make_project() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.selling.doctype.sales_order.sales_order.make_project",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.make_project",
 			frm: this.frm
 		})
 	}
 
 	make_inter_company_order() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.selling.doctype.sales_order.sales_order.make_inter_company_purchase_order",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.make_inter_company_purchase_order",
 			frm: this.frm
 		});
 	}
 
 	make_maintenance_visit() {
 		frappe.model.open_mapped_doc({
-			method: "erpnext.selling.doctype.sales_order.sales_order.make_maintenance_visit",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.make_maintenance_visit",
 			frm: this.frm
 		})
 	}
@@ -682,7 +682,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 
 				var method = args.against_default_supplier ? "make_purchase_order_for_default_supplier" : "make_purchase_order"
 				return frappe.call({
-					method: "erpnext.selling.doctype.sales_order.sales_order." + method,
+					method: "shoperprime.selling.doctype.sales_order.sales_order." + method,
 					freeze: true,
 					freeze_message: __("Creating Purchase Order ..."),
 					args: {
@@ -808,7 +808,7 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 		var me = this;
 		frappe.ui.form.is_saving = true;
 		frappe.call({
-			method: "erpnext.selling.doctype.sales_order.sales_order.update_status",
+			method: "shoperprime.selling.doctype.sales_order.sales_order.update_status",
 			args: {status: status, name: doc.name},
 			callback: function(r){
 				me.frm.reload_doc();
@@ -820,4 +820,4 @@ erpnext.selling.SalesOrderController = class SalesOrderController extends erpnex
 	}
 };
 
-extend_cscript(cur_frm.cscript, new erpnext.selling.SalesOrderController({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new shoperprime.selling.SalesOrderController({frm: cur_frm}));

@@ -48,7 +48,7 @@ frappe.ui.form.on('Subscription', {
 			function() {
 				frappe.call({
 					method:
-					"erpnext.accounts.doctype.subscription.subscription.cancel_subscription",
+					"shoperprime.accounts.doctype.subscription.subscription.cancel_subscription",
 					args: {name: doc.name},
 					callback: function(data){
 						if(!data.exc){
@@ -67,7 +67,7 @@ frappe.ui.form.on('Subscription', {
 			function() {
 				frappe.call({
 					method:
-					"erpnext.accounts.doctype.subscription.subscription.restart_subscription",
+					"shoperprime.accounts.doctype.subscription.subscription.restart_subscription",
 					args: {name: doc.name},
 					callback: function(data){
 						if(!data.exc){
@@ -83,7 +83,7 @@ frappe.ui.form.on('Subscription', {
 		const doc = frm.doc;
 		frappe.call({
 			method:
-			"erpnext.accounts.doctype.subscription.subscription.get_subscription_updates",
+			"shoperprime.accounts.doctype.subscription.subscription.get_subscription_updates",
 			args: {name: doc.name},
 			freeze: true,
 			callback: function(data){

@@ -86,7 +86,7 @@ frappe.query_reports["General Ledger"] = {
 					return;
 				} else {
 					var party = parties[0];
-					var fieldname = erpnext.utils.get_party_name(party_type) || "name";
+					var fieldname = shoperprime.utils.get_party_name(party_type) || "name";
 					frappe.db.get_value(party_type, party, fieldname, function(value) {
 						frappe.query_report.set_filter_value('party_name', value[fieldname]);
 					});
@@ -140,7 +140,7 @@ frappe.query_reports["General Ledger"] = {
 			"fieldname": "presentation_currency",
 			"label": __("Currency"),
 			"fieldtype": "Select",
-			"options": erpnext.get_presentation_currency_list()
+			"options": shoperprime.get_presentation_currency_list()
 		},
 		{
 			"fieldname":"cost_center",
@@ -192,4 +192,4 @@ frappe.query_reports["General Ledger"] = {
 	]
 }
 
-erpnext.utils.add_dimensions('General Ledger', 15)
+shoperprime.utils.add_dimensions('General Ledger', 15)

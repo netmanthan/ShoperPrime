@@ -2,7 +2,7 @@
 // License: GNU General Public License v3. See license.txt
 
 
-erpnext.StockAnalytics = class StockAnalytics extends erpnext.StockGridReport {
+shoperprime.StockAnalytics = class StockAnalytics extends shoperprime.StockGridReport {
 	constructor(wrapper, opts) {
 		var args = {
 			title: __("Stock Analytics"),

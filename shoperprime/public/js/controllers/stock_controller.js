@@ -1,9 +1,9 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("erpnext.stock");
+frappe.provide("shoperprime.stock");
 
-erpnext.stock.StockController = class StockController extends frappe.ui.form.Controller {
+shoperprime.stock.StockController = class StockController extends frappe.ui.form.Controller {
 	onload() {
 		// warehouse query if company
 		if (this.frm.fields_dict.company) {
@@ -13,8 +13,8 @@ erpnext.stock.StockController = class StockController extends frappe.ui.form.Con
 
 	setup_warehouse_query() {
 		var me = this;
-		erpnext.queries.setup_queries(this.frm, "Warehouse", function() {
-			return erpnext.queries.warehouse(me.frm.doc);
+		shoperprime.queries.setup_queries(this.frm, "Warehouse", function() {
+			return shoperprime.queries.warehouse(me.frm.doc);
 		});
 	}
 
