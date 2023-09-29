@@ -9,7 +9,7 @@ WEBSITE_REPOS = [
 ]
 
 DOCUMENTATION_DOMAINS = [
-	"docs.shopersolutions.com",
+	"docs.erpnext.com",
 	"frappeframework.com",
 ]
 
