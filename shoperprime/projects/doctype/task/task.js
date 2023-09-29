@@ -1,13 +1,13 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("shoperprime.projects");
+frappe.provide("erpnext.projects");
 
 frappe.ui.form.on("Task", {
 	setup: function (frm) {
 		frm.make_methods = {
 			'Timesheet': () => frappe.model.open_mapped_doc({
-				method: 'shoperprime.projects.doctype.task.task.make_timesheet',
+				method: 'erpnext.projects.doctype.task.task.make_timesheet',
 				frm: frm
 			})
 		}
@@ -38,7 +38,7 @@ frappe.ui.form.on("Task", {
 
 	is_group: function (frm) {
 		frappe.call({
-			method: "shoperprime.projects.doctype.task.task.check_if_child_exists",
+			method: "erpnext.projects.doctype.task.task.check_if_child_exists",
 			args: {
 				name: frm.doc.name
 			},

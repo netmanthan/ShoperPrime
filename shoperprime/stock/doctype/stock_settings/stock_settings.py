@@ -91,7 +91,7 @@ class StockSettings(Document):
 		if int(self.clean_description_html or 0) and not int(self.db_get("clean_description_html") or 0):
 			# changed to text
 			frappe.enqueue(
-				"shoperprime.stock.doctype.stock_settings.stock_settings.clean_all_descriptions",
+				"erpnext.stock.doctype.stock_settings.stock_settings.clean_all_descriptions",
 				now=frappe.flags.in_test,
 				enqueue_after_commit=True,
 			)

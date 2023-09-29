@@ -1,4 +1,4 @@
-shoperprime.PointOfSale.ItemDetails = class {
+erpnext.PointOfSale.ItemDetails = class {
 	constructor({ wrapper, events, settings }) {
 		this.wrapper = wrapper;
 		this.events = events;
@@ -282,7 +282,7 @@ shoperprime.PointOfSale.ItemDetails = class {
 			this.batch_no_control.df.reqd = 1;
 			this.batch_no_control.df.get_query = () => {
 				return {
-					query: 'shoperprime.controllers.queries.get_batch_no',
+					query: 'erpnext.controllers.queries.get_batch_no',
 					filters: {
 						item_code: me.item_row.item_code,
 						warehouse: me.item_row.warehouse,
@@ -388,7 +388,7 @@ shoperprime.PointOfSale.ItemDetails = class {
 			let expiry_date = this.item_row.has_batch_no ? this.events.get_frm().doc.posting_date : "";
 
 			let numbers = frappe.call({
-				method: "shoperprime.stock.doctype.serial_no.serial_no.auto_fetch_serial_number",
+				method: "erpnext.stock.doctype.serial_no.serial_no.auto_fetch_serial_number",
 				args: {
 					qty: qty * conversion_factor,
 					item_code: this.current_item.item_code,

@@ -1,6 +1,6 @@
 // Copyright (c) 2018, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
-frappe.provide('shoperprime.integrations');
+frappe.provide('erpnext.integrations');
 
 frappe.ui.form.on('Bank', {
 	onload: function(frm) {
@@ -23,7 +23,7 @@ frappe.ui.form.on('Bank', {
 		}
 		if (frm.doc.plaid_access_token) {
 			frm.add_custom_button(__('Refresh Plaid Link'), () => {
-				new shoperprime.integrations.refreshPlaidLink(frm.doc.plaid_access_token);
+				new erpnext.integrations.refreshPlaidLink(frm.doc.plaid_access_token);
 			});
 		}
 	}
@@ -47,7 +47,7 @@ let add_fields_to_mapping_table = function (frm) {
 	);
 };
 
-shoperprime.integrations.refreshPlaidLink = class refreshPlaidLink {
+erpnext.integrations.refreshPlaidLink = class refreshPlaidLink {
 	constructor(access_token) {
 		this.access_token = access_token;
 		this.plaidUrl = 'https://cdn.plaid.com/link/v2/stable/link-initialize.js';
@@ -62,7 +62,7 @@ shoperprime.integrations.refreshPlaidLink = class refreshPlaidLink {
 
 	async get_link_token_for_update() {
 		const token = frappe.xcall(
-			'shoperprime.shoperprime_integrations.doctype.plaid_settings.plaid_settings.get_link_token_for_update',
+			'erpnext.erpnext_integrations.doctype.plaid_settings.plaid_settings.get_link_token_for_update',
 			{ access_token: this.access_token }
 		)
 		if (!token) {
@@ -118,7 +118,7 @@ shoperprime.integrations.refreshPlaidLink = class refreshPlaidLink {
 	}
 
 	plaid_success(token, response) {
-		frappe.xcall('shoperprime.shoperprime_integrations.doctype.plaid_settings.plaid_settings.update_bank_account_ids', {
+		frappe.xcall('erpnext.erpnext_integrations.doctype.plaid_settings.plaid_settings.update_bank_account_ids', {
 			response: response,
 		}).then(() => {
 			frappe.show_alert({ message: __('Plaid Link Updated'), indicator: 'green' });

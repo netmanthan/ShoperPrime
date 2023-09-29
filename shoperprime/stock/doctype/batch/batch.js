@@ -5,7 +5,7 @@ frappe.ui.form.on('Batch', {
 	setup: (frm) => {
 		frm.fields_dict['item'].get_query = function(doc, cdt, cdn) {
 			return {
-				query: "shoperprime.controllers.queries.item_query",
+				query: "erpnext.controllers.queries.item_query",
 				filters:{
 					'is_stock_item': 1,
 					'has_batch_no': 1
@@ -40,7 +40,7 @@ frappe.ui.form.on('Batch', {
 	make_dashboard: (frm) => {
 		if(!frm.is_new()) {
 			frappe.call({
-				method: 'shoperprime.stock.doctype.batch.batch.get_batch_qty',
+				method: 'erpnext.stock.doctype.batch.batch.get_batch_qty',
 				args: {batch_no: frm.doc.name},
 				callback: (r) => {
 					if(!r.message) {
@@ -90,7 +90,7 @@ frappe.ui.form.on('Batch', {
 							fields,
 							(data) => {
 								frappe.call({
-									method: 'shoperprime.stock.doctype.stock_entry.stock_entry_utils.make_stock_entry',
+									method: 'erpnext.stock.doctype.stock_entry.stock_entry_utils.make_stock_entry',
 									args: {
 										item_code: frm.doc.item,
 										batch_no: frm.doc.name,
@@ -129,7 +129,7 @@ frappe.ui.form.on('Batch', {
 						}],
 						(data) => {
 							frappe.call({
-								method: 'shoperprime.stock.doctype.batch.batch.split_batch',
+								method: 'erpnext.stock.doctype.batch.batch.split_batch',
 								args: {
 									item_code: frm.doc.item,
 									batch_no: frm.doc.name,

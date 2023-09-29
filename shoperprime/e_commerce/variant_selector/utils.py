@@ -158,7 +158,7 @@ def get_next_attribute_and_values(item_code, selected_attributes):
 	filtered_items_count = len(filtered_items)
 
 	# get product info if exact match
-	# from shoperprime.e_commerce.shopping_cart.product_info import get_product_info_for_website
+	# from erpnext.e_commerce.shopping_cart.product_info import get_product_info_for_website
 	if exact_match:
 		cart_settings = get_shopping_cart_settings()
 		product_info = get_item_variant_price_dict(exact_match[0], cart_settings)

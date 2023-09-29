@@ -64,7 +64,7 @@ function hide_filters(report) {
 	});
 }
 
-shoperprime.TaxDetail = class TaxDetail {
+erpnext.TaxDetail = class TaxDetail {
 	constructor() {
 		this.patch();
 		this.load_report();
@@ -100,7 +100,7 @@ shoperprime.TaxDetail = class TaxDetail {
 		this.super.refresh_report.apply(this.qr);
 		if (this.qr.report_name !== 'Tax Detail') {
 			frappe.call({
-				method: 'shoperprime.accounts.report.tax_detail.tax_detail.get_custom_reports',
+				method: 'erpnext.accounts.report.tax_detail.tax_detail.get_custom_reports',
 				args: {name: this.qr.report_name}
 			}).then((r) => {
 				const data = JSON.parse(r.message[this.qr.report_name]['json']);
@@ -137,7 +137,7 @@ shoperprime.TaxDetail = class TaxDetail {
 		this.check_datatable();
 		if (this.qr.report_name !== 'Tax Detail') {
 			frappe.call({
-				method:'shoperprime.accounts.report.tax_detail.tax_detail.save_custom_report',
+				method:'erpnext.accounts.report.tax_detail.tax_detail.save_custom_report',
 				args: {
 					reference_report: 'Tax Detail',
 					report_name: this.qr.report_name,
@@ -382,12 +382,12 @@ shoperprime.TaxDetail = class TaxDetail {
 }
 
 if (!window.taxdetail) {
-	window.taxdetail = new shoperprime.TaxDetail();
+	window.taxdetail = new erpnext.TaxDetail();
 }
 
 function get_reports(cb) {
 	frappe.call({
-		method: 'shoperprime.accounts.report.tax_detail.tax_detail.get_custom_reports',
+		method: 'erpnext.accounts.report.tax_detail.tax_detail.get_custom_reports',
 		freeze: true
 	}).then((r) => {
 		cb(r.message);
@@ -408,7 +408,7 @@ function new_report() {
 		primary_action_label: __('Create'),
 		primary_action: function new_report_pa(values) {
 			frappe.call({
-				method:'shoperprime.accounts.report.tax_detail.tax_detail.save_custom_report',
+				method:'erpnext.accounts.report.tax_detail.tax_detail.save_custom_report',
 				args: {
 					reference_report: 'Tax Detail',
 					report_name: values.report_name,

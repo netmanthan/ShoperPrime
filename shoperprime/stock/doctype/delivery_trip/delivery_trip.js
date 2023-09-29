@@ -49,8 +49,8 @@ frappe.ui.form.on('Delivery Trip', {
 
 		if (frm.doc.docstatus === 0) {
 			frm.add_custom_button(__('Delivery Note'), () => {
-				shoperprime.utils.map_current_doc({
-					method: "shoperprime.stock.doctype.delivery_note.delivery_note.make_delivery_trip",
+				erpnext.utils.map_current_doc({
+					method: "erpnext.stock.doctype.delivery_note.delivery_note.make_delivery_trip",
 					source_doctype: "Delivery Note",
 					target: frm,
 					date_field: "posting_date",
@@ -84,7 +84,7 @@ frappe.ui.form.on('Delivery Trip', {
 	driver: function (frm) {
 		if (frm.doc.driver) {
 			frappe.call({
-				method: "shoperprime.stock.doctype.delivery_trip.delivery_trip.get_driver_email",
+				method: "erpnext.stock.doctype.delivery_trip.delivery_trip.get_driver_email",
 				args: {
 					driver: frm.doc.driver
 				},
@@ -128,7 +128,7 @@ frappe.ui.form.on('Delivery Trip', {
 			} else {
 				frappe.confirm(__("Do you want to notify all the customers by email?"), function () {
 					frappe.call({
-						method: "shoperprime.stock.doctype.delivery_trip.delivery_trip.notify_customers",
+						method: "erpnext.stock.doctype.delivery_trip.delivery_trip.notify_customers",
 						args: {
 							"delivery_trip": frm.doc.name
 						},
@@ -150,7 +150,7 @@ frappe.ui.form.on('Delivery Stop', {
 		var row = locals[cdt][cdn];
 		if (row.customer) {
 			frappe.call({
-				method: "shoperprime.stock.doctype.delivery_trip.delivery_trip.get_contact_and_address",
+				method: "erpnext.stock.doctype.delivery_trip.delivery_trip.get_contact_and_address",
 				args: { "name": row.customer },
 				callback: function (r) {
 					if (r.message) {
@@ -197,7 +197,7 @@ frappe.ui.form.on('Delivery Stop', {
 		var row = locals[cdt][cdn];
 		if (row.contact) {
 			frappe.call({
-				method: "shoperprime.stock.doctype.delivery_trip.delivery_trip.get_contact_display",
+				method: "erpnext.stock.doctype.delivery_trip.delivery_trip.get_contact_display",
 				args: { "contact": row.contact },
 				callback: function (r) {
 					if (r.message) {

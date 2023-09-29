@@ -6,7 +6,7 @@ frappe.ui.form.on("Email Digest", {
 		if (!frm.is_new()) {
 			frm.add_custom_button(__('View Now'), function() {
 				frappe.call({
-					method: 'shoperprime.setup.doctype.email_digest.email_digest.get_digest_msg',
+					method: 'erpnext.setup.doctype.email_digest.email_digest.get_digest_msg',
 					args: {
 						name: frm.doc.name
 					},

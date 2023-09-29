@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-shoperprime.PointOfSale.Payment = class {
+erpnext.PointOfSale.Payment = class {
 	constructor({ events, wrapper }) {
 		this.wrapper = wrapper;
 		this.events = events;
@@ -84,7 +84,7 @@ shoperprime.PointOfSale.Payment = class {
 
 	initialize_numpad() {
 		const me = this;
-		this.number_pad = new shoperprime.PointOfSale.NumberPad({
+		this.number_pad = new erpnext.PointOfSale.NumberPad({
 			wrapper: this.$numpad,
 			events: {
 				numpad_event: function($btn) {

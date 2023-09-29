@@ -1,7 +1,7 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.require("assets/shoperprime/js/financial_statements.js", function() {
+frappe.require("assets/erpnext/js/financial_statements.js", function() {
 	frappe.query_reports["Trial Balance"] = {
 		"filters": [
 			{
@@ -17,7 +17,7 @@ frappe.require("assets/shoperprime/js/financial_statements.js", function() {
 				"label": __("Fiscal Year"),
 				"fieldtype": "Link",
 				"options": "Fiscal Year",
-				"default": shoperprime.utils.get_fiscal_year(frappe.datetime.get_today()),
+				"default": erpnext.utils.get_fiscal_year(frappe.datetime.get_today()),
 				"reqd": 1,
 				"on_change": function(query_report) {
 					var fiscal_year = query_report.get_values().fiscal_year;
@@ -76,7 +76,7 @@ frappe.require("assets/shoperprime/js/financial_statements.js", function() {
 				"fieldname": "presentation_currency",
 				"label": __("Currency"),
 				"fieldtype": "Select",
-				"options": shoperprime.get_presentation_currency_list()
+				"options": erpnext.get_presentation_currency_list()
 			},
 			{
 				"fieldname": "with_period_closing_entry",
@@ -107,12 +107,12 @@ frappe.require("assets/shoperprime/js/financial_statements.js", function() {
 				"default": 1
 			}
 		],
-		"formatter": shoperprime.financial_statements.formatter,
+		"formatter": erpnext.financial_statements.formatter,
 		"tree": true,
 		"name_field": "account",
 		"parent_field": "parent_account",
 		"initial_depth": 3
 	}
 
-	shoperprime.utils.add_dimensions('Trial Balance', 6);
+	erpnext.utils.add_dimensions('Trial Balance', 6);
 });

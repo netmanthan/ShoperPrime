@@ -63,10 +63,10 @@ frappe.pages['stock-balance'].on_page_load = function(wrapper) {
 	// page.sort_selector.wrapper.css({'margin-right': '15px', 'margin-top': '4px'});
 
 	frappe.require('item-dashboard.bundle.js', function() {
-		page.item_dashboard = new shoperprime.stock.ItemDashboard({
+		page.item_dashboard = new erpnext.stock.ItemDashboard({
 			parent: page.main,
 			page_length: 20,
-			method: 'shoperprime.stock.dashboard.item_dashboard.get_data',
+			method: 'erpnext.stock.dashboard.item_dashboard.get_data',
 			template: 'item_dashboard_list'
 		})
 

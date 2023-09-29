@@ -1,10 +1,10 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("shoperprime.accounts");
-{% include 'shoperprime/public/js/controllers/buying.js' %};
+frappe.provide("erpnext.accounts");
+{% include 'erpnext/public/js/controllers/buying.js' %};
 
-shoperprime.accounts.PurchaseInvoice = class PurchaseInvoice extends shoperprime.buying.BuyingController {
+erpnext.accounts.PurchaseInvoice = class PurchaseInvoice extends erpnext.buying.BuyingController {
 	setup(doc) {
 		this.setup_posting_date_time_check();
 		super.setup(doc);
@@ -98,7 +98,7 @@ shoperprime.accounts.PurchaseInvoice = class PurchaseInvoice extends shoperprime
 
 			if(!doc.auto_repeat) {
 				cur_frm.add_custom_button(__('Subscription'), function() {
-					shoperprime.utils.make_subscription(doc.doctype, doc.name)
+					erpnext.utils.make_subscription(doc.doctype, doc.name)
 				}, __('Create'))
 			}
 		}
@@ -111,8 +111,8 @@ shoperprime.accounts.PurchaseInvoice = class PurchaseInvoice extends shoperprime
 
 		if(doc.docstatus===0) {
 			this.frm.add_custom_button(__('Purchase Order'), function() {
-				shoperprime.utils.map_current_doc({
-					method: "shoperprime.buying.doctype.purchase_order.purchase_order.make_purchase_invoice",
+				erpnext.utils.map_current_doc({
+					method: "erpnext.buying.doctype.purchase_order.purchase_order.make_purchase_invoice",
 					source_doctype: "Purchase Order",
 					target: me.frm,
 					setters: {
@@ -129,8 +129,8 @@ shoperprime.accounts.PurchaseInvoice = class PurchaseInvoice extends shoperprime
 			}, __("Get Items From"));
 
 			this.frm.add_custom_button(__('Purchase Receipt'), function() {
-				shoperprime.utils.map_current_doc({
-					method: "shoperprime.stock.doctype.purchase_receipt.purchase_receipt.make_purchase_invoice",
+				erpnext.utils.map_current_doc({
+					method: "erpnext.stock.doctype.purchase_receipt.purchase_receipt.make_purchase_invoice",
 					source_doctype: "Purchase Receipt",
 					target: me.frm,
 					setters: {
@@ -167,7 +167,7 @@ shoperprime.accounts.PurchaseInvoice = class PurchaseInvoice extends shoperprime
 	unblock_invoice() {
 		const me = this;
 		frappe.call({
-			'method': 'shoperprime.accounts.doctype.purchase_invoice.purchase_invoice.unblock_invoice',
+			'method': 'erpnext.accounts.doctype.purchase_invoice.purchase_invoice.unblock_invoice',
 			'args': {'name': me.frm.doc.name},
 			'callback': (r) => me.frm.reload_doc()
 		});
@@ -221,7 +221,7 @@ shoperprime.accounts.PurchaseInvoice = class PurchaseInvoice extends shoperprime
 		this.dialog.set_primary_action(__('Save'), function() {
 			const dialog_data = me.dialog.get_values();
 			frappe.call({
-				'method': 'shoperprime.accounts.doctype.purchase_invoice.purchase_invoice.block_invoice',
+				'method': 'erpnext.accounts.doctype.purchase_invoice.purchase_invoice.block_invoice',
 				'args': {
 					'name': me.frm.doc.name,
 					'hold_comment': dialog_data.hold_comment,
@@ -268,7 +268,7 @@ shoperprime.accounts.PurchaseInvoice = class PurchaseInvoice extends shoperprime
 
 	set_release_date(data) {
 		return frappe.call({
-			'method': 'shoperprime.accounts.doctype.purchase_invoice.purchase_invoice.change_release_date',
+			'method': 'erpnext.accounts.doctype.purchase_invoice.purchase_invoice.change_release_date',
 			'args': data,
 			'callback': (r) => this.frm.reload_doc()
 		});
@@ -283,7 +283,7 @@ shoperprime.accounts.PurchaseInvoice = class PurchaseInvoice extends shoperprime
 
 		if (this.frm.doc.__onload && this.frm.doc.__onload.load_after_mapping) return;
 
-		shoperprime.utils.get_party_details(this.frm, "shoperprime.accounts.party.get_party_details",
+		erpnext.utils.get_party_details(this.frm, "erpnext.accounts.party.get_party_details",
 			{
 				posting_date: this.frm.doc.posting_date,
 				bill_date: this.frm.doc.bill_date,
@@ -335,7 +335,7 @@ shoperprime.accounts.PurchaseInvoice = class PurchaseInvoice extends shoperprime
 
 	make_inter_company_invoice(frm) {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.accounts.doctype.purchase_invoice.purchase_invoice.make_inter_company_sales_invoice",
+			method: "erpnext.accounts.doctype.purchase_invoice.purchase_invoice.make_inter_company_sales_invoice",
 			frm: frm
 		});
 	}
@@ -384,13 +384,13 @@ shoperprime.accounts.PurchaseInvoice = class PurchaseInvoice extends shoperprime
 
 	make_debit_note() {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.accounts.doctype.purchase_invoice.purchase_invoice.make_debit_note",
+			method: "erpnext.accounts.doctype.purchase_invoice.purchase_invoice.make_debit_note",
 			frm: cur_frm
 		})
 	}
 };
 
-cur_frm.script_manager.make(shoperprime.accounts.PurchaseInvoice);
+cur_frm.script_manager.make(erpnext.accounts.PurchaseInvoice);
 
 // Hide Fields
 // ------------
@@ -428,7 +428,7 @@ cur_frm.fields_dict.cash_bank_account.get_query = function(doc) {
 
 cur_frm.fields_dict['items'].grid.get_field("item_code").get_query = function(doc, cdt, cdn) {
 	return {
-		query: "shoperprime.controllers.queries.item_query",
+		query: "erpnext.controllers.queries.item_query",
 		filters: {'is_purchase_item': 1}
 	}
 }
@@ -455,7 +455,7 @@ cur_frm.fields_dict['select_print_heading'].get_query = function(doc, cdt, cdn) 
 
 cur_frm.set_query("expense_account", "items", function(doc) {
 	return {
-		query: "shoperprime.controllers.queries.get_expense_account",
+		query: "erpnext.controllers.queries.get_expense_account",
 		filters: {'company': doc.company }
 	}
 });
@@ -570,8 +570,8 @@ frappe.ui.form.on("Purchase Invoice", {
 			}
 		}
 
-		shoperprime.queries.setup_queries(frm, "Warehouse", function() {
-			return shoperprime.queries.warehouse(frm.doc);
+		erpnext.queries.setup_queries(frm, "Warehouse", function() {
+			return erpnext.queries.warehouse(frm.doc);
 		});
 
 		if (frm.is_new()) {
@@ -581,7 +581,7 @@ frappe.ui.form.on("Purchase Invoice", {
 
 	is_subcontracted: function(frm) {
 		if (frm.doc.is_old_subcontracting_flow) {
-			shoperprime.buying.get_default_bom(frm);
+			erpnext.buying.get_default_bom(frm);
 		}
 
 		frm.toggle_reqd("supplier_warehouse", frm.doc.is_subcontracted);
@@ -594,19 +594,19 @@ frappe.ui.form.on("Purchase Invoice", {
 
 	make_purchase_receipt: function(frm) {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.accounts.doctype.purchase_invoice.purchase_invoice.make_purchase_receipt",
+			method: "erpnext.accounts.doctype.purchase_invoice.purchase_invoice.make_purchase_receipt",
 			frm: frm,
 			freeze_message: __("Creating Purchase Receipt ...")
 		})
 	},
 
 	company: function(frm) {
-		shoperprime.accounts.dimensions.update_dimension(frm, frm.doctype);
+		erpnext.accounts.dimensions.update_dimension(frm, frm.doctype);
 
 		if (frm.doc.company) {
 			frappe.call({
 				method:
-					"shoperprime.accounts.party.get_party_account",
+					"erpnext.accounts.party.get_party_account",
 				args: {
 					party_type: 'Supplier',
 					party: frm.doc.supplier,

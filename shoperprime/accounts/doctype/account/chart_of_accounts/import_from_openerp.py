@@ -259,7 +259,7 @@ def make_charts():
 				val["root_type"] = ""
 		if chart:
 			fpath = os.path.join(
-				"shoperprime", "shoperprime", "accounts", "doctype", "account", "chart_of_accounts", filename + ".json"
+				"erpnext", "erpnext", "accounts", "doctype", "account", "chart_of_accounts", filename + ".json"
 			)
 
 			with open(fpath, "r") as chartfile:

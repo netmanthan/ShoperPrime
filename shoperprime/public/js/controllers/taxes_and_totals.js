@@ -1,7 +1,7 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-shoperprime.taxes_and_totals = class TaxesAndTotals extends shoperprime.payments {
+erpnext.taxes_and_totals = class TaxesAndTotals extends erpnext.payments {
 	setup() {
 		this.fetch_round_off_accounts();
 	}
@@ -186,7 +186,7 @@ shoperprime.taxes_and_totals = class TaxesAndTotals extends shoperprime.payments
 
 		if (me.frm.doc.company) {
 			return frappe.call({
-				"method": "shoperprime.controllers.taxes_and_totals.get_round_off_applicable_accounts",
+				"method": "erpnext.controllers.taxes_and_totals.get_round_off_applicable_accounts",
 				"args": {
 					"company": me.frm.doc.company,
 					"account_list": frappe.flags.round_off_applicable_accounts

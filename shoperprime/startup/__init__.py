@@ -1,4 +1,4 @@
-# shoperprime - web based ERP (http://shopersolutions.com)
+# ERPNext - web based ERP (http://shopersolutions.com)
 # Copyright (C) 2012 Frappe Technologies Pvt Ltd
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,5 +16,5 @@
 
 # default settings that can be made for a user.
 
-product_name = "shoperprime"
+product_name = "ERPNext"
 user_defaults = {"Company": "company", "Territory": "territory"}

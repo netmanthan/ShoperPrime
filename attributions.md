@@ -1,4 +1,4 @@
-## shoperprime includes these public works
+## ERPNext includes these public works
 
 For Frappe Framework, please see attributions.md at https://github.com/frappe/frappe/
 

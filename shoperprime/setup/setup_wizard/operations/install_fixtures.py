@@ -275,7 +275,7 @@ def install(country=None):
 	):
 		records += [{"doctype": doctype, title_field: title} for title in read_lines(filename)]
 
-	base_path = frappe.get_app_path("shoperprime", "stock", "doctype")
+	base_path = frappe.get_app_path("erpnext", "stock", "doctype")
 	response = frappe.read_file(
 		os.path.join(base_path, "delivery_trip/dispatch_notification_template.html")
 	)
@@ -333,7 +333,7 @@ def update_item_variant_settings():
 def add_uom_data():
 	# add UOMs
 	uoms = json.loads(
-		open(frappe.get_app_path("shoperprime", "setup", "setup_wizard", "data", "uom_data.json")).read()
+		open(frappe.get_app_path("erpnext", "setup", "setup_wizard", "data", "uom_data.json")).read()
 	)
 	for d in uoms:
 		if not frappe.db.exists("UOM", _(d.get("uom_name"))):
@@ -350,7 +350,7 @@ def add_uom_data():
 	# bootstrap uom conversion factors
 	uom_conversions = json.loads(
 		open(
-			frappe.get_app_path("shoperprime", "setup", "setup_wizard", "data", "uom_conversion_data.json")
+			frappe.get_app_path("erpnext", "setup", "setup_wizard", "data", "uom_conversion_data.json")
 		).read()
 	)
 	for d in uom_conversions:

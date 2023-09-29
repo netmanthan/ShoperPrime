@@ -1,5 +1,5 @@
 # Python bytecode 2.7 (62211)
-# Embedded file name: /Users/anuragmishra/frappe-develop/apps/shoperprime/shoperprime/buying/report/subcontracted_item_to_be_received/test_subcontracted_item_to_be_received.py
+# Embedded file name: /Users/anuragmishra/frappe-develop/apps/erpnext/erpnext/buying/report/subcontracted_item_to_be_received/test_subcontracted_item_to_be_received.py
 # Compiled at: 2019-05-06 09:51:46
 # Decompiled by https://python-decompiler.com
 

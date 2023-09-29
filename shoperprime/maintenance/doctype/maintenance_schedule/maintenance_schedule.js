@@ -1,12 +1,12 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("shoperprime.maintenance");
+frappe.provide("erpnext.maintenance");
 frappe.ui.form.on('Maintenance Schedule', {
 	setup: function (frm) {
-		frm.set_query('contact_person', shoperprime.queries.contact_query);
-		frm.set_query('customer_address', shoperprime.queries.address_query);
-		frm.set_query('customer', shoperprime.queries.customer);
+		frm.set_query('contact_person', erpnext.queries.contact_query);
+		frm.set_query('customer_address', erpnext.queries.address_query);
+		frm.set_query('customer', erpnext.queries.customer);
 	},
 	onload: function (frm) {
 		if (!frm.doc.status) {
@@ -23,13 +23,13 @@ frappe.ui.form.on('Maintenance Schedule', {
 		}, 10);
 	},
 	customer: function (frm) {
-		shoperprime.utils.get_party_details(frm)
+		erpnext.utils.get_party_details(frm)
 	},
 	customer_address: function (frm) {
-		shoperprime.utils.get_address_display(frm, 'customer_address', 'address_display');
+		erpnext.utils.get_address_display(frm, 'customer_address', 'address_display');
 	},
 	contact_person: function (frm) {
-		shoperprime.utils.get_contact_details(frm);
+		erpnext.utils.get_contact_details(frm);
 	},
 	generate_schedule: function (frm) {
 		if (frm.is_new()) {
@@ -41,7 +41,7 @@ frappe.ui.form.on('Maintenance Schedule', {
 })
 
 // TODO commonify this code
-shoperprime.maintenance.MaintenanceSchedule = class MaintenanceSchedule extends frappe.ui.form.Controller {
+erpnext.maintenance.MaintenanceSchedule = class MaintenanceSchedule extends frappe.ui.form.Controller {
 	refresh() {
 		frappe.dynamic_link = {doc: this.frm.doc, fieldname: 'customer', doctype: 'Customer'}
 
@@ -50,8 +50,8 @@ shoperprime.maintenance.MaintenanceSchedule = class MaintenanceSchedule extends 
 		if (this.frm.doc.docstatus === 0) {
 			this.frm.add_custom_button(__('Sales Order'),
 				function () {
-					shoperprime.utils.map_current_doc({
-						method: "shoperprime.selling.doctype.sales_order.sales_order.make_maintenance_schedule",
+					erpnext.utils.map_current_doc({
+						method: "erpnext.selling.doctype.sales_order.sales_order.make_maintenance_schedule",
 						source_doctype: "Sales Order",
 						target: me.frm,
 						setters: {
@@ -117,7 +117,7 @@ shoperprime.maintenance.MaintenanceSchedule = class MaintenanceSchedule extends 
 							primary_action_label: 'Create Visit',
 							primary_action(values) {
 								frappe.call({
-									method: "shoperprime.maintenance.doctype.maintenance_schedule.maintenance_schedule.make_maintenance_visit",
+									method: "erpnext.maintenance.doctype.maintenance_schedule.maintenance_schedule.make_maintenance_visit",
 									args: {
 										item_name: values.item_name,
 										s_id: schedule_id,
@@ -142,4 +142,4 @@ shoperprime.maintenance.MaintenanceSchedule = class MaintenanceSchedule extends 
 
 };
 
-extend_cscript(cur_frm.cscript, new shoperprime.maintenance.MaintenanceSchedule({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new erpnext.maintenance.MaintenanceSchedule({frm: cur_frm}));

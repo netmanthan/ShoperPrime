@@ -1,9 +1,9 @@
-frappe.provide("shoperprime.accounts.bank_reconciliation");
+frappe.provide("erpnext.accounts.bank_reconciliation");
 
-shoperprime.accounts.bank_reconciliation.DataTableManager = class DataTableManager {
+erpnext.accounts.bank_reconciliation.DataTableManager = class DataTableManager {
 	constructor(opts) {
 		Object.assign(this, opts);
-		this.dialog_manager = new shoperprime.accounts.bank_reconciliation.DialogManager(
+		this.dialog_manager = new erpnext.accounts.bank_reconciliation.DialogManager(
 			this.company,
 			this.bank_account,
 			this.bank_statement_from_date,
@@ -19,7 +19,7 @@ shoperprime.accounts.bank_reconciliation.DataTableManager = class DataTableManag
 		var me = this;
 		frappe.call({
 			method:
-				"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_bank_transactions",
+				"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_bank_transactions",
 			args: {
 				bank_account: this.bank_account,
 				from_date: this.bank_statement_from_date,
@@ -217,7 +217,7 @@ shoperprime.accounts.bank_reconciliation.DataTableManager = class DataTableManag
 		if (this.bank_account && this.bank_statement_to_date) {
 			return frappe.call({
 				method:
-					"shoperprime.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_account_balance",
+					"erpnext.accounts.doctype.bank_reconciliation_tool.bank_reconciliation_tool.get_account_balance",
 				args: {
 					bank_account: this.bank_account,
 					till_date: this.bank_statement_to_date,

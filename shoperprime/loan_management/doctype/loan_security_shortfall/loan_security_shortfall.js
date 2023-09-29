@@ -10,7 +10,7 @@ frappe.ui.form.on('Loan Security Shortfall', {
 
 	shortfall_action: function(frm) {
 		frappe.call({
-			method: "shoperprime.loan_management.doctype.loan_security_shortfall.loan_security_shortfall.add_security",
+			method: "erpnext.loan_management.doctype.loan_security_shortfall.loan_security_shortfall.add_security",
 			args: {
 				'loan': frm.doc.loan
 			},

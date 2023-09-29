@@ -1,4 +1,4 @@
-shoperprime.utils.CRMActivities = class CRMActivities {
+erpnext.utils.CRMActivities = class CRMActivities {
 	constructor(opts) {
 		$.extend(this, opts);
 	}
@@ -25,7 +25,7 @@ shoperprime.utils.CRMActivities = class CRMActivities {
 
 		// open activities
 		frappe.call({
-			method: "shoperprime.crm.utils.get_open_activities",
+			method: "erpnext.crm.utils.get_open_activities",
 			args: {
 				ref_doctype: this.frm.doc.doctype,
 				ref_docname: this.frm.doc.name
@@ -97,7 +97,7 @@ shoperprime.utils.CRMActivities = class CRMActivities {
 	}
 };
 
-shoperprime.utils.CRMNotes = class CRMNotes {
+erpnext.utils.CRMNotes = class CRMNotes {
 	constructor(opts) {
 		$.extend(this, opts);
 	}

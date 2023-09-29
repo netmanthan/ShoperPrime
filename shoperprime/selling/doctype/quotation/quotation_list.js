@@ -14,11 +14,11 @@ frappe.listview_settings['Quotation'] = {
 		}
 
 		listview.page.add_action_item(__("Sales Order"), ()=>{
-			shoperprime.bulk_transaction_processing.create(listview, "Quotation", "Sales Order");
+			erpnext.bulk_transaction_processing.create(listview, "Quotation", "Sales Order");
 		});
 
 		listview.page.add_action_item(__("Sales Invoice"), ()=>{
-			shoperprime.bulk_transaction_processing.create(listview, "Quotation", "Sales Invoice");
+			erpnext.bulk_transaction_processing.create(listview, "Quotation", "Sales Invoice");
 		});
 	},
 

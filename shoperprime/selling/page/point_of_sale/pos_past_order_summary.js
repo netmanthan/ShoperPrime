@@ -1,4 +1,4 @@
-shoperprime.PointOfSale.PastOrderSummary = class {
+erpnext.PointOfSale.PastOrderSummary = class {
 	constructor({ wrapper, events }) {
 		this.wrapper = wrapper;
 		this.events = events;

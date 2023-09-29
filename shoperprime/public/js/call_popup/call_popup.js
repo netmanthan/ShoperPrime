@@ -60,7 +60,7 @@ class CallPopup {
 
 	close_modal() {
 		this.dialog.hide();
-		delete shoperprime.call_popup;
+		delete erpnext.call_popup;
 	}
 
 	call_ended(call_log, missed) {
@@ -159,7 +159,7 @@ class CallPopup {
 					const call_summary = this.call_details.get_value('call_summary');
 					const call_type = this.call_details.get_value('call_type');
 					if (!call_summary) return;
-					frappe.xcall('shoperprime.telephony.doctype.call_log.call_log.add_call_summary_and_call_type', {
+					frappe.xcall('erpnext.telephony.doctype.call_log.call_log.add_call_summary_and_call_type', {
 						'call_log': this.call_log.name,
 						'summary': call_summary,
 						'call_type': call_type,
@@ -208,12 +208,12 @@ class CallPopup {
 
 $(document).on('app_ready', function () {
 	frappe.realtime.on('show_call_popup', call_log => {
-		let call_popup = shoperprime.call_popup;
+		let call_popup = erpnext.call_popup;
 		if (call_popup && call_log.name === call_popup.call_log.name) {
 			call_popup.update_call_log(call_log);
 			call_popup.dialog.show();
 		} else {
-			shoperprime.call_popup = new CallPopup(call_log);
+			erpnext.call_popup = new CallPopup(call_log);
 		}
 	});
 });

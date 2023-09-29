@@ -14,22 +14,22 @@ class TestInit(unittest.TestCase):
 
 		names = [
 			"Warehouse Name",
-			"shoperprime Foundation India",
+			"ERPNext Foundation India",
 			"Gold - Member - {a}".format(a=abbr),
 			" - {a}".format(a=abbr),
-			"shoperprime - Foundation - India",
-			"shoperprime Foundation India - {a}".format(a=abbr),
+			"ERPNext - Foundation - India",
+			"ERPNext Foundation India - {a}".format(a=abbr),
 			"No-Space-{a}".format(a=abbr),
 			"- Warehouse",
 		]
 
 		expected_names = [
 			"Warehouse Name - {a}".format(a=abbr),
-			"shoperprime Foundation India - {a}".format(a=abbr),
+			"ERPNext Foundation India - {a}".format(a=abbr),
 			"Gold - Member - {a}".format(a=abbr),
 			" - {a}".format(a=abbr),
-			"shoperprime - Foundation - India - {a}".format(a=abbr),
-			"shoperprime Foundation India - {a}".format(a=abbr),
+			"ERPNext - Foundation - India - {a}".format(a=abbr),
+			"ERPNext Foundation India - {a}".format(a=abbr),
 			"No-Space-{a} - {a}".format(a=abbr),
 			"- Warehouse - {a}".format(a=abbr),
 		]
@@ -44,9 +44,9 @@ class TestInit(unittest.TestCase):
 	def test_translation_files(self):
 		from frappe.tests.test_translate import verify_translation_files
 
-		verify_translation_files("shoperprime")
+		verify_translation_files("erpnext")
 
 	def test_patches(self):
 		from frappe.tests.test_patches import check_patch_files
 
-		check_patch_files("shoperprime")
+		check_patch_files("erpnext")

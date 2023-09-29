@@ -2,9 +2,9 @@
 // License: GNU General Public License v3. See license.txt
 
 // attach required files
-{% include 'shoperprime/public/js/controllers/buying.js' %};
+{% include 'erpnext/public/js/controllers/buying.js' %};
 
-shoperprime.buying.SupplierQuotationController = class SupplierQuotationController extends shoperprime.buying.BuyingController {
+erpnext.buying.SupplierQuotationController = class SupplierQuotationController extends erpnext.buying.BuyingController {
 	setup() {
 		this.frm.custom_make_buttons = {
 			'Purchase Order': 'Purchase Order',
@@ -32,8 +32,8 @@ shoperprime.buying.SupplierQuotationController = class SupplierQuotationControll
 
 			this.frm.add_custom_button(__('Material Request'),
 				function() {
-					shoperprime.utils.map_current_doc({
-						method: "shoperprime.stock.doctype.material_request.material_request.make_supplier_quotation",
+					erpnext.utils.map_current_doc({
+						method: "erpnext.stock.doctype.material_request.material_request.make_supplier_quotation",
 						source_doctype: "Material Request",
 						target: me.frm,
 						setters: {
@@ -53,7 +53,7 @@ shoperprime.buying.SupplierQuotationController = class SupplierQuotationControll
 			// Link Material Requests
 			this.frm.add_custom_button(__('Link to Material Requests'),
 				function() {
-					shoperprime.buying.link_to_mrs(me.frm);
+					erpnext.buying.link_to_mrs(me.frm);
 				}, __("Tools"));
 
 			this.frm.add_custom_button(__("Request for Quotation"),
@@ -61,8 +61,8 @@ shoperprime.buying.SupplierQuotationController = class SupplierQuotationControll
 				if (!me.frm.doc.supplier) {
 					frappe.throw({message:__("Please select a Supplier"), title:__("Mandatory")})
 				}
-				shoperprime.utils.map_current_doc({
-					method: "shoperprime.buying.doctype.request_for_quotation.request_for_quotation.make_supplier_quotation_from_rfq",
+				erpnext.utils.map_current_doc({
+					method: "erpnext.buying.doctype.request_for_quotation.request_for_quotation.make_supplier_quotation_from_rfq",
 					source_doctype: "Request for Quotation",
 					target: me.frm,
 					setters: {
@@ -72,7 +72,7 @@ shoperprime.buying.SupplierQuotationController = class SupplierQuotationControll
 						supplier: me.frm.doc.supplier,
 						company: me.frm.doc.company
 					},
-					get_query_method: "shoperprime.buying.doctype.request_for_quotation.request_for_quotation.get_rfq_containing_supplier"
+					get_query_method: "erpnext.buying.doctype.request_for_quotation.request_for_quotation.get_rfq_containing_supplier"
 
 				})
 			}, __("Get Items From"));
@@ -81,13 +81,13 @@ shoperprime.buying.SupplierQuotationController = class SupplierQuotationControll
 
 	make_purchase_order() {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.buying.doctype.supplier_quotation.supplier_quotation.make_purchase_order",
+			method: "erpnext.buying.doctype.supplier_quotation.supplier_quotation.make_purchase_order",
 			frm: cur_frm
 		})
 	}
 	make_quotation() {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.buying.doctype.supplier_quotation.supplier_quotation.make_quotation",
+			method: "erpnext.buying.doctype.supplier_quotation.supplier_quotation.make_quotation",
 			frm: cur_frm
 		})
 
@@ -95,7 +95,7 @@ shoperprime.buying.SupplierQuotationController = class SupplierQuotationControll
 };
 
 // for backward compatibility: combine new and previous states
-extend_cscript(cur_frm.cscript, new shoperprime.buying.SupplierQuotationController({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new erpnext.buying.SupplierQuotationController({frm: cur_frm}));
 
 cur_frm.fields_dict['items'].grid.get_field('project').get_query =
 	function(doc, cdt, cdn) {

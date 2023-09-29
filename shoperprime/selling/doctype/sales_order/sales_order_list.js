@@ -38,7 +38,7 @@ frappe.listview_settings['Sales Order'] = {
 		}
 	},
 	onload: function(listview) {
-		var method = "shoperprime.selling.doctype.sales_order.sales_order.close_or_unclose_sales_orders";
+		var method = "erpnext.selling.doctype.sales_order.sales_order.close_or_unclose_sales_orders";
 
 		listview.page.add_menu_item(__("Close"), function() {
 			listview.call_for_selected_items(method, {"status": "Closed"});
@@ -49,15 +49,15 @@ frappe.listview_settings['Sales Order'] = {
 		});
 
 		listview.page.add_action_item(__("Sales Invoice"), ()=>{
-			shoperprime.bulk_transaction_processing.create(listview, "Sales Order", "Sales Invoice");
+			erpnext.bulk_transaction_processing.create(listview, "Sales Order", "Sales Invoice");
 		});
 
 		listview.page.add_action_item(__("Delivery Note"), ()=>{
-			shoperprime.bulk_transaction_processing.create(listview, "Sales Order", "Delivery Note");
+			erpnext.bulk_transaction_processing.create(listview, "Sales Order", "Delivery Note");
 		});
 
 		listview.page.add_action_item(__("Advance Payment"), ()=>{
-			shoperprime.bulk_transaction_processing.create(listview, "Sales Order", "Payment Entry");
+			erpnext.bulk_transaction_processing.create(listview, "Sales Order", "Payment Entry");
 		});
 
 	}

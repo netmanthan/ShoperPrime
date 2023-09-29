@@ -601,7 +601,7 @@ def get_name_with_abbr(name, company):
 
 def install_country_fixtures(company, country):
 	try:
-		module_name = f"shoperprime.regional.{frappe.scrub(country)}.setup.setup"
+		module_name = f"erpnext.regional.{frappe.scrub(country)}.setup.setup"
 		frappe.get_attr(module_name)(company, False)
 	except ImportError:
 		pass

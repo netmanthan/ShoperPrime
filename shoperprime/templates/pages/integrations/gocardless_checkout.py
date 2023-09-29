@@ -7,7 +7,7 @@ import frappe
 from frappe import _
 from frappe.utils import flt, get_url
 
-from shoperprime.shoperprime_integrations.doctype.gocardless_settings.gocardless_settings import (
+from shoperprime.erpnext_integrations.doctype.gocardless_settings.gocardless_settings import (
 	get_gateway_controller,
 	gocardless_initialization,
 )

@@ -6,7 +6,7 @@ frappe.ui.form.on("Payment Request", {
 	setup: function(frm) {
 		frm.set_query("party_type", function() {
 			return {
-				query: "shoperprime.setup.doctype.party_type.party_type.get_party_type",
+				query: "erpnext.setup.doctype.party_type.party_type.get_party_type",
 			};
 		});
 	}
@@ -15,7 +15,7 @@ frappe.ui.form.on("Payment Request", {
 frappe.ui.form.on("Payment Request", "onload", function(frm, dt, dn){
 	if (frm.doc.reference_doctype) {
 		frappe.call({
-			method:"shoperprime.accounts.doctype.payment_request.payment_request.get_print_format_list",
+			method:"erpnext.accounts.doctype.payment_request.payment_request.get_print_format_list",
 			args: {"ref_doctype": frm.doc.reference_doctype},
 			callback:function(r){
 				set_field_options("print_format", r.message["print_format"])
@@ -29,7 +29,7 @@ frappe.ui.form.on("Payment Request", "refresh", function(frm) {
 		!in_list(["Initiated", "Paid"], frm.doc.status) && !frm.doc.__islocal && frm.doc.docstatus==1){
 		frm.add_custom_button(__('Resend Payment Email'), function(){
 			frappe.call({
-				method: "shoperprime.accounts.doctype.payment_request.payment_request.resend_payment_email",
+				method: "erpnext.accounts.doctype.payment_request.payment_request.resend_payment_email",
 				args: {"docname": frm.doc.name},
 				freeze: true,
 				freeze_message: __("Sending"),
@@ -45,7 +45,7 @@ frappe.ui.form.on("Payment Request", "refresh", function(frm) {
 	if((!frm.doc.payment_gateway_account || frm.doc.payment_request_type == "Outward") && frm.doc.status == "Initiated") {
 		frm.add_custom_button(__('Create Payment Entry'), function(){
 			frappe.call({
-				method: "shoperprime.accounts.doctype.payment_request.payment_request.make_payment_entry",
+				method: "erpnext.accounts.doctype.payment_request.payment_request.make_payment_entry",
 				args: {"docname": frm.doc.name},
 				freeze: true,
 				callback: function(r){
@@ -65,7 +65,7 @@ frappe.ui.form.on("Payment Request", "is_a_subscription", function(frm) {
 
 	if (frm.doc.is_a_subscription && frm.doc.reference_doctype && frm.doc.reference_name) {
 		frappe.call({
-			method: "shoperprime.accounts.doctype.payment_request.payment_request.get_subscription_details",
+			method: "erpnext.accounts.doctype.payment_request.payment_request.get_subscription_details",
 			args: {"reference_doctype": frm.doc.reference_doctype, "reference_name": frm.doc.reference_name},
 			freeze: true,
 			callback: function(data){

@@ -1,4 +1,4 @@
-shoperprime.HierarchyChartMobile = class {
+erpnext.HierarchyChartMobile = class {
 	/* Options:
 		- doctype
 		- wrapper: wrapper for the hierarchy view

@@ -85,7 +85,7 @@ class POSClosingEntry(StatusUpdater):
 	def get_payment_reconciliation_details(self):
 		currency = frappe.get_cached_value("Company", self.company, "default_currency")
 		return frappe.render_template(
-			"shoperprime/accounts/doctype/pos_closing_entry/closing_voucher_details.html",
+			"erpnext/accounts/doctype/pos_closing_entry/closing_voucher_details.html",
 			{"data": self, "currency": currency},
 		)
 

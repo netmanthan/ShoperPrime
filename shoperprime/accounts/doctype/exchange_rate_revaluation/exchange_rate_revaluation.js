@@ -135,7 +135,7 @@ var get_account_details = function(frm, cdt, cdn) {
 		frappe.throw(__("Please select Company and Posting Date to getting entries"));
 	}
 	frappe.call({
-		method: "shoperprime.accounts.doctype.exchange_rate_revaluation.exchange_rate_revaluation.get_account_details",
+		method: "erpnext.accounts.doctype.exchange_rate_revaluation.exchange_rate_revaluation.get_account_details",
 		args:{
 			account: row.account,
 			company: frm.doc.company,

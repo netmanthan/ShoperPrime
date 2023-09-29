@@ -130,7 +130,7 @@ def trigger_job_for_doc(docname: str | None = None):
 			job_name = f"start_processing_{docname}"
 			if not is_job_running(job_name):
 				job = frappe.enqueue(
-					method="shoperprime.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.reconcile_based_on_filters",
+					method="erpnext.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.reconcile_based_on_filters",
 					queue="long",
 					is_async=True,
 					job_name=job_name,
@@ -148,7 +148,7 @@ def trigger_job_for_doc(docname: str | None = None):
 			job_name = f"start_processing_{docname}"
 			if not is_job_running(job_name):
 				job = frappe.enqueue(
-					method="shoperprime.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.reconcile_based_on_filters",
+					method="erpnext.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.reconcile_based_on_filters",
 					queue="long",
 					is_async=True,
 					job_name=job_name,
@@ -225,7 +225,7 @@ def reconcile_based_on_filters(doc: None | str = None) -> None:
 			job_name = f"process_{doc}_fetch_and_allocate"
 			if not is_job_running(job_name):
 				job = frappe.enqueue(
-					method="shoperprime.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.fetch_and_allocate",
+					method="erpnext.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.fetch_and_allocate",
 					queue="long",
 					timeout="3600",
 					is_async=True,
@@ -246,7 +246,7 @@ def reconcile_based_on_filters(doc: None | str = None) -> None:
 				job_name = f"process__{doc}_fetch_and_allocate"
 				if not is_job_running(job_name):
 					job = frappe.enqueue(
-						method="shoperprime.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.fetch_and_allocate",
+						method="erpnext.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.fetch_and_allocate",
 						queue="long",
 						timeout="3600",
 						is_async=True,
@@ -264,7 +264,7 @@ def reconcile_based_on_filters(doc: None | str = None) -> None:
 					reconcile_job_name = f"process_{doc}_reconcile"
 				if not is_job_running(reconcile_job_name):
 					job = frappe.enqueue(
-						method="shoperprime.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.reconcile",
+						method="erpnext.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.reconcile",
 						queue="long",
 						timeout="3600",
 						is_async=True,
@@ -351,7 +351,7 @@ def fetch_and_allocate(doc: str) -> None:
 
 				if not is_job_running(reconcile_job_name):
 					job = frappe.enqueue(
-						method="shoperprime.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.reconcile",
+						method="erpnext.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.reconcile",
 						queue="long",
 						timeout="3600",
 						is_async=True,
@@ -463,7 +463,7 @@ def reconcile(doc: None | str = None) -> None:
 
 							if not is_job_running(reconcile_job_name):
 								job = frappe.enqueue(
-									method="shoperprime.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.reconcile",
+									method="erpnext.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.reconcile",
 									queue="long",
 									timeout="3600",
 									is_async=True,

@@ -102,7 +102,7 @@ def execute_repost_payment_ledger(docname):
 	job_name = "payment_ledger_repost_" + docname
 
 	frappe.enqueue(
-		method="shoperprime.accounts.doctype.repost_payment_ledger.repost_payment_ledger.start_payment_ledger_repost",
+		method="erpnext.accounts.doctype.repost_payment_ledger.repost_payment_ledger.start_payment_ledger_repost",
 		docname=docname,
 		is_async=True,
 		job_name=job_name,

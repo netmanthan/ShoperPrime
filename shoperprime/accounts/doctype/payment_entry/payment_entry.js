@@ -1,7 +1,7 @@
 // Copyright (c) 2016, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
-{% include "shoperprime/public/js/controllers/accounts.js" %}
-frappe.provide("shoperprime.accounts.dimensions");
+{% include "erpnext/public/js/controllers/accounts.js" %}
+frappe.provide("erpnext.accounts.dimensions");
 
 cur_frm.cscript.tax_table = "Advance Taxes and Charges";
 
@@ -14,7 +14,7 @@ frappe.ui.form.on('Payment Entry', {
 			if (!frm.doc.paid_to) frm.set_value("paid_to_account_currency", null);
 		}
 
-		shoperprime.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
+		erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
 	},
 
 	setup: function(frm) {
@@ -123,7 +123,7 @@ frappe.ui.form.on('Payment Entry', {
 			const child = locals[cdt][cdn];
 			if (in_list(['Purchase Invoice', 'Sales Invoice'], child.reference_doctype) && child.reference_name) {
 				return {
-					query: "shoperprime.controllers.queries.get_payment_terms_for_references",
+					query: "erpnext.controllers.queries.get_payment_terms_for_references",
 					filters: {
 						'reference': child.reference_name
 					}
@@ -148,7 +148,7 @@ frappe.ui.form.on('Payment Entry', {
 	},
 
 	refresh: function(frm) {
-		shoperprime.hide_company();
+		erpnext.hide_company();
 		frm.events.hide_unhide_fields(frm);
 		frm.events.set_dynamic_labels(frm);
 		frm.events.show_general_ledger(frm);
@@ -163,12 +163,12 @@ frappe.ui.form.on('Payment Entry', {
 	company: function(frm) {
 		frm.events.hide_unhide_fields(frm);
 		frm.events.set_dynamic_labels(frm);
-		shoperprime.accounts.dimensions.update_dimension(frm, frm.doctype);
+		erpnext.accounts.dimensions.update_dimension(frm, frm.doctype);
 	},
 
 	contact_person: function(frm) {
 		frm.set_value("contact_email", "");
-		shoperprime.utils.get_contact_details(frm);
+		erpnext.utils.get_contact_details(frm);
 	},
 
 	hide_unhide_fields: function(frm) {
@@ -295,12 +295,12 @@ frappe.ui.form.on('Payment Entry', {
 		frm.set_query("party", function() {
 			if(frm.doc.party_type == 'Employee'){
 				return {
-					query: "shoperprime.controllers.queries.employee_query"
+					query: "erpnext.controllers.queries.employee_query"
 				}
 			}
 			else if(frm.doc.party_type == 'Customer'){
 				return {
-					query: "shoperprime.controllers.queries.customer_query"
+					query: "erpnext.controllers.queries.customer_query"
 				}
 			}
 		});
@@ -332,7 +332,7 @@ frappe.ui.form.on('Payment Entry', {
 			let company_currency = frappe.get_doc(":Company", frm.doc.company).default_currency;
 
 			return frappe.call({
-				method: "shoperprime.accounts.doctype.payment_entry.payment_entry.get_party_details",
+				method: "erpnext.accounts.doctype.payment_entry.payment_entry.get_party_details",
 				args: {
 					company: frm.doc.company,
 					party_type: frm.doc.party_type,
@@ -424,7 +424,7 @@ frappe.ui.form.on('Payment Entry', {
 		var company_currency = frappe.get_doc(":Company", frm.doc.company).default_currency;
 		if (frm.doc.posting_date && account) {
 			frappe.call({
-				method: "shoperprime.accounts.doctype.payment_entry.payment_entry.get_account_details",
+				method: "erpnext.accounts.doctype.payment_entry.payment_entry.get_account_details",
 				args: {
 					"account": account,
 					"date": frm.doc.posting_date,
@@ -481,7 +481,7 @@ frappe.ui.form.on('Payment Entry', {
 			if (in_list(["Internal Transfer", "Pay"], frm.doc.payment_type)) {
 				let company_currency = frappe.get_doc(":Company", frm.doc.company).default_currency;
 				frappe.call({
-					method: "shoperprime.setup.utils.get_exchange_rate",
+					method: "erpnext.setup.utils.get_exchange_rate",
 					args: {
 						from_currency: frm.doc.paid_from_account_currency,
 						to_currency: company_currency,
@@ -508,7 +508,7 @@ frappe.ui.form.on('Payment Entry', {
 
 	set_current_exchange_rate: function(frm, exchange_rate_field, from_currency, to_currency) {
 		frappe.call({
-			method: "shoperprime.setup.utils.get_exchange_rate",
+			method: "erpnext.setup.utils.get_exchange_rate",
 			args: {
 				transaction_date: frm.doc.posting_date,
 				from_currency: from_currency,
@@ -544,7 +544,7 @@ frappe.ui.form.on('Payment Entry', {
 		}
 
 		// Make read only if Accounts Settings doesn't allow stale rates
-		frm.set_df_property("source_exchange_rate", "read_only", shoperprime.stale_rate_allowed() ? 0 : 1);
+		frm.set_df_property("source_exchange_rate", "read_only", erpnext.stale_rate_allowed() ? 0 : 1);
 	},
 
 	target_exchange_rate: function(frm) {
@@ -571,7 +571,7 @@ frappe.ui.form.on('Payment Entry', {
 		frm.set_paid_amount_based_on_received_amount = false;
 
 		// Make read only if Accounts Settings doesn't allow stale rates
-		frm.set_df_property("target_exchange_rate", "read_only", shoperprime.stale_rate_allowed() ? 0 : 1);
+		frm.set_df_property("target_exchange_rate", "read_only", erpnext.stale_rate_allowed() ? 0 : 1);
 	},
 
 	paid_amount: function(frm) {
@@ -734,7 +734,7 @@ frappe.ui.form.on('Payment Entry', {
 		frappe.flags.allocate_payment_amount = filters['allocate_payment_amount'];
 
 		return  frappe.call({
-			method: 'shoperprime.accounts.doctype.payment_entry.payment_entry.get_outstanding_reference_documents',
+			method: 'erpnext.accounts.doctype.payment_entry.payment_entry.get_outstanding_reference_documents',
 			args: {
 				args:args
 			},
@@ -1004,7 +1004,7 @@ frappe.ui.form.on('Payment Entry', {
 	set_deductions_entry: function(frm, account) {
 		if(frm.doc.difference_amount) {
 			frappe.call({
-				method: "shoperprime.accounts.doctype.payment_entry.payment_entry.get_company_defaults",
+				method: "erpnext.accounts.doctype.payment_entry.payment_entry.get_company_defaults",
 				args: {
 					company: frm.doc.company
 				},
@@ -1064,7 +1064,7 @@ frappe.ui.form.on('Payment Entry', {
 		const field = frm.doc.payment_type == "Pay" ? "paid_from":"paid_to";
 		if (frm.doc.bank_account && in_list(['Pay', 'Receive'], frm.doc.payment_type)) {
 			frappe.call({
-				method: "shoperprime.accounts.doctype.bank_account.bank_account.get_bank_account_details",
+				method: "erpnext.accounts.doctype.bank_account.bank_account.get_bank_account_details",
 				args: {
 					bank_account: frm.doc.bank_account
 				},
@@ -1104,7 +1104,7 @@ frappe.ui.form.on('Payment Entry', {
 		}
 
 		frappe.call({
-			method: "shoperprime.controllers.accounts_controller.get_taxes_and_charges",
+			method: "erpnext.controllers.accounts_controller.get_taxes_and_charges",
 			args: {
 				"master_doctype": master_doctype,
 				"master_name": taxes_and_charges
@@ -1371,7 +1371,7 @@ frappe.ui.form.on('Payment Entry Reference', {
 		var row = locals[cdt][cdn];
 		if (row.reference_name && row.reference_doctype) {
 			return frappe.call({
-				method: "shoperprime.accounts.doctype.payment_entry.payment_entry.get_reference_details",
+				method: "erpnext.accounts.doctype.payment_entry.payment_entry.get_reference_details",
 				args: {
 					reference_doctype: row.reference_doctype,
 					reference_name: row.reference_name,
@@ -1449,7 +1449,7 @@ frappe.ui.form.on('Payment Entry', {
 	cost_center: function(frm){
 		if (frm.doc.posting_date && (frm.doc.paid_from||frm.doc.paid_to)) {
 			return frappe.call({
-				method: "shoperprime.accounts.doctype.payment_entry.payment_entry.get_party_and_account_balance",
+				method: "erpnext.accounts.doctype.payment_entry.payment_entry.get_party_and_account_balance",
 				args: {
 					company: frm.doc.company,
 					date: frm.doc.posting_date,

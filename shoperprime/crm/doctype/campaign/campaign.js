@@ -3,7 +3,7 @@
 
 frappe.ui.form.on('Campaign', {
 	refresh: function(frm) {
-		shoperprime.toggle_naming_series();
+		erpnext.toggle_naming_series();
 
 		if (frm.is_new()) {
 			frm.toggle_display("naming_series", frappe.boot.sysdefaults.campaign_naming_by=="Naming Series");

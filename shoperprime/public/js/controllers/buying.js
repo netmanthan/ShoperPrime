@@ -1,15 +1,15 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("shoperprime.buying");
+frappe.provide("erpnext.buying");
 
 cur_frm.cscript.tax_table = "Purchase Taxes and Charges";
 
-{% include 'shoperprime/accounts/doctype/purchase_taxes_and_charges_template/purchase_taxes_and_charges_template.js' %}
+{% include 'erpnext/accounts/doctype/purchase_taxes_and_charges_template/purchase_taxes_and_charges_template.js' %}
 
 cur_frm.email_field = "contact_email";
 
-shoperprime.buying.BuyingController = class BuyingController extends shoperprime.TransactionController {
+erpnext.buying.BuyingController = class BuyingController extends erpnext.TransactionController {
 	setup() {
 		super.setup();
 	}
@@ -44,7 +44,7 @@ shoperprime.buying.BuyingController = class BuyingController extends shoperprime
 						filters: { link_doctype: 'Customer', link_name: me.frm.doc.customer }
 					};
 				} else
-					return shoperprime.queries.company_address_query(me.frm.doc)
+					return erpnext.queries.company_address_query(me.frm.doc)
 			});
 		}
 		/* eslint-enable */
@@ -69,16 +69,16 @@ shoperprime.buying.BuyingController = class BuyingController extends shoperprime
 			});
 		}
 
-		me.frm.set_query('supplier', shoperprime.queries.supplier);
-		me.frm.set_query('contact_person', shoperprime.queries.contact_query);
-		me.frm.set_query('supplier_address', shoperprime.queries.address_query);
+		me.frm.set_query('supplier', erpnext.queries.supplier);
+		me.frm.set_query('contact_person', erpnext.queries.contact_query);
+		me.frm.set_query('supplier_address', erpnext.queries.address_query);
 
-		me.frm.set_query('billing_address', shoperprime.queries.company_address_query);
-		shoperprime.accounts.dimensions.setup_dimension_filters(me.frm, me.frm.doctype);
+		me.frm.set_query('billing_address', erpnext.queries.company_address_query);
+		erpnext.accounts.dimensions.setup_dimension_filters(me.frm, me.frm.doctype);
 
 		if(this.frm.fields_dict.supplier) {
 			this.frm.set_query("supplier", function() {
-				return{	query: "shoperprime.controllers.queries.supplier_query" }});
+				return{	query: "erpnext.controllers.queries.supplier_query" }});
 		}
 
 		this.frm.set_query("item_code", "items", function() {
@@ -92,13 +92,13 @@ shoperprime.buying.BuyingController = class BuyingController extends shoperprime
 				}
 
 				return{
-					query: "shoperprime.controllers.queries.item_query",
+					query: "erpnext.controllers.queries.item_query",
 					filters: filters
 				}
 			}
 			else {
 				return{
-					query: "shoperprime.controllers.queries.item_query",
+					query: "erpnext.controllers.queries.item_query",
 					filters: { 'supplier': me.frm.doc.supplier, 'is_purchase_item': 1, 'has_variants': 0}
 				}
 			}
@@ -108,7 +108,7 @@ shoperprime.buying.BuyingController = class BuyingController extends shoperprime
 		this.frm.set_query("manufacturer", "items", function(doc, cdt, cdn) {
 			const row = locals[cdt][cdn];
 			return {
-				query: "shoperprime.controllers.queries.item_manufacturer_query",
+				query: "erpnext.controllers.queries.item_manufacturer_query",
 				filters:{ 'item_code': row.item_code }
 			}
 		});
@@ -147,14 +147,14 @@ shoperprime.buying.BuyingController = class BuyingController extends shoperprime
 
 	supplier() {
 		var me = this;
-		shoperprime.utils.get_party_details(this.frm, null, null, function(){
+		erpnext.utils.get_party_details(this.frm, null, null, function(){
 			me.apply_price_list();
 		});
 	}
 
 	supplier_address() {
-		shoperprime.utils.get_address_display(this.frm);
-		shoperprime.utils.set_taxes_from_address(this.frm, "supplier_address", "supplier_address", "supplier_address");
+		erpnext.utils.get_address_display(this.frm);
+		erpnext.utils.set_taxes_from_address(this.frm, "supplier_address", "supplier_address", "supplier_address");
 	}
 
 	buying_price_list() {
@@ -220,7 +220,7 @@ shoperprime.buying.BuyingController = class BuyingController extends shoperprime
 		var item = frappe.get_doc(cdt, cdn);
 		if(item.item_code && item.warehouse) {
 			return this.frm.call({
-				method: "shoperprime.stock.get_item_details.get_bin_details",
+				method: "erpnext.stock.get_item_details.get_bin_details",
 				child: item,
 				args: {
 					item_code: item.item_code,
@@ -265,18 +265,18 @@ shoperprime.buying.BuyingController = class BuyingController extends shoperprime
 	set_from_product_bundle() {
 		var me = this;
 		this.frm.add_custom_button(__("Product Bundle"), function() {
-			shoperprime.buying.get_items_from_product_bundle(me.frm);
+			erpnext.buying.get_items_from_product_bundle(me.frm);
 		}, __("Get Items From"));
 	}
 
 	shipping_address(){
 		var me = this;
-		shoperprime.utils.get_address_display(this.frm, "shipping_address",
+		erpnext.utils.get_address_display(this.frm, "shipping_address",
 			"shipping_address_display", true);
 	}
 
 	billing_address() {
-		shoperprime.utils.get_address_display(this.frm, "billing_address",
+		erpnext.utils.get_address_display(this.frm, "billing_address",
 			"billing_address_display", true);
 	}
 
@@ -308,7 +308,7 @@ shoperprime.buying.BuyingController = class BuyingController extends shoperprime
 
 		if(row.manufacturer) {
 			frappe.call({
-				method: "shoperprime.stock.doctype.item_manufacturer.item_manufacturer.get_item_manufacturer_part_no",
+				method: "erpnext.stock.doctype.item_manufacturer.item_manufacturer.get_item_manufacturer_part_no",
 				args: {
 					'item_code': row.item_code,
 					'manufacturer': row.manufacturer
@@ -349,9 +349,9 @@ shoperprime.buying.BuyingController = class BuyingController extends shoperprime
 
 cur_frm.add_fetch('project', 'cost_center', 'cost_center');
 
-shoperprime.buying.link_to_mrs = function(frm) {
+erpnext.buying.link_to_mrs = function(frm) {
 	frappe.call({
-		method: "shoperprime.buying.utils.get_linked_material_requests",
+		method: "erpnext.buying.utils.get_linked_material_requests",
 		args:{
 			items: frm.doc.items.map((item) => item.item_code)
 		},
@@ -405,12 +405,12 @@ shoperprime.buying.link_to_mrs = function(frm) {
 	});
 }
 
-shoperprime.buying.get_default_bom = function(frm) {
+erpnext.buying.get_default_bom = function(frm) {
 	$.each(frm.doc["items"] || [], function(i, d) {
 		if (d.item_code && d.bom === "") {
 			return frappe.call({
 				type: "GET",
-				method: "shoperprime.stock.get_item_details.get_default_bom",
+				method: "erpnext.stock.get_item_details.get_default_bom",
 				args: {
 					"item_code": d.item_code,
 				},
@@ -424,7 +424,7 @@ shoperprime.buying.get_default_bom = function(frm) {
 	});
 }
 
-shoperprime.buying.get_items_from_product_bundle = function(frm) {
+erpnext.buying.get_items_from_product_bundle = function(frm) {
 	var dialog = new frappe.ui.Dialog({
 		title: __("Get Items from Product Bundle"),
 		fields: [
@@ -449,7 +449,7 @@ shoperprime.buying.get_items_from_product_bundle = function(frm) {
 			dialog.hide();
 			return frappe.call({
 				type: "GET",
-				method: "shoperprime.stock.doctype.packed_item.packed_item.get_items_from_product_bundle",
+				method: "erpnext.stock.doctype.packed_item.packed_item.get_items_from_product_bundle",
 				args: {
 					row: {
 						item_code: args.product_bundle,

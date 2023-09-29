@@ -1,7 +1,7 @@
 import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
-from shoperprime.shoperprime_integrations.doctype.taxjar_settings.taxjar_settings import add_permissions
+from shoperprime.erpnext_integrations.doctype.taxjar_settings.taxjar_settings import add_permissions
 
 
 def execute():
@@ -67,6 +67,6 @@ def execute():
 	create_custom_fields(custom_fields, update=True)
 	add_permissions()
 	frappe.enqueue(
-		"shoperprime.shoperprime_integrations.doctype.taxjar_settings.taxjar_settings.add_product_tax_categories",
+		"erpnext.erpnext_integrations.doctype.taxjar_settings.taxjar_settings.add_product_tax_categories",
 		now=True,
 	)

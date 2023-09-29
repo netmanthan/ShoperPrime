@@ -6,11 +6,11 @@ frappe.ui.form.on("Customer", {
 
 		frm.make_methods = {
 			'Quotation': () => frappe.model.open_mapped_doc({
-				method: "shoperprime.selling.doctype.customer.customer.make_quotation",
+				method: "erpnext.selling.doctype.customer.customer.make_quotation",
 				frm: cur_frm
 			}),
 			'Opportunity': () => frappe.model.open_mapped_doc({
-				method: "shoperprime.selling.doctype.customer.customer.make_opportunity",
+				method: "erpnext.selling.doctype.customer.customer.make_opportunity",
 				frm: cur_frm
 			})
 		}
@@ -41,7 +41,7 @@ frappe.ui.form.on("Customer", {
 
 		frm.set_query('customer_primary_contact', function(doc) {
 			return {
-				query: "shoperprime.selling.doctype.customer.customer.get_customer_primary_contact",
+				query: "erpnext.selling.doctype.customer.customer.get_customer_primary_contact",
 				filters: {
 					'customer': doc.name
 				}
@@ -107,7 +107,7 @@ frappe.ui.form.on("Customer", {
 		if(frappe.defaults.get_default("cust_master_name")!="Naming Series") {
 			frm.toggle_display("naming_series", false);
 		} else {
-			shoperprime.toggle_naming_series();
+			erpnext.toggle_naming_series();
 		}
 
 		frappe.dynamic_link = {doc: frm.doc, fieldname: 'name', doctype: 'Customer'}
@@ -127,7 +127,7 @@ frappe.ui.form.on("Customer", {
 			}, __('View'));
 
 			frm.add_custom_button(__('Pricing Rule'), function () {
-				shoperprime.utils.make_pricing_rule(frm.doc.doctype, frm.doc.name);
+				erpnext.utils.make_pricing_rule(frm.doc.doctype, frm.doc.name);
 			}, __('Create'));
 
 			frm.add_custom_button(__('Get Customer Group Details'), function () {
@@ -141,7 +141,7 @@ frappe.ui.form.on("Customer", {
 			}
 
 			// indicator
-			shoperprime.utils.set_party_dashboard_indicators(frm);
+			erpnext.utils.set_party_dashboard_indicators(frm);
 
 		} else {
 			frappe.contacts.clear_address_and_contact(frm);
@@ -174,7 +174,7 @@ frappe.ui.form.on("Customer", {
 			}],
 			primary_action: function({ supplier }) {
 				frappe.call({
-					method: 'shoperprime.accounts.doctype.party_link.party_link.create_party_link',
+					method: 'erpnext.accounts.doctype.party_link.party_link.create_party_link',
 					args: {
 						primary_role: 'Customer',
 						primary_party: frm.doc.name,

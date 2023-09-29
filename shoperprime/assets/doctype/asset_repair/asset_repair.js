@@ -44,7 +44,7 @@ frappe.ui.form.on('Asset Repair', {
 	repair_status: (frm) => {
 		if (frm.doc.completion_date && frm.doc.repair_status == "Completed") {
 			frappe.call ({
-				method: "shoperprime.assets.doctype.asset_repair.asset_repair.get_downtime",
+				method: "erpnext.assets.doctype.asset_repair.asset_repair.get_downtime",
 				args: {
 					"failure_date":frm.doc.failure_date,
 					"completion_date":frm.doc.completion_date
@@ -63,7 +63,7 @@ frappe.ui.form.on('Asset Repair', {
 	},
 
 	stock_items_on_form_rendered() {
-		shoperprime.setup_serial_or_batch_no();
+		erpnext.setup_serial_or_batch_no();
 	}
 });
 
@@ -80,7 +80,7 @@ frappe.ui.form.on('Asset Repair Consumed Item', {
 		};
 
 		frappe.call({
-			method: 'shoperprime.stock.utils.get_incoming_rate',
+			method: 'erpnext.stock.utils.get_incoming_rate',
 			args: {
 				args: item_args
 			},

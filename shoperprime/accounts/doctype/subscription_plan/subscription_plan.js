@@ -8,6 +8,6 @@ frappe.ui.form.on('Subscription Plan', {
 	},
 
 	subscription_plan: function (frm) {
-		shoperprime.utils.check_payments_app();
+		erpnext.utils.check_payments_app();
 	},
 });

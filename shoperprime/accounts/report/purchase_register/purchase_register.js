@@ -56,4 +56,4 @@ frappe.query_reports["Purchase Register"] = {
 	]
 }
 
-shoperprime.utils.add_dimensions('Purchase Register', 7);
+erpnext.utils.add_dimensions('Purchase Register', 7);

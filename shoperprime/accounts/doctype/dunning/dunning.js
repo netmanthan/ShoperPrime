@@ -87,7 +87,7 @@ frappe.ui.form.on("Dunning", {
 		if (frm.doc.dunning_type) {
 			frappe.call({
 				method:
-				"shoperprime.accounts.doctype.dunning.dunning.get_dunning_letter_text",
+				"erpnext.accounts.doctype.dunning.dunning.get_dunning_letter_text",
 				args: {
 					dunning_type: frm.doc.dunning_type,
 					language: frm.doc.language,
@@ -148,7 +148,7 @@ frappe.ui.form.on("Dunning", {
 	make_payment_entry: function (frm) {
 		return frappe.call({
 			method:
-			"shoperprime.accounts.doctype.payment_entry.payment_entry.get_payment_entry",
+			"erpnext.accounts.doctype.payment_entry.payment_entry.get_payment_entry",
 			args: {
 				dt: frm.doc.doctype,
 				dn: frm.doc.name,

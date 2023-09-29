@@ -1,14 +1,14 @@
 frappe.treeview_settings['Warehouse'] = {
-	get_tree_nodes: "shoperprime.stock.doctype.warehouse.warehouse.get_children",
-	add_tree_node: "shoperprime.stock.doctype.warehouse.warehouse.add_node",
+	get_tree_nodes: "erpnext.stock.doctype.warehouse.warehouse.get_children",
+	add_tree_node: "erpnext.stock.doctype.warehouse.warehouse.add_node",
 	get_tree_root: false,
 	root_label: "Warehouses",
 	filters: [{
 		fieldname: "company",
 		fieldtype:"Select",
-		options: shoperprime.utils.get_tree_options("company"),
+		options: erpnext.utils.get_tree_options("company"),
 		label: __("Company"),
-		default: shoperprime.utils.get_tree_default("company")
+		default: erpnext.utils.get_tree_default("company")
 	}],
 	fields:[
 		{fieldtype:'Data', fieldname: 'warehouse_name',

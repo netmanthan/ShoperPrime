@@ -1,11 +1,11 @@
 // Copyright (c) 2013, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.require("assets/shoperprime/js/financial_statements.js", function() {
+frappe.require("assets/erpnext/js/financial_statements.js", function() {
 	frappe.query_reports["Cash Flow"] = $.extend({},
-		shoperprime.financial_statements);
+		erpnext.financial_statements);
 
-	shoperprime.utils.add_dimensions('Cash Flow', 10);
+	erpnext.utils.add_dimensions('Cash Flow', 10);
 
 	// The last item in the array is the definition for Presentation Currency
 	// filter. It won't be used in cash flow for now so we pop it. Please take

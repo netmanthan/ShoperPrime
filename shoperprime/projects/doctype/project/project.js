@@ -27,11 +27,11 @@ frappe.ui.form.on("Project", {
 			};
 		};
 
-		frm.set_query('customer', 'shoperprime.controllers.queries.customer_query');
+		frm.set_query('customer', 'erpnext.controllers.queries.customer_query');
 
 		frm.set_query("user", "users", function () {
 			return {
-				query: "shoperprime.projects.doctype.project.project.get_users_for_project"
+				query: "erpnext.projects.doctype.project.project.get_users_for_project"
 			};
 		});
 
@@ -80,7 +80,7 @@ frappe.ui.form.on("Project", {
 				}, __("View"));
 
 				frm.add_custom_button(__("Kanban Board"), () => {
-					frappe.call('shoperprime.projects.doctype.project.project.create_kanban_board_if_not_exists', {
+					frappe.call('erpnext.projects.doctype.project.project.create_kanban_board_if_not_exists', {
 						project: frm.doc.name
 					}).then(() => {
 						frappe.set_route('List', 'Task', 'Kanban', frm.doc.project_name);
@@ -117,7 +117,7 @@ frappe.ui.form.on("Project", {
 	create_duplicate: function(frm) {
 		return new Promise(resolve => {
 			frappe.prompt('Project Name', (data) => {
-				frappe.xcall('shoperprime.projects.doctype.project.project.create_duplicate_project',
+				frappe.xcall('erpnext.projects.doctype.project.project.create_duplicate_project',
 					{
 						prev_doc: frm.doc,
 						project_name: data.value
@@ -132,7 +132,7 @@ frappe.ui.form.on("Project", {
 
 	set_status: function(frm, status) {
 		frappe.confirm(__('Set Project and all Tasks to status {0}?', [status.bold()]), () => {
-			frappe.xcall('shoperprime.projects.doctype.project.project.set_project_status',
+			frappe.xcall('erpnext.projects.doctype.project.project.set_project_status',
 				{project: frm.doc.name, status: status}).then(() => {
 				frm.reload_doc();
 			});

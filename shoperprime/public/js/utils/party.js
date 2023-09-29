@@ -1,14 +1,14 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("shoperprime.utils");
+frappe.provide("erpnext.utils");
 
 const SALES_DOCTYPES = ['Quotation', 'Sales Order', 'Delivery Note', 'Sales Invoice'];
 const PURCHASE_DOCTYPES = ['Purchase Order', 'Purchase Receipt', 'Purchase Invoice'];
 
-shoperprime.utils.get_party_details = function(frm, method, args, callback) {
+erpnext.utils.get_party_details = function(frm, method, args, callback) {
 	if (!method) {
-		method = "shoperprime.accounts.party.get_party_details";
+		method = "erpnext.accounts.party.get_party_details";
 	}
 
 	if (!args) {
@@ -74,11 +74,11 @@ shoperprime.utils.get_party_details = function(frm, method, args, callback) {
 
 
 	if (frappe.meta.get_docfield(frm.doc.doctype, "taxes")) {
-		if (!shoperprime.utils.validate_mandatory(frm, "Posting / Transaction Date",
+		if (!erpnext.utils.validate_mandatory(frm, "Posting / Transaction Date",
 			args.posting_date, args.party_type=="Customer" ? "customer": "supplier")) return;
 	}
 
-	if (!shoperprime.utils.validate_mandatory(frm, "Company", frm.doc.company, args.party_type=="Customer" ? "customer": "supplier")) {
+	if (!erpnext.utils.validate_mandatory(frm, "Company", frm.doc.company, args.party_type=="Customer" ? "customer": "supplier")) {
 		return;
 	}
 
@@ -98,7 +98,7 @@ shoperprime.utils.get_party_details = function(frm, method, args, callback) {
 						frm.updating_party_details = false;
 						if (callback) callback();
 						frm.refresh();
-						shoperprime.utils.add_item(frm);
+						erpnext.utils.add_item(frm);
 					}
 				]);
 			}
@@ -106,7 +106,7 @@ shoperprime.utils.get_party_details = function(frm, method, args, callback) {
 	});
 }
 
-shoperprime.utils.add_item = function(frm) {
+erpnext.utils.add_item = function(frm) {
 	if (frm.is_new()) {
 		var prev_route = frappe.get_prev_route();
 		if (prev_route[1]==='Item' && !(frm.doc.items && frm.doc.items.length)) {
@@ -120,7 +120,7 @@ shoperprime.utils.add_item = function(frm) {
 	}
 }
 
-shoperprime.utils.get_address_display = function(frm, address_field, display_field, is_your_company_address) {
+erpnext.utils.get_address_display = function(frm, address_field, display_field, is_your_company_address) {
 	if (frm.updating_party_details) return;
 
 	if (!address_field) {
@@ -147,16 +147,16 @@ shoperprime.utils.get_address_display = function(frm, address_field, display_fie
 	}
 };
 
-shoperprime.utils.set_taxes_from_address = function(frm, triggered_from_field, billing_address_field, shipping_address_field) {
+erpnext.utils.set_taxes_from_address = function(frm, triggered_from_field, billing_address_field, shipping_address_field) {
 	if (frm.updating_party_details) return;
 
 	if (frappe.meta.get_docfield(frm.doc.doctype, "taxes")) {
-		if (!shoperprime.utils.validate_mandatory(frm, "Lead / Customer / Supplier",
+		if (!erpnext.utils.validate_mandatory(frm, "Lead / Customer / Supplier",
 			frm.doc.customer || frm.doc.supplier || frm.doc.lead || frm.doc.party_name, triggered_from_field)) {
 			return;
 		}
 
-		if (!shoperprime.utils.validate_mandatory(frm, "Posting / Transaction Date",
+		if (!erpnext.utils.validate_mandatory(frm, "Posting / Transaction Date",
 			frm.doc.posting_date || frm.doc.transaction_date, triggered_from_field)) {
 			return;
 		}
@@ -165,7 +165,7 @@ shoperprime.utils.set_taxes_from_address = function(frm, triggered_from_field, b
 	}
 
 	frappe.call({
-		method: "shoperprime.accounts.party.get_address_tax_category",
+		method: "erpnext.accounts.party.get_address_tax_category",
 		args: {
 			"tax_category": frm.doc.tax_category,
 			"billing_address": frm.doc[billing_address_field],
@@ -176,25 +176,25 @@ shoperprime.utils.set_taxes_from_address = function(frm, triggered_from_field, b
 				if (frm.doc.tax_category != r.message) {
 					frm.set_value("tax_category", r.message);
 				} else {
-					shoperprime.utils.set_taxes(frm, triggered_from_field);
+					erpnext.utils.set_taxes(frm, triggered_from_field);
 				}
 			}
 		}
 	});
 };
 
-shoperprime.utils.set_taxes = function(frm, triggered_from_field) {
+erpnext.utils.set_taxes = function(frm, triggered_from_field) {
 	if (frappe.meta.get_docfield(frm.doc.doctype, "taxes")) {
-		if (!shoperprime.utils.validate_mandatory(frm, "Company", frm.doc.company, triggered_from_field)) {
+		if (!erpnext.utils.validate_mandatory(frm, "Company", frm.doc.company, triggered_from_field)) {
 			return;
 		}
 
-		if (!shoperprime.utils.validate_mandatory(frm, "Lead / Customer / Supplier",
+		if (!erpnext.utils.validate_mandatory(frm, "Lead / Customer / Supplier",
 			frm.doc.customer || frm.doc.supplier || frm.doc.lead || frm.doc.party_name, triggered_from_field)) {
 			return;
 		}
 
-		if (!shoperprime.utils.validate_mandatory(frm, "Posting / Transaction Date",
+		if (!erpnext.utils.validate_mandatory(frm, "Posting / Transaction Date",
 			frm.doc.posting_date || frm.doc.transaction_date, triggered_from_field)) {
 			return;
 		}
@@ -222,7 +222,7 @@ shoperprime.utils.set_taxes = function(frm, triggered_from_field) {
 	}
 
 	frappe.call({
-		method: "shoperprime.accounts.party.set_taxes",
+		method: "erpnext.accounts.party.set_taxes",
 		args: {
 			"party": party,
 			"party_type": party_type,
@@ -242,7 +242,7 @@ shoperprime.utils.set_taxes = function(frm, triggered_from_field) {
 	});
 };
 
-shoperprime.utils.get_contact_details = function (frm) {
+erpnext.utils.get_contact_details = function (frm) {
 	if (frm.updating_party_details) return;
 
 	if (frm.doc["contact_person"]) {
@@ -266,7 +266,7 @@ shoperprime.utils.get_contact_details = function (frm) {
 	}
 };
 
-shoperprime.utils.validate_mandatory = function(frm, label, value, trigger_on) {
+erpnext.utils.validate_mandatory = function(frm, label, value, trigger_on) {
 	if (!value) {
 		frm.doc[trigger_on] = "";
 		refresh_field(trigger_on);
@@ -276,7 +276,7 @@ shoperprime.utils.validate_mandatory = function(frm, label, value, trigger_on) {
 	return true;
 }
 
-shoperprime.utils.get_shipping_address = function(frm, callback) {
+erpnext.utils.get_shipping_address = function(frm, callback) {
 	if (frm.doc.company) {
 		if ((frm.doc.inter_company_order_reference || frm.doc.internal_invoice_reference ||
 			frm.doc.internal_order_reference)) {
@@ -285,7 +285,7 @@ shoperprime.utils.get_shipping_address = function(frm, callback) {
 			}
 		}
 		frappe.call({
-			method: "shoperprime.accounts.custom.address.get_shipping_address",
+			method: "erpnext.accounts.custom.address.get_shipping_address",
 			args: {
 				company: frm.doc.company,
 				address: frm.doc.shipping_address

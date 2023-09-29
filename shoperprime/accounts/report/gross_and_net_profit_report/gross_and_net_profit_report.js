@@ -7,9 +7,9 @@ frappe.query_reports["Gross and Net Profit Report"] = {
 
 	]
 }
-frappe.require("assets/shoperprime/js/financial_statements.js", function() {
+frappe.require("assets/erpnext/js/financial_statements.js", function() {
 	frappe.query_reports["Gross and Net Profit Report"] = $.extend({},
-		shoperprime.financial_statements);
+		erpnext.financial_statements);
 
 	frappe.query_reports["Gross and Net Profit Report"]["filters"].push(
 		{

@@ -1,7 +1,7 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-shoperprime.get_sales_trends_filters = function() {
+erpnext.get_sales_trends_filters = function() {
 	return[
 		{
 			"fieldname":"period",
@@ -48,7 +48,7 @@ shoperprime.get_sales_trends_filters = function() {
 			"label": __("Fiscal Year"),
 			"fieldtype": "Link",
 			"options":'Fiscal Year',
-			"default": shoperprime.utils.get_fiscal_year(frappe.datetime.get_today())
+			"default": erpnext.utils.get_fiscal_year(frappe.datetime.get_today())
 		},
 		{
 			"fieldname":"company",

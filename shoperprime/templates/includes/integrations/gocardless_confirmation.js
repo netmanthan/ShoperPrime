@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var docname = "{{ reference_docname }}";
 
 	frappe.call({
-		method: "shoperprime.templates.pages.integrations.gocardless_confirmation.confirm_payment",
+		method: "erpnext.templates.pages.integrations.gocardless_confirmation.confirm_payment",
 		freeze: true,
 		headers: {
 			"X-Requested-With": "XMLHttpRequest"

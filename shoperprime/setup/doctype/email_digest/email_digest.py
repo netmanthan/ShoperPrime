@@ -130,7 +130,7 @@ class EmailDigest(Document):
 
 		# style
 		return frappe.render_template(
-			"shoperprime/setup/doctype/email_digest/templates/default.html", context, is_path=True
+			"erpnext/setup/doctype/email_digest/templates/default.html", context, is_path=True
 		)
 
 	def set_title(self, context):

@@ -1,7 +1,7 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("shoperprime.item");
+frappe.provide("erpnext.item");
 
 const SALES_DOCTYPES = ['Quotation', 'Sales Order', 'Delivery Note', 'Sales Invoice'];
 const PURCHASE_DOCTYPES = ['Purchase Order', 'Purchase Receipt', 'Purchase Invoice'];
@@ -43,7 +43,7 @@ frappe.ui.form.on("Item", {
 
 	},
 	onload: function(frm) {
-		shoperprime.item.setup_queries(frm);
+		erpnext.item.setup_queries(frm);
 		if (frm.doc.variant_of){
 			frm.fields_dict["attributes"].grid.set_column_disp("attribute_value", true);
 		}
@@ -101,14 +101,14 @@ frappe.ui.form.on("Item", {
 
 			if(frm.doc.variant_based_on==="Item Attribute") {
 				frm.add_custom_button(__("Single Variant"), function() {
-					shoperprime.item.show_single_variant_dialog(frm);
+					erpnext.item.show_single_variant_dialog(frm);
 				}, __('Create'));
 				frm.add_custom_button(__("Multiple Variants"), function() {
-					shoperprime.item.show_multiple_variants_dialog(frm);
+					erpnext.item.show_multiple_variants_dialog(frm);
 				}, __('Create'));
 			} else {
 				frm.add_custom_button(__("Variant"), function() {
-					shoperprime.item.show_modal_for_manufacturers(frm);
+					erpnext.item.show_modal_for_manufacturers(frm);
 				}, __('Create'));
 			}
 
@@ -122,13 +122,13 @@ frappe.ui.form.on("Item", {
 		if (frappe.defaults.get_default("item_naming_by")!="Naming Series" || frm.doc.variant_of) {
 			frm.toggle_display("naming_series", false);
 		} else {
-			shoperprime.toggle_naming_series();
+			erpnext.toggle_naming_series();
 		}
 
 		if (!frm.doc.published_in_website) {
 			frm.add_custom_button(__("Publish in Website"), function() {
 				frappe.call({
-					method: "shoperprime.e_commerce.doctype.website_item.website_item.make_website_item",
+					method: "erpnext.e_commerce.doctype.website_item.website_item.make_website_item",
 					args: {doc: frm.doc},
 					freeze: true,
 					freeze_message: __("Publishing Item ..."),
@@ -155,11 +155,11 @@ frappe.ui.form.on("Item", {
 			}, __("View"));
 		}
 
-		shoperprime.item.edit_prices_button(frm);
-		shoperprime.item.toggle_attributes(frm);
+		erpnext.item.edit_prices_button(frm);
+		erpnext.item.toggle_attributes(frm);
 
 		if (!frm.doc.is_fixed_asset) {
-			shoperprime.item.make_dashboard(frm);
+			erpnext.item.make_dashboard(frm);
 		}
 
 		frm.add_custom_button(__('Duplicate'), function() {
@@ -185,7 +185,7 @@ frappe.ui.form.on("Item", {
 	},
 
 	validate: function(frm){
-		shoperprime.item.weight_to_validate(frm);
+		erpnext.item.weight_to_validate(frm);
 	},
 
 	image: function() {
@@ -203,7 +203,7 @@ frappe.ui.form.on("Item", {
 		frm.toggle_enable(['has_serial_no', 'serial_no_series'], !frm.doc.is_fixed_asset);
 
 		frappe.call({
-			method: "shoperprime.stock.doctype.item.item.get_asset_naming_series",
+			method: "erpnext.stock.doctype.item.item.get_asset_naming_series",
 			callback: function(r) {
 				frm.set_value("is_stock_item", frm.doc.is_fixed_asset ? 0 : 1);
 				frm.events.set_asset_naming_series(frm, r.message);
@@ -241,7 +241,7 @@ frappe.ui.form.on("Item", {
 	},
 
 	has_variants: function(frm) {
-		shoperprime.item.toggle_attributes(frm);
+		erpnext.item.toggle_attributes(frm);
 	}
 });
 
@@ -282,12 +282,12 @@ var set_customer_group = function(frm, cdt, cdn) {
 	return true;
 }
 
-$.extend(shoperprime.item, {
+$.extend(erpnext.item, {
 	setup_queries: function(frm) {
 		frm.fields_dict["item_defaults"].grid.get_field("expense_account").get_query = function(doc, cdt, cdn) {
 			const row = locals[cdt][cdn];
 			return {
-				query: "shoperprime.controllers.queries.get_expense_account",
+				query: "erpnext.controllers.queries.get_expense_account",
 				filters: { company: row.company }
 			}
 		}
@@ -295,7 +295,7 @@ $.extend(shoperprime.item, {
 		frm.fields_dict["item_defaults"].grid.get_field("income_account").get_query = function(doc, cdt, cdn) {
 			const row = locals[cdt][cdn];
 			return {
-				query: "shoperprime.controllers.queries.get_income_account",
+				query: "erpnext.controllers.queries.get_income_account",
 				filters: { company: row.company }
 			}
 		}
@@ -371,11 +371,11 @@ $.extend(shoperprime.item, {
 		}
 
 		frm.fields_dict.customer_items.grid.get_field("customer_name").get_query = function(doc, cdt, cdn) {
-			return { query: "shoperprime.controllers.queries.customer_query" }
+			return { query: "erpnext.controllers.queries.customer_query" }
 		}
 
 		frm.fields_dict.supplier_items.grid.get_field("supplier").get_query = function(doc, cdt, cdn) {
-			return { query: "shoperprime.controllers.queries.supplier_query" }
+			return { query: "erpnext.controllers.queries.supplier_query" }
 		}
 
 		frm.fields_dict["item_defaults"].grid.get_field("default_warehouse").get_query = function(doc, cdt, cdn) {
@@ -431,14 +431,14 @@ $.extend(shoperprime.item, {
 		if (frm.doc.is_stock_item) {
 			frappe.require('item-dashboard.bundle.js', function() {
 				const section = frm.dashboard.add_section('', __("Stock Levels"));
-				shoperprime.item.item_dashboard = new shoperprime.stock.ItemDashboard({
+				erpnext.item.item_dashboard = new erpnext.stock.ItemDashboard({
 					parent: section,
 					item_code: frm.doc.name,
 					page_length: 20,
-					method: 'shoperprime.stock.dashboard.item_dashboard.get_data',
+					method: 'erpnext.stock.dashboard.item_dashboard.get_data',
 					template: 'item_dashboard_list'
 				});
-				shoperprime.item.item_dashboard.refresh();
+				erpnext.item.item_dashboard.refresh();
 			});
 		}
 	},
@@ -483,7 +483,7 @@ $.extend(shoperprime.item, {
 			// call the server to make the variant
 			data.template = frm.doc.name;
 			frappe.call({
-				method: "shoperprime.controllers.item_variant.get_variant",
+				method: "erpnext.controllers.item_variant.get_variant",
 				args: data,
 				callback: function(r) {
 					var doclist = frappe.model.sync(r.message);
@@ -562,7 +562,7 @@ $.extend(shoperprime.item, {
 
 				me.multiple_variant_dialog.hide();
 				frappe.call({
-					method: "shoperprime.controllers.item_variant.enqueue_multiple_variant_creation",
+					method: "erpnext.controllers.item_variant.enqueue_multiple_variant_creation",
 					args: {
 						"item": frm.doc.name,
 						"args": selected_attributes
@@ -696,7 +696,7 @@ $.extend(shoperprime.item, {
 			var args = d.get_values();
 			if(!args) return;
 			frappe.call({
-				method: "shoperprime.controllers.item_variant.get_variant",
+				method: "erpnext.controllers.item_variant.get_variant",
 				btn: d.get_primary_btn(),
 				args: {
 					"template": frm.doc.name,
@@ -719,7 +719,7 @@ $.extend(shoperprime.item, {
 					} else {
 						d.hide();
 						frappe.call({
-							method: "shoperprime.controllers.item_variant.create_variant",
+							method: "erpnext.controllers.item_variant.create_variant",
 							args: {
 								"item": frm.doc.name,
 								"args": d.get_values()
@@ -757,7 +757,7 @@ $.extend(shoperprime.item, {
 				.on('input', function(e) {
 					var term = e.target.value;
 					frappe.call({
-						method: "shoperprime.stock.doctype.item.item.get_item_attribute",
+						method: "erpnext.stock.doctype.item.item.get_item_attribute",
 						args: {
 							parent: i,
 							attribute_value: term
@@ -832,7 +832,7 @@ frappe.ui.form.on("UOM Conversion Detail", {
 		var row = locals[cdt][cdn];
 		if (row.uom) {
 			frappe.call({
-				method: "shoperprime.stock.doctype.item.item.get_uom_conv_factor",
+				method: "erpnext.stock.doctype.item.item.get_uom_conv_factor",
 				args: {
 					"uom": row.uom,
 					"stock_uom": frm.doc.stock_uom
@@ -861,7 +861,7 @@ frappe.tour['Item'] = [
 	{
 		fieldname: "is_stock_item",
 		title: "Maintain Stock",
-		description: __("If you are maintaining stock of this Item in your Inventory, shoperprime will make a stock ledger entry for each transaction of this item.")
+		description: __("If you are maintaining stock of this Item in your Inventory, ERPNext will make a stock ledger entry for each transaction of this item.")
 	},
 	{
 		fieldname: "include_item_in_manufacturing",

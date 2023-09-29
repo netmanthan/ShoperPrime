@@ -59,11 +59,11 @@ frappe.listview_settings["Purchase Invoice"] = {
 
 	onload: function(listview) {
 		listview.page.add_action_item(__("Purchase Receipt"), ()=>{
-			shoperprime.bulk_transaction_processing.create(listview, "Purchase Invoice", "Purchase Receipt");
+			erpnext.bulk_transaction_processing.create(listview, "Purchase Invoice", "Purchase Receipt");
 		});
 
 		listview.page.add_action_item(__("Payment"), ()=>{
-			shoperprime.bulk_transaction_processing.create(listview, "Purchase Invoice", "Payment Entry");
+			erpnext.bulk_transaction_processing.create(listview, "Purchase Invoice", "Payment Entry");
 		});
 	}
 };

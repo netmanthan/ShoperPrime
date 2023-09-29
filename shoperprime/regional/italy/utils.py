@@ -358,7 +358,7 @@ def prepare_and_attach_invoice(doc, replace=False):
 	item_meta = frappe.get_meta("Sales Invoice Item")
 
 	invoice_xml = frappe.render_template(
-		"shoperprime/regional/italy/e-invoice.xml",
+		"erpnext/regional/italy/e-invoice.xml",
 		context={"doc": invoice, "item_meta": item_meta},
 		is_path=True,
 	)

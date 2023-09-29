@@ -1,9 +1,9 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
-frappe.provide("shoperprime");
-frappe.provide("shoperprime.utils");
+frappe.provide("erpnext");
+frappe.provide("erpnext.utils");
 
-$.extend(shoperprime, {
+$.extend(erpnext, {
 	get_currency: function(company) {
 		if(!company && cur_frm)
 			company = cur_frm.doc.company;
@@ -32,8 +32,8 @@ $.extend(shoperprime, {
 			if(companies.length === 1) {
 				if(!cur_frm.doc.company) cur_frm.set_value("company", companies[0]);
 				cur_frm.toggle_display("company", false);
-			} else if(shoperprime.last_selected_company) {
-				if(!cur_frm.doc.company) cur_frm.set_value("company", shoperprime.last_selected_company);
+			} else if(erpnext.last_selected_company) {
+				if(!cur_frm.doc.company) cur_frm.set_value("company", erpnext.last_selected_company);
 			}
 		}
 	},
@@ -90,13 +90,13 @@ $.extend(shoperprime, {
 });
 
 
-$.extend(shoperprime.utils, {
+$.extend(erpnext.utils, {
 	set_party_dashboard_indicators: function(frm) {
 		if(frm.doc.__onload && frm.doc.__onload.dashboard_info) {
 			var company_wise_info = frm.doc.__onload.dashboard_info;
 			if(company_wise_info.length > 1) {
 				company_wise_info.forEach(function(info) {
-					shoperprime.utils.add_indicator_for_multicompany(frm, info);
+					erpnext.utils.add_indicator_for_multicompany(frm, info);
 				});
 			} else if (company_wise_info.length === 1) {
 				frm.dashboard.add_indicator(__('Annual Billing: {0}',
@@ -161,7 +161,7 @@ $.extend(shoperprime.utils, {
 	get_terms: function(tc_name, doc, callback) {
 		if(tc_name) {
 			return frappe.call({
-				method: 'shoperprime.setup.doctype.terms_and_conditions.terms_and_conditions.get_terms_and_conditions',
+				method: 'erpnext.setup.doctype.terms_and_conditions.terms_and_conditions.get_terms_and_conditions',
 				args: {
 					template_name: tc_name,
 					doc: doc
@@ -175,7 +175,7 @@ $.extend(shoperprime.utils, {
 
 	make_bank_account: function(doctype, docname) {
 		frappe.call({
-			method: "shoperprime.accounts.doctype.bank_account.bank_account.make_bank_account",
+			method: "erpnext.accounts.doctype.bank_account.bank_account.make_bank_account",
 			args: {
 				doctype: doctype,
 				docname: docname
@@ -192,7 +192,7 @@ $.extend(shoperprime.utils, {
 		let filters = frappe.query_reports[report_name].filters;
 
 		frappe.call({
-			method: "shoperprime.accounts.doctype.accounting_dimension.accounting_dimension.get_dimensions",
+			method: "erpnext.accounts.doctype.accounting_dimension.accounting_dimension.get_dimensions",
 			callback: function(r) {
 				let accounting_dimensions = r.message[0];
 				accounting_dimensions.forEach((dimension) => {
@@ -217,7 +217,7 @@ $.extend(shoperprime.utils, {
 		let filters = frappe.query_reports[report_name].filters;
 
 		frappe.call({
-			method: "shoperprime.stock.doctype.inventory_dimension.inventory_dimension.get_inventory_dimensions",
+			method: "erpnext.stock.doctype.inventory_dimension.inventory_dimension.get_inventory_dimensions",
 			callback: function(r) {
 				if (r.message && r.message.length) {
 					r.message.forEach((dimension) => {
@@ -260,7 +260,7 @@ $.extend(shoperprime.utils, {
 
 	make_pricing_rule: function(doctype, docname) {
 		frappe.call({
-			method: "shoperprime.accounts.doctype.pricing_rule.pricing_rule.make_pricing_rule",
+			method: "erpnext.accounts.doctype.pricing_rule.pricing_rule.make_pricing_rule",
 			args: {
 				doctype: doctype,
 				docname: docname
@@ -358,7 +358,7 @@ $.extend(shoperprime.utils, {
 
 		let fiscal_year = '';
 		frappe.call({
-			method: "shoperprime.accounts.utils.get_fiscal_year",
+			method: "erpnext.accounts.utils.get_fiscal_year",
 			args: {
 				date: date
 			},
@@ -373,7 +373,7 @@ $.extend(shoperprime.utils, {
 	}
 });
 
-shoperprime.utils.select_alternate_items = function(opts) {
+erpnext.utils.select_alternate_items = function(opts) {
 	const frm = opts.frm;
 	const warehouse_field = opts.warehouse_field || 'warehouse';
 	const item_field = opts.item_field || 'item_code';
@@ -412,7 +412,7 @@ shoperprime.utils.select_alternate_items = function(opts) {
 						const warehouse = this.grid_row.on_grid_fields_dict.warehouse.get_value();
 						if (item_code && warehouse) {
 							frappe.call({
-								method: "shoperprime.stock.utils.get_latest_stock_qty",
+								method: "erpnext.stock.utils.get_latest_stock_qty",
 								args: {
 									item_code: item_code,
 									warehouse: warehouse
@@ -426,7 +426,7 @@ shoperprime.utils.select_alternate_items = function(opts) {
 					},
 					get_query: (e) => {
 						return {
-							query: "shoperprime.stock.doctype.item_alternative.item_alternative.get_alternative_items",
+							query: "erpnext.stock.doctype.item_alternative.item_alternative.get_alternative_items",
 							filters: {
 								item_code: e.item_code
 							}
@@ -444,7 +444,7 @@ shoperprime.utils.select_alternate_items = function(opts) {
 						const item_code = this.grid_row.on_grid_fields_dict.item_code.get_value();
 						if (item_code && warehouse) {
 							frappe.call({
-								method: "shoperprime.stock.utils.get_latest_stock_qty",
+								method: "erpnext.stock.utils.get_latest_stock_qty",
 								args: {
 									item_code: item_code,
 									warehouse: warehouse
@@ -510,7 +510,7 @@ shoperprime.utils.select_alternate_items = function(opts) {
 	dialog.show();
 }
 
-shoperprime.utils.update_child_items = function(opts) {
+erpnext.utils.update_child_items = function(opts) {
 	const frm = opts.frm;
 	const cannot_add_row = (typeof opts.cannot_add_row === 'undefined') ? true : opts.cannot_add_row;
 	const child_docname = (typeof opts.cannot_add_row === 'undefined') ? "items" : opts.child_docname;
@@ -560,7 +560,7 @@ shoperprime.utils.update_child_items = function(opts) {
 				}
 			}
 			return {
-				query: "shoperprime.controllers.queries.item_query",
+				query: "erpnext.controllers.queries.item_query",
 				filters: filters
 			};
 		}
@@ -573,7 +573,7 @@ shoperprime.utils.update_child_items = function(opts) {
 		reqd: 1,
 		onchange: function () {
 			frappe.call({
-				method: "shoperprime.stock.get_item_details.get_conversion_factor",
+				method: "erpnext.stock.get_item_details.get_conversion_factor",
 				args: { item_code: this.doc.item_code, uom: this.value },
 				callback: r => {
 					if(!r.exc) {
@@ -647,7 +647,7 @@ shoperprime.utils.update_child_items = function(opts) {
 		primary_action: function() {
 			const trans_items = this.get_values()["trans_items"].filter((item) => !!item.item_code);
 			frappe.call({
-				method: 'shoperprime.controllers.accounts_controller.update_child_qty_rate',
+				method: 'erpnext.controllers.accounts_controller.update_child_qty_rate',
 				freeze: true,
 				args: {
 					'parent_doctype': frm.doc.doctype,
@@ -666,7 +666,7 @@ shoperprime.utils.update_child_items = function(opts) {
 	}).show();
 }
 
-shoperprime.utils.map_current_doc = function(opts) {
+erpnext.utils.map_current_doc = function(opts) {
 	function _map() {
 		if($.isArray(cur_frm.doc.items) && cur_frm.doc.items.length > 0) {
 			// remove first item row if empty
@@ -850,7 +850,7 @@ $(document).on('app_ready', function() {
 					return;
 
 				frappe.call({
-					method: 'shoperprime.support.doctype.service_level_agreement.service_level_agreement.get_service_level_agreement_filters',
+					method: 'erpnext.support.doctype.service_level_agreement.service_level_agreement.get_service_level_agreement_filters',
 					args: {
 						doctype: frm.doc.doctype,
 						name: frm.doc.service_level_agreement,

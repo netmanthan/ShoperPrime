@@ -3,13 +3,13 @@
 
 
 cur_frm.cscript.tax_table = "Sales Taxes and Charges";
-{% include 'shoperprime/accounts/doctype/sales_taxes_and_charges_template/sales_taxes_and_charges_template.js' %}
+{% include 'erpnext/accounts/doctype/sales_taxes_and_charges_template/sales_taxes_and_charges_template.js' %}
 
 
 cur_frm.email_field = "contact_email";
 
-frappe.provide("shoperprime.selling");
-shoperprime.selling.SellingController = class SellingController extends shoperprime.TransactionController {
+frappe.provide("erpnext.selling");
+erpnext.selling.SellingController = class SellingController extends erpnext.TransactionController {
 	setup() {
 		super.setup();
 	}
@@ -33,15 +33,15 @@ shoperprime.selling.SellingController = class SellingController extends shoperpr
 			["lead", "lead"]],
 			function(i, opts) {
 				if(me.frm.fields_dict[opts[0]])
-					me.frm.set_query(opts[0], shoperprime.queries[opts[1]]);
+					me.frm.set_query(opts[0], erpnext.queries[opts[1]]);
 			});
 
-		me.frm.set_query('contact_person', shoperprime.queries.contact_query);
-		me.frm.set_query('customer_address', shoperprime.queries.address_query);
-		me.frm.set_query('shipping_address_name', shoperprime.queries.address_query);
-		me.frm.set_query('dispatch_address_name', shoperprime.queries.dispatch_address_query);
+		me.frm.set_query('contact_person', erpnext.queries.contact_query);
+		me.frm.set_query('customer_address', erpnext.queries.address_query);
+		me.frm.set_query('shipping_address_name', erpnext.queries.address_query);
+		me.frm.set_query('dispatch_address_name', erpnext.queries.dispatch_address_query);
 
-		shoperprime.accounts.dimensions.setup_dimension_filters(me.frm, me.frm.doctype);
+		erpnext.accounts.dimensions.setup_dimension_filters(me.frm, me.frm.doctype);
 
 		if(this.frm.fields_dict.selling_price_list) {
 			this.frm.set_query("selling_price_list", function() {
@@ -62,7 +62,7 @@ shoperprime.selling.SellingController = class SellingController extends shoperpr
 		if(this.frm.fields_dict["items"].grid.get_field('item_code')) {
 			this.frm.set_query("item_code", "items", function() {
 				return {
-					query: "shoperprime.controllers.queries.item_query",
+					query: "erpnext.controllers.queries.item_query",
 					filters: {'is_sales_item': 1, 'customer': cur_frm.doc.customer, 'has_variants': 0}
 				}
 			});
@@ -96,23 +96,23 @@ shoperprime.selling.SellingController = class SellingController extends shoperpr
 
 	customer() {
 		var me = this;
-		shoperprime.utils.get_party_details(this.frm, null, null, function() {
+		erpnext.utils.get_party_details(this.frm, null, null, function() {
 			me.apply_price_list();
 		});
 	}
 
 	customer_address() {
-		shoperprime.utils.get_address_display(this.frm, "customer_address");
-		shoperprime.utils.set_taxes_from_address(this.frm, "customer_address", "customer_address", "shipping_address_name");
+		erpnext.utils.get_address_display(this.frm, "customer_address");
+		erpnext.utils.set_taxes_from_address(this.frm, "customer_address", "customer_address", "shipping_address_name");
 	}
 
 	shipping_address_name() {
-		shoperprime.utils.get_address_display(this.frm, "shipping_address_name", "shipping_address");
-		shoperprime.utils.set_taxes_from_address(this.frm, "shipping_address_name", "customer_address", "shipping_address_name");
+		erpnext.utils.get_address_display(this.frm, "shipping_address_name", "shipping_address");
+		erpnext.utils.set_taxes_from_address(this.frm, "shipping_address_name", "customer_address", "shipping_address_name");
 	}
 
 	dispatch_address_name() {
-		shoperprime.utils.get_address_display(this.frm, "dispatch_address_name", "dispatch_address");
+		erpnext.utils.get_address_display(this.frm, "dispatch_address_name", "dispatch_address");
 	}
 
 	sales_partner() {
@@ -205,7 +205,7 @@ shoperprime.selling.SellingController = class SellingController extends shoperpr
 			has_batch_no = r && r.has_batch_no;
 			if(item.item_code && item.warehouse) {
 				return this.frm.call({
-					method: "shoperprime.stock.get_item_details.get_bin_details_and_serial_nos",
+					method: "erpnext.stock.get_item_details.get_bin_details_and_serial_nos",
 					child: item,
 					args: {
 						item_code: item.item_code,
@@ -303,7 +303,7 @@ shoperprime.selling.SellingController = class SellingController extends shoperpr
 			has_serial_no = r && r.has_serial_no;
 			if(item.warehouse && item.item_code && item.batch_no) {
 				return this.frm.call({
-					method: "shoperprime.stock.get_item_details.get_batch_qty_and_serial_no",
+					method: "erpnext.stock.get_item_details.get_batch_qty_and_serial_no",
 					child: item,
 					args: {
 						"batch_no": item.batch_no,
@@ -400,7 +400,7 @@ shoperprime.selling.SellingController = class SellingController extends shoperpr
 		}
 
 		return frappe.call({
-			method: 'shoperprime.stock.doctype.batch.batch.get_batch_no',
+			method: 'erpnext.stock.doctype.batch.batch.get_batch_no',
 			args: args,
 			callback: function(r) {
 				if(r.message) {
@@ -434,7 +434,7 @@ frappe.ui.form.on(cur_frm.doctype,"project", function(frm) {
 	if(in_list(["Delivery Note", "Sales Invoice"], frm.doc.doctype)) {
 		if(frm.doc.project) {
 			frappe.call({
-				method:'shoperprime.projects.doctype.project.project.get_cost_center_name' ,
+				method:'erpnext.projects.doctype.project.project.get_cost_center_name' ,
 				args: {	project: frm.doc.project	},
 				callback: function(r, rt) {
 					if(!r.exc) {

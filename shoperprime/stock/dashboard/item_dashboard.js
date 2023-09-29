@@ -1,6 +1,6 @@
-frappe.provide('shoperprime.stock');
+frappe.provide('erpnext.stock');
 
-shoperprime.stock.ItemDashboard = class ItemDashboard {
+erpnext.stock.ItemDashboard = class ItemDashboard {
 	constructor(opts) {
 		$.extend(this, opts);
 		this.make();
@@ -49,11 +49,11 @@ shoperprime.stock.ItemDashboard = class ItemDashboard {
 			} else {
 				if (action === "Add") {
 					let rate = unescape($(this).attr('data-rate'));
-					shoperprime.stock.move_item(item, null, warehouse, actual_qty, rate, function () {
+					erpnext.stock.move_item(item, null, warehouse, actual_qty, rate, function () {
 						me.refresh();
 					});
 				} else {
-					shoperprime.stock.move_item(item, warehouse, null, actual_qty, null, function () {
+					erpnext.stock.move_item(item, warehouse, null, actual_qty, null, function () {
 						me.refresh();
 					});
 				}
@@ -199,7 +199,7 @@ shoperprime.stock.ItemDashboard = class ItemDashboard {
 	}
 };
 
-shoperprime.stock.move_item = function (item, source, target, actual_qty, rate, callback) {
+erpnext.stock.move_item = function (item, source, target, actual_qty, rate, callback) {
 	var dialog = new frappe.ui.Dialog({
 		title: target ? __('Add Item') : __('Move Item'),
 		fields: [{

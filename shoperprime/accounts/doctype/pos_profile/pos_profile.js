@@ -1,7 +1,7 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-{% include "shoperprime/public/js/controllers/accounts.js" %}
+{% include "erpnext/public/js/controllers/accounts.js" %}
 
 frappe.ui.form.on('POS Profile', {
 	setup: function(frm) {
@@ -13,8 +13,8 @@ frappe.ui.form.on('POS Profile', {
 			return { filters: { selling: 1 } };
 		});
 
-		shoperprime.queries.setup_queries(frm, "Warehouse", function() {
-			return shoperprime.queries.warehouse(frm.doc);
+		erpnext.queries.setup_queries(frm, "Warehouse", function() {
+			return erpnext.queries.warehouse(frm.doc);
 		});
 
 		frm.set_query("print_format", function() {
@@ -130,7 +130,7 @@ frappe.ui.form.on('POS Profile', {
 			};
 		});
 
-		shoperprime.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
+		erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
 	},
 
 	refresh: function(frm) {
@@ -141,11 +141,11 @@ frappe.ui.form.on('POS Profile', {
 
 	company: function(frm) {
 		frm.trigger("toggle_display_account_head");
-		shoperprime.accounts.dimensions.update_dimension(frm, frm.doctype);
+		erpnext.accounts.dimensions.update_dimension(frm, frm.doctype);
 	},
 
 	toggle_display_account_head: function(frm) {
 		frm.toggle_display('expense_account',
-			shoperprime.is_perpetual_inventory_enabled(frm.doc.company));
+			erpnext.is_perpetual_inventory_enabled(frm.doc.company));
 	}
 });

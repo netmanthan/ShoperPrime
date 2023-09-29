@@ -1,6 +1,6 @@
-frappe.provide("shoperprime.timesheet");
+frappe.provide("erpnext.timesheet");
 
-shoperprime.timesheet.timer = function(frm, row, timestamp=0) {
+erpnext.timesheet.timer = function(frm, row, timestamp=0) {
 	let dialog = new frappe.ui.Dialog({
 		title: __("Timer"),
 		fields:
@@ -39,11 +39,11 @@ shoperprime.timesheet.timer = function(frm, row, timestamp=0) {
 			</div>
 		`;
 	}
-	shoperprime.timesheet.control_timer(frm, dialog, row, timestamp);
+	erpnext.timesheet.control_timer(frm, dialog, row, timestamp);
 	dialog.show();
 };
 
-shoperprime.timesheet.control_timer = function(frm, dialog, row, timestamp=0) {
+erpnext.timesheet.control_timer = function(frm, dialog, row, timestamp=0) {
 	var $btn_start = dialog.$wrapper.find(".playpause .btn-start");
 	var $btn_complete = dialog.$wrapper.find(".playpause .btn-complete");
 	var interval = null;

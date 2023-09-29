@@ -1,8 +1,8 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-{% include 'shoperprime/selling/sales_common.js' %}
-frappe.provide("shoperprime.crm");
+{% include 'erpnext/selling/sales_common.js' %}
+frappe.provide("erpnext.crm");
 
 cur_frm.email_field = "contact_email";
 frappe.ui.form.on("Opportunity", {
@@ -36,10 +36,10 @@ frappe.ui.form.on("Opportunity", {
 		frm.trigger('set_contact_link');
 
 		if (frm.doc.opportunity_from == "Customer") {
-			shoperprime.utils.get_party_details(frm);
+			erpnext.utils.get_party_details(frm);
 		} else if (frm.doc.opportunity_from == "Lead") {
-			shoperprime.utils.map_current_doc({
-				method: "shoperprime.crm.doctype.lead.lead.make_opportunity",
+			erpnext.utils.map_current_doc({
+				method: "erpnext.crm.doctype.lead.lead.make_opportunity",
 				source_name: frm.doc.party_name,
 				frm: frm
 			});
@@ -58,10 +58,10 @@ frappe.ui.form.on("Opportunity", {
 	},
 
 	customer_address: function(frm, cdt, cdn) {
-		shoperprime.utils.get_address_display(frm, 'customer_address', 'address_display', false);
+		erpnext.utils.get_address_display(frm, 'customer_address', 'address_display', false);
 	},
 
-	contact_person: shoperprime.utils.get_contact_details,
+	contact_person: erpnext.utils.get_contact_details,
 
 	opportunity_from: function(frm) {
 		frm.trigger('setup_opportunity_from');
@@ -77,7 +77,7 @@ frappe.ui.form.on("Opportunity", {
 	refresh: function(frm) {
 		var doc = frm.doc;
 		frm.trigger('setup_opportunity_from');
-		shoperprime.toggle_naming_series();
+		erpnext.toggle_naming_series();
 
 		if(!frm.is_new() && doc.status!=="Lost") {
 			if(doc.items){
@@ -143,10 +143,10 @@ frappe.ui.form.on("Opportunity", {
 	},
 
 	currency: function(frm) {
-		let company_currency = shoperprime.get_currency(frm.doc.company);
+		let company_currency = erpnext.get_currency(frm.doc.company);
 		if (company_currency != frm.doc.company) {
 			frappe.call({
-				method: "shoperprime.setup.utils.get_exchange_rate",
+				method: "erpnext.setup.utils.get_exchange_rate",
 				args: {
 					from_currency: frm.doc.currency,
 					to_currency: company_currency
@@ -183,20 +183,20 @@ frappe.ui.form.on("Opportunity", {
 
 	make_supplier_quotation: function(frm) {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.crm.doctype.opportunity.opportunity.make_supplier_quotation",
+			method: "erpnext.crm.doctype.opportunity.opportunity.make_supplier_quotation",
 			frm: frm
 		})
 	},
 
 	make_request_for_quotation: function(frm) {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.crm.doctype.opportunity.opportunity.make_request_for_quotation",
+			method: "erpnext.crm.doctype.opportunity.opportunity.make_request_for_quotation",
 			frm: frm
 		})
 	},
 
 	change_form_labels: function(frm) {
-		let company_currency = shoperprime.get_currency(frm.doc.company);
+		let company_currency = erpnext.get_currency(frm.doc.company);
 		frm.set_currency_labels(["base_opportunity_amount", "base_total"], company_currency);
 		frm.set_currency_labels(["opportunity_amount", "total"], frm.doc.currency);
 
@@ -206,7 +206,7 @@ frappe.ui.form.on("Opportunity", {
 	},
 
 	change_grid_labels: function(frm) {
-		let company_currency = shoperprime.get_currency(frm.doc.company);
+		let company_currency = erpnext.get_currency(frm.doc.company);
 		frm.set_currency_labels(["base_rate", "base_amount"], company_currency, "items");
 		frm.set_currency_labels(["rate", "amount"], frm.doc.currency, "items");
 
@@ -248,7 +248,7 @@ frappe.ui.form.on("Opportunity Item", {
 })
 
 // TODO commonify this code
-shoperprime.crm.Opportunity = class Opportunity extends frappe.ui.form.Controller {
+erpnext.crm.Opportunity = class Opportunity extends frappe.ui.form.Controller {
 	onload() {
 
 		if(!this.frm.doc.status) {
@@ -273,22 +273,22 @@ shoperprime.crm.Opportunity = class Opportunity extends frappe.ui.form.Controlle
 	setup_queries() {
 		var me = this;
 
-		me.frm.set_query('customer_address', shoperprime.queries.address_query);
+		me.frm.set_query('customer_address', erpnext.queries.address_query);
 
 		this.frm.set_query("item_code", "items", function() {
 			return {
-				query: "shoperprime.controllers.queries.item_query",
+				query: "erpnext.controllers.queries.item_query",
 				filters: {'is_sales_item': 1}
 			};
 		});
 
-		me.frm.set_query('contact_person', shoperprime.queries['contact_query'])
+		me.frm.set_query('contact_person', erpnext.queries['contact_query'])
 
 		if (me.frm.doc.opportunity_from == "Lead") {
-			me.frm.set_query('party_name', shoperprime.queries['lead']);
+			me.frm.set_query('party_name', erpnext.queries['lead']);
 		}
 		else if (me.frm.doc.opportunity_from == "Customer") {
-			me.frm.set_query('party_name', shoperprime.queries['customer']);
+			me.frm.set_query('party_name', erpnext.queries['customer']);
 		} else if (me.frm.doc.opportunity_from == "Prospect") {
 			me.frm.set_query('party_name', function() {
 				return {
@@ -302,20 +302,20 @@ shoperprime.crm.Opportunity = class Opportunity extends frappe.ui.form.Controlle
 
 	create_quotation() {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.crm.doctype.opportunity.opportunity.make_quotation",
+			method: "erpnext.crm.doctype.opportunity.opportunity.make_quotation",
 			frm: cur_frm
 		})
 	}
 
 	make_customer() {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.crm.doctype.opportunity.opportunity.make_customer",
+			method: "erpnext.crm.doctype.opportunity.opportunity.make_customer",
 			frm: cur_frm
 		})
 	}
 
 	show_notes() {
-		const crm_notes = new shoperprime.utils.CRMNotes({
+		const crm_notes = new erpnext.utils.CRMNotes({
 			frm: this.frm,
 			notes_wrapper: $(this.frm.fields_dict.notes_html.wrapper),
 		});
@@ -323,7 +323,7 @@ shoperprime.crm.Opportunity = class Opportunity extends frappe.ui.form.Controlle
 	}
 
 	show_activities() {
-		const crm_activities = new shoperprime.utils.CRMActivities({
+		const crm_activities = new erpnext.utils.CRMActivities({
 			frm: this.frm,
 			open_activities_wrapper: $(this.frm.fields_dict.open_activities_html.wrapper),
 			all_activities_wrapper: $(this.frm.fields_dict.all_activities_html.wrapper),
@@ -333,13 +333,13 @@ shoperprime.crm.Opportunity = class Opportunity extends frappe.ui.form.Controlle
 	}
 };
 
-extend_cscript(cur_frm.cscript, new shoperprime.crm.Opportunity({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new erpnext.crm.Opportunity({frm: cur_frm}));
 
 cur_frm.cscript.item_code = function(doc, cdt, cdn) {
 	var d = locals[cdt][cdn];
 	if (d.item_code) {
 		return frappe.call({
-			method: "shoperprime.crm.doctype.opportunity.opportunity.get_item_details",
+			method: "erpnext.crm.doctype.opportunity.opportunity.get_item_details",
 			args: {"item_code":d.item_code},
 			callback: function(r, rt) {
 				if(r.message) {

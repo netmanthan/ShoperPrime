@@ -226,7 +226,7 @@ def enqueue_multiple_variant_creation(item, args):
 		return create_multiple_variants(item, args)
 	else:
 		frappe.enqueue(
-			"shoperprime.controllers.item_variant.create_multiple_variants",
+			"erpnext.controllers.item_variant.create_multiple_variants",
 			item=item,
 			args=args,
 			now=frappe.flags.in_test,

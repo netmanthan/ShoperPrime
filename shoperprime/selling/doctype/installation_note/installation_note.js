@@ -4,9 +4,9 @@
 frappe.ui.form.on('Installation Note', {
 	setup: function(frm) {
 		frappe.dynamic_link = {doc: frm.doc, fieldname: 'customer', doctype: 'Customer'}
-		frm.set_query('customer_address', shoperprime.queries.address_query);
-		frm.set_query('contact_person', shoperprime.queries.contact_query);
-		frm.set_query('customer', shoperprime.queries.customer);
+		frm.set_query('customer_address', erpnext.queries.address_query);
+		frm.set_query('contact_person', erpnext.queries.contact_query);
+		frm.set_query('customer', erpnext.queries.customer);
 	},
 	onload: function(frm) {
 		if(!frm.doc.status) {
@@ -17,27 +17,27 @@ frappe.ui.form.on('Installation Note', {
 		}
 	},
 	customer: function(frm) {
-		shoperprime.utils.get_party_details(frm);
+		erpnext.utils.get_party_details(frm);
 	},
 	customer_address: function(frm) {
-		shoperprime.utils.get_address_display(frm);
+		erpnext.utils.get_address_display(frm);
 	},
 	contact_person: function(frm) {
-		shoperprime.utils.get_contact_details(frm);
+		erpnext.utils.get_contact_details(frm);
 	}
 });
 
-frappe.provide("shoperprime.selling");
+frappe.provide("erpnext.selling");
 
 // TODO commonify this code
-shoperprime.selling.InstallationNote = class InstallationNote extends frappe.ui.form.Controller {
+erpnext.selling.InstallationNote = class InstallationNote extends frappe.ui.form.Controller {
 	refresh() {
 		var me = this;
 		if (this.frm.doc.docstatus===0) {
 			this.frm.add_custom_button(__('From Delivery Note'),
 				function() {
-					shoperprime.utils.map_current_doc({
-						method: "shoperprime.stock.doctype.delivery_note.delivery_note.make_installation_note",
+					erpnext.utils.map_current_doc({
+						method: "erpnext.stock.doctype.delivery_note.delivery_note.make_installation_note",
 						source_doctype: "Delivery Note",
 						target: me.frm,
 						date_field: "posting_date",
@@ -57,4 +57,4 @@ shoperprime.selling.InstallationNote = class InstallationNote extends frappe.ui.
 	}
 };
 
-extend_cscript(cur_frm.cscript, new shoperprime.selling.InstallationNote({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new erpnext.selling.InstallationNote({frm: cur_frm}));

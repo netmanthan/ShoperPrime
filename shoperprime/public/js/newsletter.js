@@ -3,6 +3,6 @@
 
 frappe.ui.form.on('Newsletter', {
 	refresh() {
-		shoperprime.toggle_naming_series();
+		erpnext.toggle_naming_series();
 	}
 });

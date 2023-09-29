@@ -16,7 +16,7 @@ frappe.ui.form.on('Bulk Transaction Log', {
 
 function query(frm) {
 	frappe.call({
-		method: "shoperprime.bulk_transaction.doctype.bulk_transaction_log.bulk_transaction_log.retry_failing_transaction",
+		method: "erpnext.bulk_transaction.doctype.bulk_transaction_log.bulk_transaction_log.retry_failing_transaction",
 		args: {
 			log_date: frm.doc.log_date
 		}

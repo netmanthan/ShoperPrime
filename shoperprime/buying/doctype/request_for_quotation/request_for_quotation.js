@@ -2,7 +2,7 @@
 // License: GNU General Public License v3. See license.txt
 
 
-{% include 'shoperprime/public/js/controllers/buying.js' %};
+{% include 'erpnext/public/js/controllers/buying.js' %};
 
 cur_frm.add_fetch('contact', 'email_id', 'email_id')
 
@@ -46,7 +46,7 @@ frappe.ui.form.on("Request for Quotation",{
 
 			frm.add_custom_button(__("Send Emails to Suppliers"), function() {
 				frappe.call({
-					method: 'shoperprime.buying.doctype.request_for_quotation.request_for_quotation.send_supplier_emails',
+					method: 'erpnext.buying.doctype.request_for_quotation.request_for_quotation.send_supplier_emails',
 					freeze: true,
 					args: {
 						rfq_name: frm.doc.name
@@ -122,7 +122,7 @@ frappe.ui.form.on("Request for Quotation",{
 						(data) => {
 							var w = window.open(
 								frappe.urllib.get_full_url(
-									"/api/method/shoperprime.buying.doctype.request_for_quotation.request_for_quotation.get_pdf?" +
+									"/api/method/erpnext.buying.doctype.request_for_quotation.request_for_quotation.get_pdf?" +
 									new URLSearchParams({
 										name: frm.doc.name,
 										supplier: data.supplier,
@@ -174,7 +174,7 @@ frappe.ui.form.on("Request for Quotation",{
 
 				return frappe.call({
 					type: "GET",
-					method: "shoperprime.buying.doctype.request_for_quotation.request_for_quotation.make_supplier_quotation_from_rfq",
+					method: "erpnext.buying.doctype.request_for_quotation.request_for_quotation.make_supplier_quotation_from_rfq",
 					args: {
 						"source_name": doc.name,
 						"for_supplier": args.supplier
@@ -274,7 +274,7 @@ frappe.ui.form.on("Request for Quotation Supplier",{
 	supplier: function(frm, cdt, cdn) {
 		var d = locals[cdt][cdn]
 		frappe.call({
-			method:"shoperprime.accounts.party.get_party_details",
+			method:"erpnext.accounts.party.get_party_details",
 			args:{
 				party: d.supplier,
 				party_type: 'Supplier'
@@ -290,15 +290,15 @@ frappe.ui.form.on("Request for Quotation Supplier",{
 
 })
 
-shoperprime.buying.RequestforQuotationController = class RequestforQuotationController extends shoperprime.buying.BuyingController {
+erpnext.buying.RequestforQuotationController = class RequestforQuotationController extends erpnext.buying.BuyingController {
 	refresh() {
 		var me = this;
 		super.refresh();
 		if (this.frm.doc.docstatus===0) {
 			this.frm.add_custom_button(__('Material Request'),
 				function() {
-					shoperprime.utils.map_current_doc({
-						method: "shoperprime.stock.doctype.material_request.material_request.make_request_for_quotation",
+					erpnext.utils.map_current_doc({
+						method: "erpnext.stock.doctype.material_request.material_request.make_request_for_quotation",
 						source_doctype: "Material Request",
 						target: me.frm,
 						setters: {
@@ -318,8 +318,8 @@ shoperprime.buying.RequestforQuotationController = class RequestforQuotationCont
 			// Get items from Opportunity
 			this.frm.add_custom_button(__('Opportunity'),
 				function() {
-					shoperprime.utils.map_current_doc({
-						method: "shoperprime.crm.doctype.opportunity.opportunity.make_request_for_quotation",
+					erpnext.utils.map_current_doc({
+						method: "erpnext.crm.doctype.opportunity.opportunity.make_request_for_quotation",
 						source_doctype: "Opportunity",
 						target: me.frm,
 						setters: {
@@ -354,8 +354,8 @@ shoperprime.buying.RequestforQuotationController = class RequestforQuotationCont
 						if(!args) return;
 						dialog.hide();
 
-						shoperprime.utils.map_current_doc({
-							method: "shoperprime.buying.doctype.request_for_quotation.request_for_quotation.get_item_from_material_requests_based_on_supplier",
+						erpnext.utils.map_current_doc({
+							method: "erpnext.buying.doctype.request_for_quotation.request_for_quotation.get_item_from_material_requests_based_on_supplier",
 							source_name: args.supplier,
 							target: me.frm,
 							setters: {
@@ -378,7 +378,7 @@ shoperprime.buying.RequestforQuotationController = class RequestforQuotationCont
 			// Link Material Requests
 			this.frm.add_custom_button(__('Link to Material Requests'),
 				function() {
-					shoperprime.buying.link_to_mrs(me.frm);
+					erpnext.buying.link_to_mrs(me.frm);
 				}, __("Tools"));
 
 			// Get Suppliers
@@ -410,7 +410,7 @@ shoperprime.buying.RequestforQuotationController = class RequestforQuotationCont
 					onchange() {
 						if(dialog.get_value('search_type') == 'Tag'){
 							frappe.call({
-								method: 'shoperprime.buying.doctype.request_for_quotation.request_for_quotation.get_supplier_tag',
+								method: 'erpnext.buying.doctype.request_for_quotation.request_for_quotation.get_supplier_tag',
 							}).then(r => {
 								dialog.set_df_property("tag", "options", r.message)
 						});
@@ -499,4 +499,4 @@ shoperprime.buying.RequestforQuotationController = class RequestforQuotationCont
 };
 
 // for backward compatibility: combine new and previous states
-extend_cscript(cur_frm.cscript, new shoperprime.buying.RequestforQuotationController({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new erpnext.buying.RequestforQuotationController({frm: cur_frm}));

@@ -1,12 +1,12 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("shoperprime.maintenance");
+frappe.provide("erpnext.maintenance");
 frappe.ui.form.on('Maintenance Visit', {
 	setup: function (frm) {
-		frm.set_query('contact_person', shoperprime.queries.contact_query);
-		frm.set_query('customer_address', shoperprime.queries.address_query);
-		frm.set_query('customer', shoperprime.queries.customer);
+		frm.set_query('contact_person', erpnext.queries.contact_query);
+		frm.set_query('customer_address', erpnext.queries.address_query);
+		frm.set_query('customer', erpnext.queries.customer);
 	},
 	onload: function (frm) {
 		// filters for serial no based on item code
@@ -16,7 +16,7 @@ frappe.ui.form.on('Maintenance Visit', {
 				return;
 			}
 			frappe.call({
-				method: "shoperprime.maintenance.doctype.maintenance_schedule.maintenance_schedule.get_serial_nos_from_schedule",
+				method: "erpnext.maintenance.doctype.maintenance_schedule.maintenance_schedule.get_serial_nos_from_schedule",
 				args: {
 					schedule: frm.doc.maintenance_schedule,
 					item_code: item_code
@@ -57,18 +57,18 @@ frappe.ui.form.on('Maintenance Visit', {
 		}
 	},
 	customer: function (frm) {
-		shoperprime.utils.get_party_details(frm);
+		erpnext.utils.get_party_details(frm);
 	},
 	customer_address: function (frm) {
-		shoperprime.utils.get_address_display(frm, 'customer_address', 'address_display');
+		erpnext.utils.get_address_display(frm, 'customer_address', 'address_display');
 	},
 	contact_person: function (frm) {
-		shoperprime.utils.get_contact_details(frm);
+		erpnext.utils.get_contact_details(frm);
 	}
 })
 
 // TODO commonify this code
-shoperprime.maintenance.MaintenanceVisit = class MaintenanceVisit extends frappe.ui.form.Controller {
+erpnext.maintenance.MaintenanceVisit = class MaintenanceVisit extends frappe.ui.form.Controller {
 	refresh() {
 		frappe.dynamic_link = {doc: this.frm.doc, fieldname: 'customer', doctype: 'Customer'}
 
@@ -81,8 +81,8 @@ shoperprime.maintenance.MaintenanceVisit = class MaintenanceVisit extends frappe
 						frappe.msgprint(__('Please select Customer first'));
 						return;
 					}
-					shoperprime.utils.map_current_doc({
-						method: "shoperprime.maintenance.doctype.maintenance_schedule.maintenance_schedule.make_maintenance_visit",
+					erpnext.utils.map_current_doc({
+						method: "erpnext.maintenance.doctype.maintenance_schedule.maintenance_schedule.make_maintenance_visit",
 						source_doctype: "Maintenance Schedule",
 						target: me.frm,
 						setters: {
@@ -96,8 +96,8 @@ shoperprime.maintenance.MaintenanceVisit = class MaintenanceVisit extends frappe
 				}, __("Get Items From"));
 			this.frm.add_custom_button(__('Warranty Claim'),
 				function () {
-					shoperprime.utils.map_current_doc({
-						method: "shoperprime.support.doctype.warranty_claim.warranty_claim.make_maintenance_visit",
+					erpnext.utils.map_current_doc({
+						method: "erpnext.support.doctype.warranty_claim.warranty_claim.make_maintenance_visit",
 						source_doctype: "Warranty Claim",
 						target: me.frm,
 						date_field: "complaint_date",
@@ -116,8 +116,8 @@ shoperprime.maintenance.MaintenanceVisit = class MaintenanceVisit extends frappe
 						frappe.msgprint(__('Please select Customer first'));
 						return;
 					}
-					shoperprime.utils.map_current_doc({
-						method: "shoperprime.selling.doctype.sales_order.sales_order.make_maintenance_visit",
+					erpnext.utils.map_current_doc({
+						method: "erpnext.selling.doctype.sales_order.sales_order.make_maintenance_visit",
 						source_doctype: "Sales Order",
 						target: me.frm,
 						setters: {
@@ -134,4 +134,4 @@ shoperprime.maintenance.MaintenanceVisit = class MaintenanceVisit extends frappe
 	}
 };
 
-extend_cscript(cur_frm.cscript, new shoperprime.maintenance.MaintenanceVisit({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new erpnext.maintenance.MaintenanceVisit({frm: cur_frm}));

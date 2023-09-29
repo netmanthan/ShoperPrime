@@ -1,9 +1,9 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("shoperprime.buying");
-frappe.provide("shoperprime.accounts.dimensions");
-{% include 'shoperprime/public/js/controllers/buying.js' %};
+frappe.provide("erpnext.buying");
+frappe.provide("erpnext.accounts.dimensions");
+{% include 'erpnext/public/js/controllers/buying.js' %};
 
 frappe.ui.form.on("Purchase Order", {
 	setup: function(frm) {
@@ -25,7 +25,7 @@ frappe.ui.form.on("Purchase Order", {
 
 		frm.set_query("expense_account", "items", function() {
 			return {
-				query: "shoperprime.controllers.queries.get_expense_account",
+				query: "erpnext.controllers.queries.get_expense_account",
 				filters: {'company': frm.doc.company}
 			}
 		});
@@ -42,7 +42,7 @@ frappe.ui.form.on("Purchase Order", {
 	},
 
 	company: function(frm) {
-		shoperprime.accounts.dimensions.update_dimension(frm, frm.doctype);
+		erpnext.accounts.dimensions.update_dimension(frm, frm.doctype);
 	},
 
 	refresh: function(frm) {
@@ -73,7 +73,7 @@ frappe.ui.form.on("Purchase Order", {
 		if (po_details && po_details.length) {
 			frm.add_custom_button(__('Return of Components'), () => {
 				frm.call({
-					method: 'shoperprime.controllers.subcontracting_controller.get_materials_from_supplier',
+					method: 'erpnext.controllers.subcontracting_controller.get_materials_from_supplier',
 					freeze: true,
 					freeze_message: __('Creating Stock Entry'),
 					args: {
@@ -98,8 +98,8 @@ frappe.ui.form.on("Purchase Order", {
 			frm.set_value('transaction_date', frappe.datetime.get_today())
 		}
 
-		shoperprime.queries.setup_queries(frm, "Warehouse", function() {
-			return shoperprime.queries.warehouse(frm.doc);
+		erpnext.queries.setup_queries(frm, "Warehouse", function() {
+			return erpnext.queries.warehouse(frm.doc);
 		});
 
 		// On cancel and amending a purchase order with advance payment, reset advance paid amount
@@ -122,7 +122,7 @@ frappe.ui.form.on("Purchase Order Item", {
 		var row = locals[cdt][cdn];
 		if (row.schedule_date) {
 			if(!frm.doc.schedule_date) {
-				shoperprime.utils.copy_value_in_all_rows(frm.doc, cdt, cdn, "items", "schedule_date");
+				erpnext.utils.copy_value_in_all_rows(frm.doc, cdt, cdn, "items", "schedule_date");
 			} else {
 				set_schedule_date(frm);
 			}
@@ -140,7 +140,7 @@ frappe.ui.form.on("Purchase Order Item", {
 	}
 });
 
-shoperprime.buying.PurchaseOrderController = class PurchaseOrderController extends shoperprime.buying.BuyingController {
+erpnext.buying.PurchaseOrderController = class PurchaseOrderController extends erpnext.buying.BuyingController {
 	setup() {
 		this.frm.custom_make_buttons = {
 			'Purchase Receipt': 'Purchase Receipt',
@@ -185,7 +185,7 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 					// Don't add Update Items button if the PO is following the new subcontracting flow.
 					if (!(this.frm.doc.is_subcontracted && !this.frm.doc.is_old_subcontracting_flow)) {
 						this.frm.add_custom_button(__('Update Items'), () => {
-							shoperprime.utils.update_child_items({
+							erpnext.utils.update_child_items({
 								frm: this.frm,
 								child_docname: "items",
 								child_doctype: "Purchase Order Detail",
@@ -250,7 +250,7 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 
 					if(!doc.auto_repeat) {
 						cur_frm.add_custom_button(__('Subscription'), function() {
-							shoperprime.utils.make_subscription(doc.doctype, doc.name)
+							erpnext.utils.make_subscription(doc.doctype, doc.name)
 						}, __('Create'))
 					}
 
@@ -277,8 +277,8 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 	}
 
 	get_items_from_open_material_requests() {
-		shoperprime.utils.map_current_doc({
-			method: "shoperprime.stock.doctype.material_request.material_request.make_purchase_order_based_on_supplier",
+		erpnext.utils.map_current_doc({
+			method: "erpnext.stock.doctype.material_request.material_request.make_purchase_order_based_on_supplier",
 			args: {
 				supplier: this.frm.doc.supplier
 			},
@@ -292,7 +292,7 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 				docstatus: ["!=", 2],
 				supplier: this.frm.doc.supplier
 			},
-			get_query_method: "shoperprime.stock.doctype.material_request.material_request.get_material_requests_based_on_supplier"
+			get_query_method: "erpnext.stock.doctype.material_request.material_request.get_material_requests_based_on_supplier"
 		});
 	}
 
@@ -306,7 +306,7 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 
 	make_stock_entry() {
 		frappe.call({
-			method:"shoperprime.controllers.subcontracting_controller.make_rm_stock_entry",
+			method:"erpnext.controllers.subcontracting_controller.make_rm_stock_entry",
 			args: {
 				subcontract_order: cur_frm.doc.name,
 				order_doctype: cur_frm.doc.doctype
@@ -320,14 +320,14 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 
 	make_inter_company_order(frm) {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.buying.doctype.purchase_order.purchase_order.make_inter_company_sales_order",
+			method: "erpnext.buying.doctype.purchase_order.purchase_order.make_inter_company_sales_order",
 			frm: frm
 		});
 	}
 
 	make_purchase_receipt() {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.buying.doctype.purchase_order.purchase_order.make_purchase_receipt",
+			method: "erpnext.buying.doctype.purchase_order.purchase_order.make_purchase_receipt",
 			frm: cur_frm,
 			freeze_message: __("Creating Purchase Receipt ...")
 		})
@@ -335,14 +335,14 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 
 	make_purchase_invoice() {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.buying.doctype.purchase_order.purchase_order.make_purchase_invoice",
+			method: "erpnext.buying.doctype.purchase_order.purchase_order.make_purchase_invoice",
 			frm: cur_frm
 		})
 	}
 
 	make_subcontracting_order() {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.buying.doctype.purchase_order.purchase_order.make_subcontracting_order",
+			method: "erpnext.buying.doctype.purchase_order.purchase_order.make_subcontracting_order",
 			frm: cur_frm,
 			freeze_message: __("Creating Subcontracting Order ...")
 		})
@@ -352,8 +352,8 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 		var me = this;
 		this.frm.add_custom_button(__('Material Request'),
 			function() {
-				shoperprime.utils.map_current_doc({
-					method: "shoperprime.stock.doctype.material_request.material_request.make_purchase_order",
+				erpnext.utils.map_current_doc({
+					method: "erpnext.stock.doctype.material_request.material_request.make_purchase_order",
 					source_doctype: "Material Request",
 					target: me.frm,
 					setters: {
@@ -375,8 +375,8 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 
 		this.frm.add_custom_button(__('Supplier Quotation'),
 			function() {
-				shoperprime.utils.map_current_doc({
-					method: "shoperprime.buying.doctype.supplier_quotation.supplier_quotation.make_purchase_order",
+				erpnext.utils.map_current_doc({
+					method: "erpnext.buying.doctype.supplier_quotation.supplier_quotation.make_purchase_order",
 					source_doctype: "Supplier Quotation",
 					target: me.frm,
 					setters: {
@@ -411,7 +411,7 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 				}
 			}
 			frappe.call({
-				method: "shoperprime.buying.utils.get_linked_material_requests",
+				method: "erpnext.buying.utils.get_linked_material_requests",
 				args:{
 					items: my_items
 				},
@@ -535,11 +535,11 @@ shoperprime.buying.PurchaseOrderController = class PurchaseOrderController exten
 };
 
 // for backward compatibility: combine new and previous states
-extend_cscript(cur_frm.cscript, new shoperprime.buying.PurchaseOrderController({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new erpnext.buying.PurchaseOrderController({frm: cur_frm}));
 
 cur_frm.cscript.update_status= function(label, status){
 	frappe.call({
-		method: "shoperprime.buying.doctype.purchase_order.purchase_order.update_status",
+		method: "erpnext.buying.doctype.purchase_order.purchase_order.update_status",
 		args: {status: status, name: cur_frm.doc.name},
 		callback: function(r) {
 			cur_frm.set_value("status", status);
@@ -572,14 +572,14 @@ if (cur_frm.doc.is_old_subcontracting_flow) {
 
 function set_schedule_date(frm) {
 	if(frm.doc.schedule_date){
-		shoperprime.utils.copy_value_in_all_rows(frm.doc, frm.doc.doctype, frm.doc.name, "items", "schedule_date");
+		erpnext.utils.copy_value_in_all_rows(frm.doc, frm.doc.doctype, frm.doc.name, "items", "schedule_date");
 	}
 }
 
-frappe.provide("shoperprime.buying");
+frappe.provide("erpnext.buying");
 
 frappe.ui.form.on("Purchase Order", "is_subcontracted", function(frm) {
 	if (frm.doc.is_old_subcontracting_flow) {
-		shoperprime.buying.get_default_bom(frm);
+		erpnext.buying.get_default_bom(frm);
 	}
 });

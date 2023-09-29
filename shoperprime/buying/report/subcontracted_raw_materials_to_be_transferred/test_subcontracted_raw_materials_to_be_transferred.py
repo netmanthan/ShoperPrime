@@ -1,5 +1,5 @@
 # Python bytecode 2.7 (62211)
-# Embedded file name: /Users/anuragmishra/frappe-develop/apps/shoperprime/shoperprime/buying/report/subcontracted_raw_materials_to_be_transferred/test_subcontracted_raw_materials_to_be_transferred.py
+# Embedded file name: /Users/anuragmishra/frappe-develop/apps/erpnext/erpnext/buying/report/subcontracted_raw_materials_to_be_transferred/test_subcontracted_raw_materials_to_be_transferred.py
 # Compiled at: 2019-05-06 10:24:35
 # Decompiled by https://python-decompiler.com
 

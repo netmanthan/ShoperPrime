@@ -2,11 +2,11 @@
 // License: GNU General Public License v3. See license.txt
 
 
-frappe.require("assets/shoperprime/js/financial_statements.js", function() {
+frappe.require("assets/erpnext/js/financial_statements.js", function() {
 	frappe.query_reports["Profit and Loss Statement"] = $.extend({},
-		shoperprime.financial_statements);
+		erpnext.financial_statements);
 
-	shoperprime.utils.add_dimensions('Profit and Loss Statement', 10);
+	erpnext.utils.add_dimensions('Profit and Loss Statement', 10);
 
 	frappe.query_reports["Profit and Loss Statement"]["filters"].push(
 		{

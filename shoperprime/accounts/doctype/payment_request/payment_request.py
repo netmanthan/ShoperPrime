@@ -20,7 +20,7 @@ from shoperprime.accounts.doctype.payment_entry.payment_entry import (
 from shoperprime.accounts.doctype.subscription_plan.subscription_plan import get_plan_rate
 from shoperprime.accounts.party import get_party_account, get_party_bank_account
 from shoperprime.accounts.utils import get_account_currency
-from shoperprime.shoperprime_integrations.stripe_integration import create_stripe_subscription
+from shoperprime.erpnext_integrations.stripe_integration import create_stripe_subscription
 from shoperprime.utilities import payment_app_import_guard
 
 

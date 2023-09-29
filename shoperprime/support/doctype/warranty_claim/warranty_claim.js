@@ -1,13 +1,13 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("shoperprime.support");
+frappe.provide("erpnext.support");
 
 frappe.ui.form.on("Warranty Claim", {
 	setup: function(frm) {
-		frm.set_query('contact_person', shoperprime.queries.contact_query);
-		frm.set_query('customer_address', shoperprime.queries.address_query);
-		frm.set_query('customer', shoperprime.queries.customer);
+		frm.set_query('contact_person', erpnext.queries.contact_query);
+		frm.set_query('customer_address', erpnext.queries.address_query);
+		frm.set_query('customer', erpnext.queries.customer);
 
 		frm.add_fetch('serial_no', 'item_code', 'item_code');
 		frm.add_fetch('serial_no', 'item_name', 'item_name');
@@ -26,17 +26,17 @@ frappe.ui.form.on("Warranty Claim", {
 		}
 	},
 	customer: function(frm) {
-		shoperprime.utils.get_party_details(frm);
+		erpnext.utils.get_party_details(frm);
 	},
 	customer_address: function(frm) {
-		shoperprime.utils.get_address_display(frm);
+		erpnext.utils.get_address_display(frm);
 	},
 	contact_person: function(frm) {
-		shoperprime.utils.get_contact_details(frm);
+		erpnext.utils.get_contact_details(frm);
 	}
 });
 
-shoperprime.support.WarrantyClaim = class WarrantyClaim extends frappe.ui.form.Controller {
+erpnext.support.WarrantyClaim = class WarrantyClaim extends frappe.ui.form.Controller {
 	refresh() {
 		frappe.dynamic_link = {doc: this.frm.doc, fieldname: 'customer', doctype: 'Customer'}
 
@@ -49,13 +49,13 @@ shoperprime.support.WarrantyClaim = class WarrantyClaim extends frappe.ui.form.C
 
 	make_maintenance_visit() {
 		frappe.model.open_mapped_doc({
-			method: "shoperprime.support.doctype.warranty_claim.warranty_claim.make_maintenance_visit",
+			method: "erpnext.support.doctype.warranty_claim.warranty_claim.make_maintenance_visit",
 			frm: cur_frm
 		})
 	}
 };
 
-extend_cscript(cur_frm.cscript, new shoperprime.support.WarrantyClaim({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new erpnext.support.WarrantyClaim({frm: cur_frm}));
 
 cur_frm.fields_dict['serial_no'].get_query = function(doc, cdt, cdn) {
 	var cond = [];

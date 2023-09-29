@@ -28,7 +28,7 @@ from pypika.terms import ExistsCriterion
 
 import shoperprime
 
-# imported to enable shoperprime.accounts.utils.get_account_currency
+# imported to enable erpnext.accounts.utils.get_account_currency
 from shoperprime.accounts.doctype.account.account import get_account_currency  # noqa
 from shoperprime.accounts.doctype.accounting_dimension.accounting_dimension import get_dimensions
 from shoperprime.stock import get_warehouse_account_map

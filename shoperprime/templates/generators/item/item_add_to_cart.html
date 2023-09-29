@@ -128,7 +128,7 @@
 			const $btn = $(e.currentTarget);
 			$btn.prop('disabled', true);
 			const item_code = $btn.data('item-code');
-			shoperprime.e_commerce.shopping_cart.update_cart({
+			erpnext.e_commerce.shopping_cart.update_cart({
 				item_code,
 				qty: 1,
 				callback(r) {
@@ -160,7 +160,7 @@
 			});
 
 			frappe.call({
-				method: 'shoperprime.e_commerce.doctype.website_offer.website_offer.get_offer_details',
+				method: 'erpnext.e_commerce.doctype.website_offer.website_offer.get_offer_details',
 				args: {
 					offer_id: $btn.data('offer-id')
 				},

@@ -1,8 +1,8 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("shoperprime.stock");
-frappe.provide("shoperprime.accounts.dimensions");
+frappe.provide("erpnext.stock");
+frappe.provide("erpnext.accounts.dimensions");
 
 frappe.ui.form.on("Stock Reconciliation", {
 	onload: function(frm) {
@@ -11,7 +11,7 @@ frappe.ui.form.on("Stock Reconciliation", {
 		// end of life
 		frm.set_query("item_code", "items", function(doc, cdt, cdn) {
 			return {
-				query: "shoperprime.controllers.queries.item_query",
+				query: "erpnext.controllers.queries.item_query",
 				filters:{
 					"is_stock_item": 1
 				}
@@ -27,8 +27,8 @@ frappe.ui.form.on("Stock Reconciliation", {
 		});
 
 		if (frm.doc.company) {
-			shoperprime.queries.setup_queries(frm, "Warehouse", function() {
-				return shoperprime.queries.warehouse(frm.doc);
+			erpnext.queries.setup_queries(frm, "Warehouse", function() {
+				return erpnext.queries.warehouse(frm.doc);
 			});
 		}
 
@@ -36,11 +36,11 @@ frappe.ui.form.on("Stock Reconciliation", {
 			frm.trigger("set_expense_account");
 		}
 
-		shoperprime.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
+		erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
 	},
 
 	company: function(frm) {
-		shoperprime.accounts.dimensions.update_dimension(frm, frm.doctype);
+		erpnext.accounts.dimensions.update_dimension(frm, frm.doctype);
 	},
 
 	refresh: function(frm) {
@@ -56,7 +56,7 @@ frappe.ui.form.on("Stock Reconciliation", {
 	},
 
 	scan_barcode: function(frm) {
-		const barcode_scanner = new shoperprime.utils.BarcodeScanner({frm:frm});
+		const barcode_scanner = new erpnext.utils.BarcodeScanner({frm:frm});
 		barcode_scanner.process_scan();
 	},
 
@@ -70,7 +70,7 @@ frappe.ui.form.on("Stock Reconciliation", {
 	},
 
 	set_warehouse: function(frm) {
-		let transaction_controller = new shoperprime.TransactionController({frm:frm});
+		let transaction_controller = new erpnext.TransactionController({frm:frm});
 		transaction_controller.autofill_warehouse(frm.doc.items, "warehouse", frm.doc.set_warehouse);
 	},
 
@@ -112,7 +112,7 @@ frappe.ui.form.on("Stock Reconciliation", {
 
 		frappe.prompt(fields, function(data) {
 			frappe.call({
-				method: "shoperprime.stock.doctype.stock_reconciliation.stock_reconciliation.get_items",
+				method: "erpnext.stock.doctype.stock_reconciliation.stock_reconciliation.get_items",
 				args: {
 					warehouse: data.warehouse,
 					posting_date: frm.doc.posting_date,
@@ -158,7 +158,7 @@ frappe.ui.form.on("Stock Reconciliation", {
 
 		if(d.item_code && d.warehouse) {
 			frappe.call({
-				method: "shoperprime.stock.doctype.stock_reconciliation.stock_reconciliation.get_stock_balance_for",
+				method: "erpnext.stock.doctype.stock_reconciliation.stock_reconciliation.get_stock_balance_for",
 				args: {
 					item_code: d.item_code,
 					warehouse: d.warehouse,
@@ -199,15 +199,15 @@ frappe.ui.form.on("Stock Reconciliation", {
 	},
 	toggle_display_account_head: function(frm) {
 		frm.toggle_display(['expense_account', 'cost_center'],
-			shoperprime.is_perpetual_inventory_enabled(frm.doc.company));
+			erpnext.is_perpetual_inventory_enabled(frm.doc.company));
 	},
 	purpose: function(frm) {
 		frm.trigger("set_expense_account");
 	},
 	set_expense_account: function(frm) {
-		if (frm.doc.company && shoperprime.is_perpetual_inventory_enabled(frm.doc.company)) {
+		if (frm.doc.company && erpnext.is_perpetual_inventory_enabled(frm.doc.company)) {
 			return frm.call({
-				method: "shoperprime.stock.doctype.stock_reconciliation.stock_reconciliation.get_difference_account",
+				method: "erpnext.stock.doctype.stock_reconciliation.stock_reconciliation.get_difference_account",
 				args: {
 					"purpose": frm.doc.purpose,
 					"company": frm.doc.company
@@ -272,17 +272,17 @@ frappe.ui.form.on("Stock Reconciliation Item", {
 
 });
 
-shoperprime.stock.StockReconciliation = class StockReconciliation extends shoperprime.stock.StockController {
+erpnext.stock.StockReconciliation = class StockReconciliation extends erpnext.stock.StockController {
 	setup() {
 		var me = this;
 
 		this.setup_posting_date_time_check();
 
-		if (me.frm.doc.company && shoperprime.is_perpetual_inventory_enabled(me.frm.doc.company)) {
+		if (me.frm.doc.company && erpnext.is_perpetual_inventory_enabled(me.frm.doc.company)) {
 			this.frm.add_fetch("company", "cost_center", "cost_center");
 		}
 		this.frm.fields_dict["expense_account"].get_query = function() {
-			if(shoperprime.is_perpetual_inventory_enabled(me.frm.doc.company)) {
+			if(erpnext.is_perpetual_inventory_enabled(me.frm.doc.company)) {
 				return {
 					"filters": {
 						'company': me.frm.doc.company,
@@ -292,7 +292,7 @@ shoperprime.stock.StockReconciliation = class StockReconciliation extends shoper
 			}
 		}
 		this.frm.fields_dict["cost_center"].get_query = function() {
-			if(shoperprime.is_perpetual_inventory_enabled(me.frm.doc.company)) {
+			if(erpnext.is_perpetual_inventory_enabled(me.frm.doc.company)) {
 				return {
 					"filters": {
 						'company': me.frm.doc.company,
@@ -306,7 +306,7 @@ shoperprime.stock.StockReconciliation = class StockReconciliation extends shoper
 	refresh() {
 		if(this.frm.doc.docstatus > 0) {
 			this.show_stock_ledger();
-			if (shoperprime.is_perpetual_inventory_enabled(this.frm.doc.company)) {
+			if (erpnext.is_perpetual_inventory_enabled(this.frm.doc.company)) {
 				this.show_general_ledger();
 			}
 		}
@@ -314,4 +314,4 @@ shoperprime.stock.StockReconciliation = class StockReconciliation extends shoper
 
 };
 
-cur_frm.cscript = new shoperprime.stock.StockReconciliation({frm: cur_frm});
+cur_frm.cscript = new erpnext.stock.StockReconciliation({frm: cur_frm});

@@ -5,7 +5,7 @@ const docsUrl = "https://shopersolutions.com/docs/";
 frappe.help.help_links["Form/Rename Tool"] = [
 	{
 		label: "Bulk Rename",
-		url: docsUrl + "user/manual/en/using-shoperprime/articles/bulk-rename",
+		url: docsUrl + "user/manual/en/using-erpnext/articles/bulk-rename",
 	},
 ];
 
@@ -219,7 +219,7 @@ frappe.help.help_links["Form/PayPal Settings"] = [
 		label: "PayPal Settings",
 		url:
 			docsUrl +
-			"user/manual/en/shoperprime_integration/paypal-integration",
+			"user/manual/en/erpnext_integration/paypal-integration",
 	},
 ];
 
@@ -228,14 +228,14 @@ frappe.help.help_links["Form/Razorpay Settings"] = [
 		label: "Razorpay Settings",
 		url:
 			docsUrl +
-			"user/manual/en/shoperprime_integration/razorpay-integration",
+			"user/manual/en/erpnext_integration/razorpay-integration",
 	},
 ];
 
 frappe.help.help_links["Form/Dropbox Settings"] = [
 	{
 		label: "Dropbox Settings",
-		url: docsUrl + "user/manual/en/shoperprime_integration/dropbox-backup",
+		url: docsUrl + "user/manual/en/erpnext_integration/dropbox-backup",
 	},
 ];
 
@@ -243,7 +243,7 @@ frappe.help.help_links["Form/LDAP Settings"] = [
 	{
 		label: "LDAP Settings",
 		url:
-			docsUrl + "user/manual/en/shoperprime_integration/ldap-integration",
+			docsUrl + "user/manual/en/erpnext_integration/ldap-integration",
 	},
 ];
 
@@ -252,7 +252,7 @@ frappe.help.help_links["Form/Stripe Settings"] = [
 		label: "Stripe Settings",
 		url:
 			docsUrl +
-			"user/manual/en/shoperprime_integration/stripe-integration",
+			"user/manual/en/erpnext_integration/stripe-integration",
 	},
 ];
 
@@ -458,7 +458,7 @@ frappe.help.help_links["List/Price List"] = [
 frappe.help.help_links["List/Authorization Rule"] = [
 	{
 		label: "Authorization Rule",
-		url: docsUrl + "user/manual/en/customize-shoperprime/authorization-rule",
+		url: docsUrl + "user/manual/en/customize-erpnext/authorization-rule",
 	},
 ];
 
@@ -981,24 +981,24 @@ frappe.help.help_links["Form/BOM Update Tool"] = [
 frappe.help.help_links["Form/Customize Form"] = [
 	{
 		label: "Custom Field",
-		url: docsUrl + "user/manual/en/customize-shoperprime/custom-field",
+		url: docsUrl + "user/manual/en/customize-erpnext/custom-field",
 	},
 	{
 		label: "Customize Field",
-		url: docsUrl + "user/manual/en/customize-shoperprime/customize-form",
+		url: docsUrl + "user/manual/en/customize-erpnext/customize-form",
 	},
 ];
 
 frappe.help.help_links["List/Custom Field"] = [
 	{
 		label: "Custom Field",
-		url: docsUrl + "user/manual/en/customize-shoperprime/custom-field",
+		url: docsUrl + "user/manual/en/customize-erpnext/custom-field",
 	},
 ];
 
 frappe.help.help_links["Form/Custom Field"] = [
 	{
 		label: "Custom Field",
-		url: docsUrl + "user/manual/en/customize-shoperprime/custom-field",
+		url: docsUrl + "user/manual/en/customize-erpnext/custom-field",
 	},
 ];

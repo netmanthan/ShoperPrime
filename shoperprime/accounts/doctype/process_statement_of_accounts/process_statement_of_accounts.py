@@ -163,9 +163,9 @@ def get_ar_filters(doc, entry):
 def get_html(doc, filters, entry, col, res, ageing):
 	base_template_path = "frappe/www/printview.html"
 	template_path = (
-		"shoperprime/accounts/doctype/process_statement_of_accounts/process_statement_of_accounts.html"
+		"erpnext/accounts/doctype/process_statement_of_accounts/process_statement_of_accounts.html"
 		if doc.report == "General Ledger"
-		else "shoperprime/accounts/doctype/process_statement_of_accounts/process_statement_of_accounts_accounts_receivable.html"
+		else "erpnext/accounts/doctype/process_statement_of_accounts/process_statement_of_accounts_accounts_receivable.html"
 	)
 
 	if doc.letter_head:

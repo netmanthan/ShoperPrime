@@ -352,7 +352,7 @@ frappe.ui.form.ItemQuickEntryForm = class ItemQuickEntryForm extends frappe.ui.f
 
 		if (Object.keys(attribute).length) {
 			frappe.call({
-				method: "shoperprime.controllers.item_variant.create_variant_doc_for_quick_entry",
+				method: "erpnext.controllers.item_variant.create_variant_doc_for_quick_entry",
 				args: {
 					"template": me.dialog.fields_dict.item_template.$input.val(),
 					args: attribute

@@ -44,7 +44,7 @@ frappe.query_reports["Stock Ledger"] = {
 			"options": "Item",
 			"get_query": function() {
 				return {
-					query: "shoperprime.controllers.queries.item_query"
+					query: "erpnext.controllers.queries.item_query"
 				}
 			}
 		},
@@ -105,4 +105,4 @@ frappe.query_reports["Stock Ledger"] = {
 	},
 };
 
-shoperprime.utils.add_inventory_dimensions('Stock Ledger', 10);
+erpnext.utils.add_inventory_dimensions('Stock Ledger', 10);

@@ -1,6 +1,6 @@
-frappe.provide('shoperprime.accounts');
+frappe.provide('erpnext.accounts');
 
-shoperprime.accounts.dimensions = {
+erpnext.accounts.dimensions = {
 	setup_dimension_filters(frm, doctype) {
 		this.accounting_dimensions = [];
 		this.default_dimensions = {};
@@ -10,7 +10,7 @@ shoperprime.accounts.dimensions = {
 	fetch_custom_dimensions(frm, doctype) {
 		let me = this;
 		frappe.call({
-			method: "shoperprime.accounts.doctype.accounting_dimension.accounting_dimension.get_dimensions",
+			method: "erpnext.accounts.doctype.accounting_dimension.accounting_dimension.get_dimensions",
 			args: {
 				'with_cost_center_and_project': true
 			},
@@ -56,7 +56,7 @@ shoperprime.accounts.dimensions = {
 
 				frm.set_query(dimension, parentfield, function(doc, cdt, cdn) {
 					let row = locals[cdt][cdn];
-					return shoperprime.queries.get_filtered_dimensions(row, fields, dimension, doc.company);
+					return erpnext.queries.get_filtered_dimensions(row, fields, dimension, doc.company);
 				});
 			});
 		}
@@ -64,7 +64,7 @@ shoperprime.accounts.dimensions = {
 
 	setup_account_filters(frm, dimension, fields) {
 		frm.set_query(dimension, function(doc) {
-			return shoperprime.queries.get_filtered_dimensions(doc, fields, dimension, doc.company);
+			return erpnext.queries.get_filtered_dimensions(doc, fields, dimension, doc.company);
 		});
 	},
 

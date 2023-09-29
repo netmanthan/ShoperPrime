@@ -1,8 +1,8 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // For license information, please see license.txt
 
-frappe.provide("shoperprime.accounts");
-shoperprime.accounts.PaymentReconciliationController = class PaymentReconciliationController extends frappe.ui.form.Controller {
+frappe.provide("erpnext.accounts");
+erpnext.accounts.PaymentReconciliationController = class PaymentReconciliationController extends frappe.ui.form.Controller {
 	onload() {
 		const default_company = frappe.defaults.get_default('company');
 		this.frm.set_value('company', default_company);
@@ -91,7 +91,7 @@ shoperprime.accounts.PaymentReconciliationController = class PaymentReconciliati
 				callback: (r) => {
 					if (r.message) {
 						this.frm.call({
-							'method': "shoperprime.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.is_any_doc_running",
+							'method': "erpnext.accounts.doctype.process_payment_reconciliation.process_payment_reconciliation.is_any_doc_running",
 							"args": {
 								for_filter: {
 									company: this.frm.doc.company,
@@ -129,7 +129,7 @@ shoperprime.accounts.PaymentReconciliationController = class PaymentReconciliati
 
 		if (!this.frm.doc.receivable_payable_account && this.frm.doc.party_type && this.frm.doc.party) {
 			return frappe.call({
-				method: "shoperprime.accounts.party.get_party_account",
+				method: "erpnext.accounts.party.get_party_account",
 				args: {
 					company: this.frm.doc.company,
 					party_type: this.frm.doc.party_type,
@@ -339,4 +339,4 @@ frappe.ui.form.on('Payment Reconciliation Allocation', {
 
 
 
-extend_cscript(cur_frm.cscript, new shoperprime.accounts.PaymentReconciliationController({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new erpnext.accounts.PaymentReconciliationController({frm: cur_frm}));

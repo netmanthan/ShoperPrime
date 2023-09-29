@@ -2,7 +2,7 @@
 // License: GNU General Public License v3. See license.txt
 
 
-shoperprime.TransactionController = class TransactionController extends shoperprime.taxes_and_totals {
+erpnext.TransactionController = class TransactionController extends erpnext.taxes_and_totals {
 	setup() {
 		super.setup();
 		let me = this;
@@ -115,7 +115,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 					item.from_warehouse = frm.doc.set_from_warehouse;
 				}
 
-				shoperprime.accounts.dimensions.copy_dimension_from_first_row(frm, cdt, cdn, 'items');
+				erpnext.accounts.dimensions.copy_dimension_from_first_row(frm, cdt, cdn, 'items');
 			}
 		});
 
@@ -192,7 +192,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 			this.frm.set_query("blanket_order", "items", function(doc, cdt, cdn) {
 				var item = locals[cdt][cdn];
 				return {
-					query: "shoperprime.controllers.queries.get_blanket_orders",
+					query: "erpnext.controllers.queries.get_blanket_orders",
 					filters: {
 						"company": doc.company,
 						"blanket_order_type": doc.doctype === "Sales Order" ? "Selling" : "Purchasing",
@@ -308,7 +308,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 			? "Inward" : "Outward";
 
 		frappe.call({
-			method:"shoperprime.accounts.doctype.payment_request.payment_request.make_payment_request",
+			method:"erpnext.accounts.doctype.payment_request.payment_request.make_payment_request",
 			args: {
 				dt: me.frm.doc.doctype,
 				dn: me.frm.doc.name,
@@ -341,8 +341,8 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 	}
 
 	refresh() {
-		shoperprime.toggle_naming_series();
-		shoperprime.hide_company();
+		erpnext.toggle_naming_series();
+		erpnext.hide_company();
 		this.set_dynamic_labels();
 		this.setup_sms();
 		this.setup_quality_inspection();
@@ -350,7 +350,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 	}
 
 	scan_barcode() {
-		const barcode_scanner = new shoperprime.utils.BarcodeScanner({frm:this.frm});
+		const barcode_scanner = new erpnext.utils.BarcodeScanner({frm:this.frm});
 		barcode_scanner.process_scan();
 	}
 
@@ -371,7 +371,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 		if (taxes_and_charges_field) {
 			return frappe.call({
-				method: "shoperprime.controllers.accounts_controller.get_default_taxes_and_charges",
+				method: "erpnext.controllers.accounts_controller.get_default_taxes_and_charges",
 				args: {
 					"master_doctype": taxes_and_charges_field.options,
 					"tax_template": me.frm.doc.taxes_and_charges || "",
@@ -411,7 +411,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 	}
 
 	send_sms() {
-		var sms_man = new shoperprime.SMSManager(this.frm.doc);
+		var sms_man = new erpnext.SMSManager(this.frm.doc);
 	}
 
 	item_code(doc, cdt, cdn) {
@@ -440,7 +440,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 			} else {
 				item.pricing_rules = ''
 				return this.frm.call({
-					method: "shoperprime.stock.get_item_details.get_item_details",
+					method: "erpnext.stock.get_item_details.get_item_details",
 					child: item,
 					args: {
 						doc: me.frm.doc,
@@ -543,7 +543,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 											d.batch_no = undefined;
 										}
 
-										shoperprime.show_serial_batch_selector(me.frm, d, (item) => {
+										erpnext.show_serial_batch_selector(me.frm, d, (item) => {
 											me.frm.script_manager.trigger('qty', item.doctype, item.name);
 											if (!me.frm.doc.set_warehouse)
 												me.frm.script_manager.trigger('warehouse', item.doctype, item.name);
@@ -621,7 +621,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 		}
 
 		frappe.call({
-			method: 'shoperprime.stock.utils.get_incoming_rate',
+			method: 'erpnext.stock.utils.get_incoming_rate',
 			args: {
 				args: item_args
 			},
@@ -778,7 +778,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 				var party = me.frm.doc[frappe.model.scrub(party_type)];
 				if(party && me.frm.doc.company) {
 					return frappe.call({
-						method: "shoperprime.accounts.party.get_party_account",
+						method: "erpnext.accounts.party.get_party_account",
 						args: {
 							company: me.frm.doc.company,
 							party_type: party_type,
@@ -802,7 +802,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 		if (frappe.meta.get_docfield(this.frm.doctype, "shipping_address") &&
 			in_list(['Purchase Order', 'Purchase Receipt', 'Purchase Invoice'], this.frm.doctype)) {
-			shoperprime.utils.get_shipping_address(this.frm, function() {
+			erpnext.utils.get_shipping_address(this.frm, function() {
 				set_party_account(set_pricing);
 			});
 
@@ -811,7 +811,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 		}
 
 		if(this.frm.doc.company) {
-			shoperprime.last_selected_company = this.frm.doc.company;
+			erpnext.last_selected_company = this.frm.doc.company;
 		}
 	}
 
@@ -830,7 +830,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 			if ((this.frm.doc.doctype == "Sales Invoice" && this.frm.doc.customer) ||
 				(this.frm.doc.doctype == "Purchase Invoice" && this.frm.doc.supplier)) {
 				return frappe.call({
-					method: "shoperprime.accounts.party.get_due_date",
+					method: "erpnext.accounts.party.get_due_date",
 					args: {
 						"posting_date": me.frm.doc.posting_date,
 						"party_type": me.frm.doc.doctype == "Sales Invoice" ? "Customer" : "Supplier",
@@ -904,11 +904,11 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 	}
 
 	get_company_currency() {
-		return shoperprime.get_currency(this.frm.doc.company);
+		return erpnext.get_currency(this.frm.doc.company);
 	}
 
 	contact_person() {
-		shoperprime.utils.get_contact_details(this.frm);
+		erpnext.utils.get_contact_details(this.frm);
 	}
 
 	currency() {
@@ -960,7 +960,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 		}
 		// Make read only if Accounts Settings doesn't allow stale rates
-		this.frm.set_df_property("conversion_rate", "read_only", shoperprime.stale_rate_allowed() ? 0 : 1);
+		this.frm.set_df_property("conversion_rate", "read_only", erpnext.stale_rate_allowed() ? 0 : 1);
 	}
 
 	apply_discount_on_item(doc, cdt, cdn, field) {
@@ -1019,7 +1019,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 		if (!transaction_date || !from_currency || !to_currency) return;
 		return frappe.call({
-			method: "shoperprime.setup.utils.get_exchange_rate",
+			method: "erpnext.setup.utils.get_exchange_rate",
 			args: {
 				transaction_date: transaction_date,
 				from_currency: from_currency,
@@ -1071,7 +1071,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 		item.pricing_rules = ''
 		if(item.item_code && item.uom) {
 			return this.frm.call({
-				method: "shoperprime.stock.get_item_details.get_conversion_factor",
+				method: "erpnext.stock.get_item_details.get_conversion_factor",
 				args: {
 					item_code: item.item_code,
 					uom: item.uom
@@ -1182,7 +1182,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 		if(child.service_start_date) {
 			frappe.call({
-				"method": "shoperprime.stock.get_item_details.calculate_service_end_date",
+				"method": "erpnext.stock.get_item_details.calculate_service_end_date",
 				args: {"args": child},
 				callback: function(r) {
 					frappe.model.set_value(cdt, cdn, "service_end_date", r.message.service_end_date);
@@ -1393,7 +1393,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 				}
 			});
 			return this.frm.call({
-				method: "shoperprime.accounts.doctype.pricing_rule.pricing_rule.remove_pricing_rules",
+				method: "erpnext.accounts.doctype.pricing_rule.pricing_rule.remove_pricing_rules",
 				args: { item_list: item_list },
 				callback: function(r) {
 					if (!r.exc && r.message) {
@@ -1428,7 +1428,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 		}
 
 		return this.frm.call({
-			method: "shoperprime.accounts.doctype.pricing_rule.pricing_rule.apply_pricing_rule",
+			method: "erpnext.accounts.doctype.pricing_rule.pricing_rule.apply_pricing_rule",
 			args: {	args: args, doc: me.frm.doc },
 			callback: function(r) {
 				if (!r.exc && r.message) {
@@ -1618,7 +1618,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 	apply_price_list(item, reset_plc_conversion) {
 		// We need to reset plc_conversion_rate sometimes because the call to
-		// `shoperprime.stock.get_item_details.apply_price_list` is sensitive to its value
+		// `erpnext.stock.get_item_details.apply_price_list` is sensitive to its value
 		if (!reset_plc_conversion) {
 			this.frm.set_value("plc_conversion_rate", "");
 		}
@@ -1633,7 +1633,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 		me.in_apply_price_list = true;
 		return this.frm.call({
-			method: "shoperprime.stock.get_item_details.apply_price_list",
+			method: "erpnext.stock.get_item_details.apply_price_list",
 			args: {	args: args },
 			callback: function(r) {
 				if (!r.exc) {
@@ -1729,7 +1729,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 	get_terms() {
 		var me = this;
 
-		shoperprime.utils.get_terms(this.frm.doc.tc_name, this.frm.doc, function(r) {
+		erpnext.utils.get_terms(this.frm.doc.tc_name, this.frm.doc, function(r) {
 			if(!r.exc) {
 				me.frm.set_value("terms", r.message);
 			}
@@ -1740,7 +1740,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 		var me = this;
 		if(this.frm.doc.taxes_and_charges) {
 			return this.frm.call({
-				method: "shoperprime.controllers.accounts_controller.get_taxes_and_charges",
+				method: "erpnext.controllers.accounts_controller.get_taxes_and_charges",
 				args: {
 					"master_doctype": frappe.meta.get_docfield(this.frm.doc.doctype, "taxes_and_charges",
 						this.frm.doc.name).options,
@@ -1770,7 +1770,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 		frappe.run_serially([
 			() => this.update_item_tax_map(),
-			() => shoperprime.utils.set_taxes(this.frm, "tax_category"),
+			() => erpnext.utils.set_taxes(this.frm, "tax_category"),
 		]);
 	}
 
@@ -1791,7 +1791,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 		if (item_codes.length) {
 			return this.frm.call({
-				method: "shoperprime.stock.get_item_details.get_item_tax_info",
+				method: "erpnext.stock.get_item_details.get_item_tax_info",
 				args: {
 					company: me.frm.doc.company,
 					tax_category: cstr(me.frm.doc.tax_category),
@@ -1822,7 +1822,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 		if(item.item_tax_template) {
 			return this.frm.call({
-				method: "shoperprime.stock.get_item_details.get_item_tax_map",
+				method: "erpnext.stock.get_item_details.get_item_tax_map",
 				args: {
 					company: me.frm.doc.company,
 					item_tax_template: item.item_tax_template,
@@ -1896,7 +1896,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 
 		return;
 		// if(!this.item_selector) {
-		// 	this.item_selector = new shoperprime.ItemSelector({frm: this.frm});
+		// 	this.item_selector = new erpnext.ItemSelector({frm: this.frm});
 		// }
 	}
 
@@ -2043,7 +2043,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 			primary_action: function () {
 				const data = dialog.get_values();
 				frappe.call({
-					method: "shoperprime.controllers.stock_controller.make_quality_inspections",
+					method: "erpnext.controllers.stock_controller.make_quality_inspections",
 					args: {
 						doctype: me.frm.doc.doctype,
 						docname: me.frm.doc.name,
@@ -2095,12 +2095,12 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 	}
 
 	get_method_for_payment() {
-		var method = "shoperprime.accounts.doctype.payment_entry.payment_entry.get_payment_entry";
+		var method = "erpnext.accounts.doctype.payment_entry.payment_entry.get_payment_entry";
 		if(cur_frm.doc.__onload && cur_frm.doc.__onload.make_payment_via_journal_entry){
 			if(in_list(['Sales Invoice', 'Purchase Invoice'],  cur_frm.doc.doctype)){
-				method = "shoperprime.accounts.doctype.journal_entry.journal_entry.get_payment_entry_against_invoice";
+				method = "erpnext.accounts.doctype.journal_entry.journal_entry.get_payment_entry_against_invoice";
 			}else {
-				method= "shoperprime.accounts.doctype.journal_entry.journal_entry.get_payment_entry_against_order";
+				method= "erpnext.accounts.doctype.journal_entry.journal_entry.get_payment_entry_against_order";
 			}
 		}
 
@@ -2133,7 +2133,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 			if (item.warehouse) filters["warehouse"] = item.warehouse;
 
 			return {
-				query : "shoperprime.controllers.queries.get_batch_no",
+				query : "erpnext.controllers.queries.get_batch_no",
 				filters: filters
 			}
 		}
@@ -2155,7 +2155,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 			if (doc.company)
 				filters['company'] = doc.company;
 			return {
-				query: "shoperprime.controllers.queries.get_tax_template",
+				query: "erpnext.controllers.queries.get_tax_template",
 				filters: filters
 			}
 		}
@@ -2167,7 +2167,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 		if(doc.payment_terms_template && doc.doctype !== 'Delivery Note') {
 			var posting_date = doc.posting_date || doc.transaction_date;
 			frappe.call({
-				method: "shoperprime.controllers.accounts_controller.get_payment_terms",
+				method: "erpnext.controllers.accounts_controller.get_payment_terms",
 				args: {
 					terms_template: doc.payment_terms_template,
 					posting_date: posting_date,
@@ -2191,7 +2191,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 		var row = locals[cdt][cdn];
 		if(row.payment_term) {
 			frappe.call({
-				method: "shoperprime.controllers.accounts_controller.get_payment_term_details",
+				method: "erpnext.controllers.accounts_controller.get_payment_term_details",
 				args: {
 					term: row.payment_term,
 					bill_date: this.frm.doc.bill_date,
@@ -2225,7 +2225,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 		var item = locals[cdt][cdn];
 		if (item.blanket_order && (item.parenttype=="Sales Order" || item.parenttype=="Purchase Order")) {
 			frappe.call({
-				method: "shoperprime.stock.get_item_details.get_blanket_order_details",
+				method: "erpnext.stock.get_item_details.get_blanket_order_details",
 				args: {
 					args:{
 						item_code: item.item_code,
@@ -2290,7 +2290,7 @@ shoperprime.TransactionController = class TransactionController extends shoperpr
 	}
 };
 
-shoperprime.show_serial_batch_selector = function (frm, d, callback, on_close, show_dialog) {
+erpnext.show_serial_batch_selector = function (frm, d, callback, on_close, show_dialog) {
 	let warehouse, receiving_stock, existing_stock;
 	if (frm.doc.is_return) {
 		if (["Purchase Receipt", "Purchase Invoice"].includes(frm.doc.doctype)) {
@@ -2321,8 +2321,8 @@ shoperprime.show_serial_batch_selector = function (frm, d, callback, on_close, s
 		}
 	}
 
-	frappe.require("assets/shoperprime/js/utils/serial_no_batch_selector.js", function() {
-		new shoperprime.SerialNoBatchSelector({
+	frappe.require("assets/erpnext/js/utils/serial_no_batch_selector.js", function() {
+		new erpnext.SerialNoBatchSelector({
 			frm: frm,
 			item: d,
 			warehouse_details: {
@@ -2335,14 +2335,14 @@ shoperprime.show_serial_batch_selector = function (frm, d, callback, on_close, s
 	});
 }
 
-shoperprime.apply_putaway_rule = (frm, purpose=null) => {
+erpnext.apply_putaway_rule = (frm, purpose=null) => {
 	if (!frm.doc.company) {
 		frappe.throw({message: __("Please select a Company first."), title: __("Mandatory")});
 	}
 	if (!frm.doc.items.length) return;
 
 	frappe.call({
-		method: "shoperprime.stock.doctype.putaway_rule.putaway_rule.apply_putaway_rule",
+		method: "erpnext.stock.doctype.putaway_rule.putaway_rule.apply_putaway_rule",
 		args: {
 			doctype: frm.doctype,
 			items: frm.doc.items,

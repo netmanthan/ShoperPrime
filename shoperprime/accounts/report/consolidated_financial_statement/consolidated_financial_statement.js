@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 /* eslint-disable */
 
-frappe.require("assets/shoperprime/js/financial_statements.js", function() {
+frappe.require("assets/erpnext/js/financial_statements.js", function() {
 	frappe.query_reports["Consolidated Financial Statement"] = {
 		"filters": [
 			{
@@ -49,7 +49,7 @@ frappe.require("assets/shoperprime/js/financial_statements.js", function() {
 				"label": __("Start Year"),
 				"fieldtype": "Link",
 				"options": "Fiscal Year",
-				"default": shoperprime.utils.get_fiscal_year(frappe.datetime.get_today()),
+				"default": erpnext.utils.get_fiscal_year(frappe.datetime.get_today()),
 				"reqd": 1,
 				on_change: () => {
 					frappe.model.with_doc("Fiscal Year", frappe.query_report.get_filter_value('from_fiscal_year'), function(r) {
@@ -65,7 +65,7 @@ frappe.require("assets/shoperprime/js/financial_statements.js", function() {
 				"label": __("End Year"),
 				"fieldtype": "Link",
 				"options": "Fiscal Year",
-				"default": shoperprime.utils.get_fiscal_year(frappe.datetime.get_today()),
+				"default": erpnext.utils.get_fiscal_year(frappe.datetime.get_today()),
 				"reqd": 1,
 				on_change: () => {
 					frappe.model.with_doc("Fiscal Year", frappe.query_report.get_filter_value('to_fiscal_year'), function(r) {
@@ -94,7 +94,7 @@ frappe.require("assets/shoperprime/js/financial_statements.js", function() {
 				"fieldname": "presentation_currency",
 				"label": __("Currency"),
 				"fieldtype": "Select",
-				"options": shoperprime.get_presentation_currency_list(),
+				"options": erpnext.get_presentation_currency_list(),
 				"default": frappe.defaults.get_user_default("Currency")
 			},
 			{
@@ -120,12 +120,12 @@ frappe.require("assets/shoperprime/js/financial_statements.js", function() {
 				value = data.account_name || value;
 
 				column.link_onclick =
-				"shoperprime.financial_statements.open_general_ledger(" + JSON.stringify(data) + ")";
+				"erpnext.financial_statements.open_general_ledger(" + JSON.stringify(data) + ")";
 				column.is_tree = true;
 			}
 
 			if (data && data.account && column.apply_currency_formatter) {
-				data.currency = shoperprime.get_currency(column.company_name);
+				data.currency = erpnext.get_currency(column.company_name);
 			}
 
 			value = default_formatter(value, row, column, data);
@@ -139,7 +139,7 @@ frappe.require("assets/shoperprime/js/financial_statements.js", function() {
 			return value;
 		},
 		onload: function() {
-			let fiscal_year = shoperprime.utils.get_fiscal_year(frappe.datetime.get_today());
+			let fiscal_year = erpnext.utils.get_fiscal_year(frappe.datetime.get_today());
 
 			frappe.model.with_doc("Fiscal Year", fiscal_year, function(r) {
 				var fy = frappe.model.get_doc("Fiscal Year", fiscal_year);
