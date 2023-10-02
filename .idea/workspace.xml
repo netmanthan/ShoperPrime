@@ -164,7 +164,7 @@
       <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/page/posapp/onscan.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/page/posapp/posapp.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/page/posapp/posapp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/page/posapp/posapp.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/page/posapp/posapp.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/workspace/computroid_pos/computroid_pos.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/workspace/computroid_pos/computroid_pos.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/workspace/computroid_pos/computroid_pos.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/computroidpos/config/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/computroidpos/config/computroidpos.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/config/shoperprime.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/computroidpos/config/desktop.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/config/desktop.py" afterDir="false" />

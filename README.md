@@ -2,7 +2,7 @@
     <a href="shoperprime.com">
         <img src="https://github.com/netmanthan/shoperprime/blob/develop/images/shoperprime.png" height="128">
     </a>
-    <h2>Compuroid POS</h2>
+    <h2>ShoperPrime POS</h2>
     <p align="center">
         <p>Complete Point Of Sales Solutions </p>
     </p>
