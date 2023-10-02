@@ -750,7 +750,7 @@
                 color="warning"
                 dark
                 @click="get_draft_invoices"
-                >{{ __("Hold-Bill") }}</v-btn
+                >{{ __("Held") }}</v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -1063,7 +1063,7 @@ export default {
       this.posting_date = frappe.datetime.nowdate();
       if (doc.name && this.pos_profile.posa_allow_delete) {
         frappe.call({
-          method: "shoperprimepos.shoperprimepos.api.shoperprimepos.delete_invoice",
+          method: "ShoperPrime.ShoperPrime.api.posapp.delete_invoice",
           args: { invoice: doc.name },
           async: true,
           callback: function (r) {
@@ -1233,7 +1233,7 @@ export default {
     update_invoice(doc) {
       const vm = this;
       frappe.call({
-        method: "shoperprimepos.shoperprimepos.api.shoperprimepos.update_invoice",
+        method: "ShoperPrime.ShoperPrime.api.posapp.update_invoice",
         args: {
           data: doc,
         },
@@ -1433,7 +1433,7 @@ export default {
     get_draft_invoices() {
       const vm = this;
       frappe.call({
-        method: "shoperprimepos.shoperprimepos.api.shoperprimepos.get_draft_invoices",
+        method: "ShoperPrime.ShoperPrime.api.posapp.get_draft_invoices",
         args: {
           pos_opening_shift: this.pos_opening_shift.name,
         },
@@ -1461,7 +1461,7 @@ export default {
       const vm = this;
       if (!vm.pos_profile) return;
       frappe.call({
-        method: "shoperprimepos.shoperprimepos.api.shoperprimepos.get_items_details",
+        method: "ShoperPrime.ShoperPrime.api.posapp.get_items_details",
         async: false,
         args: {
           pos_profile: vm.pos_profile,
@@ -1488,7 +1488,7 @@ export default {
     update_item_detail(item) {
       const vm = this;
       frappe.call({
-        method: "shoperprimepos.shoperprimepos.api.shoperprimepos.get_item_detail",
+        method: "ShoperPrime.ShoperPrime.api.posapp.get_item_detail",
         args: {
           warehouse: this.pos_profile.warehouse,
           doc: this.get_invoice_doc(),
@@ -1582,7 +1582,7 @@ export default {
       const vm = this;
       if (this.customer) {
         frappe.call({
-          method: "shoperprimepos.shoperprimepos.api.shoperprimepos.get_customer_info",
+          method: "ShoperPrime.ShoperPrime.api.posapp.get_customer_info",
           args: {
             customer: vm.customer,
           },
@@ -1804,7 +1804,7 @@ export default {
     },
 
     shortOpenPayment(e) {
-      if (e.key === "F6") {
+      if (e.key === "s" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         this.show_payment();
       }
@@ -2606,7 +2606,7 @@ export default {
       this.selcted_delivery_charges = {};
       frappe.call({
         method:
-          "shoperprimepos.shoperprimepos.api.shoperprimepos.get_applicable_delivery_charges",
+          "ShoperPrime.ShoperPrime.api.posapp.get_applicable_delivery_charges",
         args: {
           company: this.pos_profile.company,
           pos_profile: this.pos_profile.name,

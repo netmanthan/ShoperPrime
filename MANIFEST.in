@@ -4,15 +4,15 @@ include *.json
 include *.md
 include *.py
 include *.txt
-recursive-include shoperprimepos *.css
-recursive-include shoperprimepos *.csv
-recursive-include shoperprimepos *.html
-recursive-include shoperprimepos *.ico
-recursive-include shoperprimepos *.js
-recursive-include shoperprimepos *.json
-recursive-include shoperprimepos *.md
-recursive-include shoperprimepos *.png
-recursive-include shoperprimepos *.py
-recursive-include shoperprimepos *.svg
-recursive-include shoperprimepos *.txt
-recursive-exclude shoperprimepos *.pyc
+recursive-include ShoperPrime *.css
+recursive-include ShoperPrime *.csv
+recursive-include ShoperPrime *.html
+recursive-include ShoperPrime *.ico
+recursive-include ShoperPrime *.js
+recursive-include ShoperPrime *.json
+recursive-include ShoperPrime *.md
+recursive-include ShoperPrime *.png
+recursive-include ShoperPrime *.py
+recursive-include ShoperPrime *.svg
+recursive-include ShoperPrime *.txt
+recursive-exclude ShoperPrime *.pyc

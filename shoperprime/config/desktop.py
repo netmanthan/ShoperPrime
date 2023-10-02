@@ -5,11 +5,11 @@ from frappe import _
 def get_data():
 	return [
 		{
-			"module_name": "shoperprime POS",
+			"module_name": "ShoperPrime POS",
 			"category": "Modules",
 			"color": "grey",
 			"icon": "octicon octicon-file-directory",
 			"type": "module",
-			"label": _("shoperprime POS")
+			"label": _("ShoperPrime POS")
 		}
 	]

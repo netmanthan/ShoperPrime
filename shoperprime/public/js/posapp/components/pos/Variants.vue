@@ -44,7 +44,7 @@
                     <v-img
                       :src="
                         item.image ||
-                        '/assets/shoperprimepos/js/shoperprimepos/components/pos/placeholder-image.png'
+                        '/assets/ShoperPrime/js/posapp/components/pos/placeholder-image.png'
                       "
                       class="white--text align-end"
                       gradient="to bottom, rgba(0,0,0,.2), rgba(0,0,0,.7)"

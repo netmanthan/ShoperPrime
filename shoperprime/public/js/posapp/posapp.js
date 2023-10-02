@@ -1,9 +1,9 @@
 import Home from './Home.vue';
 
-frappe.provide('frappe.shoperprimepos');
+frappe.provide('frappe.PosApp');
 
 
-frappe.shoperprimepos.shoperprimepos = class {
+frappe.PosApp.posapp = class {
     constructor({ parent }) {
         this.$parent = $(document);
         this.page = parent.page;

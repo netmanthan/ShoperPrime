@@ -8,9 +8,9 @@ import frappe
 from frappe import _
 from frappe.model.mapper import get_mapped_doc
 from frappe.utils import flt, add_days
-from shoperprimepos.shoperprimepos.doctype.pos_coupon.pos_coupon import update_coupon_code_count
-from shoperprimepos.shoperprimepos.api.shoperprimepos import get_company_domain
-from shoperprimepos.shoperprimepos.doctype.delivery_charges.delivery_charges import (
+from ShoperPrime.ShoperPrime.doctype.pos_coupon.pos_coupon import update_coupon_code_count
+from ShoperPrime.ShoperPrime.api.posapp import get_company_domain
+from ShoperPrime.ShoperPrime.doctype.delivery_charges.delivery_charges import (
     get_applicable_delivery_charges,
 )
 

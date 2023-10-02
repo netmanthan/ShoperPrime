@@ -881,7 +881,7 @@ export default {
 
       const vm = this;
       frappe.call({
-        method: "shoperprimepos.shoperprimepos.api.shoperprimepos.submit_invoice",
+        method: "ShoperPrime.ShoperPrime.api.posapp.submit_invoice",
         args: {
           data: data,
           invoice: this.invoice_doc,
@@ -946,8 +946,8 @@ export default {
         "load",
         function () {
           printWindow.print();
-          printWindow.close();
-          // NOTE : comment or uncomoent this to auto closing printing window above line i.e (printWindow.close();) //Jawahar R M
+          // printWindow.close();
+          // NOTE : uncomoent this to auto closing printing window
         },
         true
       );
@@ -962,21 +962,10 @@ export default {
         }, 0);
       }
     },
-    // shortPay(e) {
-    //   if (e.key === "F7") {
-    //     e.preventDefault();
-    //     this.submit();
-    //   }
-    // },
-
     shortPay(e) {
-      if (e.key === "F7") {
+      if (e.key === "x" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         this.submit();
-      } else if (e.key === "F9") {
-        // Handle the Back key press (you can use a different key if needed)
-        e.preventDefault();
-        this.goBack();
       }
     },
     set_paid_change() {
@@ -995,7 +984,7 @@ export default {
       this.clear_all_amounts();
       if (e) {
         frappe
-          .call("shoperprimepos.shoperprimepos.api.shoperprimepos.get_available_credit", {
+          .call("ShoperPrime.ShoperPrime.api.posapp.get_available_credit", {
             customer: this.invoice_doc.customer,
             company: this.pos_profile.company,
           })
@@ -1035,7 +1024,7 @@ export default {
         return;
       }
       frappe.call({
-        method: "shoperprimepos.shoperprimepos.api.shoperprimepos.get_customer_addresses",
+        method: "ShoperPrime.ShoperPrime.api.posapp.get_customer_addresses",
         args: { customer: vm.invoice_doc.customer },
         async: true,
         callback: function (r) {
@@ -1082,7 +1071,7 @@ export default {
         );
       }
       frappe.call({
-        method: "shoperprimepos.shoperprimepos.api.shoperprimepos.get_sales_person_names",
+        method: "ShoperPrime.ShoperPrime.api.posapp.get_sales_person_names",
         callback: function (r) {
           if (r.message) {
             vm.sales_persons = r.message;
@@ -1136,7 +1125,7 @@ export default {
 
       frappe
         .call({
-          method: "shoperprimepos.shoperprimepos.api.shoperprimepos.update_invoice",
+          method: "ShoperPrime.ShoperPrime.api.posapp.update_invoice",
           args: {
             data: formData,
           },
@@ -1150,8 +1139,7 @@ export default {
         .then(() => {
           frappe
             .call({
-              method:
-                "shoperprimepos.shoperprimepos.api.shoperprimepos.create_payment_request",
+              method: "ShoperPrime.ShoperPrime.api.posapp.create_payment_request",
               args: {
                 doc: vm.invoice_doc,
               },
@@ -1207,8 +1195,7 @@ export default {
     get_mpesa_modes() {
       const vm = this;
       frappe.call({
-        method:
-          "shoperprimepos.shoperprimepos.api.m_pesa.get_mpesa_mode_of_payment",
+        method: "ShoperPrime.ShoperPrime.api.m_pesa.get_mpesa_mode_of_payment",
         args: { company: vm.pos_profile.company },
         async: true,
         callback: function (r) {
@@ -1242,11 +1229,18 @@ export default {
     set_mpesa_payment(payment) {
       this.pos_profile.use_customer_credit = 1;
       this.redeem_customer_credit = true;
+      const invoiceAmount =
+        this.invoice_doc.rounded_total || this.invoice_doc.grand_total;
+      let amount =
+        payment.unallocated_amount > invoiceAmount
+          ? invoiceAmount
+          : payment.unallocated_amount;
+      if (amount < 0 || !amount) amount = 0;
       const advance = {
         type: "Advance",
         credit_origin: payment.name,
         total_credit: flt(payment.unallocated_amount),
-        credit_to_redeem: flt(payment.unallocated_amount),
+        credit_to_redeem: flt(amount),
       };
       this.clear_all_amounts();
       this.customer_credit_dict.push(advance);

@@ -4,7 +4,7 @@
 import frappe, requests
 from frappe.model.document import Document
 from frappe.utils import get_request_site_address
-from shoperprimepos.shoperprimepos.api.m_pesa import get_token
+from ShoperPrime.ShoperPrime.api.m_pesa import get_token
 
 
 class MpesaC2BRegisterURL(Document):
@@ -29,10 +29,10 @@ class MpesaC2BRegisterURL(Document):
         )
         site_url = get_request_site_address(True)
         validation_url = (
-            site_url + "/api/method/shoperprimepos.shoperprimepos.api.m_pesa.validation"
+            site_url + "/api/method/ShoperPrime.ShoperPrime.api.m_pesa.validation"
         )
         confirmation_url = (
-            site_url + "/api/method/shoperprimepos.shoperprimepos.api.m_pesa.confirmation"
+            site_url + "/api/method/ShoperPrime.ShoperPrime.api.m_pesa.confirmation"
         )
         register_url = base_url + "/mpesa/c2b/v2/registerurl"
 

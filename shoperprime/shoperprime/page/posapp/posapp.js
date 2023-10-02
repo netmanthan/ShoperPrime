@@ -1,16 +1,16 @@
-{% include "shoperprimepos/shoperprimepos/page/shoperprimepos/onscan.js" %}
-frappe.pages['shoperprimepos'].on_page_load = function (wrapper) {
+{% include "ShoperPrime/ShoperPrime/page/posapp/onscan.js" %}
+frappe.pages['posapp'].on_page_load = function (wrapper) {
 	var page = frappe.ui.make_app_page({
 		parent: wrapper,
-		title: 'shoperprime POS',
+		title: 'ShoperPrime POS',
 		single_column: true
 	});
 
-	this.page.$shoperprimepos = new frappe.shoperprimepos.shoperprimepos(this.page);
+	this.page.$PosApp = new frappe.PosApp.posapp(this.page);
 
 	$('div.navbar-fixed-top').find('.container').css('padding', '0');
 
-	$("head").append("<link href='/assets/shoperprimepos/node_modules/vuetify/dist/vuetify.min.css' rel='stylesheet'>");
+	$("head").append("<link href='/assets/ShoperPrime/node_modules/vuetify/dist/vuetify.min.css' rel='stylesheet'>");
 	$("head").append("<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css'>");
 	$("head").append("<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' />");
 };

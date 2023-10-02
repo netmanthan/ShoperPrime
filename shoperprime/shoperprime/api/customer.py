@@ -4,7 +4,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe import _
-from shoperprimepos.shoperprimepos.doctype.referral_code.referral_code import (
+from ShoperPrime.ShoperPrime.doctype.referral_code.referral_code import (
     create_referral_code,
 )
 

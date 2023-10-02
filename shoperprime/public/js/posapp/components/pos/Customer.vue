@@ -84,7 +84,7 @@ export default {
         vm.customers = JSON.parse(localStorage.getItem('customer_storage'));
       }
       frappe.call({
-        method: 'shoperprimepos.shoperprimepos.api.shoperprimepos.get_customer_names',
+        method: 'ShoperPrime.ShoperPrime.api.posapp.get_customer_names',
         args: {
           pos_profile: this.pos_profile.pos_profile,
         },

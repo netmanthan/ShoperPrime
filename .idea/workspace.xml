@@ -5,139 +5,144 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e807bcf1-d2be-4c78-889b-c719e8341f4d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Computroid_Pos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Shoperprime_Pos.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Shoperprime_Pos.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MANIFEST.in" beforeDir="false" afterPath="$PROJECT_DIR$/MANIFEST.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/config/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/company.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/company.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/customer.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/customer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/invoice.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/invoice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/invoice.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/invoice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/m_pesa.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/m_pesa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/payment_entry.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/payment_entry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/pos_profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/pos_profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/posapp.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/shoperprimepos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/status_updater.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/status_updater.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/api/taxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/taxes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/api/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/delivery_charges/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/delivery_charges/delivery_charges.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges/delivery_charges.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/delivery_charges/delivery_charges.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges/delivery_charges.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/delivery_charges/delivery_charges.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges/delivery_charges.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/delivery_charges/test_delivery_charges.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges/test_delivery_charges.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/delivery_charges_pos_profile/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/delivery_charges_pos_profile/delivery_charges_pos_profile.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges_pos_profile/delivery_charges_pos_profile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/delivery_charges_pos_profile/delivery_charges_pos_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges_pos_profile/delivery_charges_pos_profile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/mpesa_c2b_register_url/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges_pos_profile/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/mpesa_c2b_register_url/mpesa_c2b_register_url.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_c2b_register_url/mpesa_c2b_register_url.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/mpesa_c2b_register_url/mpesa_c2b_register_url.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_c2b_register_url/mpesa_c2b_register_url.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/mpesa_c2b_register_url/mpesa_c2b_register_url.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_c2b_register_url/mpesa_c2b_register_url.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/mpesa_c2b_register_url/test_mpesa_c2b_register_url.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_c2b_register_url/test_mpesa_c2b_register_url.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/mpesa_payment_register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_c2b_register_url/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/mpesa_payment_register/mpesa_payment_register.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_payment_register/mpesa_payment_register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/mpesa_payment_register/mpesa_payment_register.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_payment_register/mpesa_payment_register.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/mpesa_payment_register/mpesa_payment_register.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_payment_register/mpesa_payment_register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/mpesa_payment_register/test_mpesa_payment_register.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_payment_register/test_mpesa_payment_register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_payment_register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift/closing_shift_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/closing_shift_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift/pos_closing_shift.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/pos_closing_shift.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift/pos_closing_shift.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/pos_closing_shift.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift/pos_closing_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/pos_closing_shift.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift/test_pos_closing_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/test_pos_closing_shift.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift_detail/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift_detail/pos_closing_shift_detail.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_detail/pos_closing_shift_detail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift_detail/pos_closing_shift_detail.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_detail/pos_closing_shift_detail.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift_taxes/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_detail/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift_taxes/pos_closing_shift_taxes.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_taxes/pos_closing_shift_taxes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_closing_shift_taxes/pos_closing_shift_taxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_taxes/pos_closing_shift_taxes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_coupon/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_taxes/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_coupon/pos_coupon.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon/pos_coupon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_coupon/pos_coupon.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon/pos_coupon.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_coupon/pos_coupon.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon/pos_coupon.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_coupon/test_pos_coupon.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon/test_pos_coupon.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_coupon_detail/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_coupon_detail/pos_coupon_detail.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon_detail/pos_coupon_detail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_coupon_detail/pos_coupon_detail.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon_detail/pos_coupon_detail.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_offer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon_detail/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_offer/pos_offer.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer/pos_offer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_offer/pos_offer.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer/pos_offer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_offer/pos_offer.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer/pos_offer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_offer/test_pos_offer.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer/test_pos_offer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_offer_detail/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_offer_detail/pos_offer_detail.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer_detail/pos_offer_detail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_offer_detail/pos_offer_detail.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer_detail/pos_offer_detail.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_opening_shift/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer_detail/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_opening_shift/pos_opening_shift.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/pos_opening_shift.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_opening_shift/pos_opening_shift.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/pos_opening_shift.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_opening_shift/pos_opening_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/pos_opening_shift.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_opening_shift/pos_opening_shift_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/pos_opening_shift_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_opening_shift/test_pos_opening_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/test_pos_opening_shift.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_opening_shift_detail/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_opening_shift_detail/pos_opening_shift_detail.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift_detail/pos_opening_shift_detail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_opening_shift_detail/pos_opening_shift_detail.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift_detail/pos_opening_shift_detail.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_payment_entry_reference/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift_detail/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_payment_entry_reference/pos_payment_entry_reference.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_payment_entry_reference/pos_payment_entry_reference.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/pos_payment_entry_reference/pos_payment_entry_reference.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_payment_entry_reference/pos_payment_entry_reference.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/referral_code/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_payment_entry_reference/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/referral_code/referral_code.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/referral_code/referral_code.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/referral_code/referral_code.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/referral_code/referral_code.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/referral_code/referral_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/referral_code/referral_code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/referral_code/test_referral_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/referral_code/test_referral_code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/sales_invoice_reference/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/referral_code/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/sales_invoice_reference/sales_invoice_reference.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/sales_invoice_reference/sales_invoice_reference.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/doctype/sales_invoice_reference/sales_invoice_reference.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/sales_invoice_reference/sales_invoice_reference.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/page/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/sales_invoice_reference/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/page/posapp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/page/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/page/posapp/onscan.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/page/shoperprimepos/onscan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/page/posapp/posapp.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/page/shoperprimepos/shoperprimepos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/page/posapp/posapp.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/page/shoperprimepos/shoperprimepos.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/computroidpos/workspace/computroid_pos/computroid_pos.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/workspace/shoperprime_pos/shoperprime_pos.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/shoperprime/page/shoperprimepos/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/config/computroidpos.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/config/shoperprime.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/config/desktop.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/config/desktop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/config/docs.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/config/docs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/fixtures/custom_field.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/fixtures/custom_field.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/fixtures/property_setter.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/fixtures/property_setter.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/hooks.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/hooks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/images" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/images" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/modules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/modules.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/patches.txt" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/patches.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/computroidpos.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprime.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/bus.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/bus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/Navbar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/payments/Pay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/payments/Pay.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/ClosingDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/ClosingDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/Customer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Customer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/Drafts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Drafts.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/Invoice.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Invoice.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/ItemsSelector.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/ItemsSelector.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/Mpesa-Payments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Mpesa-Payments.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/NewAddress.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/NewAddress.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/OpeningDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/OpeningDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/Payments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Payments.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/Pos.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Pos.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/PosCoupons.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/PosCoupons.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/PosOffers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/PosOffers.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/Returns.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Returns.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/UpdateCustomer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/UpdateCustomer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/Variants.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Variants.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/cpos.png" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/cpos.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/placeholder-image.png" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/placeholder-image.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/pos.png" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/pos.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/components/pos/rect322.png" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/rect322.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/format.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/format.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/posapp/posapp.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/shoperprimepos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/public/js/toConsole.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/public/js/toConsole.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/templates/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/templates/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/templates/pages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/templates/pages/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/computroidpos/translations/pt.csv" beforeDir="false" afterPath="$PROJECT_DIR$/shoperprime/translations/pt.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Computroid.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MANIFEST.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/config/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/config/desktop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/config/docs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/config/shoperprime.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/fixtures/custom_field.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/fixtures/property_setter.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/hooks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/images" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/modules.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/patches.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprime.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/bus.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/Navbar.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/payments/Pay.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/ClosingDialog.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Customer.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Drafts.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Invoice.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/ItemsSelector.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Mpesa-Payments.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/NewAddress.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/OpeningDialog.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Payments.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Pos.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/PosCoupons.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/PosOffers.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Returns.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/UpdateCustomer.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/Variants.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/cpos.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/newFile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/placeholder-image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/pos.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/components/pos/rect322.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/format.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/shoperprimepos/shoperprimepos.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/public/js/toConsole.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/company.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/customer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/invoice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/invoice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/m_pesa.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/payment_entry.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/pos_profile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/shoperprimepos.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/status_updater.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/api/taxes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges/delivery_charges.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges/delivery_charges.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges/delivery_charges.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges/test_delivery_charges.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges_pos_profile/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges_pos_profile/delivery_charges_pos_profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/delivery_charges_pos_profile/delivery_charges_pos_profile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_c2b_register_url/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_c2b_register_url/mpesa_c2b_register_url.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_c2b_register_url/mpesa_c2b_register_url.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_c2b_register_url/mpesa_c2b_register_url.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_c2b_register_url/test_mpesa_c2b_register_url.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_payment_register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_payment_register/mpesa_payment_register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_payment_register/mpesa_payment_register.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_payment_register/mpesa_payment_register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/mpesa_payment_register/test_mpesa_payment_register.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/closing_shift_details.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/pos_closing_shift.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/pos_closing_shift.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/pos_closing_shift.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift/test_pos_closing_shift.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_detail/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_detail/pos_closing_shift_detail.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_detail/pos_closing_shift_detail.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_taxes/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_taxes/pos_closing_shift_taxes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_closing_shift_taxes/pos_closing_shift_taxes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon/pos_coupon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon/pos_coupon.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon/pos_coupon.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon/test_pos_coupon.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon_detail/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon_detail/pos_coupon_detail.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_coupon_detail/pos_coupon_detail.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer/pos_offer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer/pos_offer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer/pos_offer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer/test_pos_offer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer_detail/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer_detail/pos_offer_detail.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_offer_detail/pos_offer_detail.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/pos_opening_shift.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/pos_opening_shift.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/pos_opening_shift.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/pos_opening_shift_list.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift/test_pos_opening_shift.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift_detail/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift_detail/pos_opening_shift_detail.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_opening_shift_detail/pos_opening_shift_detail.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_payment_entry_reference/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_payment_entry_reference/pos_payment_entry_reference.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/pos_payment_entry_reference/pos_payment_entry_reference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/referral_code/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/referral_code/referral_code.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/referral_code/referral_code.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/referral_code/referral_code.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/referral_code/test_referral_code.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/sales_invoice_reference/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/sales_invoice_reference/sales_invoice_reference.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/doctype/sales_invoice_reference/sales_invoice_reference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/page/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/page/shoperprimepos/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/page/shoperprimepos/onscan.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/page/shoperprimepos/shoperprimepos.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/page/shoperprimepos/shoperprimepos.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/shoperprime/workspace/shoperprime_pos/shoperprime_pos.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/templates/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/templates/pages/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoperprime/translations/pt.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +178,7 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "E:/GitHub/ShoperPrime",
+    "last_opened_file_path": "E:/GitHub/ShoperPrimetoUpload",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",

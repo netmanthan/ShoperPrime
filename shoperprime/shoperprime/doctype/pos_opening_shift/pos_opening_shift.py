@@ -7,7 +7,7 @@ import frappe
 from frappe import _
 from frappe.utils import cint
 from frappe.model.document import Document
-from shoperprimepos.shoperprimepos.api.status_updater import StatusUpdater
+from ShoperPrime.ShoperPrime.api.status_updater import StatusUpdater
 
 
 class POSOpeningShift(StatusUpdater):

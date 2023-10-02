@@ -6,8 +6,8 @@
         class="grey--text"
       ></v-app-bar-nav-icon>
       <v-img
-        src="/assets/shoperprimepos/js/shoperprimepos/components/pos/pos.png"
-        alt="shoperprime POS"
+        src="/assets/ShoperPrime/js/posapp/components/pos/pos.png"
+        alt="ShoperPrime POS"
         max-width="32"
         class="mr-2"
         color="primary"
@@ -18,7 +18,7 @@
         class="text-uppercase primary--text"
       >
         <span class="font-weight-light">pos</span>
-        <span>shoperprime</span>
+        <span>ShoperPrime</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -157,8 +157,8 @@ export default {
       snack: false,
       snackColor: '',
       snackText: '',
-      company: 'shoperprime POS',
-      company_img: '/assets/shoperprimepos/js/shoperprimepos/components/pos/pos.png',
+      company: 'ShoperPrime POS',
+      company_img: '/assets/erpnext/images/erpnext-logo.svg',
       pos_profile: '',
       freeze: false,
       freezeTitle: '',
@@ -176,7 +176,7 @@ export default {
     },
     go_about() {
       const win = window.open(
-        'https://netmanthan.com',
+        'https://github.com/netmanthan/ShoperPrime',
         '_blank'
       );
       win.focus();
@@ -243,7 +243,7 @@ export default {
         this.pos_profile = data.pos_profile;
         const payments = { text: 'Payments', icon: 'mdi-cash-register' };
         if (
-          this.pos_profile.posa_use_pos_shoperprime_payments &&
+          this.pos_profile.posa_use_shoperprime_payments &&
           this.items.length !== 2
         ) {
           this.items.push(payments);

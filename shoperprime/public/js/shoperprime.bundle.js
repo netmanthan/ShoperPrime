@@ -1,2 +1,2 @@
 import './toConsole';
-import './shoperprimepos/shoperprimepos';
+import './posapp/posapp';

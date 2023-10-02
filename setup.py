@@ -4,11 +4,11 @@ from setuptools import setup, find_packages
 with open("requirements.txt") as f:
     install_requires = f.read().strip().split("\n")
 
-# get version from __version__ variable in shoperprimepos/__init__.py
-from shoperprimepos import __version__ as version
+# get version from __version__ variable in ShoperPrime/__init__.py
+from ShoperPrime import __version__ as version
 
 setup(
-    name="shoperprimepos",
+    name="ShoperPrime",
     version=version,
     description="ShoperPrime POS",
     author="Jawahar R Mallah",

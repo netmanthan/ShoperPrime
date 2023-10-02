@@ -2,10 +2,10 @@
 from __future__ import unicode_literals
 from . import __version__ as app_version
 
-app_name = "shoperprimepos"
-app_title = "shoperprime POS"
-app_publisher = "Jawahar R Mallah"
-app_description = "shoperprime POS"
+app_name = "ShoperPrime"
+app_title = "ShoperPrime POS"
+app_publisher = "Youssef Restom"
+app_description = "ShoperPrime POS"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "netmanthan@outlook.com"
@@ -15,16 +15,16 @@ app_license = "GPLv3"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/shoperprimepos/css/shoperprimepos.css"
-# app_include_js = "/assets/shoperprimepos/js/shoperprimepos.js"
+# app_include_css = "/assets/ShoperPrime/css/ShoperPrime.css"
+# app_include_js = "/assets/ShoperPrime/js/ShoperPrime.js"
 app_include_js = [
-    "/assets/shoperprimepos/node_modules/vuetify/dist/vuetify.js",
-    "shoperprimepos.bundle.js",
+    "/assets/ShoperPrime/node_modules/vuetify/dist/vuetify.js",
+    "ShoperPrime.bundle.js",
 ]
 
 # include js, css files in header of web template
-# web_include_css = "/assets/shoperprimepos/css/shoperprimepos.css"
-# web_include_js = "/assets/shoperprimepos/js/shoperprimepos.js"
+# web_include_css = "/assets/ShoperPrime/css/ShoperPrime.css"
+# web_include_js = "/assets/ShoperPrime/js/ShoperPrime.js"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -35,9 +35,9 @@ app_include_js = [
 
 # include js in doctype views
 doctype_js = {
-    "POS Profile": "shoperprimepos/api/pos_profile.js",
-    "Sales Invoice": "shoperprimepos/api/invoice.js",
-    "Company": "shoperprimepos/api/company.js",
+    "POS Profile": "ShoperPrime/api/pos_profile.js",
+    "Sales Invoice": "ShoperPrime/api/invoice.js",
+    "Company": "ShoperPrime/api/company.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -55,7 +55,7 @@ doctype_js = {
 # }
 
 # Website user home page (by function)
-# get_website_user_home_page = "shoperprimepos.utils.get_home_page"
+# get_website_user_home_page = "ShoperPrime.utils.get_home_page"
 
 # Generators
 # ----------
@@ -66,14 +66,14 @@ doctype_js = {
 # Installation
 # ------------
 
-# before_install = "shoperprimepos.install.before_install"
-# after_install = "shoperprimepos.install.after_install"
+# before_install = "ShoperPrime.install.before_install"
+# after_install = "ShoperPrime.install.after_install"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "shoperprimepos.notifications.get_notification_config"
+# notification_config = "ShoperPrime.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -93,13 +93,13 @@ doctype_js = {
 
 doc_events = {
     "Sales Invoice": {
-        "validate": "shoperprimepos.shoperprimepos.api.invoice.validate",
-        "before_submit": "shoperprimepos.shoperprimepos.api.invoice.before_submit",
-        "before_cancel": "shoperprimepos.shoperprimepos.api.invoice.before_cancel",
+        "validate": "ShoperPrime.ShoperPrime.api.invoice.validate",
+        "before_submit": "ShoperPrime.ShoperPrime.api.invoice.before_submit",
+        "before_cancel": "ShoperPrime.ShoperPrime.api.invoice.before_cancel",
     },
     "Customer": {
-        "validate": "shoperprimepos.shoperprimepos.api.customer.validate",
-        "after_insert": "shoperprimepos.shoperprimepos.api.customer.after_insert",
+        "validate": "ShoperPrime.ShoperPrime.api.customer.validate",
+        "after_insert": "ShoperPrime.ShoperPrime.api.customer.after_insert",
     },
 }
 
@@ -108,44 +108,44 @@ doc_events = {
 
 # scheduler_events = {
 # 	"all": [
-# 		"shoperprimepos.tasks.all"
+# 		"ShoperPrime.tasks.all"
 # 	],
 # 	"daily": [
-# 		"shoperprimepos.tasks.daily"
+# 		"ShoperPrime.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"shoperprimepos.tasks.hourly"
+# 		"ShoperPrime.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"shoperprimepos.tasks.weekly"
+# 		"ShoperPrime.tasks.weekly"
 # 	]
 # 	"monthly": [
-# 		"shoperprimepos.tasks.monthly"
+# 		"ShoperPrime.tasks.monthly"
 # 	]
 # }
 
 # Testing
 # -------
 
-# before_tests = "shoperprimepos.install.before_tests"
+# before_tests = "ShoperPrime.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "shoperprimepos.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "ShoperPrime.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "shoperprimepos.task.get_dashboard_data"
+# 	"Task": "ShoperPrime.task.get_dashboard_data"
 # }
 
-override_doctype_class = {
-    "Sales Invoice": "shoperprimepos.shoperprimepos.api.taxes.customSalesInvoice",
-}
+# override_doctype_class = {
+# "doctype": "method",
+# }
 
 # exempt linked doctypes from being automatically cancelled
 #
@@ -161,7 +161,7 @@ fixtures = [
                 (
                     "Sales Invoice-posa_pos_opening_shift",
                     "Item Barcode-posa_uom",
-                    "POS Profile-posa_pos_shoperprime_settings",
+                    "POS Profile-posa_shoperprime_settings",
                     "POS Profile-posa_allow_delete",
                     "POS Profile-posa_allow_user_to_edit_rate",
                     "POS Profile-posa_allow_user_to_edit_additional_discount",
@@ -170,7 +170,7 @@ fixtures = [
                     "POS Profile-posa_allow_submissions_in_background_job",
                     "POS Profile-posa_allow_partial_payment",
                     "POS Profile-posa_allow_credit_sale",
-                    "POS Profile-posa_pos_shoperprime_advance_settings",
+                    "POS Profile-posa_shoperprime_advance_settings",
                     "Batch-posa_batch_price",
                     "POS Profile-posa_max_discount_allowed",
                     "POS Profile-posa_allow_return",
@@ -248,8 +248,8 @@ fixtures = [
                     "POS Profile-pose_use_limit_search",
                     "POS Profile-posa_search_limit",
                     "POS Profile-posa_search_batch_no",
-                    "POS Profile-pos_shoperprime_payments",
-                    "POS Profile-posa_use_pos_shoperprime_payments",
+                    "POS Profile-shoperprime_payments",
+                    "POS Profile-posa_use_shoperprime_payments",
                     "POS Profile-posa_allow_make_new_payments",
                     "POS Profile-posa_allow_reconcile_payments",
                     "POS Profile-column_break_uolvm",
