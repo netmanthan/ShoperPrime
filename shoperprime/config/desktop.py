@@ -5,7 +5,7 @@ from frappe import _
 def get_data():
 	return [
 		{
-			"module_name": "ShoperPrime POS",
+			"module_name": "shoperPrime",
 			"category": "Modules",
 			"color": "grey",
 			"icon": "octicon octicon-file-directory",
