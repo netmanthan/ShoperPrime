@@ -1,8 +1,8 @@
 <div align="center">
     <a href="shoperprime.com">
-        <img src="https://github.com/netmanthan/shoperprime/blob/develop/images/shoperprime.png" height="128">
+        <img src="https://github.com/netmanthan/shoperprime/blob/develop/images/shoperprimepos.png" height="128">
     </a>
-    <h2>ShoperPrime POS</h2>
+    <h2>shoperprime POS</h2>
     <p align="center">
         <p>Complete Point Of Sales Solutions </p>
     </p>
@@ -11,7 +11,7 @@
 
 ### Main Features Of shoperprime ShoperPrime POint Of Sales
 
-<section class="section section-padding-top" data-section-idx="5" data-section-template="Section with Cards"><div class="container"><div class="section-with-cards"><h2 class="section-title">Main Features of ShoperPrime POS!</h2><p class="section-description">Cloud Point Of sales</p><div class="mt-6">
+<section class="section section-padding-top" data-section-idx="5" data-section-template="Section with Cards"><div class="container"><div class="section-with-cards"><h2 class="section-title">Main Features of shoperprime POS!</h2><p class="section-description">Cloud Point Of sales</p><div class="mt-6">
 <div class="row mt-n6"><div class="mt-6 col-12 col-sm-6 col-lg-3">
 <div class="card card-sm h-100"><div class="card-body">
 <h3 class="card-title mt-0">User-Friendly Interface:</h3>
@@ -23,7 +23,7 @@ Flexible Sales Views: Cashiers have the option of using either list view or card
 </div><div class="mt-6 col-12 col-sm-6 col-lg-3">
 <div class="card card-sm h-100"><div class="card-body">
 <h3 class="card-title mt-0">Efficient Invoice Submission:</h3>
-<p class="card-text">ShoperPrime POS supports enqueue invoice submission after printing the receipt, enabling faster transaction processing.</p>
+<p class="card-text">shoperprime POS supports enqueue invoice submission after printing the receipt, enabling faster transaction processing.</p>
 </div>
 <a class="stretched-link" href="efficient-invoice-submission"></a>
 </div>
@@ -37,7 +37,7 @@ Flexible Sales Views: Cashiers have the option of using either list view or card
 </div><div class="mt-6 col-12 col-sm-6 col-lg-3">
 <div class="card card-sm h-100"><div class="card-body">
 <h3 class="card-title mt-0">Batch-Based Pricing:</h3>
-<p class="card-text">ShoperPrime POS allows for batch-based pricing, ensuring accurate pricing for different batches of products.</p>
+<p class="card-text">shoperprime POS allows for batch-based pricing, ensuring accurate pricing for different batches of products.</p>
 </div>
 <a class="stretched-link" href="batch-based-pricing"></a>
 </div>
@@ -58,7 +58,7 @@ Flexible Sales Views: Cashiers have the option of using either list view or card
 </div><div class="mt-6 col-12 col-sm-6 col-lg-3">
 <div class="card card-sm h-100"><div class="card-body">
 <h3 class="card-title mt-0">Returns Handling: </h3>
-<p class="card-text">ShoperPrime POS allows for easy returns, whether for cash refunds or customer credit.</p>
+<p class="card-text">shoperprime POS allows for easy returns, whether for cash refunds or customer credit.</p>
 </div>
 <a class="stretched-link" href="returns-handling"></a>
 </div>
@@ -72,7 +72,7 @@ Flexible Sales Views: Cashiers have the option of using either list view or card
 </div></div>
 </div>
 </div></div></section>
-<section class="section" data-section-idx="6" data-section-template="Section with Cards"><div class="container"><div class="section-with-cards"><p class="section-description">Investing in an ideal POS system like ShoperPrime POS is an investment in your business's future success.</p><div class="">
+<section class="section" data-section-idx="6" data-section-template="Section with Cards"><div class="container"><div class="section-with-cards"><p class="section-description">Investing in an ideal POS system like shoperprime POS is an investment in your business's future success.</p><div class="">
 <div class="row mt-n6"><div class="mt-6 col-12 col-sm-6 col-lg-3">
 <div class="card card-sm h-100"><div class="card-body">
 <h3 class="card-title mt-0">Customer Discount: </h3>
@@ -84,7 +84,7 @@ Flexible Sales Views: Cashiers have the option of using either list view or card
 </div><div class="mt-6 col-12 col-sm-6 col-lg-3">
 <div class="card card-sm h-100"><div class="card-body">
 <h3 class="card-title mt-0">POS Offers and Coupons:</h3>
-<p class="card-text">ShoperPrime POS supports special offers and coupons to attract customers and boost sales.</p>
+<p class="card-text">shoperprime POS supports special offers and coupons to attract customers and boost sales.</p>
 </div>
 <a class="stretched-link" href="#"></a>
 </div>
@@ -112,7 +112,7 @@ Flexible Sales Views: Cashiers have the option of using either list view or card
 </div><div class="mt-6 col-12 col-sm-6 col-lg-3">
 <div class="card card-sm h-100"><div class="card-body">
 <h3 class="card-title mt-0">POS Offers and Coupons:</h3>
-<p class="card-text"> ShoperPrime POS supports special offers and coupons to attract customers and boost sales.
+<p class="card-text"> shoperprime POS supports special offers and coupons to attract customers and boost sales.
 </p>
 </div>
 <a class="stretched-link" href="#"></a>
@@ -148,7 +148,7 @@ Flexible Sales Views: Cashiers have the option of using either list view or card
 </div><div class="mt-6 col-12 col-sm-6 col-lg-3">
 <div class="card card-sm h-100"><div class="card-body">
 <h3 class="card-title mt-0">Multi-Language Support:</h3>
-<p class="card-text"> ShoperPrime POS supports multiple languages, catering to diverse customer bases.
+<p class="card-text"> shoperprime POS supports multiple languages, catering to diverse customer bases.
 </p>
 </div>
 <a class="stretched-link" href="#"></a>
@@ -207,15 +207,15 @@ Flexible Sales Views: Cashiers have the option of using either list view or card
 
 #### Frappe Cloud:
 
-One-click installing available if you are hosting on FC from [here](https://frappecloud.com/marketplace/apps/shoperprime)
+One-click installing available if you are hosting on FC from [here](https://frappecloud.com/marketplace/apps/shoperprimepos)
 
 #### Self Hosting:
 
 1. `bench get-app branch version-14 https://github.com/netmanthan/shoperprime_pos.git`
 2. `bench setup requirements`
-3. `bench build --app shoperprime`
+3. `bench build --app shoperprimepos`
 4. `bench restart`
-5. `bench --site [your.site.name] install-app shoperprime`
+5. `bench --site [your.site.name] install-app shoperprimepos`
 6. `bench --site [your.site.name] migrate`
 
 ---
@@ -224,7 +224,7 @@ One-click installing available if you are hosting on FC from [here](https://frap
 
 #### Frappe Cloud:
 
-If you are hosting on FC premium support is available [here](https://frappecloud.com/marketplace/apps/shoperprime)
+If you are hosting on FC premium support is available [here](https://frappecloud.com/marketplace/apps/shoperprimepos)
 
 #### Self Hosting:
 
@@ -245,7 +245,7 @@ Available in GitHub [discussions](https://github.com/netmanthan/shoperprime_pos/
 
 ### How To Use:
 
-[ShoperPrime POS Wiki](https://github.com/netmanthan/shoperprime_pos/wiki)
+[shoperprime POS Wiki](https://github.com/netmanthan/shoperprime_pos/wiki)
 
 ---
 
@@ -281,4 +281,4 @@ Will using for this the same guidelines from Erpnext
 
 GNU/General Public License (see [license.txt](https://github.com/netmanthan/shoperprime_pos/blob/master/license.txt))
 
-The ShoperPrime POS code is licensed as GNU General Public License (v3)
+The shoperprime POS code is licensed as GNU General Public License (v3)
