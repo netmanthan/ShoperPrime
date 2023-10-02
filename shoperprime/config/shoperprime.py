@@ -4,12 +4,12 @@ from frappe import _
 def get_data():
 	return [
 		{
-			"label": _("shoperprime POS),
+			"label": _("ShoperPrime POS"),
 			"items": [
 				 {
-				   "description": "shoperprime POS",
+				   "description": "ShoperPrime POS",
 				   "name": "posapp", 
-				   "label": "Shoper Prime POS",
+				   "label": "POSAPP", 					
 				   "type": "page"
 				  }, 
 

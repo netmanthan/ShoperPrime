@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 from . import __version__ as app_version
 
 app_name = "shoperprime"
-app_title = "shoperprime POS"
-app_publisher = "Youssef Restom"
-app_description = "shoperprime POS"
+app_title = "ShoperPrime POS"
+app_publisher = "Jawahar R Mallah"
+app_description = "ShoperPrime POS"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "netmanthan@outlook.com"
@@ -143,9 +143,9 @@ doc_events = {
 # 	"Task": "shoperprime.task.get_dashboard_data"
 # }
 
-# override_doctype_class = {
-# "doctype": "method",
-# }
+override_doctype_class = {
+    "Sales Invoice": "shoperprime.shoperprime.api.taxes.customSalesInvoice",
+}
 
 # exempt linked doctypes from being automatically cancelled
 #
@@ -161,7 +161,7 @@ fixtures = [
                 (
                     "Sales Invoice-posa_pos_opening_shift",
                     "Item Barcode-posa_uom",
-                    "POS Profile-posa_shoperprime_settings",
+                    "POS Profile-posa_pos_shoperprime_settings",
                     "POS Profile-posa_allow_delete",
                     "POS Profile-posa_allow_user_to_edit_rate",
                     "POS Profile-posa_allow_user_to_edit_additional_discount",
@@ -170,7 +170,7 @@ fixtures = [
                     "POS Profile-posa_allow_submissions_in_background_job",
                     "POS Profile-posa_allow_partial_payment",
                     "POS Profile-posa_allow_credit_sale",
-                    "POS Profile-posa_shoperprime_advance_settings",
+                    "POS Profile-posa_pos_shoperprime_advance_settings",
                     "Batch-posa_batch_price",
                     "POS Profile-posa_max_discount_allowed",
                     "POS Profile-posa_allow_return",
@@ -248,8 +248,8 @@ fixtures = [
                     "POS Profile-pose_use_limit_search",
                     "POS Profile-posa_search_limit",
                     "POS Profile-posa_search_batch_no",
-                    "POS Profile-shoperprime_payments",
-                    "POS Profile-posa_use_shoperprime_payments",
+                    "POS Profile-pos_shoperprime_payments",
+                    "POS Profile-posa_use_pos_shoperprime_payments",
                     "POS Profile-posa_allow_make_new_payments",
                     "POS Profile-posa_allow_reconcile_payments",
                     "POS Profile-column_break_uolvm",

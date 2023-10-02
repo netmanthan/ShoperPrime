@@ -946,8 +946,8 @@ export default {
         "load",
         function () {
           printWindow.print();
-          // printWindow.close();
-          // NOTE : uncomoent this to auto closing printing window
+          printWindow.close();
+          // NOTE : comment or uncomoent this to auto closing printing window above line i.e (printWindow.close();) //Jawahar R M
         },
         true
       );
@@ -962,10 +962,21 @@ export default {
         }, 0);
       }
     },
+    // shortPay(e) {
+    //   if (e.key === "F7") {
+    //     e.preventDefault();
+    //     this.submit();
+    //   }
+    // },
+
     shortPay(e) {
-      if (e.key === "x" && (e.ctrlKey || e.metaKey)) {
+      if (e.key === "F7") {
         e.preventDefault();
         this.submit();
+      } else if (e.key === "F9") {
+        // Handle the Back key press (you can use a different key if needed)
+        e.preventDefault();
+        this.goBack();
       }
     },
     set_paid_change() {
@@ -1139,7 +1150,8 @@ export default {
         .then(() => {
           frappe
             .call({
-              method: "shoperprime.shoperprime.api.posapp.create_payment_request",
+              method:
+                "shoperprime.shoperprime.api.posapp.create_payment_request",
               args: {
                 doc: vm.invoice_doc,
               },
@@ -1195,7 +1207,8 @@ export default {
     get_mpesa_modes() {
       const vm = this;
       frappe.call({
-        method: "shoperprime.shoperprime.api.m_pesa.get_mpesa_mode_of_payment",
+        method:
+          "shoperprime.shoperprime.api.m_pesa.get_mpesa_mode_of_payment",
         args: { company: vm.pos_profile.company },
         async: true,
         callback: function (r) {
@@ -1229,18 +1242,11 @@ export default {
     set_mpesa_payment(payment) {
       this.pos_profile.use_customer_credit = 1;
       this.redeem_customer_credit = true;
-      const invoiceAmount =
-        this.invoice_doc.rounded_total || this.invoice_doc.grand_total;
-      let amount =
-        payment.unallocated_amount > invoiceAmount
-          ? invoiceAmount
-          : payment.unallocated_amount;
-      if (amount < 0 || !amount) amount = 0;
       const advance = {
         type: "Advance",
         credit_origin: payment.name,
         total_credit: flt(payment.unallocated_amount),
-        credit_to_redeem: flt(amount),
+        credit_to_redeem: flt(payment.unallocated_amount),
       };
       this.clear_all_amounts();
       this.customer_credit_dict.push(advance);

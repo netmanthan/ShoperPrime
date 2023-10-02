@@ -7,7 +7,7 @@
       ></v-app-bar-nav-icon>
       <v-img
         src="/assets/shoperprime/js/posapp/components/pos/pos.png"
-        alt="shoperprime POS"
+        alt="ShoperPrime POS"
         max-width="32"
         class="mr-2"
         color="primary"
@@ -157,8 +157,8 @@ export default {
       snack: false,
       snackColor: '',
       snackText: '',
-      company: 'shoperprime POS',
-      company_img: '/assets/erpnext/images/erpnext-logo.svg',
+      company: 'ShoperPrime POS',
+      company_img: '/assets/shoperprime/js/posapp/components/pos/pos.png',
       pos_profile: '',
       freeze: false,
       freezeTitle: '',
@@ -176,7 +176,7 @@ export default {
     },
     go_about() {
       const win = window.open(
-        'https://github.com/netmanthan/shoperprime',
+        'https://netmanthan.com',
         '_blank'
       );
       win.focus();
@@ -243,7 +243,7 @@ export default {
         this.pos_profile = data.pos_profile;
         const payments = { text: 'Payments', icon: 'mdi-cash-register' };
         if (
-          this.pos_profile.posa_use_shoperprime_payments &&
+          this.pos_profile.posa_use_pos_shoperprime_payments &&
           this.items.length !== 2
         ) {
           this.items.push(payments);

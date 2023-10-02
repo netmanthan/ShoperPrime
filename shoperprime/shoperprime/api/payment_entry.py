@@ -226,8 +226,8 @@ def get_unallocated_payments(customer, company, currency, mode_of_payment=None):
 def process_pos_payment(payload):
     data = json.loads(payload)
     data = frappe._dict(data)
-    if not data.pos_profile.get("posa_use_shoperprime_payments"):
-        frappe.throw(_("shoperprime POS Payments is not enabled for this POS Profile"))
+    if not data.pos_profile.get("posa_use_pos_shoperprime_payments"):
+        frappe.throw(_("ShoperPrime POS Payments is not enabled for this POS Profile"))
 
     # validate data
     if not data.customer:

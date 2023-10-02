@@ -82,9 +82,9 @@ DocType: POS Offer Detail,Offer Name,Nome da Oferta
 DocType: POS Opening Shift,Open,Aberto
 DocType: POS Closing Shift Detail,Opening Amount,Valor de Abertura
 DocType: POS Opening Shift,Opening Balance Details,Detalhes de Balanço de Abertura
-,shoperprime POS,shoperprime POS
-Custom Field - label: POS Profile-posa_shoperprime_advance_settings,shoperprime POS Advance Settings,Configurações Avançadas do shoperprime POS
-Custom Field - label: POS Profile-posa_shoperprime_settings,shoperprime POS Settings,Configurações shoperprime POS
+,ShoperPrime POS,ShoperPrime POS
+Custom Field - label: POS Profile-posa_pos_shoperprime_advance_settings,ShoperPrime POS Advance Settings,Configurações Avançadas do ShoperPrime POS
+Custom Field - label: POS Profile-posa_pos_shoperprime_settings,ShoperPrime POS Settings,Configurações ShoperPrime POS
 DocType: POS Closing Shift,POS Closing Shift,POS Fecho de Turno
 DocType: POS Closing Shift Detail,POS Closing Shift Detail,POS Detalhes de Fecho de Turno
 DocType: POS Closing Shift Taxes,POS Closing Shift Taxes,POS Impostos de Fecho de Turno
