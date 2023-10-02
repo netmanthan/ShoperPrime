@@ -106,7 +106,7 @@ export default {
   methods: {
     check_opening_entry() {
       return frappe
-        .call('ShoperPrime.ShoperPrime.api.posapp.check_opening_shift', {
+        .call('shoperprime.shoperprime.api.posapp.check_opening_shift', {
           user: frappe.session.user,
         })
         .then((r) => {
@@ -128,7 +128,7 @@ export default {
     get_closing_data() {
       return frappe
         .call(
-          'ShoperPrime.ShoperPrime.doctype.pos_closing_shift.pos_closing_shift.make_closing_shift_from_opening',
+          'shoperprime.shoperprime.doctype.pos_closing_shift.pos_closing_shift.make_closing_shift_from_opening',
           {
             opening_shift: this.pos_opening_shift,
           }
@@ -144,7 +144,7 @@ export default {
     submit_closing_pos(data) {
       frappe
         .call(
-          'ShoperPrime.ShoperPrime.doctype.pos_closing_shift.pos_closing_shift.submit_closing_shift',
+          'shoperprime.shoperprime.doctype.pos_closing_shift.pos_closing_shift.submit_closing_shift',
           {
             closing_shift: data,
           }
@@ -163,7 +163,7 @@ export default {
     },
     get_offers(pos_profile) {
       return frappe
-        .call('ShoperPrime.ShoperPrime.api.posapp.get_offers', {
+        .call('shoperprime.shoperprime.api.posapp.get_offers', {
           profile: pos_profile,
         })
         .then((r) => {

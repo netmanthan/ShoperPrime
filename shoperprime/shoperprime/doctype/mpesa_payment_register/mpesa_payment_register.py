@@ -4,7 +4,7 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from ShoperPrime.ShoperPrime.api.payment_entry import create_payment_entry
+from shoperprime.shoperprime.api.payment_entry import create_payment_entry
 
 
 class MpesaPaymentRegister(Document):

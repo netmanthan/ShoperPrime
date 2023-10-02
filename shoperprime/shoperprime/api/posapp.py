@@ -25,8 +25,8 @@ from erpnext.accounts.doctype.payment_request.payment_request import (
 from erpnext.accounts.doctype.loyalty_program.loyalty_program import (
     get_loyalty_program_details_with_points,
 )
-from ShoperPrime.ShoperPrime.doctype.pos_coupon.pos_coupon import check_coupon_code
-from ShoperPrime.ShoperPrime.doctype.delivery_charges.delivery_charges import (
+from shoperprime.shoperprime.doctype.pos_coupon.pos_coupon import check_coupon_code
+from shoperprime.shoperprime.doctype.delivery_charges.delivery_charges import (
     get_applicable_delivery_charges as _get_applicable_delivery_charges,
 )
 from frappe.utils.caching import redis_cache

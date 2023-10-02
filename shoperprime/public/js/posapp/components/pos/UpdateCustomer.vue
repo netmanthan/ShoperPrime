@@ -312,7 +312,7 @@ export default {
           pos_profile_doc: this.pos_profile,
         };
         frappe.call({
-          method: 'ShoperPrime.ShoperPrime.api.posapp.create_customer',
+          method: 'shoperprime.shoperprime.api.posapp.create_customer',
           args: args,
           callback: (r) => {
             if (!r.exc && r.message.name) {

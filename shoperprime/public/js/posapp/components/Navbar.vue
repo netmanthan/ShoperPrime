@@ -6,8 +6,8 @@
         class="grey--text"
       ></v-app-bar-nav-icon>
       <v-img
-        src="/assets/ShoperPrime/js/posapp/components/pos/pos.png"
-        alt="ShoperPrime POS"
+        src="/assets/shoperprime/js/posapp/components/pos/pos.png"
+        alt="shoperprime POS"
         max-width="32"
         class="mr-2"
         color="primary"
@@ -18,7 +18,7 @@
         class="text-uppercase primary--text"
       >
         <span class="font-weight-light">pos</span>
-        <span>ShoperPrime</span>
+        <span>shoperprime</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -157,7 +157,7 @@ export default {
       snack: false,
       snackColor: '',
       snackText: '',
-      company: 'ShoperPrime POS',
+      company: 'shoperprime POS',
       company_img: '/assets/erpnext/images/erpnext-logo.svg',
       pos_profile: '',
       freeze: false,
@@ -176,7 +176,7 @@ export default {
     },
     go_about() {
       const win = window.open(
-        'https://github.com/netmanthan/ShoperPrime',
+        'https://github.com/netmanthan/shoperprime',
         '_blank'
       );
       win.focus();

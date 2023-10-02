@@ -2,10 +2,10 @@
 from __future__ import unicode_literals
 from . import __version__ as app_version
 
-app_name = "ShoperPrime"
-app_title = "ShoperPrime POS"
+app_name = "shoperprime"
+app_title = "shoperprime POS"
 app_publisher = "Youssef Restom"
-app_description = "ShoperPrime POS"
+app_description = "shoperprime POS"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "netmanthan@outlook.com"
@@ -15,16 +15,16 @@ app_license = "GPLv3"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/ShoperPrime/css/ShoperPrime.css"
-# app_include_js = "/assets/ShoperPrime/js/ShoperPrime.js"
+# app_include_css = "/assets/shoperprime/css/shoperprime.css"
+# app_include_js = "/assets/shoperprime/js/shoperprime.js"
 app_include_js = [
-    "/assets/ShoperPrime/node_modules/vuetify/dist/vuetify.js",
-    "ShoperPrime.bundle.js",
+    "/assets/shoperprime/node_modules/vuetify/dist/vuetify.js",
+    "shoperprime.bundle.js",
 ]
 
 # include js, css files in header of web template
-# web_include_css = "/assets/ShoperPrime/css/ShoperPrime.css"
-# web_include_js = "/assets/ShoperPrime/js/ShoperPrime.js"
+# web_include_css = "/assets/shoperprime/css/shoperprime.css"
+# web_include_js = "/assets/shoperprime/js/shoperprime.js"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -35,9 +35,9 @@ app_include_js = [
 
 # include js in doctype views
 doctype_js = {
-    "POS Profile": "ShoperPrime/api/pos_profile.js",
-    "Sales Invoice": "ShoperPrime/api/invoice.js",
-    "Company": "ShoperPrime/api/company.js",
+    "POS Profile": "shoperprime/api/pos_profile.js",
+    "Sales Invoice": "shoperprime/api/invoice.js",
+    "Company": "shoperprime/api/company.js",
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -55,7 +55,7 @@ doctype_js = {
 # }
 
 # Website user home page (by function)
-# get_website_user_home_page = "ShoperPrime.utils.get_home_page"
+# get_website_user_home_page = "shoperprime.utils.get_home_page"
 
 # Generators
 # ----------
@@ -66,14 +66,14 @@ doctype_js = {
 # Installation
 # ------------
 
-# before_install = "ShoperPrime.install.before_install"
-# after_install = "ShoperPrime.install.after_install"
+# before_install = "shoperprime.install.before_install"
+# after_install = "shoperprime.install.after_install"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "ShoperPrime.notifications.get_notification_config"
+# notification_config = "shoperprime.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -93,13 +93,13 @@ doctype_js = {
 
 doc_events = {
     "Sales Invoice": {
-        "validate": "ShoperPrime.ShoperPrime.api.invoice.validate",
-        "before_submit": "ShoperPrime.ShoperPrime.api.invoice.before_submit",
-        "before_cancel": "ShoperPrime.ShoperPrime.api.invoice.before_cancel",
+        "validate": "shoperprime.shoperprime.api.invoice.validate",
+        "before_submit": "shoperprime.shoperprime.api.invoice.before_submit",
+        "before_cancel": "shoperprime.shoperprime.api.invoice.before_cancel",
     },
     "Customer": {
-        "validate": "ShoperPrime.ShoperPrime.api.customer.validate",
-        "after_insert": "ShoperPrime.ShoperPrime.api.customer.after_insert",
+        "validate": "shoperprime.shoperprime.api.customer.validate",
+        "after_insert": "shoperprime.shoperprime.api.customer.after_insert",
     },
 }
 
@@ -108,39 +108,39 @@ doc_events = {
 
 # scheduler_events = {
 # 	"all": [
-# 		"ShoperPrime.tasks.all"
+# 		"shoperprime.tasks.all"
 # 	],
 # 	"daily": [
-# 		"ShoperPrime.tasks.daily"
+# 		"shoperprime.tasks.daily"
 # 	],
 # 	"hourly": [
-# 		"ShoperPrime.tasks.hourly"
+# 		"shoperprime.tasks.hourly"
 # 	],
 # 	"weekly": [
-# 		"ShoperPrime.tasks.weekly"
+# 		"shoperprime.tasks.weekly"
 # 	]
 # 	"monthly": [
-# 		"ShoperPrime.tasks.monthly"
+# 		"shoperprime.tasks.monthly"
 # 	]
 # }
 
 # Testing
 # -------
 
-# before_tests = "ShoperPrime.install.before_tests"
+# before_tests = "shoperprime.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "ShoperPrime.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "shoperprime.event.get_events"
 # }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-# 	"Task": "ShoperPrime.task.get_dashboard_data"
+# 	"Task": "shoperprime.task.get_dashboard_data"
 # }
 
 # override_doctype_class = {

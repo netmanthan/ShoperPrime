@@ -1,6 +1,6 @@
 <div align="center">
     <img src="https://frappecloud.com/files/pos.png" height="128">
-    <h2>ShoperPrime POS</h2>
+    <h2>shoperprime POS</h2>
 </div>
 
 #### An open-source Point of Sale for [Erpnext](https://github.com/frappe/erpnext) using [Vue.js](https://github.com/vuejs/vue) and [Vuetify](https://github.com/vuetifyjs/vuetify)
@@ -18,15 +18,15 @@
 
 #### Frappe Cloud:
 
-One-click installing available if you are hosting on FC from [here](https://frappecloud.com/marketplace/apps/ShoperPrime)
+One-click installing available if you are hosting on FC from [here](https://frappecloud.com/marketplace/apps/shoperprime)
 
 #### Self Hosting:
 
-1. `bench get-app branch version-14 https://github.com/netmanthan/ShoperPrime.git`
+1. `bench get-app branch version-14 https://github.com/netmanthan/shoperprime.git`
 2. `bench setup requirements`
-3. `bench build --app ShoperPrime`
+3. `bench build --app shoperprime`
 4. `bench restart`
-5. `bench --site [your.site.name] install-app ShoperPrime`
+5. `bench --site [your.site.name] install-app shoperprime`
 6. `bench --site [your.site.name] migrate`
 
 ---
@@ -35,7 +35,7 @@ One-click installing available if you are hosting on FC from [here](https://frap
 
 #### Frappe Cloud:
 
-If you are hosting on FC premium support is available [here](https://frappecloud.com/marketplace/apps/ShoperPrime)
+If you are hosting on FC premium support is available [here](https://frappecloud.com/marketplace/apps/shoperprime)
 
 #### Self Hosting:
 
@@ -43,20 +43,20 @@ If you need premium support please email me [here](mailto:connect@netmanthan.com
 
 #### Community Support:
 
-Available in GitHub [discussions](https://github.com/netmanthan/ShoperPrime/discussions)
+Available in GitHub [discussions](https://github.com/netmanthan/shoperprime/discussions)
 
 ---
 
 ### New Features and Bug report:
 
-- Please Create Github Issue from [here](https://github.com/netmanthan/ShoperPrime/issues/new/choose) after checking the existing issues
+- Please Create Github Issue from [here](https://github.com/netmanthan/shoperprime/issues/new/choose) after checking the existing issues
 - For paid features, you can email me [here](mailto:connect@netmanthan.com)
 
 ---
 
 ### How To Use:
 
-[ShoperPrime POS Wiki](https://github.com/netmanthan/ShoperPrime/wiki)
+[shoperprime POS Wiki](https://github.com/netmanthan/shoperprime/wiki)
 
 ---
 
@@ -90,6 +90,6 @@ Will using for this the same guidelines from Erpnext
 
 ### License
 
-GNU/General Public License (see [license.txt](https://github.com/netmanthan/ShoperPrime/blob/master/license.txt))
+GNU/General Public License (see [license.txt](https://github.com/netmanthan/shoperprime/blob/master/license.txt))
 
-The ShoperPrime POS code is licensed as GNU General Public License (v3)
+The shoperprime POS code is licensed as GNU General Public License (v3)

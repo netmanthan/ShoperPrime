@@ -95,7 +95,7 @@ export default {
       this.address.customer = this.customer;
       this.address.doctype = 'Customer';
       frappe.call({
-        method: 'ShoperPrime.ShoperPrime.api.posapp.make_address',
+        method: 'shoperprime.shoperprime.api.posapp.make_address',
         args: {
           args: this.address,
         },

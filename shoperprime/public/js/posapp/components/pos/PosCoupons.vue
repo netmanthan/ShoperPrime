@@ -123,7 +123,7 @@ export default {
       }
       const vm = this;
       frappe.call({
-        method: 'ShoperPrime.ShoperPrime.api.posapp.get_pos_coupon',
+        method: 'shoperprime.shoperprime.api.posapp.get_pos_coupon',
         args: {
           coupon: new_coupon,
           customer: vm.customer,
@@ -157,7 +157,7 @@ export default {
       if (!this.customer) return;
       const vm = this;
       frappe.call({
-        method: 'ShoperPrime.ShoperPrime.api.posapp.get_active_gift_coupons',
+        method: 'shoperprime.shoperprime.api.posapp.get_active_gift_coupons',
         args: {
           customer: vm.customer,
           company: vm.pos_profile.company,

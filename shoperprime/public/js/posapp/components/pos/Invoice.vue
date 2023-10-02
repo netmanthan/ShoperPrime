@@ -1063,7 +1063,7 @@ export default {
       this.posting_date = frappe.datetime.nowdate();
       if (doc.name && this.pos_profile.posa_allow_delete) {
         frappe.call({
-          method: "ShoperPrime.ShoperPrime.api.posapp.delete_invoice",
+          method: "shoperprime.shoperprime.api.posapp.delete_invoice",
           args: { invoice: doc.name },
           async: true,
           callback: function (r) {
@@ -1233,7 +1233,7 @@ export default {
     update_invoice(doc) {
       const vm = this;
       frappe.call({
-        method: "ShoperPrime.ShoperPrime.api.posapp.update_invoice",
+        method: "shoperprime.shoperprime.api.posapp.update_invoice",
         args: {
           data: doc,
         },
@@ -1433,7 +1433,7 @@ export default {
     get_draft_invoices() {
       const vm = this;
       frappe.call({
-        method: "ShoperPrime.ShoperPrime.api.posapp.get_draft_invoices",
+        method: "shoperprime.shoperprime.api.posapp.get_draft_invoices",
         args: {
           pos_opening_shift: this.pos_opening_shift.name,
         },
@@ -1461,7 +1461,7 @@ export default {
       const vm = this;
       if (!vm.pos_profile) return;
       frappe.call({
-        method: "ShoperPrime.ShoperPrime.api.posapp.get_items_details",
+        method: "shoperprime.shoperprime.api.posapp.get_items_details",
         async: false,
         args: {
           pos_profile: vm.pos_profile,
@@ -1488,7 +1488,7 @@ export default {
     update_item_detail(item) {
       const vm = this;
       frappe.call({
-        method: "ShoperPrime.ShoperPrime.api.posapp.get_item_detail",
+        method: "shoperprime.shoperprime.api.posapp.get_item_detail",
         args: {
           warehouse: this.pos_profile.warehouse,
           doc: this.get_invoice_doc(),
@@ -1582,7 +1582,7 @@ export default {
       const vm = this;
       if (this.customer) {
         frappe.call({
-          method: "ShoperPrime.ShoperPrime.api.posapp.get_customer_info",
+          method: "shoperprime.shoperprime.api.posapp.get_customer_info",
           args: {
             customer: vm.customer,
           },
@@ -2606,7 +2606,7 @@ export default {
       this.selcted_delivery_charges = {};
       frappe.call({
         method:
-          "ShoperPrime.ShoperPrime.api.posapp.get_applicable_delivery_charges",
+          "shoperprime.shoperprime.api.posapp.get_applicable_delivery_charges",
         args: {
           company: this.pos_profile.company,
           pos_profile: this.pos_profile.name,

@@ -123,7 +123,7 @@ export default {
     search() {
       const vm = this;
       frappe.call({
-        method: 'ShoperPrime.ShoperPrime.api.m_pesa.get_mpesa_draft_payments',
+        method: 'shoperprime.shoperprime.api.m_pesa.get_mpesa_draft_payments',
         args: {
           company: this.company,
           mode_of_payment: this.mode_of_payment,
@@ -143,7 +143,7 @@ export default {
       if (this.selected.length > 0) {
         const selected_payment = this.selected[0].name;
         frappe.call({
-          method: 'ShoperPrime.ShoperPrime.api.m_pesa.submit_mpesa_payment',
+          method: 'shoperprime.shoperprime.api.m_pesa.submit_mpesa_payment',
           args: {
             mpesa_payment: selected_payment,
             customer: this.customer,

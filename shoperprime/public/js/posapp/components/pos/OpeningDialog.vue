@@ -151,7 +151,7 @@ export default {
     get_opening_dialog_data() {
       const vm = this;
       frappe.call({
-        method: 'ShoperPrime.ShoperPrime.api.posapp.get_opening_dialog_data',
+        method: 'shoperprime.shoperprime.api.posapp.get_opening_dialog_data',
         args: {},
         callback: function (r) {
           if (r.message) {
@@ -172,7 +172,7 @@ export default {
       this.is_loading = true;
       const vm = this;
       return frappe
-        .call('ShoperPrime.ShoperPrime.api.posapp.create_opening_voucher', {
+        .call('shoperprime.shoperprime.api.posapp.create_opening_voucher', {
           pos_profile: this.pos_profile,
           company: this.company,
           balance_details: this.payments_methods,
