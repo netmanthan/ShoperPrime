@@ -17,8 +17,10 @@
         style="cursor: pointer"
         class="text-uppercase primary--text"
       >
-        <span class="font-weight-light">ShoperPrime</span>
+        <span class="font-weight-light">Shoper</span>
+        <span>Prime</span>
         <span>POS</span>
+        <span>+91 9987305007</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
