@@ -745,23 +745,26 @@
           <v-row no-gutters class="pa-1 pt-2 pl-0">
             <v-col cols="6" class="pa-1">
               <v-btn
+                ref="recall"
                 block
                 class="pa-0"
                 color="warning"
                 dark
                 @click="get_draft_invoices"
-                >{{ __("Held") }}</v-btn
+                >{{ __("Recall") }}:F5</v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
               <v-btn
+                ref="returnb"
                 block
+                ref="returnb"
                 class="pa-0"
                 :class="{ 'disable-events': !pos_profile.posa_allow_return }"
                 color="secondary"
                 dark
                 @click="open_returns"
-                >{{ __("Return") }}</v-btn
+                >{{ __("Return") }}:F3</v-btn
               >
             </v-col>
             <v-col cols="6" class="pa-1">
@@ -776,12 +779,13 @@
             </v-col>
             <v-col cols="6" class="pa-1">
               <v-btn
+                ref="holdbill"
                 block
                 class="pa-0"
                 color="accent"
                 dark
                 @click="new_invoice"
-                >{{ __("Save/New") }}</v-btn
+                >{{ __("Hold") }}:F4</v-btn
               >
             </v-col>
             <v-col class="pa-1">
@@ -791,7 +795,7 @@
                 color="success"
                 @click="show_payment"
                 dark
-                >{{ __("PAY") }}</v-btn
+                >{{ __("PAY") }}:F6</v-btn
               >
             </v-col>
             <v-col
@@ -1805,13 +1809,31 @@ export default {
       // update item batch_no_data from batch_no_data
       item.batch_no_data = batch_no_data;
     },
-
+    returnbill(e) {
+      if (e.key === "F3") {
+        e.preventDefault();
+        this.$refs.returnb.$el.click();
+      }
+    },
     shortOpenPayment(e) {
-      if (e.key === "s" && (e.ctrlKey || e.metaKey)) {
+      if (e.key === "F6") {
         e.preventDefault();
         this.show_payment();
       }
     },
+    recall(e) {
+      if (e.key === "F5") {
+        e.preventDefault();
+        this.$refs.recall.$el.click();
+      }
+    },
+    holdbb(e) {
+      if (e.key === "F4") {
+        e.preventDefault();
+        this.$refs.holdbill.$el.click();
+      }
+    },
+    // Jawahar R Malllah
 
     shortDeleteFirstItem(e) {
       if (e.key === "d" && (e.ctrlKey || e.metaKey)) {
@@ -2711,12 +2733,18 @@ export default {
     document.addEventListener("keydown", this.shortDeleteFirstItem.bind(this));
     document.addEventListener("keydown", this.shortOpenFirstItem.bind(this));
     document.addEventListener("keydown", this.shortSelectDiscount.bind(this));
+    document.addEventListener("keydown", this.recall.bind(this));
+    document.addEventListener("keydown", this.holdbb.bind(this));
+    document.addEventListener("keydown", this.returnbill.bind(this));
   },
   destroyed() {
     document.removeEventListener("keydown", this.shortOpenPayment);
     document.removeEventListener("keydown", this.shortDeleteFirstItem);
     document.removeEventListener("keydown", this.shortOpenFirstItem);
     document.removeEventListener("keydown", this.shortSelectDiscount);
+    document.removeEventListener("keydown", this.recall);
+    document.removeEventListener("keydown", this.holdbb);
+    document.removeEventListener("keydown", this.returnbill);
   },
   watch: {
     customer() {
