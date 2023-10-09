@@ -158,7 +158,7 @@ export default {
       snackColor: '',
       snackText: '',
       company: 'ShoperPrime',
-      company_img: '/assets/erpnext/images/erpnext-logo.svg',
+      company_img: '/assets/shoperprime/js/posapp/components/pos/pos.svg',
       pos_profile: '',
       freeze: false,
       freezeTitle: '',
