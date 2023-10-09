@@ -64,10 +64,10 @@ Available in GitHub [discussions](https://github.com/netmanthan/ShoperPrime/disc
 - `F6` open payments
 - `F7` submit payments
 - `F3` Sales Return
-- `F4` Hold Exixtig Bill
+- `F4` Hold Existing Bill
 - `F5` Recall Holded Bill
-- `CTRL or CMD + D` remove first item from the top
-- `CTRL or CMD + A` expand first item from the top
+- `CTRL or CMD + D` remove the first item from the top
+- `CTRL or CMD + A` expand the first item from the top
 - `CTRL or CMD + E` focus on discount field
 
 ---
