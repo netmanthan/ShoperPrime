@@ -131,8 +131,8 @@ DocType: POS Opening Shift,Status,Status
 apps/shoperprime/shoperprime/shoperprime/api/status_updater.py,Status must be one of {0},O Status deve ser um dos {0}
 DocType: POS Closing Shift,System Manager,Gestor de Sistema
 DocType: POS Closing Shift,Taxes,Impostos
-apps/shoperprime/shoperprime/shoperprime/api/posapp.py,This invoice {0} cannot be deleted,Esta factura {0} não pode ser apagada
-apps/shoperprime/shoperprime/shoperprime/api/posapp.py,Invoice {0} Deleted,Factura {0} Apagada
+apps/shoperprime/shoperprime/shoperprime/api/shoperprimeapp.py,This invoice {0} cannot be deleted,Esta factura {0} não pode ser apagada
+apps/shoperprime/shoperprime/shoperprime/api/shoperprimeapp.py,Invoice {0} Deleted,Factura {0} Apagada
 DocType: POS Offer,Title,Titulo
 DocType: POS Closing Shift,Total Quantity,Quantidade Total
 DocType: POS Offer,Transaction,Transação
@@ -144,6 +144,6 @@ apps/shoperprime/shoperprime/shoperprime/doctype/pos_opening_shift/pos_opening_s
 DocType: POS Offer,Valid From,Valido Apartir
 DocType: POS Offer,Valid Upto,Valido Até
 DocType: POS Offer,Warehouse,Armazém
-apps/shoperprime/shoperprime/shoperprime/page/posapp/posapp.js,is Offer,é Oferta
-apps/shoperprime/shoperprime/shoperprime/page/posapp/posapp.js,Type,Tipo
-apps/shoperprime/shoperprime/shoperprime/page/posapp/posapp.js,Total Qty,Qtd Total
+apps/shoperprime/shoperprime/shoperprime/page/shoperprimeapp/shoperprimeapp.js,is Offer,é Oferta
+apps/shoperprime/shoperprime/shoperprime/page/shoperprimeapp/shoperprimeapp.js,Type,Tipo
+apps/shoperprime/shoperprime/shoperprime/page/shoperprimeapp/shoperprimeapp.js,Total Qty,Qtd Total

@@ -8,8 +8,8 @@ def get_data():
 			"items": [
 				 {
 				   "description": "ShoperPrime", 
-				   "name": "posapp", 
-				   "label": "POSAPP", 					
+				   "name": "shoperprimeapp", 
+				   "label": "ShoperPrime App", 					
 				   "type": "page"
 				  }, 
 
