@@ -6,7 +6,7 @@
         class="grey--text"
       ></v-app-bar-nav-icon>
       <v-img
-        src="/assets/shoperprime/js/posapp/components/pos/pos.png"
+        src="/assets/shoperprime/js/posapp/components/pos/pos.svg"
         alt="ShoperPrime"
         max-width="32"
         class="mr-2"

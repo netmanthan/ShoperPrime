@@ -640,14 +640,14 @@
         </v-col>
         <v-col cols="6" class="pl-1">
           <v-btn
-            ref:snp
+            ref="snp"
             block
             large
             color="success"
             dark
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
-            >{{ __("Submit & Print") }}F7</v-btn
+            >{{ __("Submit & Print") }}</v-btn
           >
         </v-col>
         <v-col cols="12">
@@ -963,7 +963,7 @@ export default {
         }, 0);
       }
     },
-    snp(e) {
+    submitprint(e) {
       if (e.key === "F7") {
         e.preventDefault();
         this.$refs.snp.$el.click();
@@ -1407,7 +1407,7 @@ export default {
   },
   created() {
     document.addEventListener("keydown", this.shortPay.bind(this));
-    document.removeEventListener("keydown", this.snp);
+    document.removeEventListener("keydown", this.submitprint);
   },
   beforeDestroy() {
     evntBus.$off("send_invoice_doc_payment");
@@ -1423,7 +1423,7 @@ export default {
 
   destroyed() {
     document.removeEventListener("keydown", this.shortPay);
-    document.removeEventListener("keydown", this.snp);
+    document.removeEventListener("keydown", this.submitprint);
     
 
   },
