@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://www.netmanthan.com/files/logo.svg" height="128">
+    <img src="https://raw.githubusercontent.com/netmanthan/ShoperPrime/main/shoperprime/public/js/shoperprimeapp/components/pos/pos.svg" height="128">
     <h2>ShoperPrime</h2>
 </div>
 
