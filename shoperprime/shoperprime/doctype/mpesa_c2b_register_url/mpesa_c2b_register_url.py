@@ -1,4 +1,4 @@
-# Copyright (c) 2021, Youssef Restom and contributors
+# Copyright (c) 2021, Jawahar R Mallah and contributors
 # For license information, please see license.txt
 
 import frappe, requests

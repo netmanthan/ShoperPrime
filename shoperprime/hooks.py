@@ -4,11 +4,11 @@ from . import __version__ as app_version
 
 app_name = "shoperprime"
 app_title = "ShoperPrime"
-app_publisher = "Youssef Restom"
+app_publisher = "NETMANTHAN"
 app_description = "ShoperPrime"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
-app_email = "youssef@ShoperSolutions.com"
+app_email = "netmanthan@ShoperSolutions.com"
 app_license = "GPLv3"
 
 # Includes in <head>
