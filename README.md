@@ -61,8 +61,8 @@ Available in GitHub [discussions](https://github.com/netmanthan/ShoperPrime/disc
 
 ### Shortcuts:
 
-- `CTRL or CMD + S` open payments
-- `CTRL or CMD + X` submit payments
+- `CTRL or F6` open payments
+- `CTRL or F7` submit payments
 - `CTRL or CMD + D` remove first item from the top
 - `CTRL or CMD + A` expand first item from the top
 - `CTRL or CMD + E` focus on discount field
