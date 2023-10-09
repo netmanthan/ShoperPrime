@@ -964,7 +964,7 @@ export default {
       }
     },
     shortPandSubmit(e) {
-      if (e.key === "F7") {
+      if (e.key === "F12") {
         e.preventDefault();
         this.$refs.submitButton.$el.click();
       }
