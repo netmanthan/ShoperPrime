@@ -158,7 +158,7 @@ export default {
       snackColor: '',
       snackText: '',
       company: 'ShoperPrime',
-      company_img: '/assets/shoperprime/js/shoperprimeapp/components/pos/pos.svg',
+      company_img: '/assets/shoperprime/js/shoperprimeapp/components/pos/logowhite.svg',
       pos_profile: '',
       freeze: false,
       freezeTitle: '',
