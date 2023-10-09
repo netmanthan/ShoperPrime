@@ -18,7 +18,7 @@
         class="text-uppercase primary--text"
       >
         <span class="font-weight-light">pos</span>
-        <span>awesome</span>
+        <span>ShoperPrime</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -243,7 +243,7 @@ export default {
         this.pos_profile = data.pos_profile;
         const payments = { text: 'Payments', icon: 'mdi-cash-register' };
         if (
-          this.pos_profile.posa_use_pos_awesome_payments &&
+          this.pos_profile.posa_use_shoperprime_payments &&
           this.items.length !== 2
         ) {
           this.items.push(payments);
