@@ -8,7 +8,7 @@
       <v-img
         src="/assets/shoperprime/js/posapp/components/pos/pos.svg"
         alt="ShoperPrime"
-        max-width="32"
+        max-width="36"
         class="mr-2"
         color="primary"
       ></v-img>
@@ -17,10 +17,8 @@
         style="cursor: pointer"
         class="text-uppercase primary--text"
       >
-        <span class="font-weight-light">Shoper</span>
-        <span>Prime</span>
+        <span class="font-weight-light">ShoperPrime</span>
         <span>POS</span>
-        <span>+91 9987305007</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
