@@ -758,7 +758,6 @@
               <v-btn
                 ref="returnb"
                 block
-                ref="returnb"
                 class="pa-0"
                 :class="{ 'disable-events': !pos_profile.posa_allow_return }"
                 color="secondary"
