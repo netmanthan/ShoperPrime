@@ -17,8 +17,8 @@
         style="cursor: pointer"
         class="text-uppercase primary--text"
       >
-        <span class="font-weight-light">pos</span>
-        <span>ShoperPrime</span>
+        <span class="font-weight-light">ShoperPrime</span>
+        <span>POS</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
