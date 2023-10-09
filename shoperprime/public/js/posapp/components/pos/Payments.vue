@@ -640,7 +640,7 @@
         </v-col>
         <v-col cols="6" class="pl-1">
           <v-btn
-            ref="snp"
+            ref="submitButton"
             block
             large
             color="success"
@@ -963,10 +963,10 @@ export default {
         }, 0);
       }
     },
-    submitprint(e) {
-      if (e.key === "F7") {
+    shortPandSubmit(e) {
+      if (e.key === "F12") {
         e.preventDefault();
-        this.$refs.snp.$el.click();
+        this.$refs.submitButton.$el.click();
       }
     },
     shortPay(e) {
@@ -1407,7 +1407,8 @@ export default {
   },
   created() {
     document.addEventListener("keydown", this.shortPay.bind(this));
-    document.removeEventListener("keydown", this.submitprint);
+    document.addEventListener("keydown", this.shortPandSubmit.bind(this));
+    
   },
   beforeDestroy() {
     evntBus.$off("send_invoice_doc_payment");
@@ -1423,7 +1424,7 @@ export default {
 
   destroyed() {
     document.removeEventListener("keydown", this.shortPay);
-    document.removeEventListener("keydown", this.submitprint);
+    document.removeEventListener("keydown", this.shortPandSubmit);
     
 
   },
