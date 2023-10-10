@@ -3,7 +3,7 @@
     <h2>ShoperPrime</h2>
 </div>
 
-#### An open-source Point of Sale for [Erpnext](https://github.com/frappe/erpnext) using [Vue.js](https://github.com/vuejs/vue) and [Vuetify](https://github.com/vuetifyjs/vuetify)
+#### An open-source Point of Sale for [ShoperPrime](https://github.com/netmanthan/ShoperPrime) using [Vue.js](https://github.com/vuejs/vue) and [Vuetify](https://github.com/vuetifyjs/vuetify)
 
 ---
 
@@ -18,9 +18,9 @@
 
 ### How to Install
 
-#### Frappe Cloud:
+#### netmanthan/shoperPrime Cloud:
 
-One-click installing available if you are hosting on FC from [here](https://frappecloud.com/marketplace/apps/shoperprime)
+One-click installing available if you are hosting on FC from [here](https://netmanthan/shoperPrimecloud.com/marketplace/apps/shoperprime)
 
 #### Self Hosting:
 
@@ -74,8 +74,8 @@ Available in GitHub [discussions](https://github.com/netmanthan/ShoperPrime/disc
 
 ### Dependencies:
 
-- [Frappe](https://github.com/frappe/frappe)
-- [Erpnext](https://github.com/frappe/erpnext)
+- [netmanthan/shoperPrime](https://github.com/netmanthan/shoperPrime/netmanthan/shoperPrime)
+- [ShoperPrime](https://github.com/netmanthan/ShoperPrime)
 - [Vue.js](https://github.com/vuejs/vue)
 - [Vuetify.js](https://github.com/vuetifyjs/vuetify)
 
@@ -83,10 +83,10 @@ Available in GitHub [discussions](https://github.com/netmanthan/ShoperPrime/disc
 
 ### Contributing
 
-Will using for this the same guidelines from Erpnext
+Will using for this the same guidelines from ShoperPrime
 
-1. [Issue Guidelines](https://github.com/frappe/erpnext/wiki/Issue-Guidelines)
-2. [Pull Request Requirements](https://github.com/frappe/erpnext/wiki/Contribution-Guidelines)
+1. [Issue Guidelines](https://github.com/netmanthan/ShoperPrime/wiki/Issue-Guidelines)
+2. [Pull Request Requirements](https://github.com/netmanthan/ShoperPrime/wiki/Contribution-Guidelines)
 
 ---
 
