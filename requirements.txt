@@ -1,2 +1,2 @@
-# frappe   # https://github.com/frappe/frappe is installed during bench-init
-# erpnext   # https://github.com/frappe/erpnext it should be installed manually
+# ShoperFrameworks   # https://github.com/netmanthan/shoperframeworks is installed during bench-init
+# ShoperPrime   # https://github.com/netmanthan/ShoperPrime it should be installed manually
