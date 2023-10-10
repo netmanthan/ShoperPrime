@@ -964,19 +964,19 @@ export default {
       }
     },
     shortPandSubmit(e) {
-      if (e.key === "F7") {
+      if (e.key === "F10") {
         e.preventDefault();
         this.$refs.submitButton.$el.click();
       }
     },
     ucard(e) {
-      if (e.key === "F8") {
+      if (e.key === "F7") {
         e.preventDefault();
         this.set_full_amount(1); // Click the "Cash" button 
-      } else if (e.key === "F9") {
+      } else if (e.key === "F8") {
         e.preventDefault();
         this.set_full_amount(2); // Click the "Credit Card" button
-      } else if (e.key === "F10") {
+      } else if (e.key === "F9") {
         e.preventDefault();
         this.set_full_amount(3); // Click the "UPI" button (adjust the payment ID accordingly)
       }
