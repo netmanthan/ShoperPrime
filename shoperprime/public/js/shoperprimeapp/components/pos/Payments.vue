@@ -969,6 +969,18 @@ export default {
         this.$refs.submitButton.$el.click();
       }
     },
+    ucard(e) {
+      if (e.key === "F8") {
+        e.preventDefault();
+        this.set_full_amount(1); // Click the "Cash" button 
+      } else if (e.key === "F9") {
+        e.preventDefault();
+        this.set_full_amount(2); // Click the "Credit Card" button
+      } else if (e.key === "F10") {
+        e.preventDefault();
+        this.set_full_amount(3); // Click the "UPI" button (adjust the payment ID accordingly)
+      }
+    },
     shortPay(e) {
       if (e.key === "x" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
@@ -1408,6 +1420,8 @@ export default {
   created() {
     document.addEventListener("keydown", this.shortPay.bind(this));
     document.addEventListener("keydown", this.shortPandSubmit.bind(this));
+    document.addEventListener('keydown', this.ucard);
+
     
   },
   beforeDestroy() {
@@ -1425,6 +1439,8 @@ export default {
   destroyed() {
     document.removeEventListener("keydown", this.shortPay);
     document.removeEventListener("keydown", this.shortPandSubmit);
+    document.removeEventListener('keydown', this.ucard);
+
     
 
   },
