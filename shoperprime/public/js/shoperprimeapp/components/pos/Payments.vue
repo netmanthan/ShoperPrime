@@ -947,7 +947,7 @@ export default {
         "load",
         function () {
           printWindow.print();
-          printWindow.close();
+          // printWindow.close();
           // NOTE : uncomoent this to auto closing printing window
         },
         true
