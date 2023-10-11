@@ -647,7 +647,7 @@
             dark
             @click="submit(undefined, false, true)"
             :disabled="vaildatPayment"
-            >{{ __("Submit & Print") }}</v-btn
+            >{{ __("Submit & Print"):F10 }}</v-btn
           >
         </v-col>
         <v-col cols="12">
