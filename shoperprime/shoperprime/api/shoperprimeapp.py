@@ -7,22 +7,22 @@ import json
 import frappe
 from frappe.utils import nowdate, flt, cstr
 from frappe import _
-from erpnext.accounts.doctype.sales_invoice.sales_invoice import get_bank_cash_account
-from erpnext.stock.get_item_details import get_item_details
-from erpnext.accounts.doctype.pos_profile.pos_profile import get_item_groups
+from shoper.accounts.doctype.sales_invoice.sales_invoice import get_bank_cash_account
+from shoper.stock.get_item_details import get_item_details
+from shoper.accounts.doctype.pos_profile.pos_profile import get_item_groups
 from frappe.utils.background_jobs import enqueue
-from erpnext.accounts.party import get_party_bank_account
-from erpnext.stock.doctype.batch.batch import (
+from shoper.accounts.party import get_party_bank_account
+from shoper.stock.doctype.batch.batch import (
     get_batch_no,
     get_batch_qty,
     set_batch_nos,
 )
-from erpnext.accounts.doctype.payment_request.payment_request import (
+from shoper.accounts.doctype.payment_request.payment_request import (
     get_dummy_message,
     get_existing_payment_request_amount,
 )
 
-from erpnext.accounts.doctype.loyalty_program.loyalty_program import (
+from shoper.accounts.doctype.loyalty_program.loyalty_program import (
     get_loyalty_program_details_with_points,
 )
 from shoperprime.shoperprime.doctype.pos_coupon.pos_coupon import check_coupon_code
@@ -1212,7 +1212,7 @@ def search_invoices_for_return(invoice_name, company):
 
 
 def get_version():
-    branch_name = get_app_branch("erpnext")
+    branch_name = get_app_branch("shoper")
     if "12" in branch_name:
         return 12
     elif "13" in branch_name:
@@ -1490,7 +1490,7 @@ def make_payment_request(**args):
 
     grand_total = get_amount(ref_doc, gateway_account.get("payment_account"))
     if args.loyalty_points and args.dt == "Sales Order":
-        from erpnext.accounts.doctype.loyalty_program.loyalty_program import (
+        from shoper.accounts.doctype.loyalty_program.loyalty_program import (
             validate_loyalty_points,
         )
 

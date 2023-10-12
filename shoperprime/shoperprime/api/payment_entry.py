@@ -1,18 +1,18 @@
 # Copyright (c) 2021, Jawahar R Mallah and contributors
 # For license information, please see license.txt
 
-import frappe, erpnext, json
+import frappe, shoper, json
 from frappe import _
 from frappe.utils import nowdate, getdate, flt
-from erpnext.accounts.party import get_party_account
-from erpnext.accounts.utils import get_account_currency
-from erpnext.accounts.doctype.journal_entry.journal_entry import (
+from shoper.accounts.party import get_party_account
+from shoper.accounts.utils import get_account_currency
+from shoper.accounts.doctype.journal_entry.journal_entry import (
     get_default_bank_cash_account,
 )
-from erpnext.setup.utils import get_exchange_rate
-from erpnext.accounts.doctype.bank_account.bank_account import get_party_bank_account
+from shoper.setup.utils import get_exchange_rate
+from shoper.accounts.doctype.bank_account.bank_account import get_party_bank_account
 from shoperprime.shoperprime.api.m_pesa import submit_mpesa_payment
-from erpnext.accounts.utils import QueryPaymentLedger, get_outstanding_invoices as _get_outstanding_invoices
+from shoper.accounts.utils import QueryPaymentLedger, get_outstanding_invoices as _get_outstanding_invoices
 
 
 def create_payment_entry(
@@ -50,7 +50,7 @@ def create_payment_entry(
     pe = frappe.new_doc("Payment Entry")
     pe.payment_type = payment_type
     pe.company = company
-    pe.cost_center = cost_center or erpnext.get_default_cost_center(company)
+    pe.cost_center = cost_center or shoper.get_default_cost_center(company)
     pe.posting_date = date
     pe.mode_of_payment = mode_of_payment
     pe.party_type = party_type
